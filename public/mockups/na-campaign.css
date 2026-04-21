@@ -1,0 +1,224 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  background: #021e2b;
+  color: #eef4f7;
+}
+
+.na-page {
+  min-height: 100dvh;
+  padding: 16px;
+  background:
+    radial-gradient(120% 90% at 100% 0%, rgba(255, 84, 36, 0.16), transparent 60%),
+    radial-gradient(120% 90% at 0% 100%, rgba(63, 177, 255, 0.16), transparent 55%),
+    #021e2b;
+}
+
+.na-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 0 14px;
+}
+
+.na-logo {
+  width: 112px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.na-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+}
+
+.na-nav a {
+  color: #9fc0ce;
+  text-decoration: none;
+}
+
+.na-hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  border: 1px solid rgba(159, 192, 206, 0.3);
+  min-height: 200px;
+}
+
+.na-hero-image {
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.na-hero-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(1, 15, 22, 0.85), rgba(1, 15, 22, 0.2));
+}
+
+.na-kicker {
+  font-size: 11px;
+  margin: 0 0 8px;
+  color: #89afbf;
+}
+
+.na-hero-overlay h1 {
+  margin: 0;
+  font-size: 31px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #f4f7f9;
+}
+
+.na-content {
+  margin-top: 14px;
+  display: grid;
+  gap: 12px;
+}
+
+.na-card {
+  border-radius: 16px;
+  border: 1px solid rgba(159, 192, 206, 0.22);
+  background: rgba(3, 37, 53, 0.78);
+  padding: 14px;
+}
+
+.na-card h2 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.na-card p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #a8c6d3;
+}
+
+.na-card button {
+  margin-top: 12px;
+  border: 0;
+  border-radius: 999px;
+  padding: 7px 11px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: #ff5424;
+}
+
+.na-card-image {
+  padding: 0;
+  overflow: hidden;
+  min-height: 140px;
+}
+
+.na-card-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.na-metrics {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.na-metric {
+  border-radius: 12px;
+  border: 1px solid rgba(159, 192, 206, 0.22);
+  background: rgba(6, 43, 61, 0.8);
+  padding: 10px;
+}
+
+.na-metric .label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 10px;
+  color: #89afbf;
+}
+
+.na-metric .value {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f6f9fb;
+}
+
+@media (min-width: 700px) {
+  .na-page {
+    padding: 24px;
+  }
+
+  .na-nav {
+    font-size: 13px;
+    gap: 20px;
+  }
+
+  .na-hero {
+    min-height: 280px;
+  }
+
+  .na-hero-image {
+    min-height: 280px;
+  }
+
+  .na-hero-overlay h1 {
+    font-size: 52px;
+  }
+
+  .na-content {
+    grid-template-columns: 1.1fr 1fr;
+  }
+
+  .na-card {
+    padding: 20px;
+  }
+
+  .na-card h2 {
+    font-size: 24px;
+  }
+
+  .na-card p {
+    font-size: 15px;
+  }
+
+  .na-card button {
+    font-size: 14px;
+    padding: 10px 16px;
+  }
+
+  .na-card-image {
+    min-height: 220px;
+  }
+
+  .na-metric .label {
+    font-size: 12px;
+  }
+
+  .na-metric .value {
+    font-size: 22px;
+  }
+}

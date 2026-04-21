@@ -1,0 +1,85 @@
+import ReportNav from "@/components/report/ReportNav";
+import HeroSection from "@/components/report/HeroSection";
+import GlobalFocus from "@/components/report/GlobalFocus";
+import PerformanceResults from "@/components/report/PerformanceResults";
+import SalesforceSection from "@/components/report/SalesforceSection";
+import SearchVisibility from "@/components/report/SearchVisibility";
+import { CampaignSection } from "@/components/report/CampaignSection";
+import AlwaysOnSection from "@/components/report/AlwaysOnSection";
+import LinkedInSection from "@/components/report/LinkedInSection";
+import EventsSection from "@/components/report/EventsSection";
+import SentimentSection from "@/components/report/SentimentSection";
+import PhotoCarousel from "@/components/report/PhotoCarousel";
+import WebinarAnalytics from "@/components/report/WebinarAnalytics";
+import { reportData } from "@/data/igneo-report";
+import fssaLogo from "@/assets/FSSA_White_Mono.png";
+
+const luncheonPhotos = Array.from({ length: 10 }, (_, i) => `${import.meta.env.BASE_URL}events/luncheon/luncheon-${i + 1}.jpg`);
+
+const Index = () => {
+  const d = reportData;
+  return (
+    <div className="min-h-screen bg-background">
+      <ReportNav />
+      <HeroSection />
+      <GlobalFocus />
+      <PerformanceResults />
+      <SalesforceSection />
+      <SearchVisibility />
+
+      <CampaignSection
+        id="north-america"
+        title={d.campaigns.northAmerica.title}
+        stage={d.campaigns.northAmerica.stage}
+        subtitle={d.campaigns.northAmerica.subtitle}
+        description={d.campaigns.northAmerica.description}
+        goals={d.campaigns.northAmerica.goals}
+        formats={d.campaigns.northAmerica.formats}
+        keyResults={d.campaigns.northAmerica.keyResults}
+        variant="dark"
+        phoneImage={<PhotoCarousel photos={luncheonPhotos} alt="Martin Lau luncheon with Morningstar" />}
+      />
+
+      <CampaignSection
+        id="dach"
+        title={d.campaigns.dach.title}
+        stage={d.campaigns.dach.stage}
+        subtitle={d.campaigns.dach.subtitle}
+        description={d.campaigns.dach.description}
+        goals={d.campaigns.dach.goals}
+        formats={d.campaigns.dach.formats}
+        keyResults={d.campaigns.dach.keyResults}
+        variant="cream"
+        phoneImage={<WebinarAnalytics />}
+      />
+
+      <AlwaysOnSection
+        id="website"
+        title={d.website.title}
+        stage={d.website.stage}
+        subtitle={d.website.subtitle}
+        description={d.website.description}
+        kpis={d.website.kpis}
+        focusQ4={d.website.focusQ4}
+        focusQ1={d.website.focusQ1}
+        variant="cream"
+        gaMonthly={d.website.gaMonthly}
+        topPages={d.website.topPages}
+        trafficSources={d.website.trafficSources}
+      />
+
+      <LinkedInSection />
+      <EventsSection />
+      <SentimentSection />
+
+      <footer className="section-dark py-10 border-t border-border">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-4">
+          <img src={fssaLogo} alt="FSSA Investment Managers" className="h-8 opacity-80" />
+          <p className="text-xs text-muted-foreground">{d.quarter} Marketing Impact Report · Internal Use</p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Index;
