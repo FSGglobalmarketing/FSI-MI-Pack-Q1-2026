@@ -1,42 +1,37 @@
 // ═══════════════════════════════════════════════════════════════════════
-// SOURCE: Salesforce Marketing Contact Activity.xlsx (Pardot prospect
-// activity) + FSSA CRM Opportunities Report.xlsx
-// Scope: Q1 2026 (Jan–Mar). FILTERED to rows where the Asset Name OR
-// Campaign Name contains "FSSA" (case-insensitive). Sibling-brand and
-// generic house-level campaigns are excluded.
+// SOURCE: Raw Data/CRM/Salesforce Activity.xlsx (Pardot prospect activity)
+//         + Raw Data/CRM/FSI Opportunities Report.xlsx
+// Scope: Q1 2026 (Jan–Mar). Brand-wide FSI — all investment teams.
 // ═══════════════════════════════════════════════════════════════════════
 
 export const salesforceMarketingKpis = [
-  { value: "6,314", label: "FSSA-tagged interactions (Q1)", comparison: "+26% vs Q4 (5,001)" },
-  { value: "77%", label: "Email share of mix", comparison: "List + automated emails" },
-  { value: "Mar", label: "Peak month", comparison: "4,640 · +212% vs Feb" },
-  { value: "5", label: "Accounts >100 each", comparison: "DBS SG leads at 426" },
+  { value: "29,049", label: "Prospect interactions (Q1)", comparison: "+4% vs Q4 (27,960)" },
+  { value: "61%",    label: "Email-open share of mix",    comparison: "17,667 opens / 29,049 activities" },
+  { value: "Mar",    label: "Peak month",                 comparison: "13,737 · +63% vs Feb" },
+  { value: "584",    label: "Live opportunities",         comparison: "Out of 2,207 total — Lost: 1,091" },
 ];
 
-// Activity type mix — Q1 vs Q4, FSSA-only
+// Activity type mix — Q1 vs Q4, all FSI
 export const activityBreakdown = [
-  { type: "Email Opens", q1: 3091, q4: 2953 },
-  { type: "Email Clicks", q1: 1850, q4: 1746 },
-  { type: "Custom URL Clicks", q1: 713, q4: 12 },
-  { type: "Website Visits", q1: 508, q4: 244 },
-  { type: "Form / File Views", q1: 119, q4: 29 },
-  { type: "Form Submissions", q1: 33, q4: 17 },
+  { type: "Email Opens",      q1: 17667, q4: 16781 },
+  { type: "Email Clicks",     q1:  6013, q4:  5870 },
+  { type: "Website Visits",   q1:  2081, q4:  2215 },
+  { type: "Custom URL Clicks",q1:  1865, q4:  1162 },
+  { type: "Form / File Views",q1:  1060, q4:  1336 },
+  { type: "Form Submissions", q1:   363, q4:   596 },
 ];
 
-// 6-month trend — FSSA-only
+// 6-month interaction trend
 export const monthlyTrend = [
-  { month: "Oct 25", interactions: 3074 },
-  { month: "Nov 25", interactions: 1812 },
-  { month: "Dec 25", interactions: 115 },
-  { month: "Jan 26", interactions: 185 },
-  { month: "Feb 26", interactions: 1489 },
-  { month: "Mar 26", interactions: 4640 },
+  { month: "Oct 25", interactions: 11346 },
+  { month: "Nov 25", interactions:  9954 },
+  { month: "Dec 25", interactions:  6660 },
+  { month: "Jan 26", interactions:  6909 },
+  { month: "Feb 26", interactions:  8403 },
+  { month: "Mar 26", interactions: 13737 },
 ];
 
-// Engagement by company × channel (Q1 2026, FSSA-tagged only, top 15)
-// Channels: Email (opens+clicks on List Email / Automated Email),
-// Web (website visits), Form/File (form views + file views + submissions),
-// Link (tracked custom-URL clicks from eDMs).
+// Engagement by company — Q1 2026 top 15
 export interface CompanyChannelRow {
   account: string;
   email: number;
@@ -46,76 +41,117 @@ export interface CompanyChannelRow {
   total: number;
 }
 
+// Account-level totals from Q1 activity export (aggregated without channel
+// breakdown — all activities roll into total; per-channel split not available
+// in this export).
 export const engagementByCompany: CompanyChannelRow[] = [
-  { account: "DBS Bank Singapore",                email: 322, web: 0,  form: 0, link: 104, total: 426 },
-  { account: "Bank of China (Hong Kong)",         email: 265, web: 1,  form: 6, link: 123, total: 395 },
-  { account: "China Construction Bank (Asia)",    email: 180, web: 0,  form: 0, link:  74, total: 254 },
-  { account: "DBS Bank (Hong Kong)",              email: 148, web: 1,  form: 4, link:  88, total: 241 },
-  { account: "Sun Hung Kai Investment Services",  email:  69, web: 1,  form: 0, link:  45, total: 115 },
-  { account: "HSBC Private Bank (HK)",            email:  75, web: 1,  form: 4, link:  29, total: 109 },
-  { account: "Mercer (Singapore)",                email:  72, web: 1,  form: 0, link:  24, total:  97 },
-  { account: "iFAST Financial (HK)",              email:  81, web: 1,  form: 0, link:   5, total:  87 },
-  { account: "Canaccord Genuity Wealth Guernsey", email:  84, web: 1,  form: 0, link:   0, total:  85 },
-  { account: "WWK Allgemeine Versicherung AG",    email:  75, web: 0,  form: 0, link:   0, total:  75 },
-  { account: "M&G Investment Management London",  email:  66, web: 0,  form: 0, link:   0, total:  66 },
-  { account: "Shanghai Commercial Bank",          email:  48, web: 0,  form: 0, link:  16, total:  64 },
-  { account: "Alder Investment Management",       email:  53, web: 0,  form: 0, link:   0, total:  53 },
-  { account: "Isio (London)",                     email:   0, web: 47, form: 0, link:   1, total:  48 },
-  { account: "Feri AG",                           email:  46, web: 0,  form: 0, link:   0, total:  46 },
+  { account: "DBS Bank Singapore",                          email: 0, web: 0, form: 0, link: 0, total: 855 },
+  { account: "China Construction Bank (Asia)",              email: 0, web: 0, form: 0, link: 0, total: 706 },
+  { account: "DBS Bank (Hong Kong)",                        email: 0, web: 0, form: 0, link: 0, total: 660 },
+  { account: "Bank of China (Hong Kong)",                   email: 0, web: 0, form: 0, link: 0, total: 556 },
+  { account: "Mercer Investments (Australia)",              email: 0, web: 0, form: 0, link: 0, total: 422 },
+  { account: "HSBC Private Bank (HK)",                      email: 0, web: 0, form: 0, link: 0, total: 402 },
+  { account: "Tokio Marine Asset Management",               email: 0, web: 0, form: 0, link: 0, total: 292 },
+  { account: "iFAST Financial (HK)",                        email: 0, web: 0, form: 0, link: 0, total: 274 },
+  { account: "Mercer (Singapore)",                          email: 0, web: 0, form: 0, link: 0, total: 262 },
+  { account: "Shanghai Commercial Bank",                    email: 0, web: 0, form: 0, link: 0, total: 262 },
+  { account: "Team Super (AU)",                             email: 0, web: 0, form: 0, link: 0, total: 257 },
+  { account: "Feri AG",                                     email: 0, web: 0, form: 0, link: 0, total: 214 },
+  { account: "Wing Lung Bank",                              email: 0, web: 0, form: 0, link: 0, total: 183 },
+  { account: "Construction & Building Unions Super (CBUS)", email: 0, web: 0, form: 0, link: 0, total: 178 },
+  { account: "Harrison Street",                             email: 0, web: 0, form: 0, link: 0, total: 164 },
 ];
 
-// Interactions by strategy (Q1 2026 FSSA-only)
+// Interactions by investment strategy — derived from Opportunities Report
+// (Investment Team field, 2,207 total opportunities)
 export interface StrategyRow { strategy: string; interactions: number; }
 
 export const interactionsByStrategy: StrategyRow[] = [
-  { strategy: "Brand / General",         interactions: 2605 },
-  { strategy: "GEM / Emerging Markets",  interactions: 2106 },
-  { strategy: "China All Cap / Leaders", interactions: 1593 },
-  { strategy: "LinkedIn / Social",       interactions:    5 },
-  { strategy: "Indian Subcontinent",     interactions:    5 },
+  { strategy: "Listed Infrastructure",    interactions: 739 },
+  { strategy: "Fixed Income",             interactions: 681 },
+  { strategy: "AEQ Growth",               interactions: 507 },
+  { strategy: "Property Securities",      interactions: 139 },
+  { strategy: "AEQ Smalls / Mids",        interactions: 127 },
+  { strategy: "First Sentier (Brand)",    interactions:   9 },
 ];
 
-// FSSA-only strategy split (excludes brand/house for a clearer view of
-// which strategy content actually pulled engagement).
+// FSI-strategy-only breakdown (for the chart variant that hides house/brand rows)
 export const interactionsByFssaStrategy: StrategyRow[] = [
-  { strategy: "GEM / Emerging Markets",  interactions: 2106 },
-  { strategy: "China All Cap / Leaders", interactions: 1593 },
-  { strategy: "LinkedIn / Social",       interactions:    5 },
-  { strategy: "Indian Subcontinent",     interactions:    5 },
+  { strategy: "Listed Infrastructure",    interactions: 739 },
+  { strategy: "Fixed Income",             interactions: 681 },
+  { strategy: "AEQ Growth",               interactions: 507 },
+  { strategy: "Property Securities",      interactions: 139 },
+  { strategy: "AEQ Smalls / Mids",        interactions: 127 },
 ];
 
-// Top Q1 FSSA campaigns
+// Top Q1 2026 campaigns by prospect activity
 export const topCampaigns = [
-  { campaign: "EMEA 2025-09 FSSA GEM Webinar",                interactions: 1396 },
-  { campaign: "Institutional FSSA (always-on)",               interactions: 1168 },
-  { campaign: "2026-03 HK Wholesale FSSA China client update eDM", interactions: 789 },
-  { campaign: "2026-03 SG Wholesale FSSA China client update eDM", interactions: 491 },
-  { campaign: "FSSA (house-level)",                           interactions: 442 },
-  { campaign: "Hong Kong (English) Retail FSSA",              interactions: 283 },
-  { campaign: "Hong Kong (Chinese) Retail FSSA",              interactions: 229 },
-  { campaign: "2026-02 SG Wholesale FSSA GEM client update eDM", interactions: 225 },
-  { campaign: "2026-02 HK Wholesale FSSA GEM client update eDM", interactions: 205 },
-  { campaign: "Singapore (English) Retail FSSA",              interactions: 165 },
+  { campaign: "EMEA 2025-11 Igneo AIM",                                      interactions: 3841 },
+  { campaign: "Institutional (house-level)",                                 interactions: 3532 },
+  { campaign: "2026-03 ANZ WS AEQ Growth Post-reporting Podcast",            interactions: 2523 },
+  { campaign: "ANZ Campaigns (rollup)",                                      interactions: 2312 },
+  { campaign: "US Igneo NADIF Institutional",                                interactions: 1130 },
+  { campaign: "2024 APAC Tracker Domain Campaign for FSI",                   interactions:  961 },
+  { campaign: "Master Subscription — SOSCOT",                                interactions:  901 },
+  { campaign: "2026-03 HK Wholesale FSSA China client update eDM",           interactions:  788 },
+  { campaign: "EMEA 2025-09 FSSA GEM Webinar",                               interactions:  721 },
+  { campaign: "Hong Kong (English) Retail",                                  interactions:  570 },
 ];
 
-// Targeting — job title breakdown (inferred / sample)
+// Targeting — job title breakdown (placeholder; Pardot job-title field not
+// populated consistently in this export)
 export const jobTitleBreakdown = [
-  { title: "Portfolio Manager", count: 312 },
-  { title: "Investment Analyst", count: 281 },
-  { title: "Fund Selector / Research", count: 247 },
-  { title: "Financial Adviser", count: 198 },
-  { title: "Managing Director", count: 164 },
-  { title: "Chief Investment Officer", count: 112 },
-  { title: "Head of Research", count: 91 },
-  { title: "Wealth Manager", count: 84 },
-  { title: "Senior Associate", count: 76 },
-  { title: "Partner", count: 58 },
+  { title: "Portfolio Manager",            count: 312 },
+  { title: "Investment Analyst",           count: 281 },
+  { title: "Fund Selector / Research",     count: 247 },
+  { title: "Financial Adviser",            count: 198 },
+  { title: "Managing Director",            count: 164 },
+  { title: "Chief Investment Officer",     count: 112 },
+  { title: "Head of Research",             count:  91 },
+  { title: "Wealth Manager",               count:  84 },
+  { title: "Senior Associate",             count:  76 },
+  { title: "Partner",                      count:  58 },
+];
+
+// ── Pipeline (from FSI Opportunities Report, 2,207 total) ──
+export const pipelineStages: { stage: string; count: number; q1New: number }[] = [
+  { stage: "1-Initiated Dialogue",          count: 210, q1New: 0 },
+  { stage: "2-Active Engagement",           count: 188, q1New: 0 },
+  { stage: "3-Formalised DD — Long List",   count: 113, q1New: 0 },
+  { stage: "4-Formalised DD — Short List",  count:  13, q1New: 0 },
+  { stage: "5-Won — Commitment to Proceed", count:  54, q1New: 0 },
+  { stage: "6-Onboarding in Process",       count:   6, q1New: 0 },
+  { stage: "7-Account Funded",              count: 527, q1New: 0 },
+  { stage: "Lost",                          count: 1091, q1New: 0 },
+];
+
+// Institution types represented across the opportunity book
+export const pipelineByRole: { role: string; count: number }[] = [
+  { role: "ANZ Wholesale",      count: 869 },
+  { role: "ANZ Institutional",  count: 260 },
+  { role: "EMEA Institutional", count: 201 },
+  { role: "EMEA Wholesale",     count: 132 },
+  { role: "US Institutional",   count:  66 },
+  { role: "ASIA Institutional", count:  49 },
+  { role: "ASIA Wholesale",     count:  27 },
+  { role: "Global Management",  count:  27 },
+];
+
+// Top strategies by opportunity count
+export const topStrategies: { strategy: string; count: number }[] = [
+  { strategy: "(ANZ) Class A Geared Australian Share",        count: 211 },
+  { strategy: "EX-20 Australian Share",                       count: 150 },
+  { strategy: "FSI Global Listed Infrastructure Fund",        count: 134 },
+  { strategy: "(ANZ) Class A First Sentier Cash",             count:  90 },
+  { strategy: "Global Credit Income — Wholesale",             count:  69 },
+  { strategy: "(ANZ) Class A Small Companies Long Short",     count:  69 },
+  { strategy: "Investment Mandate",                           count:  42 },
+  { strategy: "(ANZ) Class A Concentrated Australian Share",  count:  40 },
+  { strategy: "FSI Responsible Listed Infrastructure Fund",   count:  35 },
+  { strategy: "Global Listed Infrastructure — Wholesale",     count:  32 },
 ];
 
 // Legacy exports kept for compatibility
 export const topEngagedAccounts: { account: string; interactions: number; isOpp: boolean }[] = [];
 export const oppAccountMatches: { account: string; interactions: number; stage: string }[] = [];
-export const pipelineStages: { stage: string; count: number; q1New: number }[] = [];
-export const pipelineByRole: { role: string; count: number }[] = [];
-export const topStrategies: { strategy: string; count: number }[] = [];
 export const q1NewByStrategy: { strategy: string; count: number }[] = [];

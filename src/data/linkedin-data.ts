@@ -1,7 +1,7 @@
 // ═══════════════════════════════════════════════════════════════════════
-// LinkedIn data derived from content export: fssa-investment-managers
-// Source: Q1 2026 (Jan–Mar). Covers organic activity — FSSA did not run
-// sponsored campaigns during this period.
+// LinkedIn data — First Sentier Investors organic + sponsored activity
+// Source: Raw Data/Linkedin/organic_linkedin_q4_vs_q1.xls
+// Scope: Oct 2025 – Mar 2026 daily metrics; all posts captured in Q1 2026.
 // ═══════════════════════════════════════════════════════════════════════
 
 export interface LinkedInMonthly {
@@ -12,17 +12,17 @@ export interface LinkedInMonthly {
   reactions: number;
   comments: number;
   shares: number;
-  engagementRate: number; // decimal (e.g. 0.05 = 5%)
+  engagementRate: number; // decimal (reactions + comments + reposts) / organic impressions
 }
 
-// Includes Q4 2025 for comparison (approximate organic-only baseline).
+// Monthly totals aggregated from daily metrics export.
 export const linkedInMonthlyData: LinkedInMonthly[] = [
-  { month: "Oct 25", organic: 2100,  sponsored: 0, clicks: 180, reactions: 40,  comments: 2, shares: 5,  engagementRate: 0.086 },
-  { month: "Nov 25", organic: 2550,  sponsored: 0, clicks: 210, reactions: 52,  comments: 1, shares: 4,  engagementRate: 0.082 },
-  { month: "Dec 25", organic: 1860,  sponsored: 0, clicks: 145, reactions: 38,  comments: 1, shares: 3,  engagementRate: 0.078 },
-  { month: "Jan 26", organic: 2388,  sponsored: 0, clicks: 206, reactions: 43,  comments: 1, shares: 5,  engagementRate: 0.086 },
-  { month: "Feb 26", organic: 3761,  sponsored: 0, clicks: 408, reactions: 58,  comments: 2, shares: 7,  engagementRate: 0.108 },
-  { month: "Mar 26", organic: 8023,  sponsored: 0, clicks: 1333, reactions: 182, comments: 4, shares: 14, engagementRate: 0.166 },
+  { month: "Oct 25", organic: 10720, sponsored: 118009, clicks:  491, reactions: 117, comments: 1, shares: 0, engagementRate: 0.0110 },
+  { month: "Nov 25", organic: 16681, sponsored: 117111, clicks: 1845, reactions: 251, comments: 2, shares: 3, engagementRate: 0.0153 },
+  { month: "Dec 25", organic: 17180, sponsored:      0, clicks: 3894, reactions: 280, comments: 0, shares: 4, engagementRate: 0.0165 },
+  { month: "Jan 26", organic: 11984, sponsored: 367524, clicks: 2177, reactions: 204, comments: 2, shares: 2, engagementRate: 0.0173 },
+  { month: "Feb 26", organic:  7079, sponsored:  55968, clicks:  446, reactions:  61, comments: 1, shares: 1, engagementRate: 0.0089 },
+  { month: "Mar 26", organic: 16860, sponsored:  63006, clicks:  815, reactions: 154, comments: 0, shares: 3, engagementRate: 0.0093 },
 ];
 
 export interface LinkedInQuarterly {
@@ -32,12 +32,11 @@ export interface LinkedInQuarterly {
 }
 
 export const linkedInQuarterlyData: LinkedInQuarterly[] = [
-  { quarter: "Q4 '25", organic: 6510,  sponsored: 0 },
-  { quarter: "Q1 '26", organic: 14172, sponsored: 0 },
+  { quarter: "Q4 '25", organic: 44581, sponsored: 235120 },
+  { quarter: "Q1 '26", organic: 35923, sponsored: 486498 },
 ];
 
-// ── Content mix categories (manual curation of Q1 2026 posts) ──
-// Based on title/content keywords in the LinkedIn content export.
+// ── Content mix categories (Q1 2026 posts, 10 total) ──
 export interface ContentCategory {
   category: string;
   posts: number;
@@ -47,13 +46,13 @@ export interface ContentCategory {
 }
 
 export const contentMixData: ContentCategory[] = [
-  { category: "Event",    posts: 3, avgCtr: 0.0870, avgEngagement: 0.1398, avgImpressions: 662  },
-  { category: "Strategy", posts: 5, avgCtr: 0.1501, avgEngagement: 0.1844, avgImpressions: 835  },
-  { category: "Asset",    posts: 1, avgCtr: 0.0764, avgEngagement: 0.0996, avgImpressions: 1977 },
+  { category: "Event",    posts: 5, avgCtr: 0.1113, avgEngagement: 0.1585, avgImpressions:  992 },
+  { category: "Strategy", posts: 3, avgCtr: 0.1743, avgEngagement: 0.2119, avgImpressions: 1089 },
   { category: "Press",    posts: 1, avgCtr: 0.2524, avgEngagement: 0.2782, avgImpressions: 1046 },
+  { category: "Asset",    posts: 1, avgCtr: 0.0764, avgEngagement: 0.0996, avgImpressions: 1977 },
 ];
 
-// ── Top 10 posts this quarter (ranked by CTR) ──
+// ── Q1 2026 posts (ranked by CTR) ──
 export interface TopPost {
   title: string;
   category: "Event" | "Strategy" | "Asset" | "Press";
@@ -67,74 +66,74 @@ export interface TopPost {
 
 export const topPostsQ1: TopPost[] = [
   {
-    title: "Martin Lau luncheon — Hong Kong client roundtable with Morningstar",
+    title: "Martin Lau client roundtable — capitalising on China & Asia",
     category: "Event",
     date: "10/03/2026",
     impressions: 2779,
     clicks: 737,
     ctr: 0.2652,
     engagementRate: 0.2864,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
   {
-    title: "Genium Investment Partners awards FSSA Recommended rating — GEM",
+    title: "Genium Investment Partners initiates coverage of FSSA GEM Focus Fund — Recommended",
     category: "Press",
     date: "24/02/2026",
     impressions: 1046,
     clicks: 264,
     ctr: 0.2524,
     engagementRate: 0.2782,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
   {
-    title: "FSSA Asia Pacific Leaders webinar — Martin Lau & Rizi Mohanty",
+    title: "Chinese ingenuity — AI and next-generation technology across sectors",
     category: "Strategy",
     date: "09/03/2026",
     impressions: 1062,
     clicks: 250,
     ctr: 0.2354,
     engagementRate: 0.2759,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
   {
-    title: "FONDS Professionell Kongress — Qimin Fei on Asian equities (DE)",
+    title: "FONDS Professionell Kongress Mannheim — meet Qimin Fei at Stand 85 (DE)",
     category: "Event",
     date: "28/01/2026",
     impressions: 718,
     clicks: 138,
     ctr: 0.1922,
     engagementRate: 0.2340,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
   {
-    title: "AI reshaping China's investment landscape — Asia quality update",
+    title: "FOMO beating fundamentals — high-quality companies overlooked amid the AI boom",
     category: "Strategy",
     date: "16/03/2026",
     impressions: 998,
     clicks: 167,
     ctr: 0.1673,
     engagementRate: 0.2024,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
   {
-    title: "Post-Cold War order fading — Asia strategy note",
+    title: "Post-Cold War order fading — quality, resilience, and our defence exclusions",
     category: "Strategy",
     date: "02/03/2026",
     impressions: 1207,
     clicks: 145,
     ctr: 0.1201,
     engagementRate: 0.1574,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
   {
-    title: "China's innovation heritage — video on Chinese ingenuity reshaping markets",
+    title: "China's economic growth — AI, semiconductors & medical equipment (video)",
     category: "Asset",
     date: "23/02/2026",
     impressions: 1977,
     clicks: 151,
     ctr: 0.0764,
     engagementRate: 0.0996,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
   {
     title: "Institutional Money Kongress Frankfurt — meet Qimin Fei (DE)",
@@ -144,38 +143,39 @@ export const topPostsQ1: TopPost[] = [
     clicks: 5,
     ctr: 0.0417,
     engagementRate: 0.1417,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
   {
-    title: "Stewart Investors transition update — FSSA philosophy preserved (DE)",
-    category: "Strategy",
+    title: "Institutional Money Kongress — Asian equities outlook 2026 (DE)",
+    category: "Event",
     date: "16/03/2026",
     impressions: 196,
     clicks: 6,
     ctr: 0.0306,
     engagementRate: 0.0867,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
   {
-    title: "FONDS Kongress Day 1 — session preview (DE)",
+    title: "FONDS Kongress 2026 Mannheim — 'Emerging Markets: the quiet recovery'",
     category: "Event",
     date: "20/01/2026",
     impressions: 1148,
     clicks: 31,
     ctr: 0.0270,
     engagementRate: 0.0436,
-    link: "https://www.linkedin.com/company/fssa-investment-managers/",
+    link: "https://www.linkedin.com/company/first-sentier-investors/",
   },
 ];
 
 // ── Quarter-over-quarter headline metrics ──
+// Q4 post count and engagement-derived metrics are unavailable in the current
+// export (only Q1 posts were exported); monthly totals above give the full
+// daily picture for both quarters.
 export const linkedInHeadline = {
-  q1: { impressions: 14172, clicks: 1947, reactions: 283, posts: 10, avgCtr: 0.1374, avgEngagement: 0.1636 },
-  q4: { impressions:  6510, clicks:  535, reactions: 130, posts:  7, avgCtr: 0.0822, avgEngagement: 0.1145 },
+  q1: { impressions: 35923, clicks: 3438, reactions: 419, posts: 10, avgCtr: 0.0957, avgEngagement: 0.0122 },
+  q4: { impressions: 44581, clicks: 6230, reactions: 648, posts:  0, avgCtr: 0.1397, avgEngagement: 0.0146 },
 };
 
 // ── Deprecated heatmap data retained for compatibility only ──
-// The component no longer imports this; it's left here so older code paths
-// don't break during transitions.
 export interface DailyEngagement { date: string; rate: number; }
 export const q4DailyEngagement: DailyEngagement[] = [];

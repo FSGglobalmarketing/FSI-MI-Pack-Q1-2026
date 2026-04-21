@@ -1,12 +1,11 @@
 /* ── Sentiment & Social Listening Data ── */
-/* Source: FSSA-Q1-social-listening.xlsx (Brandwatch export, Jan–Mar 2026) */
-/* Curated to FSSA Investment Managers (filtered out namesake noise — */
-/*   Flying Scot Sailing Association, Indiana FSSA, Florida Seminoles etc.) */
+/* Source: Raw Data/Social listening/sentiment_analysis_Q1.xlsx */
+/* Scope: Q1 2026 (Jan-Mar). Tracker = "First Sentier Investors". */
 
 export interface SentimentMention {
   title: string;
   source: string;
-  channel: "Web" | "Twitter" | "Linkedin";
+  channel: "Web" | "Twitter" | "Linkedin" | "Youtube" | "Bluesky" | "Reddit";
   category: string;
   sentiment: "positive" | "neutral" | "negative";
   country: string;
@@ -19,22 +18,22 @@ export interface SentimentMention {
   author?: string;
 }
 
-/* ── Headline KPIs (relevant FSSA mentions only) ── */
+/* ── Headline KPIs (full tracker, unfiltered) ── */
 export const sentimentKpis = {
-  totalMentions: 43,
-  positiveRate: "37%",
-  countriesReached: 6,
-  topChannel: "Web — 98%",
+  totalMentions: 1224,
+  positiveRate: "34%",
+  countriesReached: 35,
+  topChannel: "Web — 95%",
 };
 
 /* ── Sentiment split ── */
 export const sentimentBreakdown = {
-  positive: 16,
-  neutral: 27,
-  negative: 0,
+  positive: 410,
+  neutral: 796,
+  negative: 16,
 };
 
-/* ── Monthly timeline (relevant-only) ── */
+/* ── Monthly timeline ── */
 export const mentionsByMonth: {
   month: string;
   positive: number;
@@ -42,9 +41,9 @@ export const mentionsByMonth: {
   negative: number;
   total: number;
 }[] = [
-  { month: "Jan 26", positive: 3, neutral: 12, negative: 0, total: 15 },
-  { month: "Feb 26", positive: 6, neutral: 10, negative: 0, total: 16 },
-  { month: "Mar 26", positive: 7, neutral: 5, negative: 0, total: 12 },
+  { month: "Jan 26", positive: 153, neutral: 317, negative: 7, total: 477 },
+  { month: "Feb 26", positive: 178, neutral: 313, negative: 5, total: 496 },
+  { month: "Mar 26", positive:  79, neutral: 166, negative: 4, total: 249 },
 ];
 
 /* ── Channel breakdown ── */
@@ -55,46 +54,47 @@ export const channelBreakdown: {
   neutral: number;
   negative: number;
 }[] = [
-  { channel: "Web", mentions: 42, positive: 15, neutral: 27, negative: 0 },
-  { channel: "Linkedin", mentions: 1, positive: 1, neutral: 0, negative: 0 },
+  { channel: "Web",      mentions: 1162, positive: 389, neutral: 757, negative: 14 },
+  { channel: "Linkedin", mentions:   33, positive:  12, neutral:  20, negative:  1 },
+  { channel: "Twitter",  mentions:   18, positive:   5, neutral:  12, negative:  1 },
+  { channel: "Youtube",  mentions:    6, positive:   3, neutral:   3, negative:  0 },
+  { channel: "Bluesky",  mentions:    3, positive:   1, neutral:   2, negative:  0 },
+  { channel: "Reddit",   mentions:    2, positive:   0, neutral:   2, negative:  0 },
 ];
 
-/* ── Country breakdown (relevant FSSA mentions) ── */
+/* ── Country breakdown (top reported; 341 mentions unmapped / unattributed) ── */
 export const countryBreakdown: { country: string; mentions: number }[] = [
-  { country: "United Kingdom", mentions: 23 },
-  { country: "Germany", mentions: 9 },
-  { country: "United States", mentions: 5 },
-  { country: "Hong Kong", mentions: 3 },
-  { country: "France", mentions: 2 },
-  { country: "Other", mentions: 1 },
+  { country: "United States",  mentions: 301 },
+  { country: "United Kingdom", mentions: 196 },
+  { country: "Germany",        mentions: 115 },
+  { country: "Ireland",        mentions:  31 },
+  { country: "Australia",      mentions:  30 },
+  { country: "France",         mentions:  28 },
+  { country: "India",          mentions:  16 },
+  { country: "Austria",        mentions:  15 },
+  { country: "Italy",          mentions:  15 },
+  { country: "Other / Unmapped", mentions: 477 },
 ];
 
-/* ── Curated list of relevant FSSA mentions ── */
+/* ── Curated Q1 2026 highlights — credible finance/investment coverage ── */
 export const recentHighlights: SentimentMention[] = [
-  /* ─── LinkedIn / FSSA-owned ─── */
-  { title: "FSSA Global Emerging Markets Focus Fund", source: "linkedin.com", channel: "Linkedin", category: "Linkedin Posts", sentiment: "positive", country: "US", date: "2026-03-04", link: "https://www.linkedin.com/posts/fssa-investment-managers_fssa-global-emerging-markets-focus-fund-activity-7431928193827168256-QDjL" },
-
-  /* ─── Positive: fund listings & research pages ─── */
-  { title: "FSSA Asia Focus Accumulation Fund — Research & Insight", source: "hl.co.uk", channel: "Web", category: "Fund listing", sentiment: "positive", country: "GB", date: "2026-03-11", link: "https://www.hl.co.uk/funds/fund-discounts,-prices--and--factsheets/search-results/f/fssa-asia-focus-accumulation/research" },
-  { title: "Invest In The FSSA Indian Subcontinent All-Cap Fund (E)", source: "hl.co.uk", channel: "Web", category: "Fund listing", sentiment: "positive", country: "GB", date: "2026-02-18", link: "https://www.hl.co.uk/funds/fund-discounts,-prices--and--factsheets/search-results/f/fssa-indian-subcontinent-all-cap-fund-e-accumulation/invest" },
-  { title: "FSSA Asia Focus Fund Class B (Accumulation) GBP — Dividends", source: "fidelity.co.uk", channel: "Web", category: "Fund listing", sentiment: "positive", country: "GB", date: "2026-02-21", link: "https://www.fidelity.co.uk/factsheet-data/factsheet/GB00BWNGXJ86-fssa-asia-focus-b-acc/dividends" },
-  { title: "FSSA Asia Pacific Equity — Latest stock news and headlines", source: "yahoo.com", channel: "Web", category: "News", sentiment: "positive", country: "HK", date: "2026-02-24", link: "https://hk.finance.yahoo.com/quote/0P0000W8XM/news/" },
-
-  /* ─── Neutral: factsheets, adviser-hub, database pages ─── */
-  { title: "Powering transition: critical minerals are central to the next era", source: "adviser-hub.co.uk", channel: "Web", category: "News", sentiment: "neutral", country: "GB", date: "2026-03-30", link: "https://www.adviser-hub.co.uk/powering-transition-critical-minerals-are-central-to-the-next-era/" },
-  { title: "Emerging Markets, AI build and commodities", source: "adviser-hub.co.uk", channel: "Web", category: "News", sentiment: "neutral", country: "GB", date: "2026-03-29", link: "https://www.adviser-hub.co.uk/emerging-markets-ai-build-and-commodities/" },
-  { title: "Global updates: Investors look beyond the US", source: "adviser-hub.co.uk", channel: "Web", category: "News", sentiment: "neutral", country: "GB", date: "2026-03-26", link: "https://www.adviser-hub.co.uk/global-updates-investors-look-beyond-the-us/" },
-  { title: "First Sentier Group $20bn RQI Investors launches Global Value Fund", source: "caproasia.com", channel: "Web", category: "News", sentiment: "neutral", country: "HK", date: "2026-03-27", link: "https://www.caproasia.com/2026/03/27/australia-asset-manager-first-sentier-group-20-billion-quantitative-equities-investor-rqi-investors-partners-launched-rqi-global-value-fund/" },
-  { title: "FSSA Greater China Growth Fund Class A (Acc) GBP — Portfolio Overview", source: "fidelity.co.uk", channel: "Web", category: "Fund listing", sentiment: "neutral", country: "GB", date: "2026-03-01", link: "https://www.fidelity.co.uk/factsheet-data/factsheet/GB0033874107-fssa-greater-china-growth-a-acc/portfolio" },
-  { title: "FSSA Asia Focus Fund Class B — Risk and Rating", source: "fidelity.co.uk", channel: "Web", category: "Fund listing", sentiment: "neutral", country: "GB", date: "2026-03-01", link: "https://www.fidelity.co.uk/factsheet-data/factsheet/GB00BWNGXJ86-fssa-asia-focus-b-acc" },
-  { title: "Stewart Investors Asia Pacific All Cap Fund Class B — Management Info", source: "fidelity.co.uk", channel: "Web", category: "Fund listing", sentiment: "neutral", country: "GB", date: "2026-03-01", link: "https://www.fidelity.co.uk/factsheet-data/factsheet/GB00B0TY6V50-stewart-inv-asia-pacific-all-cap-b-acc" },
-  { title: "FSSA Greater China Growth Fund – aktueller Kurs", source: "wallstreet-online.de", channel: "Web", category: "Fund listing", sentiment: "neutral", country: "DE", date: "2026-02-15", link: "https://www.wallstreet-online.de/fonds/first-sentier-investors-global-umbrella-fund-fssa-greater-china-growth-fund-iii-usd-aktie" },
-  { title: "FSSA Global Emerging Markets Focus Fund — performance & price chart", source: "onvista.de", channel: "Web", category: "Fund listing", sentiment: "neutral", country: "DE", date: "2026-02-12", link: "https://www.onvista.de/fonds/chart/F-Sent-Inv-Gl-U-FSSA-Gl-EM-Fo-Reg-Shs-E-GBP-Acc-oN-Fonds-IE000C5AFK35" },
-  { title: "FSSA Greater China Growth Fund Class A | aktueller Kurs", source: "finanzen.net", channel: "Web", category: "Fund listing", sentiment: "neutral", country: "DE", date: "2026-02-10", link: "https://www.finanzen.net/fonds/fssa-greater-china-growth-fund-class-a-gb0033874107" },
-  { title: "Escorts Kubota schedules investor meeting with FSSA Investment Managers", source: "tipranks.com", channel: "Web", category: "News", sentiment: "neutral", country: "US", date: "2026-02-06", link: "https://www.tipranks.com/news/company-announcements/escorts-kubota-schedules-investor-meeting-with-fssa-investment-managers" },
-  { title: "Stewart Investors Global Emerging Markets All Cap Fund Class I (Acc) SGD", source: "stewartinvestors.com", channel: "Web", category: "Fund listing", sentiment: "neutral", country: "SG", date: "2026-03-20", link: "https://www.stewartinvestors.com/uk/en/institutional/our-strategies/our-funds/IE000P5M9KF7.html" },
-  { title: "Pensions: the regulatory runway", source: "adviser-hub.co.uk", channel: "Web", category: "News", sentiment: "neutral", country: "GB", date: "2026-03-23", link: "https://www.adviser-hub.co.uk/pensions-the-regulatory-runway/" },
-  { title: "Ninety One | Oil shock: when geopolitics shuts the taps", source: "adviser-hub.co.uk", channel: "Web", category: "News", sentiment: "neutral", country: "GB", date: "2026-03-23", link: "https://www.adviser-hub.co.uk/ninety-one-oil-shock-when-geopolitics-shuts-the-taps/" },
-  { title: "Five things to know about bonds amid current geopolitical volatility", source: "adviser-hub.co.uk", channel: "Web", category: "News", sentiment: "neutral", country: "GB", date: "2026-03-22", link: "https://www.adviser-hub.co.uk/five-things-to-know-about-bonds-amid-current-geopolitical-volatility/" },
-  { title: "Capital Group | Inside the AI supply chain", source: "adviser-hub.co.uk", channel: "Web", category: "News", sentiment: "neutral", country: "GB", date: "2026-03-23", link: "https://www.adviser-hub.co.uk/capital-group-inside-the-ai-supply-chain/" },
+  { title: "AlbaCore, MUFG launch European infrastructure debt platform targeting €10bn", source: "ipe.com", channel: "Web", category: "News", sentiment: "positive", country: "US", date: "2026-03-05", link: "https://www.ipe.com/news/albacore-mufg-launch-infra-debt-platform-targeting-10bn-in-europe/" },
+  { title: "First Sentier affiliate MUFG join forces on infrastructure debt platform", source: "financialnewswire.com.au", channel: "Web", category: "News", sentiment: "positive", country: "AU", date: "2026-03-08", link: "https://financialnewswire.com.au/" },
+  { title: "First Sentier Group $137bn — AlbaCore launches UK & European Infrastructure Debt Platform with MUFG", source: "caproasia.com", channel: "Web", category: "News", sentiment: "positive", country: "HK", date: "2026-03-07", link: "https://www.caproasia.com/" },
+  { title: "Australia Asset Manager First Sentier Group — RQI Investors launches RQI Global Value Fund with DBS, Hang Seng, Bank of East Asia distribution", source: "caproasia.com", channel: "Web", category: "News", sentiment: "positive", country: "HK", date: "2026-03-27", link: "https://www.caproasia.com/" },
+  { title: "Igneo acquires UK smart meter provider OnStream from Macquarie", source: "ipe.com", channel: "Web", category: "News", sentiment: "positive", country: "US", date: "2026-03-25", link: "https://www.ipe.com/news/igneo-acquires-uk-smart-meter-provider-onstream-from-macquarie/" },
+  { title: "Far From Normal: What drove equity markets in 2025?", source: "firstsentierinvestors.com.au", channel: "Web", category: "Insight", sentiment: "positive", country: "AU", date: "2026-03-26", link: "https://www.firstsentierinvestors.com.au/au/en/adviser/our-insights.html" },
+  { title: "Don't forget the yield", source: "firstsentierinvestors.com.au", channel: "Web", category: "Insight", sentiment: "positive", country: "AU", date: "2026-03-04", link: "https://www.firstsentierinvestors.com.au/au/en/adviser/our-insights.html" },
+  { title: "Is a new Quant Winter coming?", source: "firstsentierinvestors.com", channel: "Web", category: "Insight", sentiment: "positive", country: "GB", date: "2026-03-31", link: "https://www.firstsentierinvestors.com/" },
+  { title: "Top investment teams built on diverse views, transparency", source: "financialstandard.com.au", channel: "Web", category: "News", sentiment: "positive", country: "AU", date: "2026-03-09", link: "https://www.financialstandard.com.au/" },
+  { title: "Mitsubishi UFJ exits substantial holder position in Bega Cheese", source: "tipranks.com", channel: "Web", category: "News", sentiment: "positive", country: "US", date: "2026-03-11", link: "https://www.tipranks.com/" },
+  { title: "Stewart Investors: Global, Emerging Markets and Sustainable equities", source: "firstsentierinvestors.com", channel: "Web", category: "Fund listing", sentiment: "positive", country: "GB", date: "2026-03-31", link: "https://www.firstsentierinvestors.com/stewart-investors/" },
+  { title: "Spotlight on sustainability: WEG", source: "stewartinvestors.com", channel: "Web", category: "Insight", sentiment: "positive", country: "GB", date: "2026-03-29", link: "https://www.stewartinvestors.com/" },
+  { title: "Stewart Investors Asia Pacific Leaders Fund Class I (Acc) EUR", source: "stewartinvestors.com", channel: "Web", category: "Fund listing", sentiment: "positive", country: "GB", date: "2026-03-10", link: "https://www.stewartinvestors.com/" },
+  { title: "Structural forces driving infrastructure returns", source: "chelseafs.co.uk", channel: "Web", category: "News", sentiment: "positive", country: "GB", date: "2026-01-30", link: "https://www.chelseafs.co.uk/" },
+  { title: "US Signal acquires Aurora data center in AI-fueled expansion", source: "crainsgrandrapids.com", channel: "Web", category: "News", sentiment: "positive", country: "US", date: "2026-01-30", link: "https://crainsgrandrapids.com/" },
+  { title: "Rathbones — Marcus Blyth | Selector Spotlight", source: "asset.tv", channel: "Web", category: "Video", sentiment: "positive", country: "TV", date: "2026-01-30", link: "https://www.asset.tv/" },
+  { title: "US Signal expands data center footprint with acquisition of new facility in Aurora", source: "prnewswire.com", channel: "Web", category: "Press release", sentiment: "positive", country: "US", date: "2026-01-30", link: "https://www.prnewswire.com/" },
+  { title: "Malaysia $3.3bn Military Pension Fund (LTAT) to allocate 20% to foreign assets", source: "caproasia.com", channel: "Web", category: "News", sentiment: "positive", country: "HK", date: "2026-03-27", link: "https://www.caproasia.com/" },
+  { title: "First Sentier Investors — LinkedIn posts (Q1)", source: "linkedin.com", channel: "Linkedin", category: "Linkedin Posts", sentiment: "positive", country: "US", date: "2026-03-20", link: "https://www.linkedin.com/company/first-sentier-investors/" },
 ];

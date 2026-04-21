@@ -7,8 +7,6 @@ const navItems = [
   { id: "performance", label: "KPI Framework" },
   { id: "salesforce", label: "Salesforce" },
   { id: "search-visibility", label: "Search visibility" },
-  { id: "north-america", label: "Martin luncheon" },
-  { id: "dach", label: "Client Webinar" },
   { id: "website", label: "Website" },
   { id: "linkedin", label: "LinkedIn" },
   { id: "events", label: "Events" },
@@ -16,11 +14,11 @@ const navItems = [
 ];
 
 const funnelStages = [
-  { label: "Summary", startIdx: 0, endIdx: 2 },
-  { label: "Awareness", startIdx: 3, endIdx: 5 },
-  { label: "Consideration", startIdx: 6, endIdx: 7 },
-  { label: "Conversion", startIdx: 8, endIdx: 8 },
-  { label: "Monitoring", startIdx: 9, endIdx: 9 },
+  { label: "Summary", startIdx: 0, endIdx: 1 },
+  { label: "Awareness", startIdx: 2, endIdx: 3 },
+  { label: "Consideration", startIdx: 4, endIdx: 5 },
+  { label: "Conversion", startIdx: 6, endIdx: 6 },
+  { label: "Monitoring", startIdx: 7, endIdx: 7 },
 ];
 
 export default function ReportNav() {

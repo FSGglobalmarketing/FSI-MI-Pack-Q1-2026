@@ -5,22 +5,18 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { Switch } from "@/components/ui/switch";
 import KpiRow from "./KpiRow";
 
-/* FSSA accent palette for chart lines */
+/* FSI brand palette for chart lines (Australia competitor set) */
 const LINE_CONFIG: { key: string; color: string; width: number; opacity: number }[] = [
-  { key: "FSSA", color: "#e22e2c", width: 3, opacity: 1 },                // FSSA Red — always prominent
-  { key: "Matthews Asia", color: "#56658B", width: 1.2, opacity: 0.85 },  // Closest Asia peer — slate
-  { key: "Ninety One", color: "#D37669", width: 1.2, opacity: 0.8 },      // Coral
-  { key: "Jupiter", color: "#F99C46", width: 1.2, opacity: 0.75 },        // Amber
-  { key: "Artemis", color: "#FFCC00", width: 1.2, opacity: 0.75 },        // Gold
-  { key: "Quilter", color: "#8FB9AA", width: 1.2, opacity: 0.7 },         // Muted teal
-  { key: "GAM", color: "#B8A0D9", width: 1.2, opacity: 0.7 },             // Muted lilac
-  { key: "Liontrust", color: "#999999", width: 1.2, opacity: 0.7 },       // Grey
-  { key: "M&G", color: "#777777", width: 1.2, opacity: 0.65 },            // Grey
-  { key: "Janus Henderson", color: "#666666", width: 1.2, opacity: 0.6 }, // Grey
-  { key: "Lazard", color: "#888888", width: 1.2, opacity: 0.6 },          // Grey
-  { key: "Aberdeen", color: "#555555", width: 1.2, opacity: 0.6 },        // Dark grey
-  { key: "Schroders", color: "#444444", width: 1.2, opacity: 0.55 },      // Dark grey
-  { key: "Invesco", color: "#bbbbbb", width: 1.2, opacity: 0.5 },         // Light grey
+  { key: "FSI",        color: "#022856", width: 3,   opacity: 1 },     // FSI Dark Blue — prominent
+  { key: "Vanguard",   color: "#EF785B", width: 1.2, opacity: 0.85 },  // Orange
+  { key: "Perpetual",  color: "#00727D", width: 1.2, opacity: 0.8 },   // Teal
+  { key: "Magellan",   color: "#CCB296", width: 1.2, opacity: 0.8 },   // Tan
+  { key: "CFS",        color: "#D5B700", width: 1.2, opacity: 0.75 },  // Mustard
+  { key: "Pendal",     color: "#3FBAD5", width: 1.2, opacity: 0.7 },   // Light Blue
+  { key: "Ausbil",     color: "#888888", width: 1.2, opacity: 0.65 },  // Grey
+  { key: "BetaShares", color: "#999999", width: 1.2, opacity: 0.6 },   // Grey
+  { key: "Bennelong",  color: "#aaaaaa", width: 1.2, opacity: 0.55 },  // Grey
+  { key: "UBS",        color: "#bbbbbb", width: 1.2, opacity: 0.5 },   // Light grey
 ];
 
 const DATA_KEYS = LINE_CONFIG.map((l) => l.key);
@@ -28,8 +24,8 @@ const DATA_KEYS = LINE_CONFIG.map((l) => l.key);
 function CustomTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null;
   const sorted = [...payload].sort((a: any, b: any) => {
-    if (a.dataKey === "FSSA") return -1;
-    if (b.dataKey === "FSSA") return 1;
+    if (a.dataKey === "FSI") return -1;
+    if (b.dataKey === "FSI") return 1;
     return (b.value ?? 0) - (a.value ?? 0);
   });
 
@@ -39,10 +35,10 @@ function CustomTooltip({ active, payload, label }: any) {
       <div className="grid grid-cols-2 gap-x-6 gap-y-1">
         {sorted.map((entry: any) => (
           <div key={entry.dataKey} className="flex justify-between gap-3">
-            <span className={`text-[11px] ${entry.dataKey === "FSSA" ? "text-primary font-bold" : "text-foreground/60"}`}>
+            <span className={`text-[11px] ${entry.dataKey === "FSI" ? "text-primary font-bold" : "text-foreground/60"}`}>
               {entry.dataKey}
             </span>
-            <span className={`text-[11px] tabular-nums ${entry.dataKey === "FSSA" ? "text-primary font-bold" : "text-foreground/85"}`}>
+            <span className={`text-[11px] tabular-nums ${entry.dataKey === "FSI" ? "text-primary font-bold" : "text-foreground/85"}`}>
               {entry.value}
             </span>
           </div>
@@ -64,12 +60,12 @@ function ChartScrollContainer({ children, onWheelHandler }: { children: React.Re
   return <div ref={ref} onWheel={onWheelHandler} className="select-none">{children}</div>;
 }
 
-const COUNTRIES = ["Global", "AU", "UK", "US", "DE", "SG"] as const;
+const COUNTRIES = ["AU"] as const;
 type Country = typeof COUNTRIES[number];
 
 export default function SearchVisibility() {
   const s = reportData.searchVisibility;
-  const [country, setCountry] = useState<Country>("Global");
+  const [country, setCountry] = useState<Country>("AU");
   const allData = (s.chartDataByCountry as Record<Country, any[]>)[country];
   const [hiddenLines, setHiddenLines] = useState<Set<string>>(new Set());
   const [showPeers, setShowPeers] = useState(true);
@@ -81,7 +77,7 @@ export default function SearchVisibility() {
   const dragging = useRef(false);
 
   const visibleData = allData.slice(left, right + 1);
-  const visibleKeys = DATA_KEYS.filter((k) => !hiddenLines.has(k) && (k === "FSSA" || showPeers));
+  const visibleKeys = DATA_KEYS.filter((k) => !hiddenLines.has(k) && (k === "FSI" || showPeers));
   let yMax = 0;
   visibleData.forEach((d: any) => {
     visibleKeys.forEach((k) => { if (d[k] > yMax) yMax = d[k]; });
@@ -153,10 +149,10 @@ export default function SearchVisibility() {
         </div>
         <div className="text-secondary-foreground/70 mb-8 max-w-3xl leading-relaxed space-y-3">
           <p>
-            This is a <strong className="text-secondary-foreground font-semibold">priority area</strong> for the team. Compared to our competitors, our website isn't yet appearing at the top of the results for terms like <strong className="text-secondary-foreground font-semibold">"Emerging Markets"</strong>, <strong className="text-secondary-foreground font-semibold">"China"</strong> and <strong className="text-secondary-foreground font-semibold">"India"</strong>, or for broader investment terms. We're making progress, but we have a long way to go.
+            Global keyword coverage for <strong className="text-secondary-foreground font-semibold">firstsentierinvestors.com</strong> grew from <strong className="text-secondary-foreground font-semibold">190 to 216</strong> ranked keywords over the quarter (+14%). Page 1 coverage increased from 34 to <strong className="text-secondary-foreground font-semibold">37 keywords</strong>, and estimated organic traffic from these terms rose <strong className="text-secondary-foreground font-semibold">+43%</strong>.
           </p>
           <p>
-            Our strongest online brand presence is in <strong className="text-secondary-foreground font-semibold">Singapore</strong>, where visibility has held steady all year across both brand and strategy-related searches. The biggest step-up this quarter came from the <strong className="text-secondary-foreground font-semibold">UK</strong>, where ranked keywords grew from <strong className="text-secondary-foreground font-semibold">31 to 90</strong>. The <strong className="text-secondary-foreground font-semibold">US</strong> and <strong className="text-secondary-foreground font-semibold">Australia</strong> also picked up, while <strong className="text-secondary-foreground font-semibold">Germany</strong> remains lightly indexed — a clear priority for Q2. Across all five markets, FSSA is now ranking for <strong className="text-secondary-foreground font-semibold">253 keywords</strong>, up <strong className="text-secondary-foreground font-semibold">+93% year-on-year</strong>.
+            Biggest gainers this quarter: <strong className="text-secondary-foreground font-semibold">"mufg forms"</strong> (+59 positions), <strong className="text-secondary-foreground font-semibold">"investment management firms"</strong> (+50), <strong className="text-secondary-foreground font-semibold">"active security group"</strong> (+48) and <strong className="text-secondary-foreground font-semibold">"investors"</strong> (+41 — now #13). The chart below tracks <strong className="text-secondary-foreground font-semibold">firstsentierinvestors.com.au</strong> against AU peers; other markets are not yet tracked in this export.
           </p>
         </div>
 
@@ -265,14 +261,14 @@ export default function SearchVisibility() {
                       if (!payload?.length) return null;
                       const lastDataPoint = visibleData[visibleData.length - 1] || {};
                       const sorted = [...payload].sort((a: any, b: any) => {
-                        if (a.dataKey === "FSSA") return -1;
-                        if (b.dataKey === "FSSA") return 1;
+                        if (a.dataKey === "FSI") return -1;
+                        if (b.dataKey === "FSI") return 1;
                         return (lastDataPoint[b.dataKey as string] ?? 0) - (lastDataPoint[a.dataKey as string] ?? 0);
                       });
                       return (
                         <div className="flex flex-wrap justify-center gap-x-3 gap-y-1 pt-2 text-[10px]">
                           {sorted.map((entry: any) => {
-                            const isHidden = hiddenLines.has(entry.dataKey) || (entry.dataKey !== "FSSA" && !showPeers);
+                            const isHidden = hiddenLines.has(entry.dataKey) || (entry.dataKey !== "FSI" && !showPeers);
                             return (
                               <span
                                 key={entry.dataKey}
@@ -292,7 +288,7 @@ export default function SearchVisibility() {
                     }}
                   />
                   {LINE_CONFIG.map(({ key, color, width, opacity }) => {
-                    const isHidden = hiddenLines.has(key) || (key !== "FSSA" && !showPeers);
+                    const isHidden = hiddenLines.has(key) || (key !== "FSI" && !showPeers);
                     return (
                       <Line key={key} type="monotone" dataKey={key} stroke={color} strokeWidth={width} dot={false} strokeOpacity={isHidden ? 0 : opacity} animationDuration={800} hide={isHidden} />
                     );

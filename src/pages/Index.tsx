@@ -4,17 +4,12 @@ import GlobalFocus from "@/components/report/GlobalFocus";
 import PerformanceResults from "@/components/report/PerformanceResults";
 import SalesforceSection from "@/components/report/SalesforceSection";
 import SearchVisibility from "@/components/report/SearchVisibility";
-import { CampaignSection } from "@/components/report/CampaignSection";
 import AlwaysOnSection from "@/components/report/AlwaysOnSection";
 import LinkedInSection from "@/components/report/LinkedInSection";
 import EventsSection from "@/components/report/EventsSection";
 import SentimentSection from "@/components/report/SentimentSection";
-import PhotoCarousel from "@/components/report/PhotoCarousel";
-import WebinarAnalytics from "@/components/report/WebinarAnalytics";
 import { reportData } from "@/data/igneo-report";
 const fsiLogo = import.meta.env.BASE_URL + "brand/fsi-logo-white-green.svg";
-
-const luncheonPhotos = Array.from({ length: 10 }, (_, i) => `${import.meta.env.BASE_URL}events/luncheon/luncheon-${i + 1}.jpg`);
 
 const Index = () => {
   const d = reportData;
@@ -26,32 +21,6 @@ const Index = () => {
       <PerformanceResults />
       <SalesforceSection />
       <SearchVisibility />
-
-      <CampaignSection
-        id="north-america"
-        title={d.campaigns.northAmerica.title}
-        stage={d.campaigns.northAmerica.stage}
-        subtitle={d.campaigns.northAmerica.subtitle}
-        description={d.campaigns.northAmerica.description}
-        goals={d.campaigns.northAmerica.goals}
-        formats={d.campaigns.northAmerica.formats}
-        keyResults={d.campaigns.northAmerica.keyResults}
-        variant="dark"
-        phoneImage={<PhotoCarousel photos={luncheonPhotos} alt="Martin Lau luncheon with Morningstar" />}
-      />
-
-      <CampaignSection
-        id="dach"
-        title={d.campaigns.dach.title}
-        stage={d.campaigns.dach.stage}
-        subtitle={d.campaigns.dach.subtitle}
-        description={d.campaigns.dach.description}
-        goals={d.campaigns.dach.goals}
-        formats={d.campaigns.dach.formats}
-        keyResults={d.campaigns.dach.keyResults}
-        variant="cream"
-        phoneImage={<WebinarAnalytics />}
-      />
 
       <AlwaysOnSection
         id="website"
