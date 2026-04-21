@@ -12,7 +12,7 @@ import SentimentSection from "@/components/report/SentimentSection";
 import PhotoCarousel from "@/components/report/PhotoCarousel";
 import WebinarAnalytics from "@/components/report/WebinarAnalytics";
 import { reportData } from "@/data/igneo-report";
-import fssaLogo from "@/assets/FSSA_White_Mono.png";
+const fsiLogo = import.meta.env.BASE_URL + "brand/fsi-logo-white-green.svg";
 
 const luncheonPhotos = Array.from({ length: 10 }, (_, i) => `${import.meta.env.BASE_URL}events/luncheon/luncheon-${i + 1}.jpg`);
 
@@ -74,7 +74,7 @@ const Index = () => {
 
       <footer className="section-dark py-10 border-t border-border">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-4">
-          <img src={fssaLogo} alt="FSSA Investment Managers" className="h-8 opacity-80" />
+          <img src={fsiLogo} alt="First Sentier Investors" className="h-8 opacity-90" />
           <p className="text-xs text-muted-foreground">{d.quarter} Marketing Impact Report · Internal Use</p>
         </div>
       </footer>

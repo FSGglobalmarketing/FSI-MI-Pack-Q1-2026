@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import fssaLogo from "@/assets/FSSA_White_Mono.png";
+
+const fsiLogo = import.meta.env.BASE_URL + "brand/fsi-logo-white-green.svg";
 
 const navItems = [
   { id: "overview", label: "Overview" },
@@ -73,7 +74,7 @@ export default function ReportNav() {
     >
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[67px]">
-          <img src={fssaLogo} alt="FSSA Investment Managers" className="h-14 w-auto" />
+          <img src={fsiLogo} alt="First Sentier Investors" className="h-10 w-auto" />
 
           <div className="hidden lg:flex flex-col items-end">
             <div className="relative flex items-center gap-0.5">

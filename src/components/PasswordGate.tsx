@@ -1,14 +1,13 @@
 import { useState, FormEvent, ReactNode } from "react";
-import fssaLogo from "@/assets/FSSA_White_Mono.png";
 
 const HASH = "fd475168b8bc5e44f5fcf93e8f098b86204d3c3e563f77660a767a68b82586ab";
 
-// FSSA brand palette (from fssaim.com)
-const NAVY = "#0f2d52";
-const NAVY_DEEP = "#002a4b";
-const RED = "#e22e2c";
-const RED_HOVER = "#cc181f";
-const CARD_BG = "#144266";
+// FSI Brand Toolkit v4 (July 2020)
+const NAVY = "#022856";         // Primary Dark Blue
+const NAVY_DEEP = "#01162E";    // Deeper tint of Dark Blue for gradient anchor
+const GREEN = "#60BEB3";        // Primary Green (accent)
+const GREEN_HOVER = "#4FAFA5";  // Slightly deeper Green for hover
+const CARD_BG = "#083A72";      // Lifted card surface on Dark Blue
 const BORDER = "rgba(255,255,255,0.12)";
 
 async function sha256(s: string) {
@@ -56,9 +55,9 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
         }}
       >
         <img
-          src={fssaLogo}
-          alt="FSSA Investment Managers"
-          style={{ width: 180, height: "auto", opacity: 0.95 }}
+          src={import.meta.env.BASE_URL + "brand/fsi-logo-white-green.svg"}
+          alt="First Sentier Investors"
+          style={{ width: 220, height: "auto" }}
         />
 
         <form
@@ -119,8 +118,8 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
             style={{
               width: "100%",
               padding: "0.75rem 0.9rem",
-              border: `1px solid ${err ? RED : "rgba(255,255,255,0.18)"}`,
-              borderRadius: 6,
+              border: `1px solid ${err ? GREEN : "rgba(255,255,255,0.18)"}`,
+              borderRadius: 4,
               background: NAVY_DEEP,
               color: "#fff",
               fontSize: "1rem",
@@ -130,7 +129,7 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
             }}
           />
           {err && (
-            <div style={{ color: RED, fontSize: "0.8rem", marginTop: "0.5rem" }}>
+            <div style={{ color: GREEN, fontSize: "0.8rem", marginTop: "0.5rem" }}>
               Incorrect password — please try again.
             </div>
           )}
@@ -144,11 +143,11 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
               width: "100%",
               padding: "0.85rem",
               border: "none",
-              borderRadius: 6,
-              background: hover ? RED_HOVER : RED,
-              color: "#fff",
+              borderRadius: 4,
+              background: hover ? GREEN_HOVER : GREEN,
+              color: NAVY,
               fontSize: "0.95rem",
-              fontWeight: 700,
+              fontWeight: 600,
               letterSpacing: "0.02em",
               cursor: "pointer",
               transition: "background 0.15s",

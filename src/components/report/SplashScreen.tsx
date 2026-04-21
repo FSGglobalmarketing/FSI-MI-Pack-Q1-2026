@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import FSSAWhiteLogo from "@/assets/FSSA_White_RGB.svg";
+
+const FSIWhiteLogo = import.meta.env.BASE_URL + "brand/fsi-logo-white-green.svg";
 
 /* ── Status messages ── */
 const MSGS = [
@@ -183,7 +184,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
       const lw = Math.max(1.2, cell * 0.11);
       if (bgA > 0) {
         ctx.globalAlpha = bgA;
-        ctx.fillStyle = "#0a2240";
+        ctx.fillStyle = "#011A3A";
         ctx.fillRect(ox, oy, sz, sz);
         ctx.globalAlpha = 1;
       }
@@ -201,7 +202,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         // Entry/exit gaps
         const g = lw * 1.6;
         ctx.globalAlpha = bgA;
-        ctx.fillStyle = "#0a2240";
+        ctx.fillStyle = "#011A3A";
         ctx.fillRect(ox + g, oy - g * 0.6, cell - g * 2, g * 1.5);
         ctx.fillRect(ox + (N - 1) * cell + g, oy + N * cell - g * 0.6, cell - g * 2, g * 1.5);
         ctx.globalAlpha = 1;
@@ -226,9 +227,9 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
           ctx.stroke();
         }
         ctx.globalAlpha = wallA;
-        ctx.strokeStyle = "rgba(227,46,43,0.20)"; ctx.lineWidth = cell * 0.65; ctx.lineCap = "round"; ctx.lineJoin = "round"; trace();
-        ctx.strokeStyle = "rgba(227,46,43,0.55)"; ctx.lineWidth = cell * 0.28; trace();
-        ctx.strokeStyle = "#e32e2b"; ctx.lineWidth = cell * 0.13; trace();
+        ctx.strokeStyle = "rgba(96,190,179,0.20)"; ctx.lineWidth = cell * 0.65; ctx.lineCap = "round"; ctx.lineJoin = "round"; trace();
+        ctx.strokeStyle = "rgba(96,190,179,0.55)"; ctx.lineWidth = cell * 0.28; trace();
+        ctx.strokeStyle = "#60BEB3"; ctx.lineWidth = cell * 0.13; trace();
         ctx.globalAlpha = 1;
         if (full < total) {
           const [r0, c0] = solvePath[full], [r1, c1] = solvePath[Math.min(full + 1, total)];
@@ -300,7 +301,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
       // ── RENDER ──
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = "#0f2d52";
+      ctx.fillStyle = "#022856";
       ctx.fillRect(0, 0, W, H);
 
       const cell = getCell(), msz = getMazeSize();
@@ -417,7 +418,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         position: "fixed",
         inset: 0,
         zIndex: 9999,
-        background: "#0f2d52",
+        background: "#022856",
         overflow: "hidden",
         opacity: done ? 0 : 1,
         transition: "opacity 0.6s ease",
@@ -431,13 +432,13 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
 
       {/* Top-left logo */}
       <img
-        src={FSSAWhiteLogo}
-        alt="FSSA Investment Managers"
+        src={FSIWhiteLogo}
+        alt="First Sentier Investors"
         style={{
           position: "absolute",
           top: 26,
           left: 30,
-          width: 115,
+          width: 140,
           zIndex: 10,
           pointerEvents: "none",
           opacity: 0,
@@ -487,7 +488,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
               fontWeight: 500,
               fontSize: 32,
               letterSpacing: "0.08em",
-              color: "#e32e2b",
+              color: "#60BEB3",
             }}
           >
             {pctText}

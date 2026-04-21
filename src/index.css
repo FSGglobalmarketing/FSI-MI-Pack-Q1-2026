@@ -30,133 +30,116 @@
 
 @layer base {
   :root {
-    /* FSSA Blue #0f2d52 — primary dark background */
-    --background: 214 69% 19%;
+    /* FSI Dark Blue #022856 — primary dark surface */
+    --background: 213 96% 17%;
     --foreground: 0 0% 100%;
 
-    /* Card surfaces - slightly lighter navy */
-    --card: 214 60% 23%;
+    /* Card surfaces — slightly lifted dark blue */
+    --card: 213 84% 22%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 214 60% 23%;
+    --popover: 213 84% 22%;
     --popover-foreground: 0 0% 100%;
 
-    /* Primary accent - FSSA Red #e22e2c for impact */
-    --primary: 0 79% 53%;
+    /* Primary CTA — FSI Dark Blue (shadcn convention: button fill) */
+    --primary: 213 96% 17%;
     --primary-foreground: 0 0% 100%;
 
-    /* Secondary - pure white */
+    /* Secondary surface — White */
     --secondary: 0 0% 100%;
-    --secondary-foreground: 0 0% 0%;
+    --secondary-foreground: 213 96% 17%;
 
-    /* Muted - muted navy */
-    --muted: 214 50% 28%;
-    --muted-foreground: 214 15% 70%;
+    /* Muted — tinted dark blue (for muted dark surfaces / secondary text) */
+    --muted: 213 70% 28%;
+    --muted-foreground: 213 20% 78%;
 
-    /* Accent - Airforce #3699c9 */
-    --accent: 201 54% 49%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent — FSI Green #60BEB3 (the symbol/highlight colour) */
+    --accent: 172 41% 56%;
+    --accent-foreground: 213 96% 17%;
 
-    --destructive: 0 79% 53%;
+    /* Destructive — Orange #EF785B (brand's warning/alert) */
+    --destructive: 12 82% 65%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Navy-based borders */
-    --border: 214 40% 28%;
-    --input: 214 40% 28%;
-    --ring: 0 79% 53%;
+    --border: 213 40% 30%;
+    --input: 213 40% 30%;
+    --ring: 172 41% 56%;
 
-    --radius: 0.125rem;
+    --radius: 0.25rem;
 
-    --success: 142 60% 45%;
-    --success-foreground: 0 0% 100%;
+    --success: 172 41% 56%;
+    --success-foreground: 213 96% 17%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 0 0% 100%;
+    --warning: 52 100% 42%;
+    --warning-foreground: 213 96% 17%;
 
     /* White sections */
     --cream: 0 0% 100%;
-    --cream-foreground: 0 0% 0%;
+    --cream-foreground: 213 96% 17%;
 
-    /* Brand navy for pills & prominent UI */
-    --brand-teal: 214 69% 19%;
+    /* Brand swatch tokens (names preserved for continuity with existing classes) */
+    --brand-teal: 172 41% 56%;   /* FSI Green (brand's primary accent) */
+    --moss: 213 96% 17%;         /* FSI Dark Blue */
+    --mint: 172 41% 56%;         /* FSI Green */
+    --pollen: 31 33% 69%;        /* FSI Tan #CCB296 */
+    --grass: 172 41% 56%;        /* FSI Green (alias) */
+    --ash: 213 13% 43%;          /* Secondary text on white */
+    --pill-light: 31 33% 88%;    /* Tan-tinted pill on dark */
+    --mandarin: 12 82% 65%;      /* FSI Orange #EF785B */
+    --airforce: 191 64% 54%;     /* FSI Light Blue #3FBAD5 */
 
-    /* FSSA Blue #0f2d52 */
-    --moss: 214 69% 19%;
+    /* New secondary brand tokens */
+    --fsi-teal: 185 100% 25%;    /* Secondary Teal #00727D — for text on white */
+    --fsi-mustard: 52 100% 42%;  /* Mustard #D5B700 */
+    --fsi-tan: 31 33% 69%;       /* Tan #CCB296 */
 
-    /* FSSA Red #e22e2c */
-    --mint: 0 79% 53%;
+    /* Chart palette — FSI brand data-viz order */
+    --chart-1: 213 96% 17%;   /* Dark Blue */
+    --chart-2: 172 41% 56%;   /* Green */
+    --chart-3: 12 82% 65%;    /* Orange */
+    --chart-4: 31 33% 69%;    /* Tan */
+    --chart-5: 52 100% 42%;   /* Mustard */
+    --chart-6: 191 64% 54%;   /* Light Blue */
+    --chart-7: 185 100% 25%;  /* Teal */
 
-    /* Sand #f6c240 */
-    --pollen: 42 91% 61%;
-
-    /* Grass #a3c359 */
-    --grass: 79 46% 55%;
-
-    /* FSSA Grey #77787b */
-    --ash: 230 2% 47%;
-
-    /* Light slate for UI elements on navy backgrounds #e6ebf0 */
-    --pill-light: 210 20% 92%;
-
-    /* Mandarin #e77a25 */
-    --mandarin: 26 80% 53%;
-
-    /* Airforce #3699c9 */
-    --airforce: 201 54% 49%;
-
-    /* FSSA Gradient accent palette */
-    --gradient-1: 214 69% 19%;
-    --gradient-2: 0 79% 53%;
-    --gradient-3: 201 54% 49%;
-    --gradient-4: 26 80% 53%;
-    --gradient-5: 42 91% 61%;
-
-    /* Chart palette */
-    --chart-1: 0 79% 53%;
-    --chart-2: 201 54% 49%;
-    --chart-3: 79 46% 55%;
-    --chart-4: 26 80% 53%;
-    --chart-5: 42 91% 61%;
-    --chart-6: 214 50% 35%;
-
-    --sidebar-background: 214 69% 16%;
+    --sidebar-background: 213 96% 14%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 0 79% 53%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 214 50% 28%;
+    --sidebar-primary: 172 41% 56%;
+    --sidebar-primary-foreground: 213 96% 17%;
+    --sidebar-accent: 213 70% 28%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 214 40% 28%;
-    --sidebar-ring: 0 79% 53%;
+    --sidebar-border: 213 40% 30%;
+    --sidebar-ring: 172 41% 56%;
   }
 
   .dark {
-    --background: 214 69% 19%;
+    --background: 213 96% 17%;
     --foreground: 0 0% 100%;
-    --card: 214 60% 23%;
+    --card: 213 84% 22%;
     --card-foreground: 0 0% 100%;
-    --popover: 214 60% 23%;
+    --popover: 213 84% 22%;
     --popover-foreground: 0 0% 100%;
-    --primary: 0 79% 53%;
+    --primary: 213 96% 17%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 100%;
-    --secondary-foreground: 0 0% 0%;
-    --muted: 214 50% 28%;
-    --muted-foreground: 214 15% 70%;
-    --accent: 201 54% 49%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 79% 53%;
+    --secondary-foreground: 213 96% 17%;
+    --muted: 213 70% 28%;
+    --muted-foreground: 213 20% 78%;
+    --accent: 172 41% 56%;
+    --accent-foreground: 213 96% 17%;
+    --destructive: 12 82% 65%;
     --destructive-foreground: 0 0% 100%;
-    --border: 214 40% 28%;
-    --input: 214 40% 28%;
-    --ring: 0 79% 53%;
-    --sidebar-background: 214 69% 16%;
+    --border: 213 40% 30%;
+    --input: 213 40% 30%;
+    --ring: 172 41% 56%;
+    --sidebar-background: 213 96% 14%;
     --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 0 79% 53%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 214 50% 28%;
+    --sidebar-primary: 172 41% 56%;
+    --sidebar-primary-foreground: 213 96% 17%;
+    --sidebar-accent: 213 70% 28%;
     --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 214 40% 28%;
-    --sidebar-ring: 0 79% 53%;
+    --sidebar-border: 213 40% 30%;
+    --sidebar-ring: 172 41% 56%;
   }
 }
 
@@ -248,7 +231,7 @@
   }
 
   .stat-highlight {
-    color: hsl(var(--primary));
+    color: hsl(var(--accent));
     @apply font-bold;
   }
 
@@ -258,7 +241,7 @@
   }
 
   .stat-negative {
-    color: hsl(var(--primary));
+    color: hsl(var(--destructive));
     @apply font-semibold text-sm;
   }
 
@@ -268,7 +251,7 @@
   }
 
   .nav-link:hover {
-    color: hsl(var(--primary));
+    color: hsl(var(--accent));
   }
 
   /* ── Solid minimal cards (dark sections) ── */
@@ -430,7 +413,7 @@
     width: 44px;
     height: 44px;
     border-radius: 9999px;
-    background-color: hsl(var(--primary));
+    background-color: hsl(var(--accent));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -448,12 +431,12 @@
     position: absolute;
     inset: -4px;
     border-radius: 9999px;
-    border: 2px solid hsl(var(--primary));
+    border: 2px solid hsl(var(--accent));
     animation: dachPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   .dach-pulse-icon {
-    color: hsl(var(--primary-foreground));
+    color: hsl(var(--accent-foreground));
     font-size: 20px;
     font-weight: 700;
     line-height: 1;
