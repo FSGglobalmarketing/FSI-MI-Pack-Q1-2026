@@ -1,7 +1,9 @@
 // ═══════════════════════════════════════════════════════════════════════
-// Asia Pacific Leaders webinar — Q1 2026 (Martin Lau & Rizi Mohanty)
+// LEGACY — FSSA-era Asia Pacific Leaders webinar data. No FSI equivalent
+// export was provided for Q1 2026, so this file is retained only for type
+// compatibility with the WebinarAnalytics component (currently not rendered
+// from pages/Index.tsx).
 // Source: Attendees_Asia Pacific Leaders_Webinar_Post_Webinar_Report.xlsx
-// Cross-reference: FSSA CRM Opportunities Report.xlsx (live, non-Lost)
 // ═══════════════════════════════════════════════════════════════════════
 
 export interface WebinarKpi { value: string; label: string; sub?: string; }

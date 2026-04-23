@@ -270,25 +270,29 @@ export default function SentimentSection() {
             <div>
               <h4 className="text-sm font-bold mb-3 text-foreground">Coverage Summary</h4>
               <p className="text-sm leading-relaxed text-muted-foreground mb-4">
-                Q1 brand surfacing held a <span className="text-foreground font-semibold">positive-to-negative ratio of better than 37:0</span>{" "}
-                across the 43 clearly-FSSA Investment Managers mentions we captured.
-                There were <span className="text-foreground font-semibold">no negative mentions</span> tied to FSSA in the quarter.
+                Q1 surfaced <span className="text-foreground font-semibold">1,224 mentions</span>
+                {" "}of First Sentier Investors across Brandwatch,{" "}
+                <span className="text-foreground font-semibold">34% positive / 65% neutral</span>
+                {" "}and only 16 negative (1.3%). The biggest narrative drivers were the
+                AlbaCore × MUFG European infrastructure debt platform launch, RQI Investors'
+                Global Value Fund debut in Hong Kong, and Igneo's acquisition of OnStream from
+                Macquarie.
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground mb-4">
-                Coverage was almost entirely on the open web (98%) — driven by fund-database pages
-                (Hargreaves Lansdown, Fidelity, Yahoo Finance, Onvista, finanzen.net), adviser
-                channels (Adviser-Hub, TrustNet, TipRanks) and one confirmed LinkedIn repost of the
-                GEM Focus Fund.
+                Coverage was almost entirely on the open web (95%) — driven by industry press
+                (IPE, Caproasia, Financial Newswire, Financial Standard), fund-database pages
+                (Hargreaves Lansdown, Fidelity, onvista, finanzen.net), and 33 LinkedIn mentions
+                across our own posts and third-party coverage.
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground mb-4">
-                The UK remained the dominant market (23 mentions), with Germany the second-strongest
-                region on the back of FONDS Kongress and Stockwaves coverage. The US and Hong Kong
-                rounded out the distribution.
+                The US led by volume (301 mentions) on back of Igneo and RQI Investors news, with
+                the UK (196) and Germany (115) close behind. Australia and Ireland rounded out the
+                top five. 341 mentions are unattributed to country in the Brandwatch export.
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Namesake noise has been filtered out — Florida Seminoles, Indiana FSSA (Family &
-                Social Services Administration), Flying Scot Sailing Association and Singapore Food
-                Safety Act accounted for the bulk of raw Brandwatch matches before curation.
+                The "Recent highlights" list below is curated to credible finance-domain coverage
+                — raw Brandwatch matches include general market-news mentions and affiliate
+                content that aren't direct FSI coverage.
               </p>
             </div>
             <div className="mt-4 flex items-center gap-6 text-xs text-muted-foreground">

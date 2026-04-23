@@ -34,18 +34,18 @@ export default function EventsSection() {
 
   const clearAll = () => setFilters({ category: [], region: [], quarter: [], status: [] });
 
-  // Pre-filter to FSSA brand only
-  const fssaEvents = useMemo(() => e.list.filter((ev) => ev.brand === "FSSA"), [e.list]);
+  // Pre-filter to FSI brand only
+  const fsiEvents = useMemo(() => e.list.filter((ev) => ev.brand === "FSI"), [e.list]);
 
   const filteredEvents = useMemo(() => {
-    return fssaEvents.filter((ev) => {
+    return fsiEvents.filter((ev) => {
       if (filters.category.length && !filters.category.includes(ev.category)) return false;
       if (filters.region.length && !filters.region.includes(ev.region)) return false;
       if (filters.quarter.length && !filters.quarter.includes(ev.quarter)) return false;
       if (filters.status.length && !filters.status.includes(ev.status)) return false;
       return true;
     });
-  }, [fssaEvents, filters]);
+  }, [fsiEvents, filters]);
 
   const committedCount = filteredEvents.filter((ev) => ev.status === "committed").length;
   const proposedCount = filteredEvents.filter((ev) => ev.status === "proposed").length;
@@ -63,7 +63,7 @@ export default function EventsSection() {
         </p>
 
         <EventsFilterBar
-          events={fssaEvents}
+          events={fsiEvents}
           activeFilters={filters}
           onToggleFilter={toggleFilter}
           onClearAll={clearAll}

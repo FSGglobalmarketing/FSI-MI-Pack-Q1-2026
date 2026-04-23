@@ -24,8 +24,8 @@ const CHART_TOOLTIP = {
   fontSize: 12,
   color: "#fff",
 };
-const COLOR_ORGANIC = "hsl(0 79% 53%)"; // FSSA red
-const COLOR_SPONSORED = "#56658B";
+const COLOR_ORGANIC = "hsl(172 41% 56%)";   // FSI Green
+const COLOR_SPONSORED = "hsl(214 96% 17%)"; // FSI Dark Blue
 
 function formatK(v: number) {
   if (v >= 1_000_000) return `${(v / 1_000_000).toFixed(1)}M`;
@@ -266,9 +266,19 @@ export default function LinkedInSection() {
           {/* Left — info */}
           <div className="space-y-6">
             <p className="text-sm leading-relaxed text-muted-foreground">
-              Content this quarter leaned into <strong className="text-foreground font-semibold">AI</strong> as an investment theme across Asia, with native-German posts produced for <strong className="text-foreground font-semibold">FONDS Professionell Kongress</strong> and regular client updates reinforcing our long-term positioning. The result: <strong className="text-foreground font-semibold">14.2k impressions</strong> ({" "}
-              <strong className="text-foreground font-semibold">+118% vs Q4</strong>) and <strong className="text-foreground font-semibold">1,947 clicks</strong> ({" "}
-              <strong className="text-foreground font-semibold">+264%</strong>) at a <strong className="text-foreground font-semibold">13.7% average CTR</strong>. Our top post of the quarter was the <strong className="text-foreground font-semibold">Martin Lau luncheon</strong> — a <strong className="text-foreground font-semibold">26.5% CTR</strong> — followed by the <strong className="text-foreground font-semibold">Genium Recommended</strong> rating and the <strong className="text-foreground font-semibold">APAC Leaders webinar</strong>. Event-led posts consistently outperformed everything else — a useful steer for the Q2 content calendar.
+              Q1 was a two-speed quarter on LinkedIn. Paid spend{" "}
+              <strong className="text-foreground font-semibold">more than doubled</strong> —
+              sponsored impressions rose from <strong className="text-foreground font-semibold">235.1k in Q4</strong> to{" "}
+              <strong className="text-foreground font-semibold">486.5k in Q1</strong> (+107%) — while organic output stayed
+              deliberately selective at <strong className="text-foreground font-semibold">10 posts</strong> across AI
+              thematic content, FONDS Professionell Kongress (DE) and Institutional Money Kongress (DE). Organic
+              impressions came in at <strong className="text-foreground font-semibold">35.9k</strong> (
+              <strong className="text-foreground font-semibold">-19% vs Q4's 44.6k</strong>). The top organic post was the{" "}
+              <strong className="text-foreground font-semibold">Martin Lau client roundtable</strong> at a{" "}
+              <strong className="text-foreground font-semibold">26.5% CTR</strong> (2,779 impressions, 737 clicks),
+              followed by the <strong className="text-foreground font-semibold">Genium Recommended</strong> rating and the{" "}
+              <strong className="text-foreground font-semibold">Chinese ingenuity</strong> strategy piece.
+              Event- and client-led posts outperformed product content, steering the Q2 calendar.
             </p>
 
             <div>

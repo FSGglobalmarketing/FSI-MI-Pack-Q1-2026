@@ -13,7 +13,7 @@ import {
 const TABS = ["Activity", "Engagement", "Strategies", "Campaigns"] as const;
 type Tab = (typeof TABS)[number];
 
-// FSSA palette — no black; inner card is a slightly lighter navy so it
+// FSI palette — no black; inner card is a slightly lighter navy so it
 // reads as a layer on top of the section background.
 const SECTION_BG = "hsl(var(--background))";        // #0f2d52 navy
 const INNER_BG   = "hsl(214 60% 23%)";              // card navy (brand-consistent)
@@ -29,10 +29,10 @@ const CHART_TOOLTIP = {
 };
 // Darker-navy highlight for hovered bar/point (replaces default white cursor)
 const CHART_CURSOR = { fill: "hsl(214 68% 14%)" };
-const BAR_Q1 = "hsl(var(--primary))";                // FSSA red
+const BAR_Q1 = "hsl(var(--accent))";                 // FSI Green (highlight on dark)
 const BAR_Q4 = "rgba(255,255,255,0.22)";
-const BAR_CHANNEL_EMAIL = "#e22e2c"; // FSSA red
-const BAR_CHANNEL_WEB   = "#3699c9"; // FSSA light blue
+const BAR_CHANNEL_EMAIL = "#60BEB3"; // FSI Green
+const BAR_CHANNEL_WEB   = "#3FBAD5"; // FSI Light Blue
 const BAR_CHANNEL_FORM  = "#8FB9AA"; // muted teal
 const BAR_CHANNEL_LINK  = "#B8A0D9"; // muted lilac
 
@@ -56,18 +56,19 @@ export default function SalesforceSection() {
           <p className="text-white/70 leading-relaxed">
             Q1 engagement was led by our Asia wholesale partners —{" "}
             <span className="text-white font-semibold">DBS Singapore</span>,{" "}
-            <span className="text-white font-semibold">Bank of China (Hong Kong)</span>,{" "}
-            <span className="text-white font-semibold">China Construction Bank (Asia)</span> and{" "}
-            <span className="text-white font-semibold">DBS Hong Kong</span> topped the table, each
-            interacting well over 200 times with our content. Email was the main way they engaged,
-            and the <span className="text-white font-semibold">HK and SG wholesale FSSA China
-            client updates</span> and our <span className="text-white font-semibold">EMEA GEM
-            webinar</span> drove the big March spike. On strategy, <span className="text-white
-            font-semibold">GEM</span> and <span className="text-white font-semibold">China All Cap
-            / Leaders</span> attracted the most attention. <span className="text-white
-            font-semibold">Indian Subcontinent</span> and <span className="text-white
-            font-semibold">Asia Equity Leaders</span> were quieter this quarter, so Q2 is a chance
-            to bring those back into focus.
+            <span className="text-white font-semibold">China Construction Bank (Asia)</span>,{" "}
+            <span className="text-white font-semibold">DBS Hong Kong</span> and{" "}
+            <span className="text-white font-semibold">Bank of China (Hong Kong)</span> topped the
+            table, each logging between 550 and 855 interactions in Q1. Email was the dominant
+            channel (61% of the mix) and March was the peak month — the{" "}
+            <span className="text-white font-semibold">ANZ AEQ Growth post-reporting podcast</span>,{" "}
+            <span className="text-white font-semibold">EMEA Igneo AIM</span> and the{" "}
+            <span className="text-white font-semibold">HK / SG wholesale FSSA China client
+            updates</span> drove the spike. On investment team, <span className="text-white
+            font-semibold">Listed Infrastructure</span> and <span className="text-white
+            font-semibold">Fixed Income</span> led the opportunity book, with{" "}
+            <span className="text-white font-semibold">AEQ Growth</span> close behind. 584
+            opportunities are live out of 2,207 total in the FSI pipeline.
           </p>
           <div className="grid grid-cols-2 gap-3">
             {salesforceMarketingKpis.map((kpi) => (
@@ -128,8 +129,8 @@ function ActivityTab() {
       <div>
         <h3 className="text-lg font-semibold mb-1 text-white">Interaction types — Q1 vs Q4</h3>
         <p className="text-xs text-white/50 mb-4">
-          Every recorded email, web visit, form submission and tracked link-click on FSSA-tagged
-          assets and campaigns.
+          Every recorded email, web visit, form submission and tracked link-click on FSI-tagged
+          assets and campaigns in Q1 2026.
         </p>
         <ResponsiveContainer width="100%" height={280}>
           <BarChart data={activityBreakdown} margin={{ left: 0, right: 30, top: 5, bottom: 5 }}>
@@ -146,7 +147,7 @@ function ActivityTab() {
 
       <div>
         <h3 className="text-lg font-semibold mb-1 text-white">Monthly interaction volume</h3>
-        <p className="text-xs text-white/50 mb-4">March spiked with EMEA webinar traffic, ANZ podcast follow-ups and HK client-update eDMs.</p>
+        <p className="text-xs text-white/50 mb-4">March spiked (13.7k activities, +63% vs Feb) on ANZ AEQ podcast traffic, EMEA Igneo AIM follow-ups and HK / SG client-update eDMs.</p>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={monthlyTrend} margin={{ left: 0, right: 30, top: 5, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" stroke={CHART_GRID} />
@@ -167,8 +168,8 @@ function EngagementTab() {
       <div>
         <h3 className="text-lg font-semibold mb-1 text-white">Engagement by company × channel</h3>
         <p className="text-xs text-white/50 mb-4">
-          Top 15 accounts by total Q1 FSSA-tagged interactions, split by channel (email opens +
-          clicks, tracked custom-URL clicks, form/file activity, website visits).
+          Top 15 accounts by total Q1 FSI prospect activity — all recorded email opens + clicks,
+          website visits, form submissions and tracked custom-URL clicks.
         </p>
         <ResponsiveContainer width="100%" height={520}>
           <BarChart data={engagementByCompany} layout="vertical" margin={{ left: 20, right: 30, top: 5, bottom: 5 }}>
@@ -224,11 +225,10 @@ function StrategiesTab() {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-1 text-white">Interactions by strategy</h3>
+        <h3 className="text-lg font-semibold mb-1 text-white">Opportunities by investment team</h3>
         <p className="text-xs text-white/50 mb-4">
-          Q1 FSSA-tagged interactions classified by campaign-name keywords. "Brand / General"
-          covers FSSA always-on and cross-strategy eDMs (e.g. institutional FSSA, country retail
-          always-on).
+          Live and historical opportunities in the FSI pipeline by investment team. Listed
+          Infrastructure and Fixed Income lead with ~700 each, followed by AEQ Growth at 507.
         </p>
         <ResponsiveContainer width="100%" height={340}>
           <BarChart data={interactionsByStrategy} layout="vertical" margin={{ left: 20, right: 30, top: 5, bottom: 5 }}>
@@ -242,10 +242,10 @@ function StrategiesTab() {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-1 text-white">FSSA-strategy activity only</h3>
+        <h3 className="text-lg font-semibold mb-1 text-white">Investment teams (brand stripped)</h3>
         <p className="text-xs text-white/50 mb-4">
-          The same Q1 data with FSSA brand/always-on campaigns stripped out — this is what landed
-          on strategy-specific FSSA content.
+          The same pipeline with the cross-brand "First Sentier" catch-all removed — this is pure
+          investment-team attribution of opportunities.
         </p>
         <ResponsiveContainer width="100%" height={280}>
           <BarChart data={interactionsByFssaStrategy} layout="vertical" margin={{ left: 20, right: 30, top: 5, bottom: 5 }}>
@@ -266,9 +266,9 @@ function CampaignsTab() {
     <div>
       <h3 className="text-lg font-semibold mb-1 text-white">Top campaigns driving activity</h3>
       <p className="text-xs text-white/50 mb-4">
-        Ranked by total Q1 interactions on FSSA-tagged campaigns. The September 2025 EMEA GEM
-        Webinar continued to drive engagement through Q1, followed by the HK and SG wholesale
-        FSSA China client-update eDMs.
+        Ranked by total Q1 prospect activity across the FSI estate. The EMEA Igneo AIM campaign
+        (3.8k interactions) and the ANZ AEQ Growth post-reporting podcast (2.5k) led, followed by
+        US Igneo NADIF institutional and the FSSA China client-update eDMs in HK and SG.
       </p>
       <ResponsiveContainer width="100%" height={320}>
         <BarChart data={topCampaigns} layout="vertical" margin={{ left: 10, right: 30, top: 5, bottom: 5 }}>

@@ -163,7 +163,7 @@
     line-height: 1.05;
   }
 
-  /* Headings on white/cream sections use FSSA Blue */
+  /* Headings on white/cream sections use FSI Dark Blue */
   .section-cream h1, .section-cream h2 {
     color: hsl(var(--moss));
   }
