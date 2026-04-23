@@ -220,7 +220,7 @@ export default function SearchVisibility() {
             <div className="flex items-start justify-between mb-1">
               <div>
                 <h4 className="text-sm font-bold text-secondary-foreground mb-1">Search engine visibility</h4>
-                <p className="text-xs text-secondary-foreground/60 mb-4">Number of times we show up in infrastructure searches between pages 1-3.</p>
+                <p className="text-xs text-secondary-foreground/60 mb-4">Total keywords ranked by firstsentierinvestors.com.au across pages 1-3, benchmarked against Australian peers.</p>
               </div>
               {isZoomed && (
                 <button onClick={resetZoom} className="text-xs font-semibold text-primary hover:underline shrink-0">Reset zoom</button>

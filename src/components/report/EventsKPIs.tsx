@@ -70,7 +70,7 @@ export default function EventsKPIs({ events }: EventsKPIsProps) {
       <div className="glass-card-cream flow-corner-br p-5 rounded-2xl">
         <div className="flex items-center gap-2 mb-3">
           <Mic className="w-4 h-4 text-primary" />
-          <h4 className="text-xs font-bold uppercase tracking-wider text-secondary-foreground/50">Speaking Slots</h4>
+          <h4 className="text-xs font-bold tracking-wide text-secondary-foreground/50">Speaking Slots</h4>
         </div>
         <p className="text-3xl font-extrabold text-secondary-foreground">{stats.speakingRatio}%</p>
         <p className="text-xs text-secondary-foreground/50 mt-1">
@@ -82,7 +82,7 @@ export default function EventsKPIs({ events }: EventsKPIsProps) {
       <div className="glass-card-cream p-5 rounded-2xl">
         <div className="flex items-center gap-2 mb-3">
           <DollarSign className="w-4 h-4 text-primary" />
-          <h4 className="text-xs font-bold uppercase tracking-wider text-secondary-foreground/50">Est. Spend (AUD)</h4>
+          <h4 className="text-xs font-bold tracking-wide text-secondary-foreground/50">Est. Spend (AUD)</h4>
         </div>
         <p className="text-3xl font-extrabold text-secondary-foreground">
           ${(stats.totalSpend / 1000).toFixed(0)}k
@@ -101,7 +101,7 @@ export default function EventsKPIs({ events }: EventsKPIsProps) {
       <div className="glass-card-cream flow-corner-tl p-5 rounded-2xl">
         <div className="flex items-center gap-2 mb-3">
           <Users className="w-4 h-4 text-primary" />
-          <h4 className="text-xs font-bold uppercase tracking-wider text-secondary-foreground/50">Audience Mix</h4>
+          <h4 className="text-xs font-bold tracking-wide text-secondary-foreground/50">Audience Mix</h4>
         </div>
         <div className="flex items-center gap-3">
           <div className="w-20 h-20">
@@ -130,7 +130,7 @@ export default function EventsKPIs({ events }: EventsKPIsProps) {
       <div className="glass-card-cream p-5 rounded-2xl">
         <div className="flex items-center gap-2 mb-3">
           <CalendarDays className="w-4 h-4 text-primary" />
-          <h4 className="text-xs font-bold uppercase tracking-wider text-secondary-foreground/50">Monthly Density</h4>
+          <h4 className="text-xs font-bold tracking-wide text-secondary-foreground/50">Monthly Density</h4>
         </div>
         <div className="h-20">
           <ResponsiveContainer width="100%" height="100%">

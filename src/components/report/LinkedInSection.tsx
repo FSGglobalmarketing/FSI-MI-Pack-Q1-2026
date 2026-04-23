@@ -139,7 +139,7 @@ function ContentMixChart() {
                 {c.category}
               </div>
               <p className="text-lg font-bold text-foreground">{c.posts}</p>
-              <p className="text-[10px] uppercase tracking-wider text-muted-foreground">posts</p>
+              <p className="text-[10px] tracking-wide text-muted-foreground">posts</p>
               <p className="text-[11px] text-muted-foreground mt-1">
                 Avg CTR: <span className="text-foreground font-semibold">{(c.avgCtr * 100).toFixed(2)}%</span>
               </p>

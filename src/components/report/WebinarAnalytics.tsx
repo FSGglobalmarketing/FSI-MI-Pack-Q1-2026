@@ -36,7 +36,7 @@ export default function WebinarAnalytics() {
       }}
     >
       <div>
-        <h3 className="text-sm font-extrabold uppercase tracking-wider mb-1" style={{ color: NAVY }}>
+        <h3 className="text-sm font-extrabold tracking-wide mb-1" style={{ color: NAVY }}>
           Attendee analytics
         </h3>
         <p className="text-xs" style={{ color: NAVY_MUTED }}>
@@ -52,7 +52,7 @@ export default function WebinarAnalytics() {
             className="rounded-lg p-3"
             style={{ background: FILL_SOFT, border: `1px solid ${BORDER_SOFT}` }}
           >
-            <div className="text-[10px] uppercase tracking-wider" style={{ color: NAVY_MUTED }}>{kpi.label}</div>
+            <div className="text-[10px] tracking-wide" style={{ color: NAVY_MUTED }}>{kpi.label}</div>
             <div className="text-2xl font-extrabold" style={{ color: NAVY }}>{kpi.value}</div>
             {kpi.sub && <div className="text-[10px] mt-0.5" style={{ color: NAVY_MUTED }}>{kpi.sub}</div>}
           </div>
@@ -61,7 +61,7 @@ export default function WebinarAnalytics() {
 
       {/* Attendance mode donut */}
       <div>
-        <h4 className="text-[11px] uppercase tracking-wider mb-2 font-semibold" style={{ color: NAVY_MUTED }}>
+        <h4 className="text-[11px] tracking-wide mb-2 font-semibold" style={{ color: NAVY_MUTED }}>
           Attendance mode
         </h4>
         <div className="flex items-center gap-4">
@@ -101,7 +101,7 @@ export default function WebinarAnalytics() {
 
       {/* Countries */}
       <div>
-        <h4 className="text-[11px] uppercase tracking-wider mb-2 font-semibold" style={{ color: NAVY_MUTED }}>
+        <h4 className="text-[11px] tracking-wide mb-2 font-semibold" style={{ color: NAVY_MUTED }}>
           Attendees by region
         </h4>
         <ResponsiveContainer width="100%" height={140}>
@@ -122,7 +122,7 @@ export default function WebinarAnalytics() {
 
       {/* Top firms */}
       <div>
-        <h4 className="text-[11px] uppercase tracking-wider mb-2 font-semibold" style={{ color: NAVY_MUTED }}>
+        <h4 className="text-[11px] tracking-wide mb-2 font-semibold" style={{ color: NAVY_MUTED }}>
           Top attending firms (2+)
         </h4>
         <div className="space-y-1.5">
@@ -142,7 +142,7 @@ export default function WebinarAnalytics() {
       <div>
         <div className="flex items-center gap-2 mb-2">
           <CheckCircle2 className="w-4 h-4" style={{ color: RED }} />
-          <h4 className="text-[11px] uppercase tracking-wider font-semibold" style={{ color: NAVY_MUTED }}>
+          <h4 className="text-[11px] tracking-wide font-semibold" style={{ color: NAVY_MUTED }}>
             Live Salesforce opportunities in the room
           </h4>
         </div>

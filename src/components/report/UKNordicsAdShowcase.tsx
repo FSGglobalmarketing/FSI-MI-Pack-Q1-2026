@@ -149,7 +149,7 @@ export default function UKNordicsAdShowcase() {
     <div className="w-full max-w-lg mx-auto space-y-3">
       {/* Header + toggle */}
       <div className="flex items-center justify-between">
-        <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Ad Creatives</h4>
+        <h4 className="text-xs font-bold tracking-wide text-muted-foreground">Ad Creatives</h4>
         <div className="flex rounded-full bg-foreground/10 p-1">
           {MODES.map((m) => (
             <button
@@ -179,7 +179,7 @@ export default function UKNordicsAdShowcase() {
         <div className="flex items-center gap-2 mt-3 px-0.5">
           <p className="text-sm font-semibold text-foreground leading-snug truncate">{ad.name}</p>
           {ad.duration && (
-            <span className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground bg-foreground/10 px-1.5 py-0.5 rounded shrink-0">
+            <span className="text-[9px] font-bold tracking-wide text-muted-foreground bg-foreground/10 px-1.5 py-0.5 rounded shrink-0">
               {ad.duration}
             </span>
           )}

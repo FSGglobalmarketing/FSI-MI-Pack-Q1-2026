@@ -229,7 +229,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         ctx.globalAlpha = wallA;
         ctx.strokeStyle = "rgba(96,190,179,0.20)"; ctx.lineWidth = cell * 0.65; ctx.lineCap = "round"; ctx.lineJoin = "round"; trace();
         ctx.strokeStyle = "rgba(96,190,179,0.55)"; ctx.lineWidth = cell * 0.28; trace();
-        ctx.strokeStyle = "#60BEB3"; ctx.lineWidth = cell * 0.13; trace();
+        ctx.strokeStyle = "#61bdb1"; ctx.lineWidth = cell * 0.13; trace();
         ctx.globalAlpha = 1;
         if (full < total) {
           const [r0, c0] = solvePath[full], [r1, c1] = solvePath[Math.min(full + 1, total)];
@@ -488,7 +488,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
               fontWeight: 500,
               fontSize: 32,
               letterSpacing: "0.08em",
-              color: "#60BEB3",
+              color: "#61bdb1",
             }}
           >
             {pctText}

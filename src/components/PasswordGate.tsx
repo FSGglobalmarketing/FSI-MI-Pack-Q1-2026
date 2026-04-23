@@ -5,7 +5,7 @@ const HASH = "fd475168b8bc5e44f5fcf93e8f098b86204d3c3e563f77660a767a68b82586ab";
 // FSI Brand Toolkit v4 (July 2020)
 const NAVY = "#022856";         // Primary Dark Blue
 const NAVY_DEEP = "#01162E";    // Deeper tint of Dark Blue for gradient anchor
-const GREEN = "#60BEB3";        // Primary Green (accent)
+const GREEN = "#61bdb1";        // Primary Green (accent)
 const GREEN_HOVER = "#4FAFA5";  // Slightly deeper Green for hover
 const CARD_BG = "#083A72";      // Lifted card surface on Dark Blue
 const BORDER = "rgba(255,255,255,0.12)";

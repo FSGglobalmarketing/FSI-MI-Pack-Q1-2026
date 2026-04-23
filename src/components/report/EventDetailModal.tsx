@@ -21,7 +21,7 @@ export default function EventDetailModal({ event, onClose }: EventDetailModalPro
         <div className="sticky top-0 z-10 flex items-start justify-between p-6 pb-4 rounded-t-2xl border-b border-secondary-foreground/5">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className={`text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full ${
+              <span className={`text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full ${
                 event.status === "committed"
                   ? "bg-primary/15 text-primary"
                   : event.status === "proposed"
@@ -32,8 +32,8 @@ export default function EventDetailModal({ event, onClose }: EventDetailModalPro
               }`}>
                 {event.status.replace("-", " ")}
               </span>
-              {event.assetClass && <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">{event.assetClass}</span>}
-              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">
+              {event.assetClass && <span className="text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">{event.assetClass}</span>}
+              <span className="text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">
                 {event.category}
               </span>
             </div>
@@ -78,7 +78,7 @@ export default function EventDetailModal({ event, onClose }: EventDetailModalPro
           {/* Photo gallery / carousel */}
           {hasImages ? (
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-secondary-foreground/50 mb-3">Gallery</h4>
+              <h4 className="text-xs font-bold tracking-wide text-secondary-foreground/50 mb-3">Gallery</h4>
               <div className="grid grid-cols-3 gap-2">
                 {event.images!.map((src, i) => (
                   <button
@@ -101,7 +101,7 @@ export default function EventDetailModal({ event, onClose }: EventDetailModalPro
           {/* Team section */}
           {event.team && event.team.length > 0 && (
             <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-secondary-foreground/50 mb-3">
+              <h4 className="text-xs font-bold tracking-wide text-secondary-foreground/50 mb-3">
                 Team attending / speaking
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

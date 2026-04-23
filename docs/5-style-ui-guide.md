@@ -32,7 +32,7 @@ Four primary colours lead all communication. Four secondary colours are reserved
 | Swatch name | HEX | RGB | Pantone coated | Pantone uncoated | CMYK coated |
 | --- | --- | --- | --- | --- | --- |
 | **Dark Blue** | `#022856` | `2, 40, 86` | PMS 2767 C | PMS 282 U | C98 M70 Y0 K60 |
-| **Green** | `#60BEB3` | `96, 190, 179` | PMS 3258 C | PMS 3258 U | C68 M0 Y43 K0 |
+| **Green** | `#61bdb1` | `96, 190, 179` | PMS 3258 C | PMS 3258 U | C68 M0 Y43 K0 |
 | **White** | `#FFFFFF` | `255, 255, 255` | — | — | C0 M0 Y0 K0 |
 | **Tan** | `#CCB296` | `204, 178, 150` | PMS 2310 C | PMS 2310 U | C17 M26 Y42 K0 |
 
@@ -185,12 +185,12 @@ Mapping the four primary brand colours onto the two surface modes used across th
 
 | Surface | Background | Headings | Body | Accent / CTA | Dividers | Pills / tags |
 | --- | --- | --- | --- | --- | --- | --- |
-| **Dark** | Dark Blue `#022856` | White | White @ 85% | Green `#60BEB3` | White @ 12% | Green on Dark Blue, or Tan @ 20% |
+| **Dark** | Dark Blue `#022856` | White | White @ 85% | Green `#61bdb1` | White @ 12% | Green on Dark Blue, or Tan @ 20% |
 | **Light** | White | Dark Blue | Dark Blue | Dark Blue (large) or Teal `#00727D` (small text — see note) | Tan @ 35% or `#E6E6E6` | Dark Blue text on Green @ 20%, or white on Dark Blue |
 | **Tan spot** | Tan `#CCB296` | Dark Blue | Dark Blue | Dark Blue | Dark Blue @ 15% | Dark Blue on White |
 
 **Accessibility note — small text on white:**
-- Green `#60BEB3` on White has a contrast ratio of ~2.4:1 → **fails WCAG AA** for body text.
+- Green `#61bdb1` on White has a contrast ratio of ~2.4:1 → **fails WCAG AA** for body text.
 - Use the secondary **Teal `#00727D`** for any coloured text on white at < 18 px. Green can still be used for icons, pattern and decorative emphasis.
 - Green on Dark Blue is ~6.2:1 → passes AA for normal text, AAA for large.
 
@@ -273,7 +273,7 @@ Pill text on Dark Blue: White. Pill text on White: White reversed on Dark Blue b
 | State | On light | On dark |
 | --- | --- | --- |
 | Default | Dark Blue, weight 500, no underline | White, weight 500, no underline |
-| Hover | Teal `#00727D`, underline 2px, offset 3px | Green `#60BEB3`, underline 2px |
+| Hover | Teal `#00727D`, underline 2px, offset 3px | Green `#61bdb1`, underline 2px |
 | Visited | same as default | same as default |
 | In body copy | underlined always, Teal hover | underlined always, Green hover |
 
@@ -322,7 +322,7 @@ Drop-in replacement for the FSSA-era tokens currently at `src/index.css:31-130`:
   --muted:               214 70% 28%;
   --muted-foreground:    214 20% 78%;
 
-  /* Accent - FSI Green #60BEB3 */
+  /* Accent - FSI Green #61bdb1 */
   --accent:              172 41% 56%;
   --accent-foreground:   214 96% 17%;
 

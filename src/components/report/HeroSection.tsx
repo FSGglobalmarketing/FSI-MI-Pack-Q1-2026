@@ -1,9 +1,11 @@
 import { useState, useEffect, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { reportData } from "@/data/igneo-report";
-import slide1Webinar from "@/assets/hero-slide-1-webinar.jpg";
-import slide2Luncheon from "@/assets/hero-slide-2-luncheon.jpg";
-import slide3FundsKongress from "@/assets/hero-slide-3-funds-kongress.jpg";
+
+const base = import.meta.env.BASE_URL;
+const slide1BuyHoldSell = `${base}hero/hero-slider-1-buy-hold-sell.jpg`;
+const slide2ReportingPodcast = `${base}hero/hero-slider-2-reporting-podcast.jpg`;
+const slide3XcelEnergy = `${base}hero/hero-slider-3-CEO-xcel-energy.jpg`;
 
 export interface HeroSlide {
   image: string;
@@ -15,28 +17,28 @@ export interface HeroSlide {
 
 const slides: HeroSlide[] = [
   {
-    image: slide1Webinar,
-    label: "Highlight 2",
-    heading: "Asia Pacific Leaders webinar",
+    image: slide1BuyHoldSell,
+    label: "Hero slide 1",
+    heading: "Livewire Markets — Buy Hold Sell",
     description:
-      "Reassuring Stewart investors, introducing Martin Lau & Rizi Mohanty, and evidencing portfolio progress since integration.",
-    sectionId: "dach",
+      "Dushko joined a special reporting season episode of Livewire Markets' Buy Hold Sell, unpacking the big themes — from the winners to the losers, and everything in between.",
+    sectionId: "performance",
   },
   {
-    image: slide2Luncheon,
-    label: "Highlight 1",
-    heading: "Client luncheon with Martin & Morningstar",
+    image: slide2ReportingPodcast,
+    label: "Hero slide 2",
+    heading: "Reporting season",
     description:
-      "100% attendance from 30 clients across 20 companies — strengthening conviction in China and Asia equities.",
-    sectionId: "north-america",
+      "David Wilson and Christian Guerra break down the sector-by-sector reactions and highlight where solid fundamentals and exaggerated price moves are creating opportunities for active investors.",
+    sectionId: "performance",
   },
   {
-    image: slide3FundsKongress,
-    label: "Events & LinkedIn",
-    heading: "FONDS Professionell Kongress",
+    image: slide3XcelEnergy,
+    label: "Hero slide 3",
+    heading: "Xcel Energy CFO on AI and data centres with Rebecca Sherlock",
     description:
-      "Building relationships in DACH through a major industry forum, supported by native-German LinkedIn coverage.",
-    sectionId: "events",
+      "AI and data centres are reshaping electricity demand — but how can utilities deliver growth alongside affordability and decarbonisation?",
+    sectionId: "linkedin",
   },
 ];
 
@@ -98,7 +100,7 @@ export default function HeroSection() {
 
           {/* Card on bottom right */}
           <div className="relative max-w-sm rounded-xl border border-border bg-card/60 backdrop-blur-md p-5 sm:p-6 transition-all duration-500">
-            <span className="inline-block text-[10px] font-semibold uppercase tracking-widest text-primary mb-1.5">
+            <span className="inline-block text-[10px] font-semibold tracking-wide text-accent mb-1.5">
               {slides[current].label}
             </span>
             <h2 className="text-base font-bold text-foreground leading-snug mb-1.5" style={{ marginBottom: 6 }}>

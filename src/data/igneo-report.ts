@@ -46,18 +46,18 @@ export const reportData = {
   globalFocus: [
     {
       number: "01",
-      title: "RQI Investors fund expansion",
-      description: "Major traction this quarter for RQI Investors fund pages — Hong Kong retail traffic up +400% and the Global Value Fund launched in HK with DBS, Hang Seng and Bank of East Asia as distribution partners.",
+      title: "Continuation of the EX-20 launch and reporting season",
+      description: "We kicked off the year with a dedicated campaign timed to reporting season — bespoke events, broad media presence and key advertising activities across digital channels.",
     },
     {
       number: "02",
-      title: "AlbaCore x MUFG infrastructure debt",
-      description: "FSI affiliate AlbaCore launched a UK & European infrastructure debt platform with MUFG and Mitsubishi UFJ Trust — multi-region coverage across IPE, caproasia.com, financialnewswire.com.au.",
+      title: "Build momentum towards the Q2 Cash ETF launch",
+      description: "Brand survey, client value proposition, filmed launch videos, bespoke flyers, web copy, and a full communications + advertising plan and schedule now complete.",
     },
     {
       number: "03",
-      title: "ANZ reporting season & ETF pipeline",
-      description: "AEQ reporting-season roundtables and EX-20 launch roundtables across five ANZ cities, Civitas Services Conference in Port Douglas, and the Cash ETF launch pipeline for Q2.",
+      title: "Develop the GLIS ETF strategy",
+      description: "Starting to build awareness in Asia with client meetings in Hong Kong and a media roundtable in Taiwan.",
     },
   ],
 
@@ -84,12 +84,17 @@ export const reportData = {
   },
 
   searchVisibility: {
-    description: "firstsentierinvestors.com ranked for 216 keywords in Mar '26 (up from 190 in Dec '25, +14%). 37 terms now sit on page 1 (up from 34), and estimated organic traffic from these terms grew ~43% over the quarter. Biggest gainers were \"mufg forms\" (+59 positions), \"investment management firms\" (+50), \"active security group\" (+48) and \"investors\" (+41 — now ranking #13).",
-    goal: "Extend page-1 coverage beyond brand and people searches into broader category terms — \"global listed infrastructure\", \"quality investing\" and fund/strategy queries across our priority markets.",
+    description: "firstsentierinvestors.com ranked for 216 keywords in Mar '26 (up from 190 in Dec '25, +14%). 37 terms now sit on page 1 (up from 34), and estimated organic traffic from these terms grew ~43% over the quarter. The biggest gainers were \"mufg forms\" (+59 positions), \"investment management firms\" (+50), \"active security group\" (+48) and \"investors\" (+41 — now ranking #13).",
+    goal: "Defend share of voice in Property and Real Estate Investing searches, grow share of voice in ETF searches, and gather user-behaviour data to spot changing trends.",
     marketingActivities: [
-      "Fund-page SEO work across .com/.com.au domains",
-      "FSI property-led brand coverage (MUFG, Sentinel, Active Security)",
-      "Media-release anchor pages feeding long-tail terms",
+      "Always-on search (branded) plus always-on ETF terms",
+      "Paid LinkedIn in support of the EX-20 launch and reporting-season push",
+      "Featured on Livewire Markets' Buy Hold Sell",
+    ],
+    competitors: [
+      "Fidelity", "Pendal", "Perpetual", "Vanguard", "UBS", "BetaShares", "iShares",
+      "Bennelong", "CFS Geared Share", "Ausbil", "Magellan", "ClearBridge",
+      "Resolution Capital", "Hyperion",
     ],
     kpis: [
       { value: "216", label: "Ranking keywords (firstsentierinvestors.com)", comparison: "+14% vs Dec '25 (190)" },

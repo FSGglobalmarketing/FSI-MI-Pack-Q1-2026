@@ -85,7 +85,7 @@ export default function ReportNav() {
                     e.preventDefault();
                     document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
                   }}
-                  className={`px-3 py-1.5 rounded-md text-[11px] tracking-wide uppercase transition-all whitespace-nowrap ${
+                  className={`px-3 py-1.5 rounded-md text-[11px] tracking-wide transition-all whitespace-nowrap ${
                     active === item.id
                       ? "bg-primary text-primary-foreground font-semibold"
                       : "text-white hover:bg-primary hover:text-primary-foreground"
@@ -111,7 +111,7 @@ export default function ReportNav() {
                       <path d="M2 0 L2 6 L98 6 L98 0" stroke={isActiveStage ? "hsl(var(--primary))" : "rgba(255,255,255,0.35)"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none" />
                       <path d="M50 6 L50 12" stroke={isActiveStage ? "hsl(var(--primary))" : "rgba(255,255,255,0.35)"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none" />
                     </svg>
-                    <span className={`text-[9px] tracking-widest uppercase ${isActiveStage ? "text-primary font-semibold" : "text-white/60"}`}>
+                    <span className={`text-[9px] tracking-wide ${isActiveStage ? "text-primary font-semibold" : "text-white/60"}`}>
                       {stage.label}
                     </span>
                   </div>
