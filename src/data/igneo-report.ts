@@ -85,7 +85,7 @@ export const reportData = {
     ],
     consideration: [
       { channel: "LinkedIn Organic", metrics: ["35.9k Impressions", "1.2% Avg engagement rate"], comparison: "-19% impressions vs Q4", status: "good" as const },
-      { channel: "Website",          metrics: ["230.3k Views", "187.5k Active users"],       comparison: "+54% views vs Q4 (149.3k)", status: "good" as const },
+      { channel: "Website",          metrics: ["199.9k Views (ex-RQI)", "187.5k Active users"], comparison: "+47% views vs Q4 (136.4k)", status: "good" as const },
     ],
     conversion: [
       { channel: "Events",     metrics: ["8 Q1 events", "15 Q1-Q2 roundtables"], comparison: "AEQ reporting · EX-20 launch · Civitas", status: "good" as const },

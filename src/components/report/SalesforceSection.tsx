@@ -49,7 +49,7 @@ export default function SalesforceSection() {
         <div className="mb-3">
           <span className="stage-badge">Marketing funnel</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl font-medium leading-tight mb-2 text-white">Salesforce engagement</h2>
+        <h2 className="text-2xl sm:text-3xl font-medium leading-tight mb-2 text-white">Client engagement</h2>
 
         {/* Two-column: narrative left, KPI 2×2 right */}
         <div className="grid lg:grid-cols-2 gap-8 mb-6 items-start">

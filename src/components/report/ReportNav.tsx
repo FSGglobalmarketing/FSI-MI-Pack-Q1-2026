@@ -5,7 +5,7 @@ const fsiLogo = import.meta.env.BASE_URL + "brand/fsi-logo-white-green.svg";
 const navItems = [
   { id: "overview", label: "Overview" },
   { id: "performance", label: "KPI Framework" },
-  { id: "salesforce", label: "Salesforce" },
+  { id: "salesforce", label: "Client engagement" },
   { id: "search-visibility", label: "Search visibility" },
   { id: "highlight-aeq-reporting", label: "Reporting season" },
   { id: "highlight-ex20-phase-2",  label: "EX-20 Phase II" },
@@ -36,6 +36,8 @@ export default function ReportNav() {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 50);
+      // Recompute bracket positions when active item changes (font weight shift moves items)
+      setTick((t) => t + 1);
       const sections = navItems.map((n) => document.getElementById(n.id));
       for (let i = sections.length - 1; i >= 0; i--) {
         const el = sections[i];
@@ -92,8 +94,8 @@ export default function ReportNav() {
                   }}
                   className={`px-3 py-1.5 rounded-md text-[11px] tracking-wide transition-all whitespace-nowrap ${
                     active === item.id
-                      ? "bg-primary text-primary-foreground font-medium"
-                      : "text-white hover:bg-primary hover:text-primary-foreground"
+                      ? "bg-accent text-accent-foreground font-medium"
+                      : "text-white hover:bg-accent/30 hover:text-accent"
                   }`}
                 >
                   {item.label}
@@ -113,10 +115,10 @@ export default function ReportNav() {
                     style={{ left: style.left, width: style.width }}
                   >
                     <svg className="w-full h-3" viewBox="0 0 100 12" preserveAspectRatio="none" fill="none">
-                      <path d="M2 0 L2 6 L98 6 L98 0" stroke={isActiveStage ? "hsl(var(--primary))" : "rgba(255,255,255,0.35)"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none" />
-                      <path d="M50 6 L50 12" stroke={isActiveStage ? "hsl(var(--primary))" : "rgba(255,255,255,0.35)"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none" />
+                      <path d="M2 0 L2 6 L98 6 L98 0" stroke={isActiveStage ? "hsl(var(--accent))" : "rgba(255,255,255,0.55)"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none" />
+                      <path d="M50 6 L50 12" stroke={isActiveStage ? "hsl(var(--accent))" : "rgba(255,255,255,0.55)"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none" />
                     </svg>
-                    <span className={`text-[9px] tracking-wide ${isActiveStage ? "text-primary font-medium" : "text-white/60"}`}>
+                    <span className={`text-[9px] tracking-wide ${isActiveStage ? "text-accent font-medium" : "text-white/70"}`}>
                       {stage.label}
                     </span>
                   </div>
@@ -144,7 +146,7 @@ export default function ReportNav() {
                   document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className={`px-3 py-2 rounded-md text-sm ${
-                  active === item.id ? "bg-primary text-primary-foreground font-medium" : "text-white hover:bg-primary hover:text-primary-foreground"
+                  active === item.id ? "bg-accent text-accent-foreground font-medium" : "text-white hover:bg-accent/30 hover:text-accent"
                 }`}
               >
                 {item.label}

@@ -4,14 +4,14 @@ import { useState } from "react";
 type Status = "good" | "below" | "inactive";
 
 const statusFill: Record<Status, string> = {
-  good: "hsl(var(--success))",
-  below: "hsl(var(--primary))",
+  good: "hsl(var(--accent))",
+  below: "hsl(var(--destructive))",
   inactive: "hsl(var(--muted-foreground))",
 };
 
 const statusBg: Record<Status, string> = {
-  good: "hsl(var(--success) / 0.15)",
-  below: "hsl(var(--primary) / 0.15)",
+  good: "hsl(var(--accent) / 0.15)",
+  below: "hsl(var(--destructive) / 0.15)",
   inactive: "hsl(var(--muted-foreground) / 0.08)",
 };
 
@@ -123,10 +123,10 @@ export default function PerformanceResults() {
             </p>
             <div className="space-y-3">
               <span className="flex items-center gap-3 text-sm text-muted-foreground">
-                <span className="inline-block w-4 h-4 rounded-full bg-success" /> Good
+                <span className="inline-block w-4 h-4 rounded-full bg-accent" /> Good
               </span>
               <span className="flex items-center gap-3 text-sm text-muted-foreground">
-                <span className="inline-block w-4 h-4 rounded-full bg-primary" /> Below target
+                <span className="inline-block w-4 h-4 rounded-full bg-destructive" /> Below target
               </span>
               <span className="flex items-center gap-3 text-sm text-muted-foreground">
                 <span className="inline-block w-4 h-4 rounded-full bg-muted-foreground/40" /> Not activated / finished
@@ -149,7 +149,7 @@ export default function PerformanceResults() {
                 y1={stageBlocks[0]?.centerY ?? 0}
                 x2={spineX}
                 y2={stageBlocks[stageBlocks.length - 1]?.centerY ?? 0}
-                stroke="hsl(var(--primary))"
+                stroke="hsl(var(--accent))"
                 strokeWidth={2}
                 opacity={dimmed ? 0.1 : 0.35}
               />
@@ -166,8 +166,8 @@ export default function PerformanceResults() {
                       textAnchor="end"
                       dominantBaseline="central"
                       fontSize={16}
-                      fontWeight={700}
-                      fill="hsl(var(--primary))"
+                      fontWeight={500}
+                      fill="hsl(var(--accent))"
                       opacity={dimmed && !anyHoveredInStage ? 0.2 : 1}
                       className="transition-opacity duration-200"
                     >
@@ -179,7 +179,7 @@ export default function PerformanceResults() {
                       cx={spineX}
                       cy={block.centerY}
                       r={block.circleR}
-                      fill="hsl(var(--primary))"
+                      fill="hsl(var(--accent))"
                       opacity={dimmed && !anyHoveredInStage ? 0.2 : 0.9}
                       className="transition-opacity duration-200"
                     />
@@ -204,7 +204,7 @@ export default function PerformanceResults() {
                             y1={block.centerY}
                             x2={spineX}
                             y2={rowMidY}
-                           stroke="hsl(var(--primary))"
+                           stroke="hsl(var(--accent))"
                             strokeWidth={2}
                             opacity={0.7}
                           />
@@ -214,7 +214,7 @@ export default function PerformanceResults() {
                             y1={rowMidY}
                             x2={channelX}
                             y2={rowMidY}
-                            stroke="hsl(var(--primary))"
+                            stroke="hsl(var(--accent))"
                             strokeWidth={2}
                           />
 
@@ -305,7 +305,7 @@ export default function PerformanceResults() {
                               dominantBaseline="central"
                               fontSize={13}
                               fontWeight={600}
-                              fill={row.status === "good" ? "hsl(var(--success))" : row.status === "below" ? "hsl(var(--primary))" : "hsl(var(--muted-foreground))"}
+                              fill={row.status === "good" ? "hsl(var(--accent))" : row.status === "below" ? "hsl(var(--destructive))" : "hsl(var(--muted-foreground))"}
                             >
                               {row.comparison}
                             </text>
@@ -336,11 +336,11 @@ export default function PerformanceResults() {
             const items = reportData.performanceResults[key as keyof typeof reportData.performanceResults];
             return (
               <div key={key}>
-                <h3 className="text-sm font-medium text-primary mb-2">{stageLabel}</h3>
+                <h3 className="text-sm font-medium text-accent mb-2">{stageLabel}</h3>
                 {items.map((item) => (
                   <div key={item.channel} className="metric-card mb-2">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className={`inline-block w-2 h-2 rounded-full ${item.status === "good" ? "bg-success" : item.status === "below" ? "bg-primary" : "bg-muted-foreground"}`} />
+                      <span className={`inline-block w-2 h-2 rounded-full ${item.status === "good" ? "bg-accent" : item.status === "below" ? "bg-destructive" : "bg-muted-foreground"}`} />
                       <span className="text-xs font-medium text-foreground">{item.channel}</span>
                     </div>
                     <span className="text-xs text-muted-foreground">{item.metrics.join(" · ")}{item.comparison && ` · ${item.comparison}`}</span>
