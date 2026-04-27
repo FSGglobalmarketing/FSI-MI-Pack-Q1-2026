@@ -5,6 +5,7 @@ import PerformanceResults from "@/components/report/PerformanceResults";
 import SalesforceSection from "@/components/report/SalesforceSection";
 import SearchVisibility from "@/components/report/SearchVisibility";
 import HighlightSection from "@/components/report/HighlightSection";
+import Highlight1Creative from "@/components/report/Highlight1Creative";
 import AlwaysOnSection from "@/components/report/AlwaysOnSection";
 import LinkedInSection from "@/components/report/LinkedInSection";
 import EventsSection from "@/components/report/EventsSection";
@@ -24,7 +25,11 @@ const Index = () => {
       <SearchVisibility />
 
       {d.highlights.map((h) => (
-        <HighlightSection key={h.id} highlight={h} />
+        <HighlightSection
+          key={h.id}
+          highlight={h}
+          creative={h.id === "highlight-aeq-reporting" ? <Highlight1Creative /> : undefined}
+        />
       ))}
 
       <AlwaysOnSection

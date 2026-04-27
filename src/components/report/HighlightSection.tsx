@@ -129,7 +129,7 @@ export default function HighlightSection({ highlight: h, creative }: Props) {
           </div>
 
           {/* Right column — reserved for creative (image / video / mockup) */}
-          <div className="lg:sticky lg:top-24">
+          <div>
             {creative ?? (
               <div
                 className={`relative w-full aspect-[4/5] rounded-md overflow-hidden flex items-center justify-center ${
