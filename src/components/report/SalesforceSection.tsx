@@ -46,28 +46,28 @@ export default function SalesforceSection() {
       style={{ backgroundColor: SECTION_BG, color: "hsl(0 0% 100%)" }}
     >
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap items-center gap-3 mb-2">
-          <h2 className="text-2xl sm:text-3xl font-bold text-white">Salesforce Engagement</h2>
-          <span className="stage-badge self-center">Marketing Funnel</span>
+        <div className="mb-3">
+          <span className="stage-badge">Marketing funnel</span>
         </div>
+        <h2 className="text-2xl sm:text-3xl font-medium leading-tight mb-2 text-white">Salesforce engagement</h2>
 
         {/* Two-column: narrative left, KPI 2×2 right */}
         <div className="grid lg:grid-cols-2 gap-8 mb-6 items-start">
           <p className="text-white/70 leading-relaxed">
             Q1 engagement was led by our Asia wholesale partners —{" "}
-            <span className="text-white font-semibold">DBS Singapore</span>,{" "}
-            <span className="text-white font-semibold">China Construction Bank (Asia)</span>,{" "}
-            <span className="text-white font-semibold">DBS Hong Kong</span> and{" "}
-            <span className="text-white font-semibold">Bank of China (Hong Kong)</span> topped the
+            <span className="text-white font-medium">DBS Singapore</span>,{" "}
+            <span className="text-white font-medium">China Construction Bank (Asia)</span>,{" "}
+            <span className="text-white font-medium">DBS Hong Kong</span> and{" "}
+            <span className="text-white font-medium">Bank of China (Hong Kong)</span> topped the
             table, each logging between 550 and 855 interactions in Q1. Email was the dominant
             channel (61% of the mix) and March was the peak month — the{" "}
-            <span className="text-white font-semibold">ANZ AEQ Growth post-reporting podcast</span>,{" "}
-            <span className="text-white font-semibold">EMEA Igneo AIM</span> and the{" "}
-            <span className="text-white font-semibold">HK / SG wholesale FSSA China client
+            <span className="text-white font-medium">ANZ AEQ Growth post-reporting podcast</span>,{" "}
+            <span className="text-white font-medium">EMEA Igneo AIM</span> and the{" "}
+            <span className="text-white font-medium">HK / SG wholesale FSSA China client
             updates</span> drove the spike. On investment team, <span className="text-white
-            font-semibold">Listed Infrastructure</span> and <span className="text-white
-            font-semibold">Fixed Income</span> led the opportunity book, with{" "}
-            <span className="text-white font-semibold">AEQ Growth</span> close behind. 584
+            font-medium">Listed Infrastructure</span> and <span className="text-white
+            font-medium">Fixed Income</span> led the opportunity book, with{" "}
+            <span className="text-white font-medium">AEQ Growth</span> close behind. 584
             opportunities are live out of 2,207 total in the FSI pipeline.
           </p>
           <div className="grid grid-cols-2 gap-3">
@@ -82,11 +82,11 @@ export default function SalesforceSection() {
               >
                 <div className="flex items-baseline gap-2">
                   <span className="text-primary text-sm">+</span>
-                  <span className="text-xl sm:text-2xl font-extrabold text-white tabular-nums">
+                  <span className="text-xl sm:text-2xl font-medium text-white tabular-nums">
                     {kpi.value}
                   </span>
                 </div>
-                <div className="text-[11px] font-semibold text-white mt-1">{kpi.label}</div>
+                <div className="text-[11px] font-medium text-white mt-1">{kpi.label}</div>
                 <div className="text-[10px] text-white/55">{kpi.comparison}</div>
               </div>
             ))}
@@ -127,7 +127,7 @@ function ActivityTab() {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-1 text-white">Interaction types — Q1 vs Q4</h3>
+        <h3 className="text-lg font-medium mb-1 text-white">Interaction types — Q1 vs Q4</h3>
         <p className="text-xs text-white/50 mb-4">
           Every recorded email, web visit, form submission and tracked link-click on FSI-tagged
           assets and campaigns in Q1 2026.
@@ -146,7 +146,7 @@ function ActivityTab() {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-1 text-white">Monthly interaction volume</h3>
+        <h3 className="text-lg font-medium mb-1 text-white">Monthly interaction volume</h3>
         <p className="text-xs text-white/50 mb-4">March spiked (13.7k activities, +63% vs Feb) on ANZ AEQ podcast traffic, EMEA Igneo AIM follow-ups and HK / SG client-update eDMs.</p>
         <ResponsiveContainer width="100%" height={200}>
           <BarChart data={monthlyTrend} margin={{ left: 0, right: 30, top: 5, bottom: 5 }}>
@@ -166,7 +166,7 @@ function EngagementTab() {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-1 text-white">Engagement by company × channel</h3>
+        <h3 className="text-lg font-medium mb-1 text-white">Engagement by company × channel</h3>
         <p className="text-xs text-white/50 mb-4">
           Top 15 accounts by total Q1 FSI prospect activity — all recorded email opens + clicks,
           website visits, form submissions and tracked custom-URL clicks.
@@ -211,7 +211,7 @@ function EngagementTab() {
                 <td className="p-3 text-right tabular-nums text-white">{row.link.toLocaleString()}</td>
                 <td className="p-3 text-right tabular-nums text-white">{row.form.toLocaleString()}</td>
                 <td className="p-3 text-right tabular-nums text-white">{row.web.toLocaleString()}</td>
-                <td className="p-3 text-right tabular-nums font-bold text-primary">{row.total.toLocaleString()}</td>
+                <td className="p-3 text-right tabular-nums font-medium text-primary">{row.total.toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
@@ -225,7 +225,7 @@ function StrategiesTab() {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-semibold mb-1 text-white">Opportunities by investment team</h3>
+        <h3 className="text-lg font-medium mb-1 text-white">Opportunities by investment team</h3>
         <p className="text-xs text-white/50 mb-4">
           Live and historical opportunities in the FSI pipeline by investment team. Listed
           Infrastructure and Fixed Income lead with ~700 each, followed by AEQ Growth at 507.
@@ -242,7 +242,7 @@ function StrategiesTab() {
       </div>
 
       <div>
-        <h3 className="text-lg font-semibold mb-1 text-white">Investment teams (brand stripped)</h3>
+        <h3 className="text-lg font-medium mb-1 text-white">Investment teams (brand stripped)</h3>
         <p className="text-xs text-white/50 mb-4">
           The same pipeline with the cross-brand "First Sentier" catch-all removed — this is pure
           investment-team attribution of opportunities.
@@ -264,7 +264,7 @@ function StrategiesTab() {
 function CampaignsTab() {
   return (
     <div>
-      <h3 className="text-lg font-semibold mb-1 text-white">Top campaigns driving activity</h3>
+      <h3 className="text-lg font-medium mb-1 text-white">Top campaigns driving activity</h3>
       <p className="text-xs text-white/50 mb-4">
         Ranked by total Q1 prospect activity across the FSI estate. The EMEA Igneo AIM campaign
         (3.8k interactions) and the ANZ AEQ Growth post-reporting podcast (2.5k) led, followed by

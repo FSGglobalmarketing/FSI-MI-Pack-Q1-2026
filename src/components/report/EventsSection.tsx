@@ -53,10 +53,10 @@ export default function EventsSection() {
   return (
     <section id="events" className="section-cream py-24 flow-section-cream relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-[1]">
-        <div className="flex flex-wrap items-center gap-3 mb-2">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-secondary-foreground">{e.title}</h2>
-          <span className="stage-badge text-xs">{e.stage}</span>
+        <div className="mb-3">
+          <span className="stage-badge">{e.stage}</span>
         </div>
+        <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-2 text-secondary-foreground">{e.title}</h2>
 
         <p className="text-sm text-secondary-foreground/60 mb-6">
           Showing {filteredEvents.length} event{filteredEvents.length !== 1 ? "s" : ""} — {committedCount} committed, {proposedCount} proposed
@@ -78,12 +78,12 @@ export default function EventsSection() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-secondary-foreground/10">
-                <th className="text-left py-3 px-4 text-secondary-foreground font-semibold">Event</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-semibold">Team</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-semibold">Format</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-semibold">Audience</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-semibold">Region</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-semibold">Status</th>
+                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Event</th>
+                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Team</th>
+                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Format</th>
+                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Audience</th>
+                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Region</th>
+                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -109,7 +109,7 @@ export default function EventsSection() {
                         return people.slice(0, 3).map((name, i) => {
                           const initials = name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
                           return (
-                            <div key={i} className="w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-bold text-white border-2 border-white/80" style={{ backgroundColor: colors[i % colors.length] }} title={name}>
+                            <div key={i} className="w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-medium text-white border-2 border-white/80" style={{ backgroundColor: colors[i % colors.length] }} title={name}>
                               {initials}
                             </div>
                           );
@@ -120,7 +120,7 @@ export default function EventsSection() {
                         if (ev.speaker) ev.speaker.split(",").map(s => s.trim()).forEach(s => people.push(s));
                         if (ev.marketingLead) people.push(ev.marketingLead);
                         if (ev.distributionLead) ev.distributionLead.split("/").map(s => s.trim()).forEach(s => people.push(s));
-                        return people.length > 3 ? <div className="w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-bold text-secondary-foreground bg-secondary-foreground/10 border-2 border-white/80">+{people.length - 3}</div> : null;
+                        return people.length > 3 ? <div className="w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-medium text-secondary-foreground bg-secondary-foreground/10 border-2 border-white/80">+{people.length - 3}</div> : null;
                       })()}
                     </div>
                   </td>

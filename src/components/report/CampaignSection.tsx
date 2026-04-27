@@ -39,17 +39,17 @@ export function CampaignSection({ id, title, stage, subtitle, description, goals
           {/* Left column: all content */}
           <div className="space-y-6">
             <div>
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                <h2 className={`text-3xl sm:text-4xl font-extrabold ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>{title}</h2>
-                <span className="stage-badge text-xs">{stage}</span>
+              <div className="mb-3">
+                <span className="stage-badge">{stage}</span>
               </div>
+              <h2 className={`text-3xl sm:text-4xl font-medium leading-tight mb-2 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>{title}</h2>
               <p className={`mb-0 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>{subtitle}</p>
             </div>
 
             <p className={`text-sm leading-relaxed ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>{description}</p>
 
             <div>
-              <h4 className={`text-sm font-bold mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Goals</h4>
+              <h4 className={`text-sm font-medium mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Goals</h4>
               <ul className="space-y-2">
                 {goals.map((g) => (
                   <li key={g} className={`text-sm flex items-start gap-2 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>
@@ -60,7 +60,7 @@ export function CampaignSection({ id, title, stage, subtitle, description, goals
             </div>
 
             <div>
-              <h4 className={`text-sm font-bold mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Formats</h4>
+              <h4 className={`text-sm font-medium mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Formats</h4>
               <div className="flex flex-wrap gap-2">
                 {formats.map((f) => (
                   <span key={f} className={isDark ? "glass-pill-dark" : "glass-pill-cream"}>{f}</span>
@@ -70,7 +70,7 @@ export function CampaignSection({ id, title, stage, subtitle, description, goals
 
             {/* Key Results — KPI list style matching Performance section */}
             <div>
-              <h4 className={`text-sm font-bold mb-4 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Key Results</h4>
+              <h4 className={`text-sm font-medium mb-4 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Key Results</h4>
               <div className="space-y-3">
                 {keyResults.map((kpi) => (
                   <KpiRow key={kpi.label} value={kpi.value} label={kpi.label} comparison={kpi.comparison} variant={variant} />
@@ -103,8 +103,8 @@ export function CampaignChartPage({ id, title, variant, children, backgroundImag
         </>
       )}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <h3 className={`text-2xl font-extrabold mb-8 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>
-          Deep dive: <span className="font-bold">{title}</span>
+        <h3 className={`text-2xl font-medium mb-8 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>
+          Deep dive: <span className="font-medium">{title}</span>
         </h3>
         <div className="space-y-8">
           {children}
@@ -142,7 +142,7 @@ function SortedTooltip({ active, payload, label }: any) {
   const sorted = [...payload].sort((a: any, b: any) => (b.value ?? 0) - (a.value ?? 0));
   return (
     <div style={{ backgroundColor: "#111", borderRadius: 10, padding: "12px 16px", minWidth: 220, border: "1px solid rgba(255,255,255,0.12)" }}>
-      <p style={{ color: "#0F9AFF", fontWeight: 700, fontSize: 13, marginBottom: 8 }}>{label}</p>
+      <p style={{ color: "#0F9AFF", fontWeight: 500, fontSize: 13, marginBottom: 8 }}>{label}</p>
       {sorted.map((entry: any) => (
         <div key={entry.dataKey} style={{ display: "flex", justifyContent: "space-between", gap: 16, marginBottom: 2 }}>
           <span style={{ fontSize: 11, color: "rgba(255,255,255,0.6)" }}>{entry.name || entry.dataKey}</span>
@@ -236,10 +236,10 @@ export function NorthAmericaChart() {
     <div className="metric-card flow-corner-br">
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h4 className="text-sm font-bold text-foreground">Page ranking positions for North American content</h4>
+          <h4 className="text-sm font-medium text-foreground">Page ranking positions for North American content</h4>
           <p className="text-xs text-muted-foreground/60 mt-1">Monthly page ranking distribution across search result pages.</p>
         </div>
-        {zoom.isZoomed && <button onClick={zoom.resetZoom} className="text-xs font-semibold text-primary hover:underline shrink-0">Reset zoom</button>}
+        {zoom.isZoomed && <button onClick={zoom.resetZoom} className="text-xs font-medium text-primary hover:underline shrink-0">Reset zoom</button>}
       </div>
       <ChartScrollWrapper onWheel={zoom.handleWheel}>
         <ResponsiveContainer width="100%" height={400}>
@@ -270,7 +270,7 @@ export function NorthAmericaExtra() {
     <div className="metric-card grid grid-cols-3 gap-3">
       {[d.searchAppearances, ...d.pageRankKPIs].map((kpi: any) => (
         <div key={kpi.label} className="text-center">
-          <span className="text-2xl font-extrabold text-foreground">{kpi.value}</span>
+          <span className="text-2xl font-medium text-foreground">{kpi.value}</span>
           <span className="kpi-pill-good block mt-1 mx-auto w-fit">{kpi.label}</span>
           <span className="stat-positive block mt-1 text-xs">{kpi.comparison}</span>
         </div>
@@ -300,7 +300,7 @@ export function DACHCharts() {
   return (
     <>
       <div className="glass-card-cream flow-corner-bl">
-        <h4 className="text-sm font-bold text-secondary-foreground mb-4">Audience by Country</h4>
+        <h4 className="text-sm font-medium text-secondary-foreground mb-4">Audience by Country</h4>
         <ResponsiveContainer width="100%" height={340}>
           <PieChart>
             <Pie data={countries} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`} animationDuration={1200}>
@@ -313,7 +313,7 @@ export function DACHCharts() {
         </ResponsiveContainer>
       </div>
       <div className="glass-card-cream flow-corner-tr">
-        <h4 className="text-sm font-bold text-secondary-foreground mb-4">Top Companies by Ad Views</h4>
+        <h4 className="text-sm font-medium text-secondary-foreground mb-4">Top Companies by Ad Views</h4>
         <ResponsiveContainer width="100%" height={340}>
           <BarChart data={companies} layout="vertical">
             <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
@@ -345,7 +345,7 @@ function formatKUK(v: number) {
 export function UKNordicsChart() {
   return (
     <div className="metric-card flow-corner-bl">
-      <h4 className="text-sm font-bold text-foreground mb-4">Ad Performance — Impressions vs Clicks</h4>
+      <h4 className="text-sm font-medium text-foreground mb-4">Ad Performance — Impressions vs Clicks</h4>
       <ResponsiveContainer width="100%" height={400}>
         <BarChart data={UK_CHART_DATA}>
           <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
@@ -365,13 +365,13 @@ export function UKNordicsLearnings() {
   const learnings = reportData.campaigns.ukNordics.keyLearnings;
   return (
     <div className="glass-card-dark flow-corner-br border border-foreground/10">
-      <h4 className="text-base font-bold text-foreground mb-4 flex items-center gap-2">
+      <h4 className="text-base font-medium text-foreground mb-4 flex items-center gap-2">
         <span className="text-primary">→</span> Key Learnings
       </h4>
       <ul className="space-y-3">
         {learnings.map((l: string) => (
           <li key={l} className="text-sm text-muted-foreground flex items-start gap-3">
-            <span className="text-primary mt-0.5 shrink-0 font-bold">+</span>{l}
+            <span className="text-primary mt-0.5 shrink-0 font-medium">+</span>{l}
           </li>
         ))}
       </ul>

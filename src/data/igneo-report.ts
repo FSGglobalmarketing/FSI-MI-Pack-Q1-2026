@@ -1,3 +1,17 @@
+export interface HighlightSectionData {
+  id: string;
+  navLabel: string;
+  stage: string;            // "Highlight 1" etc.
+  title: string;
+  subtitle?: string;
+  description?: string;
+  goals: string[];
+  marketingActivities: string[];
+  targetAudience: string[];
+  dataSources?: string[];
+  variant: "dark" | "cream";
+}
+
 export interface EventTeamMember {
   name: string;
   role: string;
@@ -125,7 +139,7 @@ export const reportData = {
     focusAreas: [
       "Push firstsentierinvestors.com.au page-1 presence vs Vanguard / Perpetual / Magellan",
       "Track generic category terms — 'global listed infrastructure', 'quantitative equities', 'quality investing'",
-      "Expand keyword coverage across FSI boutiques (Igneo, Stewart Investors, RQI Investors, AlbaCore)",
+      "Expand keyword coverage across FSI boutiques (Igneo, Stewart Investors, AlbaCore)",
     ],
     nextQuarter: [
       "Re-instrument UK / SG / DE / US tracking when rankings data becomes available",
@@ -133,13 +147,121 @@ export const reportData = {
     ],
   },
 
+  highlights: [
+    {
+      id: "highlight-aeq-reporting",
+      navLabel: "Reporting season",
+      stage: "Highlight 1",
+      title: "Australian Equities Growth — reporting season",
+      subtitle: "Sector-by-sector reactions and where active investors found opportunity",
+      description: "We kicked off the year with a dedicated campaign timed to ASX reporting season — bespoke events across five ANZ cities, broad media presence (Livewire Markets' Buy Hold Sell with Dushko; David Wilson and Christian Guerra on the Reporting Season podcast), and supporting digital activity across paid LinkedIn, search and the AEQ adviser hub.",
+      goals: [
+        "Defend share of voice across reporting-season commentary in AU media",
+        "Convert reporting-season attention into AEQ adviser-hub traffic",
+        "Position FSI's AEQ team as the active-investing voice on quality vs. price-action",
+      ],
+      marketingActivities: [
+        "AEQ Reporting season roundtables — Sydney, Melbourne, Perth, Adelaide, Brisbane",
+        "Livewire Markets' Buy Hold Sell — Dushko on the special reporting-season episode",
+        "Reporting Season podcast — David Wilson and Christian Guerra on sector-by-sector reactions",
+        "Always-on paid search and paid LinkedIn supporting AEQ adviser pages",
+      ],
+      targetAudience: ["Institutional", "Wholesale adviser", "Broker / LGT Wealth"],
+      dataSources: ["Social listening (Brandwatch)", "Ptarmigan", "Transistor"],
+      variant: "dark",
+    },
+    {
+      id: "highlight-ex20-phase-2",
+      navLabel: "EX-20 Phase II",
+      stage: "Highlight 2",
+      title: "EX-20 campaign — Phase II",
+      subtitle: "Continuing the EX-20 Share Fund push with deeper market penetration",
+      description: "Phase II builds on the Phase I launch with more ad placements, distribution-led roundtables across five ANZ cities, and an always-on search + social mix designed to drive advisers to the EX-20 fund page (which lifted +32% vs Q4 even before this Phase II push).",
+      goals: [
+        "More ad placements and a focused effort to drive market penetration",
+        "Distribution-led event across the five ANZ cities (LGT Crestone, post-reporting season)",
+      ],
+      marketingActivities: [
+        "EX-20 launch roundtables — Sydney, Melbourne, Perth, Adelaide, Brisbane",
+        "Post-reporting season / EX-20 launch / LGT Crestone event in Melbourne (Mar 4-5)",
+        "Always-on search (branded + EX-20 terms)",
+        "Paid LinkedIn driving to /au/en/adviser/our-funds/.../ex-20-australian-share-fund.html",
+      ],
+      targetAudience: ["Wholesale adviser (ANZ)", "Ptarmigan ad audiences"],
+      dataSources: [
+        "Ptarmigan (paid ads)",
+        "Livewire + Morningstar first-link tracking",
+        "Web (GA4 — EX-20 fund page)",
+        "Always-on search performance",
+        "Paid + organic social",
+      ],
+      variant: "cream",
+    },
+    {
+      id: "highlight-cash-etf",
+      navLabel: "Cash ETF",
+      stage: "Highlight 3",
+      title: "Cash ETF — launch planning",
+      subtitle: "Brand, positioning and creative ready for Q2 launch",
+      description: "Q1 was the planning quarter for the Cash ETF. We completed the brand survey, signed off the client value proposition, filmed launch videos, finalised flyers and web copy, and locked in a full communications and advertising plan and schedule. The launch lands in Q2.",
+      goals: [
+        "Establish positioning in market — why cash in the portfolio?",
+        "Identify why clients would invest in this fund rather than peers (fear and greed)",
+        "Brand concepts (visual identity), advertising slogans, tone and straplines signed off",
+      ],
+      marketingActivities: [
+        "Brand survey complete",
+        "Client value proposition complete",
+        "Filmed launch videos in production",
+        "Bespoke flyers and web copy ready",
+        "Communications + advertising plan and schedule signed off",
+      ],
+      targetAudience: ["Wholesale adviser (ANZ)", "Ptarmigan ad audiences"],
+      dataSources: [
+        "Ptarmigan (paid ads)",
+        "Livewire + Morningstar first-link tracking",
+        "Web (GA4 landing pages — Q2 onwards)",
+        "Always-on search",
+        "Paid + organic social",
+      ],
+      variant: "dark",
+    },
+    {
+      id: "highlight-glis",
+      navLabel: "GLIS update",
+      stage: "Highlight 4",
+      title: "GLIS ETF strategy — Asia awareness build",
+      subtitle: "Building GLIS awareness in Asia ahead of the ETF strategy roll-out",
+      description: "Starting to build awareness in Asia for the GLIS ETF strategy — client meetings in Hong Kong, a media roundtable in Taipei (Cathay / GLIS, 31 Mar) and supporting always-on search / social across the region.",
+      goals: [
+        "Establish positioning in Asia — why global listed infrastructure now?",
+        "Identify why clients would invest in this fund rather than peers",
+        "Build brand concepts and visual identity for the Asia push",
+      ],
+      marketingActivities: [
+        "Client meetings — Hong Kong",
+        "Media roundtable — Cathay / GLIS, Taipei (31 Mar)",
+        "Always-on search and paid LinkedIn across Asia",
+      ],
+      targetAudience: ["Wholesale and institutional (Asia)", "Asian financial press"],
+      dataSources: [
+        "Ptarmigan (paid ads)",
+        "Livewire + Morningstar first-link tracking",
+        "Web (GA4 — GLIS pages)",
+        "Always-on search",
+        "Paid + organic social",
+      ],
+      variant: "cream",
+    },
+  ] as HighlightSectionData[],
+
   website: {
     title: "Always on: Website",
     stage: "Consideration",
-    subtitle: "Strong lift in Q1 driven by RQI Investors fund pages and SG performance data",
-    description: "Q1 2026 delivered 230.3k page views across firstsentierinvestors.com — a +54% lift vs Q4 2025 (149.3k). Engagement events reached 947k (+50%) and key-event conversions reached 20.4k (+43%). The standout drivers were RQI Investors fund pages in Hong Kong (+400–500% vs Q4), the new Singapore performance data landing page (new in Q1, 8.1k views), and steady AEQ / EX-20 traction in Australia.",
+    subtitle: "Strong lift in Q1 driven by SG performance data and AEQ / EX-20 momentum",
+    description: "Q1 2026 delivered 199.9k page views across firstsentierinvestors.com (excluding RQI Investors pages, which sit in a separate deck) — a +47% lift vs Q4 2025 (136.4k). Engagement events reached 947k (+50%) and key-event conversions reached 20.4k (+43%). Standout drivers were the new Singapore performance data landing page (new in Q1, 8.1k views), steady AEQ / EX-20 Share Fund traction in Australia, and the AU performance and literature hubs.",
     kpis: [
-      { value: "230.3k", label: "Views (Q1)",           comparison: "+54% vs Q4 (149.3k)" },
+      { value: "199.9k", label: "Views (Q1, ex-RQI)",   comparison: "+47% vs Q4 (136.4k)" },
       { value: "187.5k", label: "Active users (Q1)",    comparison: "+59% vs Q4 (118.0k)" },
       { value: "946.9k", label: "Engagement events",    comparison: "+50% vs Q4 (629.1k)" },
       { value: "20.4k",  label: "Key events",           comparison: "+43% vs Q4 (14.3k)" },
@@ -154,15 +276,15 @@ export const reportData = {
     ],
     topPages: [
       { page: "/ (home)", views: 18455, change: "-10% vs Q4" },
-      { page: "/hk/zh/retail/our-funds/rqi-investors.html", views: 13997, change: "+483% vs Q4" },
-      { page: "/au/en/adviser/our-funds/rqi-investors.html", views: 8770, change: "-3% vs Q4" },
       { page: "/sg/en/retail/performance/price-and-performance-sut.html", views: 8148, change: "New in Q1" },
-      { page: "/hk/en/retail/our-funds/rqi-investors.html", views: 7724, change: "+428% vs Q4" },
       { page: "/hk/zh/retail/performance/price-and-performance.html", views: 6186, change: "-8% vs Q4" },
       { page: "/hk/en/retail/performance/price-and-performance.html", views: 5117, change: "-13% vs Q4" },
       { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth.html", views: 3797, change: "-14% vs Q4" },
       { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/ex-20-australian-share-fund.html", views: 3674, change: "+32% vs Q4" },
       { page: "/au/en/adviser/performance/literature.html", views: 2931, change: "+6% vs Q4" },
+      { page: "/au/en/adviser/performance/price-and-performance.html", views: 2817, change: "+49% vs Q4" },
+      { page: "/hk/en/retail/home.html", views: 2571, change: "-5% vs Q4" },
+      { page: "/de/de/professionelle-anleger/our-funds/stewart-investors.html", views: 1862, change: "-15% vs Q4" },
     ],
     trafficSources: [
       { source: "Direct / (none)",      percentage: 59 },
@@ -175,9 +297,9 @@ export const reportData = {
       { source: "Other",                percentage:  5 },
     ],
     focusQ4: [
-      "RQI Investors fund-page launches across HK Retail (EN + ZH)",
       "Singapore performance SUT data page — new in Q1",
       "AU AEQ and EX-20 Share Fund coverage",
+      "Decommissioned legacy Ceros pages across retail sites",
     ],
     focusQ1: [
       "Expand Blis / programmatic display into additional markets",
@@ -249,7 +371,7 @@ export const reportData = {
 
       // Other ANZ Q1 events
       { name: "Post reporting season / XX20 launch / LGT Crestone", format: "Conference", audience: "Wholesale adviser", region: "ANZ", quarter: "Q1", status: "distribution-owned" as const, category: "Conference", city: "Melbourne", lat: -37.8136, lng: 144.9631, startDate: "2026-03-04", endDate: "2026-03-05", brand: "FSI", hasSpeakingSlot: true, speaker: "Dushko / David / Chris", assetClass: "AEQ", distributionLead: "Nick" },
-      { name: "Civitas Services Conference", format: "Conference", audience: "Wholesale adviser", region: "ANZ", quarter: "Q1", status: "distribution-owned" as const, category: "Conference", city: "Port Douglas", lat: -16.4837, lng: 145.4682, startDate: "2026-03-10", endDate: "2026-03-13", brand: "FSI", host: "Civitas Services", hasSpeakingSlot: true, speaker: "David Wilson", assetClass: "AEQ Growth, RQI, GLIS, FSSA GEM", marketingLead: "Josie Haynes", distributionLead: "Nick" },
+      { name: "Civitas Services Conference", format: "Conference", audience: "Wholesale adviser", region: "ANZ", quarter: "Q1", status: "distribution-owned" as const, category: "Conference", city: "Port Douglas", lat: -16.4837, lng: 145.4682, startDate: "2026-03-10", endDate: "2026-03-13", brand: "FSI", host: "Civitas Services", hasSpeakingSlot: true, speaker: "David Wilson", assetClass: "AEQ Growth, GLIS, FSSA GEM", marketingLead: "Josie Haynes", distributionLead: "Nick" },
       { name: "Adelaide roundtable", format: "Roundtable Lunch", audience: "Wholesale adviser", region: "ANZ", quarter: "Q1", status: "committed" as const, category: "Roundtable", city: "Adelaide", lat: -34.9285, lng: 138.6007, startDate: "2026-03-10", brand: "FSI", host: "FSI", hasSpeakingSlot: true, speaker: "Dushko / David", assetClass: "AEQ", marketingLead: "Karyn Arthur", distributionLead: "Nathan", currency: "AUD" },
       { name: "Perth roundtable lunch", format: "Roundtable Lunch", audience: "Wholesale adviser", region: "ANZ", quarter: "Q1", status: "committed" as const, category: "Roundtable", city: "Perth", lat: -31.9505, lng: 115.8605, startDate: "2026-03-11", brand: "FSI", host: "FSI", hasSpeakingSlot: true, speaker: "Dushko / David", assetClass: "AEQ", marketingLead: "Karyn Arthur", distributionLead: "Nathan", currency: "AUD" },
 

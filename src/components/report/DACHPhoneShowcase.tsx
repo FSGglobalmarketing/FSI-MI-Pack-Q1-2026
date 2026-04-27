@@ -66,7 +66,7 @@ export default function DACHPhoneShowcase() {
       <Dialog open={!!openAd} onOpenChange={() => setOpenAd(null)}>
         <DialogContent className="dach-modal sm:max-w-lg">
           <DialogHeader>
-            <DialogTitle className="text-foreground text-lg font-extrabold">
+            <DialogTitle className="text-foreground text-lg font-medium">
               {openAd?.title}
             </DialogTitle>
           </DialogHeader>
@@ -78,7 +78,7 @@ export default function DACHPhoneShowcase() {
               <div className="grid grid-cols-2 gap-3">
                 {openAd.stats.map((s) => (
                   <div key={s.label} className="dach-modal-stat">
-                    <span className="text-xl font-extrabold text-foreground">{s.value}</span>
+                    <span className="text-xl font-medium text-foreground">{s.value}</span>
                     <span className="kpi-pill-orange mt-1">{s.label}</span>
                   </div>
                 ))}

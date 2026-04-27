@@ -31,14 +31,14 @@ function CustomTooltip({ active, payload, label }: any) {
 
   return (
     <div className="bg-background rounded-[10px] px-4 py-3 min-w-[320px] max-w-[420px] border border-foreground/12">
-      <p className="text-primary font-bold text-[13px] mb-2">{label}</p>
+      <p className="text-primary font-medium text-[13px] mb-2">{label}</p>
       <div className="grid grid-cols-2 gap-x-6 gap-y-1">
         {sorted.map((entry: any) => (
           <div key={entry.dataKey} className="flex justify-between gap-3">
-            <span className={`text-[11px] ${entry.dataKey === "FSI" ? "text-primary font-bold" : "text-foreground/60"}`}>
+            <span className={`text-[11px] ${entry.dataKey === "FSI" ? "text-primary font-medium" : "text-foreground/60"}`}>
               {entry.dataKey}
             </span>
-            <span className={`text-[11px] tabular-nums ${entry.dataKey === "FSI" ? "text-primary font-bold" : "text-foreground/85"}`}>
+            <span className={`text-[11px] tabular-nums ${entry.dataKey === "FSI" ? "text-primary font-medium" : "text-foreground/85"}`}>
               {entry.value}
             </span>
           </div>
@@ -141,18 +141,18 @@ export default function SearchVisibility() {
     <section id="search-visibility" className="section-cream py-24 flow-section-cream relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-[1]">
         {/* Header */}
-        <div className="flex flex-wrap items-center gap-3 mb-2">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-secondary-foreground">
-            Search engine visibility
-          </h2>
-          <span className="stage-badge text-xs">Awareness</span>
+        <div className="mb-3">
+          <span className="stage-badge">Awareness</span>
         </div>
+        <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-2 text-secondary-foreground">
+          Search engine visibility
+        </h2>
         <div className="text-secondary-foreground/70 mb-8 max-w-3xl leading-relaxed space-y-3">
           <p>
-            Global keyword coverage for <strong className="text-secondary-foreground font-semibold">firstsentierinvestors.com</strong> grew from <strong className="text-secondary-foreground font-semibold">190 to 216</strong> ranked keywords over the quarter (+14%). Page 1 coverage increased from 34 to <strong className="text-secondary-foreground font-semibold">37 keywords</strong>, and estimated organic traffic from these terms rose <strong className="text-secondary-foreground font-semibold">+43%</strong>.
+            Global keyword coverage for <strong className="text-secondary-foreground font-medium">firstsentierinvestors.com</strong> grew from <strong className="text-secondary-foreground font-medium">190 to 216</strong> ranked keywords over the quarter (+14%). Page 1 coverage increased from 34 to <strong className="text-secondary-foreground font-medium">37 keywords</strong>, and estimated organic traffic from these terms rose <strong className="text-secondary-foreground font-medium">+43%</strong>.
           </p>
           <p>
-            Biggest gainers this quarter: <strong className="text-secondary-foreground font-semibold">"mufg forms"</strong> (+59 positions), <strong className="text-secondary-foreground font-semibold">"investment management firms"</strong> (+50), <strong className="text-secondary-foreground font-semibold">"active security group"</strong> (+48) and <strong className="text-secondary-foreground font-semibold">"investors"</strong> (+41 — now #13). The chart below tracks <strong className="text-secondary-foreground font-semibold">firstsentierinvestors.com.au</strong> against AU peers; other markets are not yet tracked in this export.
+            Biggest gainers this quarter: <strong className="text-secondary-foreground font-medium">"mufg forms"</strong> (+59 positions), <strong className="text-secondary-foreground font-medium">"investment management firms"</strong> (+50), <strong className="text-secondary-foreground font-medium">"active security group"</strong> (+48) and <strong className="text-secondary-foreground font-medium">"investors"</strong> (+41 — now #13). The chart below tracks <strong className="text-secondary-foreground font-medium">firstsentierinvestors.com.au</strong> against AU peers; other markets are not yet tracked in this export.
           </p>
         </div>
 
@@ -162,7 +162,7 @@ export default function SearchVisibility() {
             <p className="text-sm leading-relaxed text-secondary-foreground/70">{s.goal}</p>
 
             <div>
-              <h4 className="text-sm font-bold mb-3 text-secondary-foreground">Marketing Activities</h4>
+              <h4 className="text-sm font-medium mb-3 text-secondary-foreground">Marketing Activities</h4>
               <ul className="space-y-2">
                 {s.marketingActivities.map((a) => (
                   <li key={a} className="text-sm flex items-start gap-2 text-secondary-foreground/70">
@@ -173,7 +173,7 @@ export default function SearchVisibility() {
             </div>
 
             <div>
-              <h4 className="text-sm font-bold mb-3 text-secondary-foreground">Focus Areas</h4>
+              <h4 className="text-sm font-medium mb-3 text-secondary-foreground">Focus Areas</h4>
               <div className="flex flex-wrap gap-2">
                 {s.focusAreas.map((f) => (
                   <span key={f} className="glass-pill-cream">{f}</span>
@@ -183,7 +183,7 @@ export default function SearchVisibility() {
 
             {/* Key Results — KPI list style with pills */}
             <div>
-              <h4 className="text-sm font-bold mb-4 text-secondary-foreground">Key Results</h4>
+              <h4 className="text-sm font-medium mb-4 text-secondary-foreground">Key Results</h4>
               <div className="space-y-3">
                 {s.kpis.map((kpi) => (
                   <KpiRow key={kpi.label} value={kpi.value} label={kpi.label} comparison={kpi.comparison} variant="cream" />
@@ -192,7 +192,7 @@ export default function SearchVisibility() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="glass-card-cream flow-corner-bl">
-                <h4 className="text-sm font-bold mb-3 text-secondary-foreground">Focus in Q1</h4>
+                <h4 className="text-sm font-medium mb-3 text-secondary-foreground">Focus in Q1</h4>
                 <ul className="space-y-2">
                   {s.focusAreas.map((item) => (
                     <li key={item} className="text-sm flex items-start gap-2 text-secondary-foreground/70">
@@ -203,7 +203,7 @@ export default function SearchVisibility() {
                 </ul>
               </div>
               <div className="glass-card-cream flow-corner-tr">
-                <h4 className="text-sm font-bold mb-3 text-secondary-foreground">Focus in Q2</h4>
+                <h4 className="text-sm font-medium mb-3 text-secondary-foreground">Focus in Q2</h4>
                 <ul className="space-y-2">
                   {s.nextQuarter.map((item) => (
                     <li key={item} className="text-sm flex items-start gap-2 text-secondary-foreground/70">
@@ -219,11 +219,11 @@ export default function SearchVisibility() {
           <div className="glass-card-cream flow-corner-br min-h-[540px] flex flex-col">
             <div className="flex items-start justify-between mb-1">
               <div>
-                <h4 className="text-sm font-bold text-secondary-foreground mb-1">Search engine visibility</h4>
+                <h4 className="text-sm font-medium text-secondary-foreground mb-1">Search engine visibility</h4>
                 <p className="text-xs text-secondary-foreground/60 mb-4">Total keywords ranked by firstsentierinvestors.com.au across pages 1-3, benchmarked against Australian peers.</p>
               </div>
               {isZoomed && (
-                <button onClick={resetZoom} className="text-xs font-semibold text-primary hover:underline shrink-0">Reset zoom</button>
+                <button onClick={resetZoom} className="text-xs font-medium text-primary hover:underline shrink-0">Reset zoom</button>
               )}
             </div>
             <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
@@ -236,7 +236,7 @@ export default function SearchVisibility() {
                   <button
                     key={c}
                     onClick={() => { setCountry(c); setLeft(0); setRight(12); }}
-                    className={`px-3 py-1 rounded-full text-[11px] font-semibold transition-colors ${
+                    className={`px-3 py-1 rounded-full text-[11px] font-medium transition-colors ${
                       country === c
                         ? "bg-primary text-primary-foreground"
                         : "text-secondary-foreground/60 hover:text-secondary-foreground"

@@ -75,7 +75,7 @@ export default function PasswordGate({ children }: { children: ReactNode }) {
             style={{
               margin: 0,
               fontSize: "1.25rem",
-              fontWeight: 700,
+              fontWeight: 500,
               letterSpacing: "-0.01em",
             }}
           >

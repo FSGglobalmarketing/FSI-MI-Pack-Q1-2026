@@ -176,7 +176,7 @@ function EventGroupPicker({
       <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
       <div className="glass-modal relative z-[1001] w-full max-w-md p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-bold text-secondary-foreground">
+          <h3 className="text-lg font-medium text-secondary-foreground">
             {group.city} — {group.events.length} Events
           </h3>
           <button onClick={onClose} className="text-secondary-foreground/50 hover:text-secondary-foreground text-xl leading-none">
@@ -193,7 +193,7 @@ function EventGroupPicker({
               <div className="flex items-center gap-3">
                 <span className={`w-2 h-2 rounded-full ${ev.status === "committed" ? "bg-primary" : ev.status === "proposed" ? "bg-amber-500" : "bg-success"}`} />
                 <div>
-                  <p className="font-semibold text-secondary-foreground text-sm">{ev.name}</p>
+                  <p className="font-medium text-secondary-foreground text-sm">{ev.name}</p>
                   <p className="text-xs text-secondary-foreground/60">{ev.format} · {ev.quarter}</p>
                 </div>
               </div>

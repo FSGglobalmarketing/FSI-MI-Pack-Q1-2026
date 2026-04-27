@@ -43,7 +43,7 @@ function TimelineChart() {
           <YAxis tick={{ fontSize: 9, fill: "hsl(0 0% 60%)" }} />
           <Tooltip
             contentStyle={{ background: "hsl(214 60% 18%)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, fontSize: 11 }}
-            labelStyle={{ color: "#0F9AFF", fontWeight: 700 }}
+            labelStyle={{ color: "#0F9AFF", fontWeight: 500 }}
           />
           <Area type="monotone" dataKey="negative" stackId="1" fill="hsl(14 100% 57% / 0.3)" stroke={COLORS.negative} strokeWidth={1.5} />
           <Area type="monotone" dataKey="neutral" stackId="1" fill="hsl(205 30% 55% / 0.25)" stroke={COLORS.neutral} strokeWidth={1.5} />
@@ -87,7 +87,7 @@ function SentimentDonut() {
           <div key={d.name} className="flex items-center gap-2 text-xs">
             <div className="w-3 h-3 rounded-full" style={{ backgroundColor: colors[i] }} />
             <span className="text-muted-foreground">{d.name}</span>
-            <span className="font-bold text-foreground">{((d.value / total) * 100).toFixed(0)}%</span>
+            <span className="font-medium text-foreground">{((d.value / total) * 100).toFixed(0)}%</span>
           </div>
         ))}
       </div>
@@ -183,10 +183,10 @@ export default function SentimentSection() {
     <section id="sentiment" className="section-dark py-24 flow-section-dark relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-[1]">
         {/* Header */}
-        <div className="flex flex-wrap items-center gap-3 mb-2">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">Sentiment Monitoring</h2>
-          <span className="stage-badge text-xs">Social Listening</span>
+        <div className="mb-3">
+          <span className="stage-badge">Social listening</span>
         </div>
+        <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-2 text-foreground">Sentiment monitoring</h2>
         <p className="text-muted-foreground mb-6 max-w-3xl leading-relaxed">
           Brand visibility and media sentiment tracking across web, social and news channels — powered by Brandwatch.
         </p>
@@ -209,11 +209,11 @@ export default function SentimentSection() {
             >
               <div className="flex items-baseline gap-2">
                 <span className="text-primary text-sm">+</span>
-                <span className="text-xl sm:text-2xl font-extrabold text-foreground tabular-nums">
+                <span className="text-xl sm:text-2xl font-medium text-foreground tabular-nums">
                   {kpi.value}
                 </span>
               </div>
-              <div className="text-[11px] font-semibold text-foreground mt-1">{kpi.label}</div>
+              <div className="text-[11px] font-medium text-foreground mt-1">{kpi.label}</div>
               <div className="text-[10px] text-muted-foreground">{kpi.sub}</div>
             </div>
           ))}
@@ -228,7 +228,7 @@ export default function SentimentSection() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap ${
                     activeTab === tab
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-foreground"
@@ -268,15 +268,14 @@ export default function SentimentSection() {
           {/* Right — summary text + description */}
           <div className="glass-card-dark flow-corner-bl min-h-[420px] flex flex-col justify-between">
             <div>
-              <h4 className="text-sm font-bold mb-3 text-foreground">Coverage Summary</h4>
+              <h4 className="text-sm font-medium mb-3 text-foreground">Coverage Summary</h4>
               <p className="text-sm leading-relaxed text-muted-foreground mb-4">
-                Q1 surfaced <span className="text-foreground font-semibold">1,224 mentions</span>
+                Q1 surfaced <span className="text-foreground font-medium">1,224 mentions</span>
                 {" "}of First Sentier Investors across Brandwatch,{" "}
-                <span className="text-foreground font-semibold">34% positive / 65% neutral</span>
+                <span className="text-foreground font-medium">34% positive / 65% neutral</span>
                 {" "}and only 16 negative (1.3%). The biggest narrative drivers were the
-                AlbaCore × MUFG European infrastructure debt platform launch, RQI Investors'
-                Global Value Fund debut in Hong Kong, and Igneo's acquisition of OnStream from
-                Macquarie.
+                AlbaCore × MUFG European infrastructure debt platform launch and Igneo's
+                acquisition of OnStream from Macquarie.
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground mb-4">
                 Coverage was almost entirely on the open web (95%) — driven by industry press
@@ -285,7 +284,7 @@ export default function SentimentSection() {
                 across our own posts and third-party coverage.
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground mb-4">
-                The US led by volume (301 mentions) on back of Igneo and RQI Investors news, with
+                The US led by volume (301 mentions) on back of Igneo infrastructure news, with
                 the UK (196) and Germany (115) close behind. Australia and Ireland rounded out the
                 top five. 341 mentions are unattributed to country in the Brandwatch export.
               </p>
@@ -314,14 +313,14 @@ export default function SentimentSection() {
 
         {/* Filter bar */}
         <div className="flex flex-wrap items-center gap-2 mb-4">
-          <span className="text-sm font-bold text-foreground mr-2">Notable Coverage</span>
+          <span className="text-sm font-medium text-foreground mr-2">Notable Coverage</span>
 
           {/* Sentiment filters */}
           {SENTIMENT_FILTERS.map((f) => (
             <button
               key={f}
               onClick={() => setSentimentFilter(f)}
-              className={`px-2.5 py-1 rounded-full text-[10px] font-semibold transition-all capitalize ${
+              className={`px-2.5 py-1 rounded-full text-[10px] font-medium transition-all capitalize ${
                 sentimentFilter === f
                   ? f === "positive" ? "bg-success/20 text-success"
                   : f === "negative" ? "bg-destructive/20 text-destructive"
@@ -341,7 +340,7 @@ export default function SentimentSection() {
             <button
               key={f}
               onClick={() => setChannelFilter(f)}
-              className={`px-2.5 py-1 rounded-full text-[10px] font-semibold transition-all ${
+              className={`px-2.5 py-1 rounded-full text-[10px] font-medium transition-all ${
                 channelFilter === f
                   ? "bg-primary text-primary-foreground"
                   : "text-muted-foreground hover:text-foreground"
@@ -352,7 +351,7 @@ export default function SentimentSection() {
           ))}
 
           {activeFilterCount > 0 && (
-            <button onClick={clearFilters} className="px-2.5 py-1 rounded-full text-[10px] font-semibold text-destructive hover:text-destructive/80 transition-all ml-1">
+            <button onClick={clearFilters} className="px-2.5 py-1 rounded-full text-[10px] font-medium text-destructive hover:text-destructive/80 transition-all ml-1">
               Clear filters
             </button>
           )}
@@ -367,14 +366,14 @@ export default function SentimentSection() {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/10">
-                <th className="text-left py-3 px-4 text-foreground font-semibold w-6"></th>
-                <th className="text-left py-3 px-4 text-foreground font-semibold">Title</th>
-                <th className="text-left py-3 px-4 text-foreground font-semibold">Source</th>
-                <th className="text-left py-3 px-4 text-foreground font-semibold">Channel</th>
-                <th className="text-left py-3 px-4 text-foreground font-semibold">Country</th>
-                <th className="text-left py-3 px-4 text-foreground font-semibold">Date</th>
-                <th className="text-right py-3 px-4 text-foreground font-semibold">Reach</th>
-                <th className="text-right py-3 px-4 text-foreground font-semibold">Rank</th>
+                <th className="text-left py-3 px-4 text-foreground font-medium w-6"></th>
+                <th className="text-left py-3 px-4 text-foreground font-medium">Title</th>
+                <th className="text-left py-3 px-4 text-foreground font-medium">Source</th>
+                <th className="text-left py-3 px-4 text-foreground font-medium">Channel</th>
+                <th className="text-left py-3 px-4 text-foreground font-medium">Country</th>
+                <th className="text-left py-3 px-4 text-foreground font-medium">Date</th>
+                <th className="text-right py-3 px-4 text-foreground font-medium">Reach</th>
+                <th className="text-right py-3 px-4 text-foreground font-medium">Rank</th>
               </tr>
             </thead>
             <tbody>
@@ -405,14 +404,14 @@ export default function SentimentSection() {
                   </td>
                   <td className="py-3 px-4 text-right">
                     {m.followers !== undefined && m.followers > 0 ? (
-                      <span className="text-primary font-semibold">{formatFollowers(m.followers)}</span>
+                      <span className="text-primary font-medium">{formatFollowers(m.followers)}</span>
                     ) : (
                       <span className="text-muted-foreground/30">—</span>
                     )}
                   </td>
                   <td className="py-3 px-4 text-right">
                     {m.domainRank !== undefined ? (
-                      <span className={`font-semibold ${
+                      <span className={`font-medium ${
                         m.domainRank < 1_000 ? "text-success" : m.domainRank < 10_000 ? "text-primary" : m.domainRank < 50_000 ? "text-warning" : "text-muted-foreground"
                       }`}>
                         #{m.domainRank.toLocaleString()}

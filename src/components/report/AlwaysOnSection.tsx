@@ -72,7 +72,7 @@ function UsersSessionsChart({ data, variant }: { data: GaMonthlyItem[]; variant:
             fontSize: 11,
             color: isDark ? "#fff" : "#000",
           }}
-          labelStyle={{ color: "#0F9AFF", fontWeight: 700 }}
+          labelStyle={{ color: "#0F9AFF", fontWeight: 500 }}
           formatter={(value: number, name: string) => [formatK(value), name === "users" ? "Users" : "Sessions"]}
         />
         <Area type="monotone" dataKey="sessions" stackId="1" fill="#56658B" stroke="#56658B" strokeWidth={1} fillOpacity={0.6} />
@@ -114,10 +114,10 @@ function TopPagesChart({ data, variant }: { data: TopPageItem[]; variant: "dark"
                 }}
               />
             </div>
-            <span className={`text-xs font-semibold tabular-nums w-12 text-right ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>
+            <span className={`text-xs font-medium tabular-nums w-12 text-right ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>
               {formatK(page.views)}
             </span>
-            <span className="text-xs font-semibold text-[hsl(142_60%_45%)] w-10 text-right">{page.change}</span>
+            <span className="text-xs font-medium text-[hsl(142_60%_45%)] w-10 text-right">{page.change}</span>
           </div>
         );
       })}
@@ -136,7 +136,7 @@ function TrafficSourcesChart({ data, variant }: { data: TrafficSourceItem[]; var
         <div key={source.source} className="space-y-1">
           <div className="flex justify-between">
             <span className={`text-xs font-medium ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>{source.source}</span>
-            <span className={`text-xs font-bold ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>{source.percentage}%</span>
+            <span className={`text-xs font-medium ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>{source.percentage}%</span>
           </div>
           <div className="h-2 rounded-full overflow-hidden" style={{ backgroundColor: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)" }}>
             <div
@@ -158,10 +158,10 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
   return (
     <section id={id} className={`${isDark ? "section-dark flow-section-dark" : "section-cream flow-section-cream"} py-24 relative`}>
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-[1]">
-        <div className="flex flex-wrap items-center gap-3 mb-2">
-          <h2 className={`text-3xl sm:text-4xl font-extrabold ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>{title}</h2>
-          <span className="stage-badge text-xs">{stage}</span>
+        <div className="mb-3">
+          <span className="stage-badge">{stage}</span>
         </div>
+        <h2 className={`text-3xl sm:text-4xl font-medium leading-tight mb-2 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>{title}</h2>
         <p className={`mb-8 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>{subtitle}</p>
 
         <div className="grid lg:grid-cols-2 gap-10">
@@ -169,7 +169,7 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
             <p className={`text-sm leading-relaxed ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>{description}</p>
 
             <div>
-              <h4 className={`text-sm font-bold mb-4 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Key Results</h4>
+              <h4 className={`text-sm font-medium mb-4 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Key Results</h4>
               <div className="space-y-3">
                 {kpis.map((kpi) => (
                   <KpiRow key={kpi.label} value={kpi.value} label={kpi.label} comparison={kpi.comparison} variant={variant} />
@@ -179,7 +179,7 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
 
             {activities && (
               <div>
-                <h4 className={`text-sm font-bold mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Activities</h4>
+                <h4 className={`text-sm font-medium mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Activities</h4>
                 <div className="flex flex-wrap gap-2">
                   {activities.map((a) => (
                     <span key={a} className={isDark ? "glass-pill-dark" : "glass-pill-cream"}>{a}</span>
@@ -190,7 +190,7 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
 
             <div className="grid grid-cols-2 gap-4">
               <div className={isDark ? "glass-card-dark flow-corner-bl" : "glass-card-cream flow-corner-bl"}>
-                <h4 className={`text-sm font-bold mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Focus in Q1</h4>
+                <h4 className={`text-sm font-medium mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Focus in Q1</h4>
                 <ul className="space-y-2">
                   {focusQ4.map((f) => (
                     <li key={f} className={`text-sm flex items-start gap-2 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>
@@ -202,7 +202,7 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
               </div>
 
               <div className={isDark ? "glass-card-dark flow-corner-tr" : "glass-card-cream flow-corner-tr"}>
-                <h4 className={`text-sm font-bold mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Focus in Q2</h4>
+                <h4 className={`text-sm font-medium mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Focus in Q2</h4>
                 <ul className="space-y-2">
                   {focusQ1.map((f) => (
                     <li key={f} className={`text-sm flex items-start gap-2 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>
@@ -222,7 +222,7 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap ${
                       activeTab === tab
                         ? "bg-primary text-primary-foreground"
                         : isDark ? "text-muted-foreground hover:text-foreground" : "text-secondary-foreground/50 hover:text-secondary-foreground"

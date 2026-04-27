@@ -55,7 +55,7 @@ export default function KpiRow({ value, label, comparison, variant = "dark" }: K
   return (
     <div className="flex items-center gap-4">
       <span className="text-primary shrink-0 text-sm">+</span>
-      <span className={`text-lg font-extrabold min-w-[70px] ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>{value}</span>
+      <span className={`text-lg font-medium min-w-[70px] ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>{value}</span>
       <span className="relative">
         <button
           ref={pillRef}
@@ -75,7 +75,7 @@ export default function KpiRow({ value, label, comparison, variant = "dark" }: K
               borderColor: isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.08)",
             }}
           >
-            <p className="font-bold mb-1" style={{ color: "#e22e2c" }}>{label}</p>
+            <p className="font-medium mb-1" style={{ color: "#e22e2c" }}>{label}</p>
             <p>{description}</p>
             <div className="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-transparent"
               style={{ borderTopColor: isDark ? "hsl(214 60% 18%)" : "hsl(0 0% 100%)" }}
@@ -84,7 +84,7 @@ export default function KpiRow({ value, label, comparison, variant = "dark" }: K
         )}
       </span>
       <span
-        className={`text-xs whitespace-nowrap font-semibold ${
+        className={`text-xs whitespace-nowrap font-medium ${
           isNegative ? "stat-negative" : isNeutral ? "text-muted-foreground" : "stat-positive"
         }`}
       >

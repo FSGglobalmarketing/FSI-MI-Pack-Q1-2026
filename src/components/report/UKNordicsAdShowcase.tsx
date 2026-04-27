@@ -72,7 +72,7 @@ function FeaturedCarousel({ images }: { images: string[] }) {
     <div className="relative">
       <img src={images[idx]} alt={`Slide ${idx + 1}`} className="w-full rounded-lg object-contain" />
       {/* Counter badge */}
-      <div className="absolute top-3 right-3 bg-background/80 backdrop-blur-sm rounded-full px-2.5 py-1 text-[11px] font-bold text-foreground">
+      <div className="absolute top-3 right-3 bg-background/80 backdrop-blur-sm rounded-full px-2.5 py-1 text-[11px] font-medium text-foreground">
         {idx + 1} / {images.length}
       </div>
       {/* Nav arrows */}
@@ -126,7 +126,7 @@ function MetricsBar({ ad }: { ad: Ad }) {
 function Metric({ label, value, highlight }: { label: string; value: string; highlight?: boolean }) {
   return (
     <div className="rounded-lg bg-foreground/[0.06] py-2 px-1">
-      <p className={`text-sm font-extrabold ${highlight ? "text-primary" : "text-foreground"}`}>{value}</p>
+      <p className={`text-sm font-medium ${highlight ? "text-primary" : "text-foreground"}`}>{value}</p>
       <p className="text-[9px] text-muted-foreground mt-0.5">{label}</p>
     </div>
   );
@@ -149,13 +149,13 @@ export default function UKNordicsAdShowcase() {
     <div className="w-full max-w-lg mx-auto space-y-3">
       {/* Header + toggle */}
       <div className="flex items-center justify-between">
-        <h4 className="text-xs font-bold tracking-wide text-muted-foreground">Ad Creatives</h4>
+        <h4 className="text-xs font-medium tracking-wide text-muted-foreground">Ad Creatives</h4>
         <div className="flex rounded-full bg-foreground/10 p-1">
           {MODES.map((m) => (
             <button
               key={m.key}
               onClick={() => handleModeSwitch(m.key)}
-              className={`px-3 py-1.5 rounded-full text-[11px] font-semibold transition-all ${
+              className={`px-3 py-1.5 rounded-full text-[11px] font-medium transition-all ${
                 mode === m.key
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
@@ -177,9 +177,9 @@ export default function UKNordicsAdShowcase() {
 
         {/* Title + badge */}
         <div className="flex items-center gap-2 mt-3 px-0.5">
-          <p className="text-sm font-semibold text-foreground leading-snug truncate">{ad.name}</p>
+          <p className="text-sm font-medium text-foreground leading-snug truncate">{ad.name}</p>
           {ad.duration && (
-            <span className="text-[9px] font-bold tracking-wide text-muted-foreground bg-foreground/10 px-1.5 py-0.5 rounded shrink-0">
+            <span className="text-[9px] font-medium tracking-wide text-muted-foreground bg-foreground/10 px-1.5 py-0.5 rounded shrink-0">
               {ad.duration}
             </span>
           )}

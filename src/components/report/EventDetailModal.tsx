@@ -21,7 +21,7 @@ export default function EventDetailModal({ event, onClose }: EventDetailModalPro
         <div className="sticky top-0 z-10 flex items-start justify-between p-6 pb-4 rounded-t-2xl border-b border-secondary-foreground/5">
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <span className={`text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full ${
+              <span className={`text-[10px] font-medium tracking-wide px-2 py-0.5 rounded-full ${
                 event.status === "committed"
                   ? "bg-primary/15 text-primary"
                   : event.status === "proposed"
@@ -32,12 +32,12 @@ export default function EventDetailModal({ event, onClose }: EventDetailModalPro
               }`}>
                 {event.status.replace("-", " ")}
               </span>
-              {event.assetClass && <span className="text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">{event.assetClass}</span>}
-              <span className="text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">
+              {event.assetClass && <span className="text-[10px] font-medium tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">{event.assetClass}</span>}
+              <span className="text-[10px] font-medium tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">
                 {event.category}
               </span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-secondary-foreground" style={{ color: "hsl(var(--secondary-foreground))" }}>{event.name}</h2>
+            <h2 className="text-xl sm:text-2xl font-medium text-secondary-foreground" style={{ color: "hsl(var(--secondary-foreground))" }}>{event.name}</h2>
           </div>
           <button
             onClick={onClose}
@@ -78,7 +78,7 @@ export default function EventDetailModal({ event, onClose }: EventDetailModalPro
           {/* Photo gallery / carousel */}
           {hasImages ? (
             <div>
-              <h4 className="text-xs font-bold tracking-wide text-secondary-foreground/50 mb-3">Gallery</h4>
+              <h4 className="text-xs font-medium tracking-wide text-secondary-foreground/50 mb-3">Gallery</h4>
               <div className="grid grid-cols-3 gap-2">
                 {event.images!.map((src, i) => (
                   <button
@@ -101,7 +101,7 @@ export default function EventDetailModal({ event, onClose }: EventDetailModalPro
           {/* Team section */}
           {event.team && event.team.length > 0 && (
             <div>
-              <h4 className="text-xs font-bold tracking-wide text-secondary-foreground/50 mb-3">
+              <h4 className="text-xs font-medium tracking-wide text-secondary-foreground/50 mb-3">
                 Team attending / speaking
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -114,13 +114,13 @@ export default function EventDetailModal({ event, onClose }: EventDetailModalPro
                       {member.avatar ? (
                         <img src={member.avatar} alt={member.name} className="w-full h-full object-cover" />
                       ) : (
-                        <AvatarFallback className="bg-primary/15 text-primary font-bold text-sm">
+                        <AvatarFallback className="bg-primary/15 text-primary font-medium text-sm">
                           {member.name.split(" ").map((n) => n[0]).join("")}
                         </AvatarFallback>
                       )}
                     </Avatar>
                     <div>
-                      <p className="text-sm font-semibold text-secondary-foreground">{member.name}</p>
+                      <p className="text-sm font-medium text-secondary-foreground">{member.name}</p>
                       <p className="text-xs text-secondary-foreground/60">{member.role}</p>
                     </div>
                   </div>

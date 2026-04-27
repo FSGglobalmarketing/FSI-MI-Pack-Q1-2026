@@ -93,17 +93,17 @@ export default function HeroSection() {
               <span className="stage-badge inline-block">{d.quarter}</span>
               <span className="text-sm font-medium text-foreground/60">{d.dataPeriod}</span>
             </div>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground leading-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-foreground leading-tight">
               Global Marketing<br />Impact Report
             </h1>
           </div>
 
           {/* Card on bottom right */}
           <div className="relative max-w-sm rounded-xl border border-border bg-card/60 backdrop-blur-md p-5 sm:p-6 transition-all duration-500">
-            <span className="inline-block text-[10px] font-semibold tracking-wide text-accent mb-1.5">
+            <span className="inline-block text-[10px] font-medium tracking-wide text-accent mb-1.5">
               {slides[current].label}
             </span>
-            <h2 className="text-base font-bold text-foreground leading-snug mb-1.5" style={{ marginBottom: 6 }}>
+            <h2 className="text-base font-medium text-foreground leading-snug mb-1.5" style={{ marginBottom: 6 }}>
               {slides[current].heading}
             </h2>
             <p className="text-xs text-foreground/70 leading-relaxed mb-4">
@@ -127,7 +127,7 @@ export default function HeroSection() {
 
               <button
                 onClick={handleJump}
-                className="px-4 py-1.5 rounded-full text-xs font-semibold bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                className="px-4 py-1.5 rounded-full text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
               >
                 Jump to section
               </button>

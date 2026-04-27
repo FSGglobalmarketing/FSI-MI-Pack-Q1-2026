@@ -69,7 +69,7 @@ function FilterGroup({
 }) {
   return (
     <div className="flex items-center gap-1.5">
-      <span className="text-[10px] tracking-wide font-bold text-secondary-foreground/40 mr-1">{label}</span>
+      <span className="text-[10px] tracking-wide font-medium text-secondary-foreground/40 mr-1">{label}</span>
       {values.map((v) => {
         const isActive = active.includes(v);
         return (

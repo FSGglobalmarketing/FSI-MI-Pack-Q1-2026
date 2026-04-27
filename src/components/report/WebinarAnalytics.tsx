@@ -36,7 +36,7 @@ export default function WebinarAnalytics() {
       }}
     >
       <div>
-        <h3 className="text-sm font-extrabold tracking-wide mb-1" style={{ color: NAVY }}>
+        <h3 className="text-sm font-medium tracking-wide mb-1" style={{ color: NAVY }}>
           Attendee analytics
         </h3>
         <p className="text-xs" style={{ color: NAVY_MUTED }}>
@@ -53,7 +53,7 @@ export default function WebinarAnalytics() {
             style={{ background: FILL_SOFT, border: `1px solid ${BORDER_SOFT}` }}
           >
             <div className="text-[10px] tracking-wide" style={{ color: NAVY_MUTED }}>{kpi.label}</div>
-            <div className="text-2xl font-extrabold" style={{ color: NAVY }}>{kpi.value}</div>
+            <div className="text-2xl font-medium" style={{ color: NAVY }}>{kpi.value}</div>
             {kpi.sub && <div className="text-[10px] mt-0.5" style={{ color: NAVY_MUTED }}>{kpi.sub}</div>}
           </div>
         ))}
@@ -61,7 +61,7 @@ export default function WebinarAnalytics() {
 
       {/* Attendance mode donut */}
       <div>
-        <h4 className="text-[11px] tracking-wide mb-2 font-semibold" style={{ color: NAVY_MUTED }}>
+        <h4 className="text-[11px] tracking-wide mb-2 font-medium" style={{ color: NAVY_MUTED }}>
           Attendance mode
         </h4>
         <div className="flex items-center gap-4">
@@ -92,7 +92,7 @@ export default function WebinarAnalytics() {
                   <span className="w-2.5 h-2.5 rounded-sm" style={{ background: d.color }} />
                   <span style={{ color: NAVY_SOFT }}>{d.mode}</span>
                 </div>
-                <span className="font-bold tabular-nums" style={{ color: NAVY }}>{d.count}</span>
+                <span className="font-medium tabular-nums" style={{ color: NAVY }}>{d.count}</span>
               </div>
             ))}
           </div>
@@ -101,7 +101,7 @@ export default function WebinarAnalytics() {
 
       {/* Countries */}
       <div>
-        <h4 className="text-[11px] tracking-wide mb-2 font-semibold" style={{ color: NAVY_MUTED }}>
+        <h4 className="text-[11px] tracking-wide mb-2 font-medium" style={{ color: NAVY_MUTED }}>
           Attendees by region
         </h4>
         <ResponsiveContainer width="100%" height={140}>
@@ -122,7 +122,7 @@ export default function WebinarAnalytics() {
 
       {/* Top firms */}
       <div>
-        <h4 className="text-[11px] tracking-wide mb-2 font-semibold" style={{ color: NAVY_MUTED }}>
+        <h4 className="text-[11px] tracking-wide mb-2 font-medium" style={{ color: NAVY_MUTED }}>
           Top attending firms (2+)
         </h4>
         <div className="space-y-1.5">
@@ -132,7 +132,7 @@ export default function WebinarAnalytics() {
                 <Users className="w-3 h-3" style={{ color: NAVY_MUTED }} />
                 <span>{f.firm}</span>
               </div>
-              <span className="font-bold tabular-nums" style={{ color: RED }}>{f.count}</span>
+              <span className="font-medium tabular-nums" style={{ color: RED }}>{f.count}</span>
             </div>
           ))}
         </div>
@@ -142,7 +142,7 @@ export default function WebinarAnalytics() {
       <div>
         <div className="flex items-center gap-2 mb-2">
           <CheckCircle2 className="w-4 h-4" style={{ color: RED }} />
-          <h4 className="text-[11px] tracking-wide font-semibold" style={{ color: NAVY_MUTED }}>
+          <h4 className="text-[11px] tracking-wide font-medium" style={{ color: NAVY_MUTED }}>
             Live Salesforce opportunities in the room
           </h4>
         </div>
@@ -154,9 +154,9 @@ export default function WebinarAnalytics() {
           <table className="w-full text-[11px]">
             <thead>
               <tr style={{ background: FILL_SOFT }}>
-                <th className="text-left p-2 font-semibold" style={{ color: NAVY_MUTED }}>Firm</th>
-                <th className="text-left p-2 font-semibold" style={{ color: NAVY_MUTED }}>Stage</th>
-                <th className="text-left p-2 font-semibold" style={{ color: NAVY_MUTED }}>Strategy</th>
+                <th className="text-left p-2 font-medium" style={{ color: NAVY_MUTED }}>Firm</th>
+                <th className="text-left p-2 font-medium" style={{ color: NAVY_MUTED }}>Stage</th>
+                <th className="text-left p-2 font-medium" style={{ color: NAVY_MUTED }}>Strategy</th>
               </tr>
             </thead>
             <tbody>
@@ -165,7 +165,7 @@ export default function WebinarAnalytics() {
                   <td className="p-2 font-medium" style={{ color: NAVY }}>{m.attendee}</td>
                   <td className="p-2">
                     <span
-                      className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold"
+                      className="inline-block px-2 py-0.5 rounded-full text-[10px] font-medium"
                       style={{
                         background:
                           m.stage.match(/Active Engagement/) ? "rgba(54,153,201,0.15)" :
@@ -195,7 +195,7 @@ export default function WebinarAnalytics() {
       >
         <MessageCircle className="w-4 h-4 shrink-0 mt-0.5" style={{ color: RED }} />
         <div className="text-xs leading-relaxed" style={{ color: NAVY }}>
-          <span className="font-bold">6 attendees asked substantive questions live</span> — spanning
+          <span className="font-medium">6 attendees asked substantive questions live</span> — spanning
           geopolitics (Taiwan/Iran), Stewart→FSSA fund merger clarity, CATL ownership and USD-strength
           impact. Full transcript in the recording.
         </div>

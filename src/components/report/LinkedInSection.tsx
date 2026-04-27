@@ -134,17 +134,17 @@ function ContentMixChart() {
           const dot = [COLOR_ORGANIC, "#999", "#bbb", "#888"][i];
           return (
             <div key={c.category} className="rounded-lg p-3" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}>
-              <div className="flex items-center gap-1.5 mb-2 text-xs font-semibold text-foreground">
+              <div className="flex items-center gap-1.5 mb-2 text-xs font-medium text-foreground">
                 <span className="w-2 h-2 rounded-full" style={{ background: dot }} />
                 {c.category}
               </div>
-              <p className="text-lg font-bold text-foreground">{c.posts}</p>
+              <p className="text-lg font-medium text-foreground">{c.posts}</p>
               <p className="text-[10px] tracking-wide text-muted-foreground">posts</p>
               <p className="text-[11px] text-muted-foreground mt-1">
-                Avg CTR: <span className="text-foreground font-semibold">{(c.avgCtr * 100).toFixed(2)}%</span>
+                Avg CTR: <span className="text-foreground font-medium">{(c.avgCtr * 100).toFixed(2)}%</span>
               </p>
               <p className="text-[11px] text-muted-foreground">
-                Avg Eng: <span className="text-foreground font-semibold">{(c.avgEngagement * 100).toFixed(2)}%</span>
+                Avg Eng: <span className="text-foreground font-medium">{(c.avgEngagement * 100).toFixed(2)}%</span>
               </p>
             </div>
           );
@@ -182,13 +182,13 @@ function TopPostsTable() {
         <table className="w-full text-xs">
           <thead>
             <tr style={{ background: "rgba(255,255,255,0.04)" }}>
-              <th className="text-left p-3 font-semibold text-white/60">Post</th>
-              <th className="text-left p-3 font-semibold text-white/60">Category</th>
-              <th className="text-right p-3 font-semibold text-white/60">CTR</th>
-              <th className="text-right p-3 font-semibold text-white/60">Impressions</th>
-              <th className="text-right p-3 font-semibold text-white/60">Clicks</th>
-              <th className="text-right p-3 font-semibold text-white/60">Eng Rate</th>
-              <th className="text-center p-3 font-semibold text-white/60">Link</th>
+              <th className="text-left p-3 font-medium text-white/60">Post</th>
+              <th className="text-left p-3 font-medium text-white/60">Category</th>
+              <th className="text-right p-3 font-medium text-white/60">CTR</th>
+              <th className="text-right p-3 font-medium text-white/60">Impressions</th>
+              <th className="text-right p-3 font-medium text-white/60">Clicks</th>
+              <th className="text-right p-3 font-medium text-white/60">Eng Rate</th>
+              <th className="text-center p-3 font-medium text-white/60">Link</th>
             </tr>
           </thead>
           <tbody>
@@ -204,12 +204,12 @@ function TopPostsTable() {
                     <div className="text-[10px] text-white/40 mt-1">{post.date}</div>
                   </td>
                   <td className="p-3">
-                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-semibold" style={{ background: "rgba(255,255,255,0.06)", color: "hsl(0 0% 85%)" }}>
+                    <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-medium" style={{ background: "rgba(255,255,255,0.06)", color: "hsl(0 0% 85%)" }}>
                       <span className="w-1.5 h-1.5 rounded-full" style={{ background: catDot }} />
                       {post.category}
                     </span>
                   </td>
-                  <td className="p-3 text-right tabular-nums text-foreground font-bold">
+                  <td className="p-3 text-right tabular-nums text-foreground font-medium">
                     {(post.ctr * 100).toFixed(2)}%
                   </td>
                   <td className="p-3 text-right tabular-nums text-white">{post.impressions.toLocaleString()}</td>
@@ -256,10 +256,10 @@ export default function LinkedInSection() {
   return (
     <section id="linkedin" className="section-dark py-24 flow-section-dark relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-[1]">
-        <div className="flex flex-wrap items-center gap-3 mb-2">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">{d.title}</h2>
-          <span className="stage-badge text-xs">{d.stage}</span>
+        <div className="mb-3">
+          <span className="stage-badge">{d.stage}</span>
         </div>
+        <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-2 text-foreground">{d.title}</h2>
         <p className="text-muted-foreground mb-8">{d.subtitle}</p>
 
         <div className="grid lg:grid-cols-2 gap-10">
@@ -267,22 +267,22 @@ export default function LinkedInSection() {
           <div className="space-y-6">
             <p className="text-sm leading-relaxed text-muted-foreground">
               Q1 was a two-speed quarter on LinkedIn. Paid spend{" "}
-              <strong className="text-foreground font-semibold">more than doubled</strong> —
-              sponsored impressions rose from <strong className="text-foreground font-semibold">235.1k in Q4</strong> to{" "}
-              <strong className="text-foreground font-semibold">486.5k in Q1</strong> (+107%) — while organic output stayed
-              deliberately selective at <strong className="text-foreground font-semibold">10 posts</strong> across AI
+              <strong className="text-foreground font-medium">more than doubled</strong> —
+              sponsored impressions rose from <strong className="text-foreground font-medium">235.1k in Q4</strong> to{" "}
+              <strong className="text-foreground font-medium">486.5k in Q1</strong> (+107%) — while organic output stayed
+              deliberately selective at <strong className="text-foreground font-medium">10 posts</strong> across AI
               thematic content, FONDS Professionell Kongress (DE) and Institutional Money Kongress (DE). Organic
-              impressions came in at <strong className="text-foreground font-semibold">35.9k</strong> (
-              <strong className="text-foreground font-semibold">-19% vs Q4's 44.6k</strong>). The top organic post was the{" "}
-              <strong className="text-foreground font-semibold">Martin Lau client roundtable</strong> at a{" "}
-              <strong className="text-foreground font-semibold">26.5% CTR</strong> (2,779 impressions, 737 clicks),
-              followed by the <strong className="text-foreground font-semibold">Genium Recommended</strong> rating and the{" "}
-              <strong className="text-foreground font-semibold">Chinese ingenuity</strong> strategy piece.
+              impressions came in at <strong className="text-foreground font-medium">35.9k</strong> (
+              <strong className="text-foreground font-medium">-19% vs Q4's 44.6k</strong>). The top organic post was the{" "}
+              <strong className="text-foreground font-medium">Martin Lau client roundtable</strong> at a{" "}
+              <strong className="text-foreground font-medium">26.5% CTR</strong> (2,779 impressions, 737 clicks),
+              followed by the <strong className="text-foreground font-medium">Genium Recommended</strong> rating and the{" "}
+              <strong className="text-foreground font-medium">Chinese ingenuity</strong> strategy piece.
               Event- and client-led posts outperformed product content, steering the Q2 calendar.
             </p>
 
             <div>
-              <h4 className="text-sm font-bold mb-4 text-foreground">Key Results</h4>
+              <h4 className="text-sm font-medium mb-4 text-foreground">Key Results</h4>
               <div className="space-y-3">
                 {kpis.map((k) => (
                   <KpiRow key={k.label} value={k.value} label={k.label} comparison={k.comparison} />
@@ -292,7 +292,7 @@ export default function LinkedInSection() {
 
             {d.activities && (
               <div>
-                <h4 className="text-sm font-bold mb-3 text-foreground">Activities</h4>
+                <h4 className="text-sm font-medium mb-3 text-foreground">Activities</h4>
                 <div className="flex flex-wrap gap-2">
                   {d.activities.map((a) => (
                     <span key={a} className="glass-pill-dark">{a}</span>
@@ -303,7 +303,7 @@ export default function LinkedInSection() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="glass-card-dark flow-corner-bl">
-                <h4 className="text-sm font-bold mb-3 text-foreground">Focus in Q1</h4>
+                <h4 className="text-sm font-medium mb-3 text-foreground">Focus in Q1</h4>
                 <ul className="space-y-2">
                   {d.focusQ4.map((f) => (
                     <li key={f} className="text-sm flex items-start gap-2 text-muted-foreground">
@@ -316,7 +316,7 @@ export default function LinkedInSection() {
                 </ul>
               </div>
               <div className="glass-card-dark flow-corner-tr">
-                <h4 className="text-sm font-bold mb-3 text-foreground">Focus in Q2</h4>
+                <h4 className="text-sm font-medium mb-3 text-foreground">Focus in Q2</h4>
                 <ul className="space-y-2">
                   {d.focusQ1.map((f) => (
                     <li key={f} className="text-sm flex items-start gap-2 text-muted-foreground">
@@ -335,7 +335,7 @@ export default function LinkedInSection() {
                 <button
                   key={t}
                   onClick={() => setTab(t)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap ${
                     tab === t
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-foreground"

@@ -35,19 +35,19 @@ export default function SentimentDetailModal({ mention, onClose }: Props) {
           <div className="flex-1 min-w-0 pr-4">
             <div className="flex flex-wrap items-center gap-2 mb-2">
               <span
-                className="text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full"
+                className="text-[10px] font-medium tracking-wide px-2 py-0.5 rounded-full"
                 style={{ backgroundColor: `${sentimentColor}20`, color: sentimentColor }}
               >
                 {mention.sentiment}
               </span>
-              <span className="text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">
+              <span className="text-[10px] font-medium tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">
                 {mention.category}
               </span>
-              <span className="text-[10px] font-bold tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">
+              <span className="text-[10px] font-medium tracking-wide px-2 py-0.5 rounded-full bg-secondary-foreground/8 text-secondary-foreground/60">
                 {CHANNEL_ICONS[mention.channel]} {mention.channel}
               </span>
             </div>
-            <h2 className="text-lg sm:text-xl font-extrabold leading-tight" style={{ color: "hsl(var(--secondary-foreground))" }}>
+            <h2 className="text-lg sm:text-xl font-medium leading-tight" style={{ color: "hsl(var(--secondary-foreground))" }}>
               {mention.title}
             </h2>
           </div>
@@ -79,7 +79,7 @@ export default function SentimentDetailModal({ mention, onClose }: Props) {
           {/* Snippet */}
           {mention.snippet && (
             <div>
-              <p className="text-[10px] text-secondary-foreground/50 tracking-wide font-semibold mb-2">Summary</p>
+              <p className="text-[10px] text-secondary-foreground/50 tracking-wide font-medium mb-2">Summary</p>
               <p className="text-sm text-secondary-foreground/80 leading-relaxed">
                 {mention.snippet}
               </p>

@@ -4,6 +4,7 @@ import GlobalFocus from "@/components/report/GlobalFocus";
 import PerformanceResults from "@/components/report/PerformanceResults";
 import SalesforceSection from "@/components/report/SalesforceSection";
 import SearchVisibility from "@/components/report/SearchVisibility";
+import HighlightSection from "@/components/report/HighlightSection";
 import AlwaysOnSection from "@/components/report/AlwaysOnSection";
 import LinkedInSection from "@/components/report/LinkedInSection";
 import EventsSection from "@/components/report/EventsSection";
@@ -21,6 +22,10 @@ const Index = () => {
       <PerformanceResults />
       <SalesforceSection />
       <SearchVisibility />
+
+      {d.highlights.map((h) => (
+        <HighlightSection key={h.id} highlight={h} />
+      ))}
 
       <AlwaysOnSection
         id="website"

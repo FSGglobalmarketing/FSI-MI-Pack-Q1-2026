@@ -17,7 +17,7 @@ function EpisodeLeaderboard() {
     <div className="space-y-2 max-h-[460px] overflow-y-auto pr-2">
       {sorted.map((ep, i) => (
         <div key={ep.title} className="group flex items-center gap-3">
-          <span className={`text-xs font-bold w-5 text-right shrink-0 ${i < 3 ? "text-primary" : "text-muted-foreground"}`}>
+          <span className={`text-xs font-medium w-5 text-right shrink-0 ${i < 3 ? "text-primary" : "text-muted-foreground"}`}>
             {i + 1}
           </span>
           <div className="flex-1 min-w-0">
@@ -34,7 +34,7 @@ function EpisodeLeaderboard() {
               />
             </div>
           </div>
-          <span className="text-xs font-mono font-semibold text-foreground tabular-nums w-12 text-right shrink-0">
+          <span className="text-xs font-mono font-medium text-foreground tabular-nums w-12 text-right shrink-0">
             {ep.streams.toLocaleString()}
           </span>
         </div>
@@ -55,7 +55,7 @@ function StreamsOverTime() {
         <YAxis tick={{ fontSize: 9, fill: "hsl(0 0% 60%)" }} />
         <Tooltip
           contentStyle={{ background: "hsl(214 60% 18%)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, fontSize: 11 }}
-          labelStyle={{ color: "#0F9AFF", fontWeight: 700 }}
+          labelStyle={{ color: "#0F9AFF", fontWeight: 500 }}
           formatter={(value: number) => [`${value} streams`, "Monthly Streams"]}
         />
         <Line type="monotone" dataKey="streams" stroke="#0F9AFF" strokeWidth={2.5} dot={false} />
@@ -109,12 +109,12 @@ function EpisodeCatalog() {
                   {new Date(ep.releaseDate).toLocaleDateString("en-GB", { month: "short", year: "numeric" })}
                 </span>
               </div>
-              <h5 className="text-xs font-bold text-foreground mb-1.5 line-clamp-2">{ep.title}</h5>
+              <h5 className="text-xs font-medium text-foreground mb-1.5 line-clamp-2">{ep.title}</h5>
               <p className="text-[10px] text-muted-foreground line-clamp-3">{ep.description}</p>
             </div>
             <div className="flex items-center gap-1.5 mt-3 pt-2 border-t border-border/30">
               <Headphones className="w-3 h-3 text-primary" />
-              <span className="text-xs font-semibold text-foreground">{ep.streams.toLocaleString()}</span>
+              <span className="text-xs font-medium text-foreground">{ep.streams.toLocaleString()}</span>
               <span className="text-[10px] text-muted-foreground">streams</span>
             </div>
           </div>
@@ -133,10 +133,10 @@ export default function PodcastSection() {
   return (
     <section id="podcast" className="section-dark py-24 flow-section-dark relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-[1]">
-        <div className="flex flex-wrap items-center gap-3 mb-2">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-foreground">{p.title}</h2>
-          <span className="stage-badge text-xs">{p.stage}</span>
+        <div className="mb-3">
+          <span className="stage-badge">{p.stage}</span>
         </div>
+        <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-2 text-foreground">{p.title}</h2>
         <p className="text-muted-foreground mb-8">{p.subtitle}</p>
 
         <div className="grid lg:grid-cols-2 gap-10">
@@ -144,7 +144,7 @@ export default function PodcastSection() {
           <div className="space-y-6">
             <p className="text-sm text-muted-foreground leading-relaxed">{p.description}</p>
             <div>
-              <h4 className="text-sm font-bold mb-4 text-foreground">Key Results</h4>
+              <h4 className="text-sm font-medium mb-4 text-foreground">Key Results</h4>
               <div className="space-y-3">
                 {p.kpis.map((kpi) => (
                   <KpiRow key={kpi.label} value={kpi.value} label={kpi.label} comparison={kpi.comparison} />
@@ -155,15 +155,15 @@ export default function PodcastSection() {
             {/* Summary stats */}
             <div className="grid grid-cols-3 gap-3">
               <div className="glass-card-dark p-4 text-center">
-                <p className="text-2xl font-extrabold text-primary">{podcastEpisodes.length}</p>
+                <p className="text-2xl font-medium text-primary">{podcastEpisodes.length}</p>
                 <p className="text-[10px] text-muted-foreground mt-1">Total episodes</p>
               </div>
               <div className="glass-card-dark p-4 text-center">
-                <p className="text-2xl font-extrabold text-primary">{(totalStreams / 1000).toFixed(1)}k</p>
+                <p className="text-2xl font-medium text-primary">{(totalStreams / 1000).toFixed(1)}k</p>
                 <p className="text-[10px] text-muted-foreground mt-1">Total streams</p>
               </div>
               <div className="glass-card-dark p-4 text-center">
-                <p className="text-2xl font-extrabold text-primary">{Math.round(totalStreams / podcastEpisodes.length)}</p>
+                <p className="text-2xl font-medium text-primary">{Math.round(totalStreams / podcastEpisodes.length)}</p>
                 <p className="text-[10px] text-muted-foreground mt-1">Avg per episode</p>
               </div>
             </div>
@@ -174,7 +174,7 @@ export default function PodcastSection() {
                 <Headphones className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <p className="text-foreground font-bold text-sm">Keeping it Real Assets</p>
+                <p className="text-foreground font-medium text-sm">Keeping it Real Assets</p>
                 <p className="text-xs text-muted-foreground">Infrastructure insights from Igneo's investment team</p>
               </div>
             </div>
@@ -187,7 +187,7 @@ export default function PodcastSection() {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap ${
                     activeTab === tab
                       ? "bg-primary text-primary-foreground"
                       : "text-muted-foreground hover:text-foreground"

@@ -48,7 +48,7 @@ export default function VideoCarousel() {
 
   return (
     <div className="mt-10">
-      <h4 className="text-sm font-bold text-secondary-foreground mb-6 flex items-center gap-2">
+      <h4 className="text-sm font-medium text-secondary-foreground mb-6 flex items-center gap-2">
         <Play className="w-4 h-4 text-primary" />
         Demystified Video Series
       </h4>
@@ -83,14 +83,14 @@ export default function VideoCarousel() {
         </div>
 
         <div className="mt-4 rounded-xl border border-border bg-muted/50 p-5">
-          <p className="text-sm font-semibold text-foreground mb-4">{video.title}</p>
+          <p className="text-sm font-medium text-foreground mb-4">{video.title}</p>
           <div className="grid grid-cols-3 gap-4">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
                 <Eye className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="text-lg font-bold text-foreground leading-none">{video.totalViews}</p>
+                <p className="text-lg font-medium text-foreground leading-none">{video.totalViews}</p>
                 <p className="text-[10px] text-white/50 mt-0.5">Total views</p>
               </div>
             </div>
@@ -99,7 +99,7 @@ export default function VideoCarousel() {
                 <Clock className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="text-lg font-bold text-foreground leading-none">{video.avgCompletion}%</p>
+                <p className="text-lg font-medium text-foreground leading-none">{video.avgCompletion}%</p>
                 <p className="text-[10px] text-white/50 mt-0.5">Avg completion</p>
               </div>
             </div>
@@ -108,7 +108,7 @@ export default function VideoCarousel() {
                 <BarChart3 className="w-4 h-4 text-primary" />
               </div>
               <div>
-                <p className="text-lg font-bold text-foreground leading-none">{video.peakEngagement}x</p>
+                <p className="text-lg font-medium text-foreground leading-none">{video.peakEngagement}x</p>
                 <p className="text-[10px] text-white/50 mt-0.5">Peak engagement</p>
               </div>
             </div>

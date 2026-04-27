@@ -114,10 +114,10 @@ export default function PerformanceResults() {
         <div className="flex flex-col lg:flex-row lg:items-center gap-6 mb-0">
           {/* Left text block */}
           <div className="lg:w-[280px] shrink-0">
-            <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-4 leading-tight">
+            <h2 className="text-4xl sm:text-5xl font-medium text-foreground mb-4 leading-tight">
               Performance<br />& Results
             </h2>
-            <h3 className="text-lg font-bold text-foreground mb-3">What does good look like?</h3>
+            <h3 className="text-lg font-medium text-foreground mb-3">What does good look like?</h3>
             <p className="text-sm text-muted-foreground mb-8">
               A birds-eye view of performance across channel and where we exceeded our targets.
             </p>
@@ -336,12 +336,12 @@ export default function PerformanceResults() {
             const items = reportData.performanceResults[key as keyof typeof reportData.performanceResults];
             return (
               <div key={key}>
-                <h3 className="text-sm font-bold text-primary mb-2">{stageLabel}</h3>
+                <h3 className="text-sm font-medium text-primary mb-2">{stageLabel}</h3>
                 {items.map((item) => (
                   <div key={item.channel} className="metric-card mb-2">
                     <div className="flex items-center gap-2 mb-1">
                       <span className={`inline-block w-2 h-2 rounded-full ${item.status === "good" ? "bg-success" : item.status === "below" ? "bg-primary" : "bg-muted-foreground"}`} />
-                      <span className="text-xs font-semibold text-foreground">{item.channel}</span>
+                      <span className="text-xs font-medium text-foreground">{item.channel}</span>
                     </div>
                     <span className="text-xs text-muted-foreground">{item.metrics.join(" · ")}{item.comparison && ` · ${item.comparison}`}</span>
                   </div>

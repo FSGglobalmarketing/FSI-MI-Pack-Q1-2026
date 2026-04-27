@@ -7,6 +7,10 @@ const navItems = [
   { id: "performance", label: "KPI Framework" },
   { id: "salesforce", label: "Salesforce" },
   { id: "search-visibility", label: "Search visibility" },
+  { id: "highlight-aeq-reporting", label: "Reporting season" },
+  { id: "highlight-ex20-phase-2",  label: "EX-20 Phase II" },
+  { id: "highlight-cash-etf",      label: "Cash ETF" },
+  { id: "highlight-glis",          label: "GLIS update" },
   { id: "website", label: "Website" },
   { id: "linkedin", label: "LinkedIn" },
   { id: "events", label: "Events" },
@@ -14,11 +18,12 @@ const navItems = [
 ];
 
 const funnelStages = [
-  { label: "Summary", startIdx: 0, endIdx: 1 },
-  { label: "Awareness", startIdx: 2, endIdx: 3 },
-  { label: "Consideration", startIdx: 4, endIdx: 5 },
-  { label: "Conversion", startIdx: 6, endIdx: 6 },
-  { label: "Monitoring", startIdx: 7, endIdx: 7 },
+  { label: "Summary",        startIdx: 0,  endIdx: 1 },
+  { label: "Awareness",      startIdx: 2,  endIdx: 3 },
+  { label: "Highlights",     startIdx: 4,  endIdx: 7 },
+  { label: "Consideration",  startIdx: 8,  endIdx: 9 },
+  { label: "Conversion",     startIdx: 10, endIdx: 10 },
+  { label: "Monitoring",     startIdx: 11, endIdx: 11 },
 ];
 
 export default function ReportNav() {
@@ -87,7 +92,7 @@ export default function ReportNav() {
                   }}
                   className={`px-3 py-1.5 rounded-md text-[11px] tracking-wide transition-all whitespace-nowrap ${
                     active === item.id
-                      ? "bg-primary text-primary-foreground font-semibold"
+                      ? "bg-primary text-primary-foreground font-medium"
                       : "text-white hover:bg-primary hover:text-primary-foreground"
                   }`}
                 >
@@ -111,7 +116,7 @@ export default function ReportNav() {
                       <path d="M2 0 L2 6 L98 6 L98 0" stroke={isActiveStage ? "hsl(var(--primary))" : "rgba(255,255,255,0.35)"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none" />
                       <path d="M50 6 L50 12" stroke={isActiveStage ? "hsl(var(--primary))" : "rgba(255,255,255,0.35)"} strokeWidth="1.5" vectorEffect="non-scaling-stroke" fill="none" />
                     </svg>
-                    <span className={`text-[9px] tracking-wide ${isActiveStage ? "text-primary font-semibold" : "text-white/60"}`}>
+                    <span className={`text-[9px] tracking-wide ${isActiveStage ? "text-primary font-medium" : "text-white/60"}`}>
                       {stage.label}
                     </span>
                   </div>
@@ -139,7 +144,7 @@ export default function ReportNav() {
                   document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' });
                 }}
                 className={`px-3 py-2 rounded-md text-sm ${
-                  active === item.id ? "bg-primary text-primary-foreground font-semibold" : "text-white hover:bg-primary hover:text-primary-foreground"
+                  active === item.id ? "bg-primary text-primary-foreground font-medium" : "text-white hover:bg-primary hover:text-primary-foreground"
                 }`}
               >
                 {item.label}
