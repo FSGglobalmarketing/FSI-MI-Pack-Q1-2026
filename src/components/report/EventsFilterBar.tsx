@@ -78,7 +78,7 @@ function FilterGroup({
             onClick={() => onToggle(v)}
             className={`text-xs px-3 py-1 rounded-full font-medium transition-all capitalize ${
               isActive
-                ? "bg-primary text-primary-foreground shadow-sm"
+                ? "bg-accent text-accent-foreground shadow-sm"
                 : "bg-secondary-foreground/5 text-secondary-foreground/60 hover:bg-secondary-foreground/10 hover:text-secondary-foreground"
             }`}
           >

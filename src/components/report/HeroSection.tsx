@@ -127,7 +127,7 @@ export default function HeroSection() {
 
               <button
                 onClick={handleJump}
-                className="px-4 py-1.5 rounded-full text-xs font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+                className="px-4 py-1.5 rounded-full text-xs font-medium bg-accent text-accent-foreground hover:bg-primary/90 transition-colors"
               >
                 Jump to section
               </button>

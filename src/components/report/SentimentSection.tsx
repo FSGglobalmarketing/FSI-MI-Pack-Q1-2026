@@ -230,7 +230,7 @@ export default function SentimentSection() {
                   onClick={() => setActiveTab(tab)}
                   className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap ${
                     activeTab === tab
-                      ? "bg-primary text-primary-foreground"
+                      ? "bg-accent text-accent-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >
@@ -325,7 +325,7 @@ export default function SentimentSection() {
                   ? f === "positive" ? "bg-success/20 text-success"
                   : f === "negative" ? "bg-destructive/20 text-destructive"
                   : f === "neutral" ? "bg-muted/30 text-muted-foreground"
-                  : "bg-primary text-primary-foreground"
+                  : "bg-accent text-accent-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -342,7 +342,7 @@ export default function SentimentSection() {
               onClick={() => setChannelFilter(f)}
               className={`px-2.5 py-1 rounded-full text-[10px] font-medium transition-all ${
                 channelFilter === f
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-accent text-accent-foreground"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >

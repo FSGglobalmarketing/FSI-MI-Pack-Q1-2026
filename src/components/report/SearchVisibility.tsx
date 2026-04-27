@@ -238,7 +238,7 @@ export default function SearchVisibility() {
                     onClick={() => { setCountry(c); setLeft(0); setRight(12); }}
                     className={`px-3 py-1 rounded-full text-[11px] font-medium transition-colors ${
                       country === c
-                        ? "bg-primary text-primary-foreground"
+                        ? "bg-accent text-accent-foreground"
                         : "text-secondary-foreground/60 hover:text-secondary-foreground"
                     }`}
                   >

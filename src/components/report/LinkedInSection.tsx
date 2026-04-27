@@ -337,7 +337,7 @@ export default function LinkedInSection() {
                   onClick={() => setTab(t)}
                   className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all whitespace-nowrap ${
                     tab === t
-                      ? "bg-primary text-primary-foreground"
+                      ? "bg-accent text-accent-foreground"
                       : "text-muted-foreground hover:text-foreground"
                   }`}
                 >

@@ -100,7 +100,7 @@ export default function SalesforceSection() {
               onClick={() => setActiveTab(tab)}
               className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-colors ${
                 activeTab === tab
-                  ? "bg-primary text-primary-foreground"
+                  ? "bg-accent text-accent-foreground"
                   : "bg-white/10 text-white/70 hover:bg-white/20"
               }`}
             >

@@ -157,7 +157,7 @@ export default function UKNordicsAdShowcase() {
               onClick={() => handleModeSwitch(m.key)}
               className={`px-3 py-1.5 rounded-full text-[11px] font-medium transition-all ${
                 mode === m.key
-                  ? "bg-primary text-primary-foreground shadow-sm"
+                  ? "bg-accent text-accent-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
