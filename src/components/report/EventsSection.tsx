@@ -14,10 +14,11 @@ type FilterState = {
 
 export default function EventsSection() {
   const e = reportData.events;
+  // Default to Q1 only — user can toggle Q2 etc. on if needed.
   const [filters, setFilters] = useState<FilterState>({
     category: [],
     region: [],
-    quarter: [],
+    quarter: ["Q1"],
     status: [],
   });
   const [selectedEvent, setSelectedEvent] = useState<EventItem | null>(null);

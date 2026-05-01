@@ -77,14 +77,14 @@ export const reportData = {
 
   performanceResults: {
     awareness: [
-      { channel: "Search engine optimisation", metrics: ["216 Keywords ranked", "+43% est. traffic"], comparison: "+14% keywords vs Dec '25", status: "good" as const },
+      { channel: "Search engine optimisation", metrics: ["216 Keywords ranked", "Avg rank 19.4"], comparison: "+14% keywords · −1.9 rank vs Dec '25", status: "good" as const },
       { channel: "Display ads (Blis)", metrics: ["40.0k Display visits", "8.7% of Q1 traffic"], comparison: "Programmatic display live across HK / AU", status: "good" as const },
       { channel: "LinkedIn Paid", metrics: ["486.5k Sponsored impressions"], comparison: "+107% vs Q4 (235.1k)", status: "good" as const },
       { channel: "Search engine marketing", metrics: ["18.2k Paid views"], comparison: "4.1% of Q1 traffic", status: "good" as const },
       { channel: "Podcast", metrics: ["N/A Streams"], comparison: "No Q1 episode data", status: "inactive" as const },
     ],
     consideration: [
-      { channel: "LinkedIn Organic", metrics: ["35.9k Impressions", "1.2% Avg engagement rate"], comparison: "-19% impressions vs Q4", status: "good" as const },
+      { channel: "LinkedIn Organic", metrics: ["35.9k Impressions", "10 posts published"], comparison: "−19% impressions vs Q4 · 1.2% avg engagement", status: "good" as const },
       { channel: "Website",          metrics: ["199.9k Views (ex-RQI)", "187.5k Active users"], comparison: "+47% views vs Q4 (136.4k)", status: "good" as const },
     ],
     conversion: [
@@ -153,7 +153,7 @@ export const reportData = {
       navLabel: "Reporting season",
       stage: "Highlight 1",
       title: "Australian Equities Growth — reporting season",
-      subtitle: "Sector-by-sector reactions and where active investors found opportunity",
+      subtitle: "Sector-by-sector reactions and where active investors found opportunity.",
       description: "We kicked off the year with a dedicated campaign timed to ASX reporting season — bespoke events across five ANZ cities, broad media presence (Livewire Markets' Buy Hold Sell with Dushko; David Wilson and Christian Guerra on the Reporting Season podcast), and supporting digital activity across paid LinkedIn, search and the AEQ adviser hub.",
       goals: [
         "Defend share of voice across reporting-season commentary in AU media",
@@ -175,7 +175,7 @@ export const reportData = {
       navLabel: "EX-20 Phase II",
       stage: "Highlight 2",
       title: "EX-20 campaign — Phase II",
-      subtitle: "Continuing the EX-20 Share Fund push with deeper market penetration",
+      subtitle: "Continuing the EX-20 Share Fund push with deeper market penetration.",
       description: "Phase II builds on the Phase I launch with more ad placements, distribution-led roundtables across five ANZ cities, and an always-on search + social mix designed to drive advisers to the EX-20 fund page (which lifted +32% vs Q4 even before this Phase II push).",
       goals: [
         "More ad placements and a focused effort to drive market penetration",
@@ -202,7 +202,7 @@ export const reportData = {
       navLabel: "Cash ETF",
       stage: "Highlight 3",
       title: "Cash ETF — launch planning",
-      subtitle: "Brand, positioning and creative ready for Q2 launch",
+      subtitle: "Brand, positioning and creative ready for Q2 launch.",
       description: "Q1 was the planning quarter for the Cash ETF. We completed the brand survey, signed off the client value proposition, filmed launch videos, finalised flyers and web copy, and locked in a full communications and advertising plan and schedule. The launch lands in Q2.",
       goals: [
         "Establish positioning in market — why cash in the portfolio?",
@@ -231,7 +231,7 @@ export const reportData = {
       navLabel: "GLIS update",
       stage: "Highlight 4",
       title: "GLIS ETF strategy — Asia awareness build",
-      subtitle: "Building GLIS awareness in Asia ahead of the ETF strategy roll-out",
+      subtitle: "Building GLIS awareness in Asia ahead of the ETF strategy roll-out.",
       description: "Starting to build awareness in Asia for the GLIS ETF strategy — client meetings in Hong Kong, a media roundtable in Taipei (Cathay / GLIS, 31 Mar) and supporting always-on search / social across the region.",
       goals: [
         "Establish positioning in Asia — why global listed infrastructure now?",
@@ -258,7 +258,7 @@ export const reportData = {
   website: {
     title: "Always on: Website",
     stage: "Consideration",
-    subtitle: "Strong lift in Q1 driven by SG performance data and AEQ / EX-20 momentum",
+    subtitle: "Strong lift in Q1 driven by SG performance data and AEQ / EX-20 momentum.",
     description: "Q1 2026 delivered 199.9k page views across firstsentierinvestors.com (excluding RQI Investors pages, which sit in a separate deck) — a +47% lift vs Q4 2025 (136.4k). Engagement events reached 947k (+50%) and key-event conversions reached 20.4k (+43%). Standout drivers were the new Singapore performance data landing page (new in Q1, 8.1k views), steady AEQ / EX-20 Share Fund traction in Australia, and the AU performance and literature hubs.",
     kpis: [
       { value: "199.9k", label: "Views (Q1, ex-RQI)",   comparison: "+47% vs Q4 (136.4k)" },
@@ -311,7 +311,7 @@ export const reportData = {
   linkedin: {
     title: "Always on: LinkedIn",
     stage: "Consideration",
-    subtitle: "Heavy sponsored push (+107%) with selective organic content",
+    subtitle: "Heavy sponsored push (+107%) with selective organic content.",
     description: "Q1 paid spend more than doubled (486.5k sponsored impressions vs 235.1k in Q4) while organic output stayed selective — 10 posts across AI thematic, FONDS Kongress (DE) and Institutional Money Kongress (DE). The top organic post was the Martin Lau client roundtable (26.5% CTR, 737 clicks).",
     goals: ["Scale paid reach in priority markets while keeping organic quality high"],
     activities: ["Martin Lau luncheon content", "IMK + FONDS Kongress (DE)", "AI thematic strategy posts", "10 organic posts / quarter"],
@@ -335,7 +335,7 @@ export const reportData = {
   podcast: {
     title: "Podcasts",
     stage: "Awareness",
-    subtitle: "Reduced output as we prepare to shift to a modern format",
+    subtitle: "Reduced output as we prepare to shift to a modern format.",
     description: "We published one episode of the Keeping the Real Asset podcast in Q4. For 2026 we are focused on working with the Investment team to develop a content strategy. Marketing data suggests video content performs well.",
     kpis: [
       { value: "305", label: "Streams", comparison: "-13% vs Q3" },

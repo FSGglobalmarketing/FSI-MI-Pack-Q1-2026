@@ -5,7 +5,6 @@ const fsiLogo = import.meta.env.BASE_URL + "brand/fsi-logo-white-green.svg";
 const navItems = [
   { id: "overview", label: "Overview" },
   { id: "performance", label: "KPI Framework" },
-  { id: "salesforce", label: "Client engagement" },
   { id: "search-visibility", label: "Search visibility" },
   { id: "highlight-aeq-reporting", label: "Reporting season" },
   { id: "highlight-ex20-phase-2",  label: "EX-20 Phase II" },
@@ -13,17 +12,16 @@ const navItems = [
   { id: "highlight-glis",          label: "GLIS update" },
   { id: "website", label: "Website" },
   { id: "linkedin", label: "LinkedIn" },
+  { id: "salesforce", label: "Client engagement" },
   { id: "events", label: "Events" },
-  { id: "sentiment", label: "Sentiment" },
 ];
 
 const funnelStages = [
-  { label: "Summary",        startIdx: 0,  endIdx: 1 },
-  { label: "Awareness",      startIdx: 2,  endIdx: 3 },
-  { label: "Highlights",     startIdx: 4,  endIdx: 7 },
-  { label: "Consideration",  startIdx: 8,  endIdx: 9 },
-  { label: "Conversion",     startIdx: 10, endIdx: 10 },
-  { label: "Monitoring",     startIdx: 11, endIdx: 11 },
+  { label: "Summary",       startIdx: 0,  endIdx: 1 },
+  { label: "Awareness",     startIdx: 2,  endIdx: 2 },
+  { label: "Highlights",    startIdx: 3,  endIdx: 6 },
+  { label: "Consideration", startIdx: 7,  endIdx: 8 },
+  { label: "Conversion",    startIdx: 9,  endIdx: 10 },
 ];
 
 export default function ReportNav() {

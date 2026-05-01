@@ -5,12 +5,12 @@ import {
 } from "recharts";
 import KpiRow from "./KpiRow";
 import {
-  salesforceMarketingKpis, activityBreakdown, monthlyTrend,
+  salesforceMarketingKpis,
   engagementByCompany, interactionsByStrategy, interactionsByFssaStrategy,
   topCampaigns,
 } from "@/data/salesforce-data";
 
-const TABS = ["Activity", "Engagement", "Strategies", "Campaigns"] as const;
+const TABS = ["Companies", "Strategies", "Campaigns"] as const;
 type Tab = (typeof TABS)[number];
 
 // FSI palette — no black; inner card is a slightly lighter navy so it
@@ -37,7 +37,7 @@ const BAR_CHANNEL_FORM  = "#8FB9AA"; // muted teal
 const BAR_CHANNEL_LINK  = "#B8A0D9"; // muted lilac
 
 export default function SalesforceSection() {
-  const [activeTab, setActiveTab] = useState<Tab>("Activity");
+  const [activeTab, setActiveTab] = useState<Tab>("Companies");
 
   return (
     <section
@@ -113,8 +113,7 @@ export default function SalesforceSection() {
           className="rounded-2xl p-6 overflow-hidden"
           style={{ backgroundColor: INNER_BG, border: "1px solid rgba(255,255,255,0.08)" }}
         >
-          {activeTab === "Activity" && <ActivityTab />}
-          {activeTab === "Engagement" && <EngagementTab />}
+          {activeTab === "Companies" && <CompaniesTab />}
           {activeTab === "Strategies" && <StrategiesTab />}
           {activeTab === "Campaigns" && <CampaignsTab />}
         </div>
@@ -123,46 +122,7 @@ export default function SalesforceSection() {
   );
 }
 
-function ActivityTab() {
-  return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="text-lg font-medium mb-1 text-white">Interaction types — Q1 vs Q4</h3>
-        <p className="text-xs text-white/50 mb-4">
-          Every recorded email, web visit, form submission and tracked link-click on FSI-tagged
-          assets and campaigns in Q1 2026.
-        </p>
-        <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={activityBreakdown} margin={{ left: 0, right: 30, top: 5, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke={CHART_GRID} />
-            <XAxis dataKey="type" tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }} />
-            <YAxis tick={{ fontSize: 12, fill: CHART_TICK_DIM }} />
-            <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
-            <Legend wrapperStyle={{ color: "rgba(255,255,255,0.7)" }} />
-            <Bar dataKey="q1" name="Q1 2026" fill={BAR_Q1} radius={[6, 6, 0, 0]} barSize={28} />
-            <Bar dataKey="q4" name="Q4 2025" fill={BAR_Q4} radius={[6, 6, 0, 0]} barSize={28} />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-
-      <div>
-        <h3 className="text-lg font-medium mb-1 text-white">Monthly interaction volume</h3>
-        <p className="text-xs text-white/50 mb-4">March spiked (13.7k activities, +63% vs Feb) on ANZ AEQ podcast traffic, EMEA Igneo AIM follow-ups and HK / SG client-update eDMs.</p>
-        <ResponsiveContainer width="100%" height={200}>
-          <BarChart data={monthlyTrend} margin={{ left: 0, right: 30, top: 5, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke={CHART_GRID} />
-            <XAxis dataKey="month" tick={{ fontSize: 12, fill: CHART_TICK_LIGHT }} />
-            <YAxis tick={{ fontSize: 12, fill: CHART_TICK_DIM }} />
-            <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
-            <Bar dataKey="interactions" name="Interactions" fill={BAR_Q1} radius={[6, 6, 0, 0]} barSize={40} />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-    </div>
-  );
-}
-
-function EngagementTab() {
+function CompaniesTab() {
   return (
     <div className="space-y-8">
       <div>
@@ -196,22 +156,22 @@ function EngagementTab() {
           <thead>
             <tr style={{ background: "rgba(255,255,255,0.04)" }}>
               <th className="text-left p-3 font-medium text-white/60">Account</th>
-              <th className="text-right p-3 font-medium text-white/60">Email</th>
-              <th className="text-right p-3 font-medium text-white/60">Link</th>
-              <th className="text-right p-3 font-medium text-white/60">Form/File</th>
-              <th className="text-right p-3 font-medium text-white/60">Web</th>
-              <th className="text-right p-3 font-medium text-white/60">Total</th>
+              <th className="text-center p-3 font-medium text-white/60">Email</th>
+              <th className="text-center p-3 font-medium text-white/60">Link</th>
+              <th className="text-center p-3 font-medium text-white/60">Form / File</th>
+              <th className="text-center p-3 font-medium text-white/60">Web</th>
+              <th className="text-center p-3 font-medium text-white/60">Total</th>
             </tr>
           </thead>
           <tbody>
             {engagementByCompany.map((row) => (
               <tr key={row.account} className="border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
                 <td className="p-3 font-medium text-white">{row.account}</td>
-                <td className="p-3 text-right tabular-nums text-white">{row.email.toLocaleString()}</td>
-                <td className="p-3 text-right tabular-nums text-white">{row.link.toLocaleString()}</td>
-                <td className="p-3 text-right tabular-nums text-white">{row.form.toLocaleString()}</td>
-                <td className="p-3 text-right tabular-nums text-white">{row.web.toLocaleString()}</td>
-                <td className="p-3 text-right tabular-nums font-medium text-primary">{row.total.toLocaleString()}</td>
+                <td className="p-3 text-center tabular-nums text-white">{row.email.toLocaleString()}</td>
+                <td className="p-3 text-center tabular-nums text-white">{row.link.toLocaleString()}</td>
+                <td className="p-3 text-center tabular-nums text-white">{row.form.toLocaleString()}</td>
+                <td className="p-3 text-center tabular-nums text-white">{row.web.toLocaleString()}</td>
+                <td className="p-3 text-center tabular-nums font-medium text-accent">{row.total.toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
