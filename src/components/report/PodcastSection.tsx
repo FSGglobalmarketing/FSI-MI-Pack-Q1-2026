@@ -29,7 +29,7 @@ function EpisodeLeaderboard() {
                 className="absolute inset-y-0 left-0 rounded-full transition-all duration-500"
                  style={{
                    width: `${(ep.streams / maxStreams) * 100}%`,
-                   backgroundColor: i < 3 ? "#0F9AFF" : "#0F9AFF80",
+                   backgroundColor: i < 3 ? "#61bdb1" : "#61bdb180",
                  }}
               />
             </div>
@@ -55,17 +55,17 @@ function StreamsOverTime() {
         <YAxis tick={{ fontSize: 9, fill: "hsl(0 0% 60%)" }} />
         <Tooltip
           contentStyle={{ background: "hsl(214 60% 18%)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, fontSize: 11 }}
-          labelStyle={{ color: "#0F9AFF", fontWeight: 500 }}
+          labelStyle={{ color: "#61bdb1", fontWeight: 500 }}
           formatter={(value: number) => [`${value} streams`, "Monthly Streams"]}
         />
-        <Line type="monotone" dataKey="streams" stroke="#0F9AFF" strokeWidth={2.5} dot={false} />
+        <Line type="monotone" dataKey="streams" stroke="#61bdb1" strokeWidth={2.5} dot={false} />
         {releaseMonths.map((m) => (
           <ReferenceDot
             key={m.month}
             x={m.month}
             y={m.streams}
             r={4}
-            fill="#0F9AFF"
+            fill="#61bdb1"
             stroke="hsl(214 69% 19%)"
             strokeWidth={2}
           />

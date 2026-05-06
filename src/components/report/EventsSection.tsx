@@ -35,8 +35,16 @@ export default function EventsSection() {
 
   const clearAll = () => setFilters({ category: [], region: [], quarter: [], status: [] });
 
-  // Pre-filter to FSI brand only
-  const fsiEvents = useMemo(() => e.list.filter((ev) => ev.brand === "FSI"), [e.list]);
+  // Pre-filter to FSI brand AND only Q1 events that are committed or
+  // distribution-owned (i.e. confirmed delivered events for the period).
+  const fsiEvents = useMemo(
+    () => e.list.filter((ev) =>
+      ev.brand === "FSI"
+      && ev.quarter === "Q1"
+      && (ev.status === "committed" || ev.status === "distribution-owned")
+    ),
+    [e.list],
+  );
 
   const filteredEvents = useMemo(() => {
     return fsiEvents.filter((ev) => {
@@ -48,20 +56,13 @@ export default function EventsSection() {
     });
   }, [fsiEvents, filters]);
 
-  const committedCount = filteredEvents.filter((ev) => ev.status === "committed").length;
-  const proposedCount = filteredEvents.filter((ev) => ev.status === "proposed").length;
-
   return (
-    <section id="events" className="section-cream py-24 flow-section-cream relative">
+    <section id="events" className="section-dark py-24 flow-section-dark relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-[1]">
         <div className="mb-3">
           <span className="stage-badge">{e.stage}</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-2 text-secondary-foreground">{e.title}</h2>
-
-        <p className="text-sm text-secondary-foreground/60 mb-6">
-          Showing {filteredEvents.length} event{filteredEvents.length !== 1 ? "s" : ""} — {committedCount} committed, {proposedCount} proposed
-        </p>
+        <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-6 text-foreground">{e.title}</h2>
 
         <EventsFilterBar
           events={fsiEvents}
@@ -75,16 +76,15 @@ export default function EventsSection() {
         <EventsLeafletMap filteredEvents={filteredEvents} />
 
         {/* Events table */}
-        <div className="glass-card-cream flow-corner-br overflow-x-auto mt-8">
+        <div className="glass-card-dark flow-corner-br overflow-x-auto mt-8">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-secondary-foreground/10">
-                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Event</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Team</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Format</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Audience</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Region</th>
-                <th className="text-left py-3 px-4 text-secondary-foreground font-medium">Status</th>
+              <tr className="border-b border-foreground/10">
+                <th className="text-left py-3 px-4 text-foreground font-medium">Event</th>
+                <th className="text-left py-3 px-4 text-foreground font-medium">Team</th>
+                <th className="text-left py-3 px-4 text-foreground font-medium">Format</th>
+                <th className="text-left py-3 px-4 text-foreground font-medium">Audience</th>
+                <th className="text-left py-3 px-4 text-foreground font-medium">Region</th>
               </tr>
             </thead>
             <tbody>
@@ -92,11 +92,11 @@ export default function EventsSection() {
                 <tr
                   key={`${ev.name}-${ev.city}`}
                   onClick={() => setSelectedEvent(ev)}
-                  className="border-b border-secondary-foreground/5 hover:bg-secondary-foreground/5 transition-colors cursor-pointer"
+                  className="border-b border-foreground/5 hover:bg-foreground/5 transition-colors cursor-pointer"
                 >
-                  <td className="py-3 px-4 font-medium text-secondary-foreground">
+                  <td className="py-3 px-4 font-medium text-foreground">
                     <div>{ev.name}</div>
-                    <div className="text-[10px] text-secondary-foreground/40">{ev.city} · {ev.quarter}</div>
+                    <div className="text-[10px] text-foreground/40">{ev.city} · {ev.quarter}</div>
                   </td>
                   <td className="py-3 px-4">
                     <div className="flex -space-x-2">
@@ -105,12 +105,12 @@ export default function EventsSection() {
                         if (ev.speaker) ev.speaker.split(",").map(s => s.trim()).forEach(s => people.push(s));
                         if (ev.marketingLead && !people.includes(ev.marketingLead)) people.push(ev.marketingLead);
                         if (ev.distributionLead) ev.distributionLead.split("/").map(s => s.trim()).forEach(s => { if (!people.includes(s)) people.push(s); });
-                        if (people.length === 0) return <span className="text-secondary-foreground/30 text-xs">—</span>;
-                        const colors = ["#0F9AFF", "#56658B", "#D37669", "#F99C46", "#FFCC00"];
+                        if (people.length === 0) return <span className="text-foreground/30 text-xs">—</span>;
+                        const colors = ["#61bdb1", "#CCB296", "#EF785B", "#D5B700", "#3FBAD5"];
                         return people.slice(0, 3).map((name, i) => {
                           const initials = name.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
                           return (
-                            <div key={i} className="w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-medium text-white border-2 border-white/80" style={{ backgroundColor: colors[i % colors.length] }} title={name}>
+                            <div key={i} className="w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-medium text-white border-2 border-background" style={{ backgroundColor: colors[i % colors.length] }} title={name}>
                               {initials}
                             </div>
                           );
@@ -121,26 +121,13 @@ export default function EventsSection() {
                         if (ev.speaker) ev.speaker.split(",").map(s => s.trim()).forEach(s => people.push(s));
                         if (ev.marketingLead) people.push(ev.marketingLead);
                         if (ev.distributionLead) ev.distributionLead.split("/").map(s => s.trim()).forEach(s => people.push(s));
-                        return people.length > 3 ? <div className="w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-medium text-secondary-foreground bg-secondary-foreground/10 border-2 border-white/80">+{people.length - 3}</div> : null;
+                        return people.length > 3 ? <div className="w-7 h-7 rounded-full flex items-center justify-center text-[9px] font-medium text-foreground bg-foreground/10 border-2 border-background">+{people.length - 3}</div> : null;
                       })()}
                     </div>
                   </td>
-                  <td className="py-3 px-4 text-secondary-foreground/70">{ev.format}</td>
-                  <td className="py-3 px-4 text-secondary-foreground/70">{ev.audience}</td>
-                  <td className="py-3 px-4">
-                    <span className="text-xs px-2.5 py-1 rounded-full bg-primary/10 text-primary font-medium">{ev.region}</span>
-                  </td>
-                  <td className="py-3 px-4">
-                    <span className={`text-xs px-2.5 py-1 rounded-full font-medium capitalize ${
-                      ev.status === "committed"
-                        ? "bg-primary/10 text-primary"
-                        : ev.status === "proposed"
-                        ? "bg-amber-500/10 text-amber-600"
-                        : "bg-violet-500/10 text-violet-600"
-                    }`}>
-                      {ev.status.replace("-", " ")}
-                    </span>
-                  </td>
+                  <td className="py-3 px-4 text-foreground/70">{ev.format}</td>
+                  <td className="py-3 px-4 text-foreground/70">{ev.audience}</td>
+                  <td className="py-3 px-4 text-foreground/70">{ev.region}</td>
                 </tr>
               ))}
             </tbody>

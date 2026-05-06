@@ -19,8 +19,6 @@ const Index = () => {
       <ReportNav />
       <HeroSection />
       <GlobalFocus />
-      <PerformanceResults />
-      <SearchVisibility />
 
       {d.highlights.map((h) => (
         <HighlightSection
@@ -29,6 +27,8 @@ const Index = () => {
           creative={h.id === "highlight-aeq-reporting" ? <Highlight1Creative /> : undefined}
         />
       ))}
+
+      <SearchVisibility />
 
       <AlwaysOnSection
         id="website"
@@ -48,6 +48,7 @@ const Index = () => {
       <LinkedInSection />
       <SalesforceSection />
       <EventsSection />
+      <PerformanceResults />
 
       <footer className="section-dark py-10 border-t border-border">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center gap-4">

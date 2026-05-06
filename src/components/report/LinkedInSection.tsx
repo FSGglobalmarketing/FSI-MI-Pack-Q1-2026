@@ -24,8 +24,16 @@ const CHART_TOOLTIP = {
   fontSize: 12,
   color: "#fff",
 };
-const COLOR_ORGANIC = "hsl(172 41% 56%)";   // FSI Green
-const COLOR_SPONSORED = "hsl(214 96% 17%)"; // FSI Dark Blue
+// FSI brand palette — chosen for high contrast on the dark-navy section bg.
+// Following the Brand Toolkit data-viz order: Green → Orange → Light Blue → Mustard → Tan.
+const COLOR_GREEN     = "#61bdb1";   // FSI Green (accent)
+const COLOR_ORANGE    = "#EF785B";   // FSI Orange (secondary)
+const COLOR_LIGHTBLUE = "#3FBAD5";   // FSI Light Blue (secondary)
+const COLOR_MUSTARD   = "#D5B700";   // FSI Mustard (secondary)
+const COLOR_TAN       = "#CCB296";   // FSI Tan (primary)
+// Series aliases for backwards-compat with the existing JSX.
+const COLOR_ORGANIC   = COLOR_GREEN;
+const COLOR_SPONSORED = COLOR_ORANGE;
 
 function formatK(v: number) {
   if (v >= 1_000_000) return `${(v / 1_000_000).toFixed(1)}M`;
@@ -106,23 +114,23 @@ function ContentMixChart() {
           <Radar
             name="Avg Engagement %"
             dataKey="Engagement"
-            stroke={COLOR_ORGANIC}
-            fill={COLOR_ORGANIC}
+            stroke={COLOR_GREEN}
+            fill={COLOR_GREEN}
             fillOpacity={0.35}
           />
           <Radar
             name="Avg CTR %"
             dataKey="CTR"
-            stroke={COLOR_SPONSORED}
-            fill={COLOR_SPONSORED}
-            fillOpacity={0.2}
+            stroke={COLOR_ORANGE}
+            fill={COLOR_ORANGE}
+            fillOpacity={0.25}
           />
           <Radar
             name="Avg Impressions"
             dataKey="Impressions"
-            stroke="#8FB9AA"
-            fill="#8FB9AA"
-            fillOpacity={0.15}
+            stroke={COLOR_LIGHTBLUE}
+            fill={COLOR_LIGHTBLUE}
+            fillOpacity={0.20}
           />
           <Legend iconType="circle" wrapperStyle={{ fontSize: 11 }} />
           <Tooltip contentStyle={CHART_TOOLTIP} />
@@ -131,7 +139,7 @@ function ContentMixChart() {
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {contentMixData.map((c, i) => {
-          const dot = [COLOR_ORGANIC, "#999", "#bbb", "#888"][i];
+          const dot = [COLOR_GREEN, COLOR_ORANGE, COLOR_LIGHTBLUE, COLOR_MUSTARD][i] ?? COLOR_TAN;
           return (
             <div key={c.category} className="rounded-lg p-3" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.06)" }}>
               <div className="flex items-center gap-1.5 mb-2 text-xs font-medium text-foreground">
@@ -194,9 +202,9 @@ function TopPostsTable() {
           <tbody>
             {topPostsQ1.map((post, i) => {
               const catDot = post.category === "Event" ? COLOR_ORGANIC
-                : post.category === "Press" ? "#FFCC00"
-                : post.category === "Strategy" ? "#8FB9AA"
-                : "#B8A0D9";
+                : post.category === "Press" ? "#D5B700"
+                : post.category === "Strategy" ? "#3FBAD5"
+                : "#00727D";
               return (
                 <tr key={i} className="border-t" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
                   <td className="p-3 text-white max-w-[240px]">

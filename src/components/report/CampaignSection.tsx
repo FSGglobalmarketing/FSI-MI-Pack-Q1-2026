@@ -142,7 +142,7 @@ function SortedTooltip({ active, payload, label }: any) {
   const sorted = [...payload].sort((a: any, b: any) => (b.value ?? 0) - (a.value ?? 0));
   return (
     <div style={{ backgroundColor: "#111", borderRadius: 10, padding: "12px 16px", minWidth: 220, border: "1px solid rgba(255,255,255,0.12)" }}>
-      <p style={{ color: "#0F9AFF", fontWeight: 500, fontSize: 13, marginBottom: 8 }}>{label}</p>
+      <p style={{ color: "#61bdb1", fontWeight: 500, fontSize: 13, marginBottom: 8 }}>{label}</p>
       {sorted.map((entry: any) => (
         <div key={entry.dataKey} style={{ display: "flex", justifyContent: "space-between", gap: 16, marginBottom: 2 }}>
           <span style={{ fontSize: 11, color: "rgba(255,255,255,0.6)" }}>{entry.name || entry.dataKey}</span>
@@ -249,10 +249,10 @@ export function NorthAmericaChart() {
             <YAxis tick={{ fontSize: 11, fill: "#94a3b8" }} />
             <Tooltip content={<SortedTooltip />} />
             <Legend wrapperStyle={{ fontSize: 11 }} />
-            <Line type="monotone" dataKey="page1" stroke="#0F9AFF" strokeWidth={2.5} dot={false} animationDuration={1500} name="Page 1" />
-             <Line type="monotone" dataKey="page2" stroke="#56658B" strokeWidth={2} dot={false} animationDuration={1500} name="Page 2" />
-             <Line type="monotone" dataKey="page3" stroke="#D37669" strokeWidth={2} dot={false} animationDuration={1500} name="Page 3" />
-             <Line type="monotone" dataKey="page4" stroke="#F99C46" strokeWidth={1.5} dot={false} animationDuration={1500} name="Page 4" />
+            <Line type="monotone" dataKey="page1" stroke="#61bdb1" strokeWidth={2.5} dot={false} animationDuration={1500} name="Page 1" />
+             <Line type="monotone" dataKey="page2" stroke="#CCB296" strokeWidth={2} dot={false} animationDuration={1500} name="Page 2" />
+             <Line type="monotone" dataKey="page3" stroke="#EF785B" strokeWidth={2} dot={false} animationDuration={1500} name="Page 3" />
+             <Line type="monotone" dataKey="page4" stroke="#D5B700" strokeWidth={1.5} dot={false} animationDuration={1500} name="Page 4" />
             {zoom.refAreaLeft !== null && zoom.refAreaRight !== null && (
               <ReferenceArea x1={allData[Math.min(zoom.refAreaLeft, zoom.refAreaRight)]?.month} x2={allData[Math.max(zoom.refAreaLeft, zoom.refAreaRight)]?.month} strokeOpacity={0.3} fill="rgba(15,154,255,0.1)" />
             )}
@@ -280,7 +280,7 @@ export function NorthAmericaExtra() {
 }
 
 /* ── DACH Charts ── */
-const DACH_COLORS = ["#0F9AFF", "#56658B", "#D37669", "#F99C46"];
+const DACH_COLORS = ["#61bdb1", "#CCB296", "#EF785B", "#D5B700"];
 
 export function DACHCharts() {
   const countries = [
@@ -320,7 +320,7 @@ export function DACHCharts() {
             <XAxis type="number" tick={{ fontSize: 11, fill: "#64748b" }} />
             <YAxis dataKey="company" type="category" width={120} tick={{ fontSize: 11, fill: "#64748b" }} />
             <Tooltip contentStyle={{ backgroundColor: "#111", border: "1px solid rgba(255,255,255,0.12)", borderRadius: "10px", color: "#fff" }} />
-            <Bar dataKey="views" fill="#0F9AFF" radius={[0, 6, 6, 0]} animationDuration={1200} />
+            <Bar dataKey="views" fill="#61bdb1" radius={[0, 6, 6, 0]} animationDuration={1200} />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -353,8 +353,8 @@ export function UKNordicsChart() {
           <YAxis tick={{ fontSize: 11, fill: "#94a3b8" }} tickFormatter={formatKUK} />
           <Tooltip content={<SortedTooltip />} cursor={{ fill: "rgba(255,255,255,0.04)" }} />
           <Legend wrapperStyle={{ fontSize: 11 }} />
-          <Bar dataKey="impressions" fill="#56658B" radius={[4, 4, 0, 0]} animationDuration={1200} name="Impressions" />
-          <Bar dataKey="clicks" fill="#0F9AFF" radius={[4, 4, 0, 0]} animationDuration={1200} name="Clicks" />
+          <Bar dataKey="impressions" fill="#CCB296" radius={[4, 4, 0, 0]} animationDuration={1200} name="Impressions" />
+          <Bar dataKey="clicks" fill="#61bdb1" radius={[4, 4, 0, 0]} animationDuration={1200} name="Clicks" />
         </BarChart>
       </ResponsiveContainer>
     </div>

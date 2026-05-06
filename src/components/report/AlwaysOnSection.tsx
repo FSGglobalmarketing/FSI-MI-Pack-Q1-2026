@@ -72,11 +72,11 @@ function UsersSessionsChart({ data, variant }: { data: GaMonthlyItem[]; variant:
             fontSize: 11,
             color: isDark ? "#fff" : "#000",
           }}
-          labelStyle={{ color: "#0F9AFF", fontWeight: 500 }}
+          labelStyle={{ color: "#61bdb1", fontWeight: 500 }}
           formatter={(value: number, name: string) => [formatK(value), name === "users" ? "Users" : "Sessions"]}
         />
-        <Area type="monotone" dataKey="sessions" stackId="1" fill="#56658B" stroke="#56658B" strokeWidth={1} fillOpacity={0.6} />
-        <Area type="monotone" dataKey="users" stackId="1" fill="#0F9AFF" stroke="#0F9AFF" strokeWidth={2} fillOpacity={0.8} />
+        <Area type="monotone" dataKey="sessions" stackId="1" fill="#CCB296" stroke="#CCB296" strokeWidth={1} fillOpacity={0.6} />
+        <Area type="monotone" dataKey="users" stackId="1" fill="#61bdb1" stroke="#61bdb1" strokeWidth={2} fillOpacity={0.8} />
         <Legend
           wrapperStyle={{ fontSize: 10, paddingTop: 8 }}
           formatter={(value: string) => (
@@ -109,7 +109,7 @@ function TopPagesChart({ data, variant }: { data: TopPageItem[]; variant: "dark"
                 className="absolute inset-y-0 left-0 rounded-full transition-all duration-700"
                  style={{
                    width: `${widthPct}%`,
-                   backgroundColor: i === 0 ? "#0F9AFF" : "#56658B",
+                   backgroundColor: i === 0 ? "#61bdb1" : "#CCB296",
                   opacity: 1 - i * 0.12,
                 }}
               />
@@ -128,7 +128,7 @@ function TopPagesChart({ data, variant }: { data: TopPageItem[]; variant: "dark"
 /* ── Traffic Sources ── */
 function TrafficSourcesChart({ data, variant }: { data: TrafficSourceItem[]; variant: "dark" | "cream" }) {
   const isDark = variant === "dark";
-  const colors = ["#0F9AFF", "#56658B", "#D37669", "#F99C46", "#FFCC00"];
+  const colors = ["#61bdb1", "#CCB296", "#EF785B", "#D5B700", "#D5B700"];
 
   return (
     <div className="space-y-3">

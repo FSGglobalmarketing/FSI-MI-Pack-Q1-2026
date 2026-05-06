@@ -9,11 +9,11 @@ interface EventsKPIsProps {
 
 /* RQI gradient accent palette */
 const COLORS = [
-  "#0F9AFF",  // RQI Blue
-  "#56658B",  // Slate blue
-  "#D37669",  // Coral
-  "#F99C46",  // Amber
-  "#FFCC00",  // Gold
+  "#61bdb1",  // RQI Blue
+  "#CCB296",  // Slate blue
+  "#EF785B",  // Coral
+  "#D5B700",  // Amber
+  "#D5B700",  // Gold
   "#666666",  // Grey
 ];
 
@@ -141,7 +141,7 @@ export default function EventsKPIs({ events }: EventsKPIsProps) {
                 contentStyle={{ fontSize: 11, background: "hsl(var(--secondary))", border: "1px solid hsl(var(--secondary-foreground) / 0.1)", borderRadius: 8 }}
                 cursor={{ fill: "hsl(var(--secondary-foreground) / 0.05)" }}
               />
-              <Bar dataKey="events" fill="#0F9AFF" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="events" fill="#61bdb1" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
         </div>

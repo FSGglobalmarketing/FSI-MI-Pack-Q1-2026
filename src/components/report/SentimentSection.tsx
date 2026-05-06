@@ -22,8 +22,8 @@ type ChannelFilter = typeof CHANNEL_FILTERS[number];
 
 const COLORS = {
   positive: "#e22e2c",
-  neutral: "#56658B",
-  negative: "#D37669",
+  neutral: "#CCB296",
+  negative: "#EF785B",
 };
 
 function formatFollowers(n: number): string {
@@ -43,7 +43,7 @@ function TimelineChart() {
           <YAxis tick={{ fontSize: 9, fill: "hsl(0 0% 60%)" }} />
           <Tooltip
             contentStyle={{ background: "hsl(214 60% 18%)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, fontSize: 11 }}
-            labelStyle={{ color: "#0F9AFF", fontWeight: 500 }}
+            labelStyle={{ color: "#61bdb1", fontWeight: 500 }}
           />
           <Area type="monotone" dataKey="negative" stackId="1" fill="hsl(14 100% 57% / 0.3)" stroke={COLORS.negative} strokeWidth={1.5} />
           <Area type="monotone" dataKey="neutral" stackId="1" fill="hsl(205 30% 55% / 0.25)" stroke={COLORS.neutral} strokeWidth={1.5} />
@@ -136,7 +136,7 @@ function GeographyChart() {
           <XAxis type="number" tick={{ fontSize: 9, fill: "hsl(0 0% 60%)" }} />
           <YAxis type="category" dataKey="country" tick={{ fontSize: 10, fill: "hsl(0 0% 60%)" }} width={100} />
           <Tooltip contentStyle={{ background: "hsl(214 60% 18%)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, fontSize: 11 }} cursor={{ fill: "rgba(255,255,255,0.04)" }} />
-          <Bar dataKey="mentions" fill="#0F9AFF" radius={[0, 4, 4, 0]} />
+          <Bar dataKey="mentions" fill="#61bdb1" radius={[0, 4, 4, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

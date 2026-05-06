@@ -5,10 +5,10 @@
 // ═══════════════════════════════════════════════════════════════════════
 
 export const salesforceMarketingKpis = [
-  { value: "29,049", label: "Prospect interactions (Q1)", comparison: "+4% vs Q4 (27,960)" },
-  { value: "61%",    label: "Email-open share of mix",    comparison: "17,667 opens / 29,049 activities" },
-  { value: "Mar",    label: "Peak month",                 comparison: "13,737 · +63% vs Feb" },
-  { value: "584",    label: "Live opportunities",         comparison: "Out of 2,207 total — Lost: 1,091" },
+  { value: "29,049", label: "Total engagements (Q1)", comparison: "+4% vs Q4 (27,960)" },
+  { value: "17,667", label: "Email opens (Q1)",       comparison: "+5% vs Q4 (16,781)" },
+  { value: "Mar",    label: "Peak month",             comparison: "13,737 · +63% vs Feb" },
+  { value: "DBS SG", label: "Top engaged account",    comparison: "855 interactions · 5 accounts >100" },
 ];
 
 // Activity type mix — Q1 vs Q4, all FSI

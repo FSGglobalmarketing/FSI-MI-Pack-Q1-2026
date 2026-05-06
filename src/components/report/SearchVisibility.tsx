@@ -138,34 +138,34 @@ export default function SearchVisibility() {
   const isZoomed = left !== 0 || right !== allData.length - 1;
 
   return (
-    <section id="search-visibility" className="section-cream py-24 flow-section-cream relative">
+    <section id="search-visibility" className="section-dark py-24 flow-section-dark relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-[1]">
         {/* Header */}
         <div className="mb-3">
           <span className="stage-badge">Awareness</span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-2 text-secondary-foreground">
+        <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-2 text-foreground">
           Search engine visibility
         </h2>
-        <div className="text-secondary-foreground/70 mb-8 max-w-3xl leading-relaxed space-y-3">
+        <div className="text-foreground/70 mb-8 max-w-3xl leading-relaxed space-y-3">
           <p>
-            Global keyword coverage for <strong className="text-secondary-foreground font-medium">firstsentierinvestors.com</strong> grew from <strong className="text-secondary-foreground font-medium">190 to 216</strong> ranked keywords over the quarter (+14%). Page 1 coverage increased from 34 to <strong className="text-secondary-foreground font-medium">37 keywords</strong>, and estimated organic traffic from these terms rose <strong className="text-secondary-foreground font-medium">+43%</strong>.
+            Global keyword coverage for <strong className="text-foreground font-medium">firstsentierinvestors.com</strong> grew from <strong className="text-foreground font-medium">190 to 216</strong> ranked keywords over the quarter (+14%). Page 1 coverage increased from 34 to <strong className="text-foreground font-medium">37 keywords</strong>, and estimated organic traffic from these terms rose <strong className="text-foreground font-medium">+43%</strong>.
           </p>
           <p>
-            Biggest gainers this quarter: <strong className="text-secondary-foreground font-medium">"mufg forms"</strong> (+59 positions), <strong className="text-secondary-foreground font-medium">"investment management firms"</strong> (+50), <strong className="text-secondary-foreground font-medium">"active security group"</strong> (+48) and <strong className="text-secondary-foreground font-medium">"investors"</strong> (+41 — now #13). The chart below tracks <strong className="text-secondary-foreground font-medium">firstsentierinvestors.com.au</strong> against AU peers; other markets are not yet tracked in this export.
+            Biggest gainers this quarter: <strong className="text-foreground font-medium">"mufg forms"</strong> (+59 positions), <strong className="text-foreground font-medium">"investment management firms"</strong> (+50), <strong className="text-foreground font-medium">"active security group"</strong> (+48) and <strong className="text-foreground font-medium">"investors"</strong> (+41 — now #13). The chart below tracks <strong className="text-foreground font-medium">firstsentierinvestors.com.au</strong> against AU peers; other markets are not yet tracked in this export.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left column */}
           <div className="space-y-6">
-            <p className="text-sm leading-relaxed text-secondary-foreground/70">{s.goal}</p>
+            <p className="text-sm leading-relaxed text-foreground/70">{s.goal}</p>
 
             <div>
-              <h4 className="text-sm font-medium mb-3 text-secondary-foreground">Marketing Activities</h4>
+              <h4 className="text-sm font-medium mb-3 text-foreground">Marketing Activities</h4>
               <ul className="space-y-2">
                 {s.marketingActivities.map((a) => (
-                  <li key={a} className="text-sm flex items-start gap-2 text-secondary-foreground/70">
+                  <li key={a} className="text-sm flex items-start gap-2 text-foreground/70">
                     <span className="text-primary mt-0.5 shrink-0">+</span>{a}
                   </li>
                 ))}
@@ -173,40 +173,40 @@ export default function SearchVisibility() {
             </div>
 
             <div>
-              <h4 className="text-sm font-medium mb-3 text-secondary-foreground">Focus Areas</h4>
+              <h4 className="text-sm font-medium mb-3 text-foreground">Focus Areas</h4>
               <div className="flex flex-wrap gap-2">
                 {s.focusAreas.map((f) => (
-                  <span key={f} className="glass-pill-cream">{f}</span>
+                  <span key={f} className="glass-pill-dark">{f}</span>
                 ))}
               </div>
             </div>
 
             {/* Key Results — KPI list style with pills */}
             <div>
-              <h4 className="text-sm font-medium mb-4 text-secondary-foreground">Key Results</h4>
+              <h4 className="text-sm font-medium mb-4 text-foreground">Key Results</h4>
               <div className="space-y-3">
                 {s.kpis.map((kpi) => (
-                  <KpiRow key={kpi.label} value={kpi.value} label={kpi.label} comparison={kpi.comparison} variant="cream" />
+                  <KpiRow key={kpi.label} value={kpi.value} label={kpi.label} comparison={kpi.comparison} variant="dark" />
                 ))}
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="glass-card-cream flow-corner-bl">
-                <h4 className="text-sm font-medium mb-3 text-secondary-foreground">Focus in Q1</h4>
+              <div className="glass-card-dark flow-corner-bl">
+                <h4 className="text-sm font-medium mb-3 text-foreground">Focus in Q1</h4>
                 <ul className="space-y-2">
                   {s.focusAreas.map((item) => (
-                    <li key={item} className="text-sm flex items-start gap-2 text-secondary-foreground/70">
+                    <li key={item} className="text-sm flex items-start gap-2 text-foreground/70">
                       <svg className="w-4 h-4 text-success shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
                       {item}
                     </li>
                   ))}
                 </ul>
               </div>
-              <div className="glass-card-cream flow-corner-tr">
-                <h4 className="text-sm font-medium mb-3 text-secondary-foreground">Focus in Q2</h4>
+              <div className="glass-card-dark flow-corner-tr">
+                <h4 className="text-sm font-medium mb-3 text-foreground">Focus in Q2</h4>
                 <ul className="space-y-2">
                   {s.nextQuarter.map((item) => (
-                    <li key={item} className="text-sm flex items-start gap-2 text-secondary-foreground/70">
+                    <li key={item} className="text-sm flex items-start gap-2 text-foreground/70">
                       <span className="text-primary mt-0.5 shrink-0">+</span>{item}
                     </li>
                   ))}
@@ -216,11 +216,11 @@ export default function SearchVisibility() {
           </div>
 
           {/* Right column — chart */}
-          <div className="glass-card-cream flow-corner-br min-h-[540px] flex flex-col">
+          <div className="glass-card-dark flow-corner-br min-h-[540px] flex flex-col">
             <div className="flex items-start justify-between mb-1">
               <div>
-                <h4 className="text-sm font-medium text-secondary-foreground mb-1">Search engine visibility</h4>
-                <p className="text-xs text-secondary-foreground/60 mb-4">Total keywords ranked by firstsentierinvestors.com.au across pages 1-3, benchmarked against Australian peers.</p>
+                <h4 className="text-sm font-medium text-foreground mb-1">Search engine visibility</h4>
+                <p className="text-xs text-foreground/60 mb-4">Total keywords ranked by firstsentierinvestors.com.au across pages 1-3, benchmarked against Australian peers.</p>
               </div>
               {isZoomed && (
                 <button onClick={resetZoom} className="text-xs font-medium text-primary hover:underline shrink-0">Reset zoom</button>
@@ -229,7 +229,7 @@ export default function SearchVisibility() {
             <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
               <div className="flex items-center gap-2">
                 <Switch checked={showPeers} onCheckedChange={setShowPeers} className="scale-75" />
-                <span className="text-xs text-secondary-foreground/60">Show peers</span>
+                <span className="text-xs text-foreground/60">Show peers</span>
               </div>
               <div className="flex items-center gap-1 bg-foreground/5 rounded-full p-1">
                 {COUNTRIES.map((c) => (
@@ -239,7 +239,7 @@ export default function SearchVisibility() {
                     className={`px-3 py-1 rounded-full text-[11px] font-medium transition-colors ${
                       country === c
                         ? "bg-accent text-accent-foreground"
-                        : "text-secondary-foreground/60 hover:text-secondary-foreground"
+                        : "text-foreground/60 hover:text-foreground"
                     }`}
                   >
                     {c}
@@ -250,9 +250,9 @@ export default function SearchVisibility() {
             <ChartScrollContainer onWheelHandler={handleWheel}>
               <ResponsiveContainer width="100%" height={500}>
                 <LineChart data={visibleData} onMouseDown={onMouseDown} onMouseMove={onMouseMove} onMouseUp={onMouseUp}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(0,0,0,0.06)" />
-                  <XAxis dataKey="month" tick={{ fontSize: 10, fill: "#64748b" }} />
-                  <YAxis tick={{ fontSize: 10, fill: "#64748b" }} domain={[0, yMax]} />
+                  <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.06)" />
+                  <XAxis dataKey="month" tick={{ fontSize: 10, fill: "hsl(0 0% 60%)" }} />
+                  <YAxis tick={{ fontSize: 10, fill: "hsl(0 0% 60%)" }} domain={[0, yMax]} />
                   <Tooltip content={<CustomTooltip />} />
                   <Legend
                     wrapperStyle={{ fontSize: 10, cursor: "pointer" }}
@@ -299,7 +299,7 @@ export default function SearchVisibility() {
                 </LineChart>
               </ResponsiveContainer>
             </ChartScrollContainer>
-            <p className="text-[10px] text-secondary-foreground/40 mt-2 text-center">Scroll to zoom · Drag to select range · Click legend to toggle</p>
+            <p className="text-[10px] text-foreground/40 mt-2 text-center">Scroll to zoom · Drag to select range · Click legend to toggle</p>
           </div>
         </div>
       </div>

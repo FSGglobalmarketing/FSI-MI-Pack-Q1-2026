@@ -27,8 +27,8 @@ function groupEventsByCity(events: EventItem[]): MarkerGroup[] {
 // Custom pulsing marker icon using brand colors
 function createPulsingIcon(count: number, isUpcoming: boolean) {
   const color = isUpcoming
-    ? "#0F9AFF"  // primary / accent
-    : "#0F9AFF"; // same primary color for all pins
+    ? "#61bdb1"  // primary / accent
+    : "#61bdb1"; // same primary color for all pins
 
   return L.divIcon({
     className: "leaflet-pulsing-marker",
