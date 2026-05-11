@@ -164,7 +164,7 @@ export default function SearchVisibility() {
               <ul className="space-y-2">
                 {s.marketingActivities.map((a) => (
                   <li key={a} className="text-sm flex items-start gap-2 text-foreground/70">
-                    <span className="text-primary mt-0.5 shrink-0">+</span>{a}
+                    <span className="text-accent mt-0.5 shrink-0">+</span>{a}
                   </li>
                 ))}
               </ul>
@@ -205,7 +205,7 @@ export default function SearchVisibility() {
                 <ul className="space-y-2">
                   {s.nextQuarter.map((item) => (
                     <li key={item} className="text-sm flex items-start gap-2 text-foreground/70">
-                      <span className="text-primary mt-0.5 shrink-0">+</span>{item}
+                      <span className="text-accent mt-0.5 shrink-0">+</span>{item}
                     </li>
                   ))}
                 </ul>

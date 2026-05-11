@@ -54,7 +54,7 @@ export default function KpiRow({ value, label, comparison, variant = "dark" }: K
 
   return (
     <div className="flex items-center gap-4">
-      <span className="text-primary shrink-0 text-sm">+</span>
+      <span className={`shrink-0 text-sm ${isDark ? "text-accent" : "text-primary"}`}>+</span>
       <span className={`text-lg font-medium min-w-[70px] ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>{value}</span>
       <span className="relative">
         <button

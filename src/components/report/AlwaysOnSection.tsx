@@ -206,7 +206,7 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
                 <ul className="space-y-2">
                   {focusQ1.map((f) => (
                     <li key={f} className={`text-sm flex items-start gap-2 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>
-                      <span className="text-primary mt-0.5 shrink-0">+</span>{f}
+                      <span className={`mt-0.5 shrink-0 ${isDark ? "text-accent" : "text-primary"}`}>+</span>{f}
                     </li>
                   ))}
                 </ul>

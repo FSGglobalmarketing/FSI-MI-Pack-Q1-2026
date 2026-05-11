@@ -328,7 +328,7 @@ export default function LinkedInSection() {
                 <ul className="space-y-2">
                   {d.focusQ1.map((f) => (
                     <li key={f} className="text-sm flex items-start gap-2 text-muted-foreground">
-                      <span className="text-primary mt-0.5 shrink-0">+</span>{f}
+                      <span className="text-accent mt-0.5 shrink-0">+</span>{f}
                     </li>
                   ))}
                 </ul>
