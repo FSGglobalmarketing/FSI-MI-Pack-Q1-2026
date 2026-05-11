@@ -3,21 +3,19 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, Legend,
 } from "recharts";
-import KpiRow from "./KpiRow";
 import {
   salesforceMarketingKpis,
-  engagementByCompany,
-  engagementByStrategy,
   topCampaigns,
+  engagementByRegion,
+  q1VsQ4,
 } from "@/data/salesforce-data";
 
-const TABS = ["Companies", "Strategies", "Campaigns"] as const;
+const TABS = ["Q1 vs Q4", "By campaign", "By region"] as const;
 type Tab = (typeof TABS)[number];
 
-// FSI palette — no black; inner card is a slightly lighter navy so it
-// reads as a layer on top of the section background.
-const SECTION_BG = "hsl(var(--cream))";  // White section
-const INNER_BG   = "hsl(31 33% 95%)";  // Cream-tan card surface
+// FSI palette
+const SECTION_BG = "hsl(var(--cream))";  // section background
+const INNER_BG   = "hsl(31 33% 95%)";    // inner card surface
 const CHART_GRID = "rgba(0,0,0,0.06)";
 const CHART_TICK_LIGHT = "hsl(213 96% 17%)";
 const CHART_TICK_DIM   = "hsl(213 13% 43%)";
@@ -28,17 +26,20 @@ const CHART_TOOLTIP = {
   fontSize: 12,
   color: "hsl(213 96% 17%)",
 };
-// Darker-navy highlight for hovered bar/point (replaces default white cursor)
 const CHART_CURSOR = { fill: "rgba(0,0,0,0.04)" };
-const BAR_Q1 = "hsl(var(--accent))";                 // FSI Green (highlight on dark)
-const BAR_Q4 = "rgba(2,40,86,0.22)";
-const BAR_CHANNEL_EMAIL = "#61bdb1"; // FSI Green
-const BAR_CHANNEL_WEB   = "#3FBAD5"; // FSI Light Blue
-const BAR_CHANNEL_FORM  = "#3FBAD5"; // muted teal
-const BAR_CHANNEL_LINK  = "#00727D"; // muted lilac
+
+// Channel palette — Opens / Clicks / Bounces / Opt-outs
+const BAR_OPENS    = "#61bdb1";  // FSI Green
+const BAR_CLICKS   = "#EF785B";  // FSI Orange
+const BAR_BOUNCES  = "#D5B700";  // FSI Mustard
+const BAR_OPTOUTS  = "#3FBAD5";  // FSI Light Blue
+
+// Q1 vs Q4 paired-bar palette
+const BAR_Q4 = "#CCB296";  // FSI Tan (muted, reference quarter)
+const BAR_Q1 = "#61bdb1";  // FSI Green (current quarter highlight)
 
 export default function SalesforceSection() {
-  const [activeTab, setActiveTab] = useState<Tab>("Companies");
+  const [activeTab, setActiveTab] = useState<Tab>("Q1 vs Q4");
 
   return (
     <section
@@ -50,24 +51,22 @@ export default function SalesforceSection() {
         <div className="mb-3">
           <span className="stage-badge">Marketing funnel</span>
         </div>
-        <h2 className="text-2xl sm:text-3xl font-medium leading-tight mb-2 text-secondary-foreground">Client engagement</h2>
+        <h2 className="text-2xl sm:text-3xl font-medium leading-tight mb-2 text-secondary-foreground">
+          Client engagement
+        </h2>
 
         {/* Two-column: narrative left, KPI 2×2 right */}
         <div className="grid lg:grid-cols-2 gap-8 mb-6 items-start">
           <p className="text-secondary-foreground/75 leading-relaxed">
-            Our Asia wholesale partners drove most of FSI's Q1 email engagement.{" "}
-            <span className="text-secondary-foreground font-medium">DBS Singapore</span> opened,
-            clicked and shared our content more than any other firm —{" "}
-            <span className="text-secondary-foreground font-medium">605 actions</span> in Q1 —
-            with{" "}
-            <span className="text-secondary-foreground font-medium">China Construction Bank Asia</span>,{" "}
-            <span className="text-secondary-foreground font-medium">Bank of China Hong Kong</span>,{" "}
-            <span className="text-secondary-foreground font-medium">DBS Hong Kong</span> and{" "}
-            <span className="text-secondary-foreground font-medium">Mercer Australia</span> all
-            crossing 370. Email opens were{" "}
-            <span className="text-secondary-foreground font-medium">+5% vs Q4 2025</span> and March
-            was the strongest month — driven by the ANZ AEQ Growth post-reporting podcast and our
-            Hong Kong / Singapore client updates.
+            Q1 was a low-volume quarter for direct FSI email — only{" "}
+            <span className="text-secondary-foreground font-medium">six sends</span>,
+            all <span className="text-secondary-foreground font-medium">GLIS quarterly updates</span>{" "}
+            into EMEA plus one US follow-up. Volume halved vs Q4 (1,302 vs 2,699), and opens fell with it
+            — but the recipients we did reach engaged harder.{" "}
+            <span className="text-secondary-foreground font-medium">Click-through rate climbed from 3.6% to 5.8%</span>{" "}
+            and click-to-open rate jumped from 14.7% to 27.1%. The standout was the{" "}
+            <span className="text-secondary-foreground font-medium">EMEA exUK Q4 update</span> —
+            <span className="text-secondary-foreground font-medium"> 23 clicks on 138 sent</span> (16.7% CTR).
           </p>
           <div className="grid grid-cols-2 gap-3">
             {salesforceMarketingKpis.map((kpi) => (
@@ -112,39 +111,64 @@ export default function SalesforceSection() {
           className="rounded-2xl p-6 overflow-hidden"
           style={{ backgroundColor: INNER_BG, border: "1px solid rgba(0,0,0,0.08)" }}
         >
-          {activeTab === "Companies" && <CompaniesTab />}
-          {activeTab === "Strategies" && <StrategiesTab />}
-          {activeTab === "Campaigns" && <CampaignsTab />}
+          {activeTab === "Q1 vs Q4"    && <QuarterTab />}
+          {activeTab === "By campaign" && <CampaignsTab />}
+          {activeTab === "By region"   && <RegionTab />}
         </div>
       </div>
     </section>
   );
 }
 
-function CompaniesTab() {
+function QuarterTab() {
+  return (
+    <div>
+      <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Q1 vs Q4 — engagement events</h3>
+      <p className="text-xs text-secondary-foreground/55 mb-4">
+        Direct comparison of email outcomes between Q4 2025 (20 sends, 2,699 emails) and Q1 2026
+        (6 sends, 1,302 emails). Volume was lower in Q1, but quality of engagement — clicks per
+        send and clicks per open — both rose.
+      </p>
+      <ResponsiveContainer width="100%" height={340}>
+        <BarChart data={q1VsQ4} margin={{ left: 10, right: 20, top: 10, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={CHART_GRID} />
+          <XAxis dataKey="metric" tick={{ fontSize: 12, fill: CHART_TICK_LIGHT }} />
+          <YAxis tick={{ fontSize: 11, fill: CHART_TICK_DIM }} />
+          <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
+          <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
+          <Bar dataKey="q4" name="Q4 2025" fill={BAR_Q4} radius={[6, 6, 0, 0]} />
+          <Bar dataKey="q1" name="Q1 2026" fill={BAR_Q1} radius={[6, 6, 0, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}
+
+function CampaignsTab() {
   return (
     <div className="space-y-8">
       <div>
-        <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Engagement by company — opens + clicks</h3>
+        <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Q1 sends by engagement</h3>
         <p className="text-xs text-secondary-foreground/55 mb-4">
-          Top 15 accounts by total Q1 FSI email engagement. Stacked bars show
-          opens + tracked link clicks; sent volume is the universe size and
-          excluded from the bar so the chart reflects audience response only.
+          All six Q1 2026 email sends, stacked by recipient outcome: Opens, Clicks, Bounces and
+          Opt-outs. Bars are ordered by total engagement; sent volume is shown in the table below.
         </p>
-        <ResponsiveContainer width="100%" height={520}>
-          <BarChart data={engagementByCompany} layout="vertical" margin={{ left: 20, right: 30, top: 5, bottom: 5 }}>
+        <ResponsiveContainer width="100%" height={360}>
+          <BarChart data={topCampaigns} layout="vertical" margin={{ left: 10, right: 30, top: 5, bottom: 5 }}>
             <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={CHART_GRID} />
             <XAxis type="number" tick={{ fontSize: 11, fill: CHART_TICK_DIM }} />
             <YAxis
               type="category"
-              dataKey="account"
-              width={220}
+              dataKey="campaign"
+              width={300}
               tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }}
             />
             <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
             <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
-            <Bar dataKey="email" name="Opens" stackId="a" fill={BAR_CHANNEL_EMAIL} />
-            <Bar dataKey="link"  name="Clicks" stackId="a" fill={BAR_CHANNEL_LINK} radius={[0, 6, 6, 0]} />
+            <Bar dataKey="opens"    name="Opens"    stackId="a" fill={BAR_OPENS} />
+            <Bar dataKey="clicks"   name="Clicks"   stackId="a" fill={BAR_CLICKS} />
+            <Bar dataKey="bounces"  name="Bounces"  stackId="a" fill={BAR_BOUNCES} />
+            <Bar dataKey="optouts"  name="Opt-outs" stackId="a" fill={BAR_OPTOUTS} radius={[0, 6, 6, 0]} />
           </BarChart>
         </ResponsiveContainer>
       </div>
@@ -153,21 +177,26 @@ function CompaniesTab() {
         <table className="w-full text-sm">
           <thead>
             <tr style={{ background: "hsl(0 0% 100%)" }}>
-              <th className="text-left p-3 font-medium text-secondary-foreground/55">Account</th>
+              <th className="text-left p-3 font-medium text-secondary-foreground/55">Campaign</th>
+              <th className="text-center p-3 font-medium text-secondary-foreground/55">Sent</th>
               <th className="text-center p-3 font-medium text-secondary-foreground/55">Opens</th>
               <th className="text-center p-3 font-medium text-secondary-foreground/55">Clicks</th>
-              <th className="text-center p-3 font-medium text-secondary-foreground/55">Total engagement</th>
+              <th className="text-center p-3 font-medium text-secondary-foreground/55">Open rate</th>
+              <th className="text-center p-3 font-medium text-secondary-foreground/55">CTR</th>
             </tr>
           </thead>
           <tbody>
-            {engagementByCompany.map((row) => {
-              const total = row.email + row.link;
+            {topCampaigns.map((row) => {
+              const openRate = row.sent ? (row.opens / row.sent) * 100 : 0;
+              const ctr      = row.sent ? (row.clicks / row.sent) * 100 : 0;
               return (
-                <tr key={row.account} className="border-t" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
-                  <td className="p-3 font-medium text-secondary-foreground">{row.account}</td>
-                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{row.email.toLocaleString()}</td>
-                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{row.link.toLocaleString()}</td>
-                  <td className="p-3 text-center tabular-nums font-medium text-accent">{total.toLocaleString()}</td>
+                <tr key={row.campaign} className="border-t" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
+                  <td className="p-3 font-medium text-secondary-foreground">{row.campaign}</td>
+                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{row.sent.toLocaleString()}</td>
+                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{row.opens.toLocaleString()}</td>
+                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{row.clicks.toLocaleString()}</td>
+                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{openRate.toFixed(1)}%</td>
+                  <td className="p-3 text-center tabular-nums font-medium text-accent">{ctr.toFixed(1)}%</td>
                 </tr>
               );
             })}
@@ -178,66 +207,62 @@ function CompaniesTab() {
   );
 }
 
-// Shared channel palette for Strategies + Campaigns stacked bars.
-// Pardot doesn't log Bounce or Unsubscribe rows in this export, so we
-// stack the four channel types we do have: Opens / Clicks / Visits / Forms.
-const BAR_OPENS  = "#61bdb1";  // FSI Green
-const BAR_CLICKS = "#EF785B";  // FSI Orange
-const BAR_VISITS = "#3FBAD5";  // FSI Light Blue
-const BAR_FORMS  = "#D5B700";  // FSI Mustard
-
-function StrategiesTab() {
+function RegionTab() {
   return (
-    <div>
-      <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Q1 engagement by strategy — opens / clicks / visits / forms</h3>
-      <p className="text-xs text-secondary-foreground/55 mb-4">
-        Q1 prospect activity bucketed by strategy, inferred from FSI campaign names. Each bar
-        stacks Opens + Clicks + Visits + Forms. Bounce and Unsubscribe rows aren't recorded in
-        the Pardot activity export, so they aren't shown.
-      </p>
-      <ResponsiveContainer width="100%" height={380}>
-        <BarChart data={engagementByStrategy} layout="vertical" margin={{ left: 20, right: 30, top: 5, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={CHART_GRID} />
-          <XAxis type="number" tick={{ fontSize: 11, fill: CHART_TICK_DIM }} />
-          <YAxis type="category" dataKey="strategy" width={240} tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }} />
-          <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
-          <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
-          <Bar dataKey="opens"  name="Opens"  stackId="a" fill={BAR_OPENS} />
-          <Bar dataKey="clicks" name="Clicks" stackId="a" fill={BAR_CLICKS} />
-          <Bar dataKey="visits" name="Visits" stackId="a" fill={BAR_VISITS} />
-          <Bar dataKey="forms"  name="Forms"  stackId="a" fill={BAR_FORMS} radius={[0, 6, 6, 0]} />
-        </BarChart>
-      </ResponsiveContainer>
-    </div>
-  );
-}
+    <div className="space-y-8">
+      <div>
+        <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Q1 engagement by region</h3>
+        <p className="text-xs text-secondary-foreground/55 mb-4">
+          Q1 2026 direct-email outcomes aggregated by recipient region. EMEA carried five of the
+          six Q1 sends (all GLIS quarterly updates); the US contributed one send. ANZ did not run
+          a Q1 direct-email campaign — its seven Q4 fixed-income roundtable invitations were the
+          last cycle.
+        </p>
+        <ResponsiveContainer width="100%" height={260}>
+          <BarChart data={engagementByRegion} layout="vertical" margin={{ left: 10, right: 30, top: 5, bottom: 5 }}>
+            <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={CHART_GRID} />
+            <XAxis type="number" tick={{ fontSize: 11, fill: CHART_TICK_DIM }} />
+            <YAxis type="category" dataKey="region" width={80} tick={{ fontSize: 12, fill: CHART_TICK_LIGHT }} />
+            <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
+            <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
+            <Bar dataKey="opens"    name="Opens"    stackId="a" fill={BAR_OPENS} />
+            <Bar dataKey="clicks"   name="Clicks"   stackId="a" fill={BAR_CLICKS} />
+            <Bar dataKey="bounces"  name="Bounces"  stackId="a" fill={BAR_BOUNCES} />
+            <Bar dataKey="optouts"  name="Opt-outs" stackId="a" fill={BAR_OPTOUTS} radius={[0, 6, 6, 0]} />
+          </BarChart>
+        </ResponsiveContainer>
+      </div>
 
-function CampaignsTab() {
-  return (
-    <div>
-      <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Top campaigns by Q1 engagement</h3>
-      <p className="text-xs text-secondary-foreground/55 mb-4">
-        Top 10 FSI campaigns by total Q1 prospect activity, stacked by channel. Igneo, FSSA,
-        Stewart, AlbaCore and SOSCOT campaigns belong to FSI sub-brands and report separately.
-      </p>
-      <ResponsiveContainer width="100%" height={420}>
-        <BarChart data={topCampaigns} layout="vertical" margin={{ left: 10, right: 30, top: 5, bottom: 5 }}>
-          <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={CHART_GRID} />
-          <XAxis type="number" tick={{ fontSize: 12, fill: CHART_TICK_DIM }} />
-          <YAxis
-            type="category"
-            dataKey="campaign"
-            width={260}
-            tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }}
-          />
-          <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
-          <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
-          <Bar dataKey="opens"  name="Opens"  stackId="a" fill={BAR_OPENS} />
-          <Bar dataKey="clicks" name="Clicks" stackId="a" fill={BAR_CLICKS} />
-          <Bar dataKey="visits" name="Visits" stackId="a" fill={BAR_VISITS} />
-          <Bar dataKey="forms"  name="Forms"  stackId="a" fill={BAR_FORMS} radius={[0, 6, 6, 0]} />
-        </BarChart>
-      </ResponsiveContainer>
+      <div className="overflow-hidden rounded-xl border" style={{ borderColor: "rgba(0,0,0,0.1)" }}>
+        <table className="w-full text-sm">
+          <thead>
+            <tr style={{ background: "hsl(0 0% 100%)" }}>
+              <th className="text-left p-3 font-medium text-secondary-foreground/55">Region</th>
+              <th className="text-center p-3 font-medium text-secondary-foreground/55">Sent</th>
+              <th className="text-center p-3 font-medium text-secondary-foreground/55">Opens</th>
+              <th className="text-center p-3 font-medium text-secondary-foreground/55">Clicks</th>
+              <th className="text-center p-3 font-medium text-secondary-foreground/55">Open rate</th>
+              <th className="text-center p-3 font-medium text-secondary-foreground/55">CTR</th>
+            </tr>
+          </thead>
+          <tbody>
+            {engagementByRegion.map((row) => {
+              const openRate = row.sent ? (row.opens / row.sent) * 100 : 0;
+              const ctr      = row.sent ? (row.clicks / row.sent) * 100 : 0;
+              return (
+                <tr key={row.region} className="border-t" style={{ borderColor: "rgba(0,0,0,0.06)" }}>
+                  <td className="p-3 font-medium text-secondary-foreground">{row.region}</td>
+                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{row.sent.toLocaleString()}</td>
+                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{row.opens.toLocaleString()}</td>
+                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{row.clicks.toLocaleString()}</td>
+                  <td className="p-3 text-center tabular-nums text-secondary-foreground">{openRate.toFixed(1)}%</td>
+                  <td className="p-3 text-center tabular-nums font-medium text-accent">{ctr.toFixed(1)}%</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
