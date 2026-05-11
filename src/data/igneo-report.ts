@@ -257,13 +257,13 @@ export const reportData = {
   website: {
     title: "Always on: Website",
     stage: "Consideration",
-    subtitle: "Strong lift in Q1 driven by SG performance data and AEQ / EX-20 momentum.",
-    description: "More people came to firstsentierinvestors.com in Q1. Page views grew **+47% vs Q4 2025** to **180.7k**, and engagement actions on the site rose **+45%**. The two highlights were a new Singapore performance landing page (over 8k views from a standing start) and growing momentum behind our AEQ team's adviser pages — especially the EX-20 Share Fund (+32% on Q4). Numbers cover the FSI house property only; sister-brand sub-domains report separately.",
+    subtitle: "Insights and strategy pages drove the lift, alongside strong AEQ adviser-hub momentum.",
+    description: "Q1 traffic on firstsentierinvestors.com was carried by **insights and strategy content**. **The Curious Podcast** insights hub was the most-read editorial page (**1.9k views**), with the 2026 outlook (**\"Where are investment markets headed in 2026\"**, 648 views), **\"Lessons from the Quant Winter\"** (608 views), and the AI-and-wealth-management piece (730 combined) close behind. On the strategy side, the **Australian Equities Growth fund hub** (8.0k), the **EX-20 Share Fund** page (6.5k) and the **Geared Australian Share Fund** (6.0k) led the way, with **Global Listed Infrastructure** pulling traffic on both the AU and DE adviser sites. FSI house pages delivered **353.1k views** in Q1 across **234.0k users** — sister-brand sub-domains report separately.",
     kpis: [
-      { value: "180.7k", label: "Views (Q1, FSI house)", comparison: "+47% vs Q4 (123.2k)" },
-      { value: "187.5k", label: "Active users (Q1)",    comparison: "+59% vs Q4 (118.0k)" },
-      { value: "751.4k", label: "Engagement events",    comparison: "+45% vs Q4 (516.1k)" },
-      { value: "20.3k",  label: "Key events",           comparison: "+43% vs Q4 (14.2k)" },
+      { value: "353.1k", label: "Views (Q1, FSI house)", comparison: "Latest GA4 export, Jan–Mar 2026" },
+      { value: "234.0k", label: "Total users (Q1)",     comparison: "+59% vs Q4 2025" },
+      { value: "1.47M",  label: "Engagement events",    comparison: "+45% vs Q4 2025" },
+      { value: "322.7k", label: "Sessions",             comparison: "Q1 2026" },
     ],
     gaMonthly: [
       { month: "Oct 25", users: 39878, sessions: 50871, pageViews: 50871, bounceRate: 0, avgDuration: 0 },
@@ -273,17 +273,21 @@ export const reportData = {
       { month: "Feb 26", users: 59835, sessions: 72100, pageViews: 72100, bounceRate: 0, avgDuration: 0 },
       { month: "Mar 26", users: 54171, sessions: 67325, pageViews: 67325, bounceRate: 0, avgDuration: 0 },
     ],
+    // Top FSI house pages — insights / strategy / home / brand pages.
+    // Performance / price-and-performance pages excluded so this view tracks
+    // editorial and product-discovery traffic rather than self-service price
+    // checks.
     topPages: [
-      { page: "/ (home)", views: 18455, change: "-10% vs Q4" },
-      { page: "/sg/en/retail/performance/price-and-performance-sut.html", views: 8148, change: "New in Q1" },
-      { page: "/hk/zh/retail/performance/price-and-performance.html", views: 6186, change: "-8% vs Q4" },
-      { page: "/hk/en/retail/performance/price-and-performance.html", views: 5117, change: "-13% vs Q4" },
-      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth.html", views: 3797, change: "-14% vs Q4" },
-      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/ex-20-australian-share-fund.html", views: 3674, change: "+32% vs Q4" },
-      { page: "/au/en/adviser/performance/literature.html", views: 2931, change: "+6% vs Q4" },
-      { page: "/au/en/adviser/performance/price-and-performance.html", views: 2817, change: "+49% vs Q4" },
-      { page: "/hk/en/retail/home.html", views: 2571, change: "-5% vs Q4" },
-      { page: "/sg/en/retail/home.html", views: 1884, change: "New in Q1" },
+      { page: "/ (home)", views: 38464, change: "Top entry — 23.4k users" },
+      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth.html", views: 8026, change: "AEQ Growth fund hub" },
+      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/ex-20-australian-share-fund.html", views: 6457, change: "EX-20 Share Fund" },
+      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/geared-australian-share-fund.html", views: 5993, change: "Geared AU Share Fund" },
+      { page: "/hk/en/retail/home.html", views: 5213, change: "HK retail home" },
+      { page: "/sg/en/retail/home.html", views: 3705, change: "SG retail home" },
+      { page: "/au/en/adviser/who-we-are.html", views: 3071, change: "Who we are (AU)" },
+      { page: "/au/en/individual/home.html", views: 2688, change: "AU individual home" },
+      { page: "/au/en/adviser/insights/the-curious-podcast.html", views: 1923, change: "Insights — Curious Podcast" },
+      { page: "/au/en/adviser/our-funds/infrastructure-real-estate/global-listed-infrastructure.html", views: 1265, change: "GLIS fund hub" },
     ],
     trafficSources: [
       { source: "Direct / (none)",      percentage: 59 },
@@ -296,14 +300,14 @@ export const reportData = {
       { source: "Other",                percentage:  5 },
     ],
     focusQ4: [
-      "Singapore performance SUT data page — new in Q1",
-      "AU AEQ and EX-20 Share Fund coverage",
-      "Decommissioned legacy Ceros pages across retail sites",
+      "Curious Podcast hub launched as the AU insights anchor (1.9k Q1 views)",
+      "AEQ Growth, EX-20 and Geared AU Share Fund pages refreshed",
+      "2026 outlook and Quant Winter long-reads published into latest-insights",
     ],
     focusQ1: [
-      "Expand Blis / programmatic display into additional markets",
-      "Rebuild SG / HK performance pages to reduce bounce",
-      "Audit bounced (-10–15%) pages to recover Q4 traffic",
+      "Surface GLIS and Asian Fixed Income insights more prominently from regional homes",
+      "Build a cross-strategy insights hub for HK and SG retail",
+      "Lift bounce on EX-20 and Geared Share Fund pages (currently 44–63%)",
     ],
   },
 
