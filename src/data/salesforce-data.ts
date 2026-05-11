@@ -1,64 +1,72 @@
 // ═══════════════════════════════════════════════════════════════════════
-// SOURCE: Raw Data/Email/*.xlsx — per-campaign Pardot exports.
-// Each xlsx = one email send with sheets sent / opens / clicks /
-// bounces / optouts. We count rows per sheet (recipient = 1 row).
-// Q4 = Oct–Dec 2025 sends (20 files, 2,699 emails).
-// Q1 = Jan–Mar 2026 sends ( 6 files, 1,302 emails — all GLIS).
-// FSI brand only; Igneo / FSSA / Stewart / AlbaCore / SOSCOT decks
-// report separately.
+// SOURCES:
+//   - Salesforce → Reports → List Email Statistics export
+//     (screenshots supplied 2026-05-11). 84 sends across the period —
+//     mixes FSI brand with sub-brand activity (RQI, Igneo, FSSA,
+//     Altacore) pending a clean brand-split data refresh tomorrow.
+//   - Raw Data/Email/*.xlsx — per-campaign Pardot exports (FSI brand,
+//     EMEA + US only). 26 sends: 20 in Q4 2025, 6 in Q1 2026 (all GLIS
+//     quarterly updates). Used for the breakdown tabs.
+//
+// Numbers in the headline KPIs and 5-metric strip reflect the broader
+// Salesforce universe (84 sends, mixed brand). Breakdown tabs
+// (Companies / Strategies / Campaigns) still surface the FSI EMEA
+// Pardot subset and are labelled as such — they refresh with the full
+// data pull tomorrow.
 // ═══════════════════════════════════════════════════════════════════════
 
 // ── Headline KPI grid (2x2 top of section) ──
-// Engagements = opens + clicks + bounces + opt-outs.
-// Q1: 280 + 76 + 8 + 2 = 366    Q4: 652 + 96 + 11 + 5 = 764
-// Peak month: Jan (5 of 6 Q1 sends; 340 engagement events).
-// CTOR = clicks / opens. Q1: 76/280 = 27.1%   Q4: 96/652 = 14.7%
+// From Salesforce List Email Statistics totals (Q4 2025 + Q1 2026 to date):
+//   84 sends · 18,819 emails delivered · 6,666 unique opens (35.82%) ·
+//   1,247 unique clicks (6.70%) · 18.71% CTOR · 209 bounces · 129 opt-outs
 export const clientEngagementHeadlineKpis = [
-  { value: "366",   label: "Total engagements (Q1)", comparison: "-52% vs Q4 (764)" },
-  { value: "1,302", label: "Emails sent (Q1)",       comparison: "-52% vs Q4 (2,699)" },
-  { value: "Jan",   label: "Peak month",             comparison: "340 engagement events" },
-  { value: "27.1%", label: "CTOR",                   comparison: "+12.4pp vs Q4 (14.7%)" },
+  { value: "84",     label: "Campaign sends",        comparison: "Q4 2025 + Q1 2026 to date" },
+  { value: "18,819", label: "Emails delivered",      comparison: "Across all FSI Salesforce sends" },
+  { value: "35.82%", label: "Open rate (unique)",    comparison: "6,666 / 18,819" },
+  { value: "18.71%", label: "Click-to-open",         comparison: "1,247 unique clicks / 6,666 opens" },
 ];
 
 // ── 5-metric funnel strip (dark band) ──
+// Salesforce universe figures. Q4 vs Q1 split not in the screenshot
+// totals; will be split out with tomorrow's data pull.
 export interface FunnelMetric {
   key: string;
   label: string;
   q1: number;
   q4: number;
-  delta: string;          // "+45% vs Q4 (7,914)" style
-  deltaPositive: boolean; // whether the delta should render as green vs red
+  delta: string;
+  deltaPositive: boolean;
 }
 
 export const emailFunnelStrip: FunnelMetric[] = [
-  { key: "sent",    label: "Sent",     q1: 1302, q4: 2699, delta: "-52% vs Q4 (2,699)", deltaPositive: false },
-  { key: "opens",   label: "Opens",    q1:  280, q4:  652, delta: "-57% vs Q4 (652)",   deltaPositive: false },
-  { key: "clicks",  label: "Clicks",   q1:   76, q4:   96, delta: "-21% vs Q4 (96)",    deltaPositive: false },
-  { key: "bounces", label: "Bounces",  q1:    8, q4:   11, delta: "-27% vs Q4 (11)",    deltaPositive: true  },
-  { key: "optouts", label: "Opt-outs", q1:    2, q4:    5, delta: "-60% vs Q4 (5)",     deltaPositive: true  },
+  { key: "sent",    label: "Sent",         q1: 18819, q4: 0, delta: "84 sends across the period",       deltaPositive: true },
+  { key: "opens",   label: "Unique opens", q1:  6666, q4: 0, delta: "12,693 total opens",               deltaPositive: true },
+  { key: "clicks",  label: "Unique clicks",q1:  1247, q4: 0, delta: "2,985 total clicks",               deltaPositive: true },
+  { key: "bounces", label: "Bounces",      q1:   209, q4: 0, delta: "182 hard · 27 soft",               deltaPositive: false },
+  { key: "optouts", label: "Opt-outs",     q1:   129, q4: 0, delta: "0.69% of sends",                   deltaPositive: false },
 ];
 
 // ── Email tab — 4 KPI cards ──
 export const emailTabKpis = [
-  { label: "Sent",          value: "1,302", delta: "-52% vs Q4",   q4: "Q4: 2,699", deltaPositive: false },
-  { label: "Unique opens",  value: "280",   delta: "-57% vs Q4",   q4: "Q4: 652",   deltaPositive: false },
-  { label: "Open rate",     value: "21.5%", delta: "-2.7pp vs Q4", q4: "Q4: 24.2%", deltaPositive: false },
-  { label: "CTOR",          value: "27.1%", delta: "+12.4pp vs Q4",q4: "Q4: 14.7%", deltaPositive: true  },
+  { label: "Sent",          value: "18,819", delta: "84 sends",            q4: "Q4 2025 + Q1 2026",   deltaPositive: true  },
+  { label: "Unique opens",  value: "6,666",  delta: "35.82% open rate",    q4: "12,693 total opens",  deltaPositive: true  },
+  { label: "Unique clicks", value: "1,247",  delta: "6.70% click rate",    q4: "2,985 total clicks",  deltaPositive: true  },
+  { label: "CTOR",          value: "18.71%", delta: "1,247 / 6,666",       q4: "Click-to-open ratio", deltaPositive: true  },
 ];
 
-// ── Email tab — Q1 vs Q4 full email funnel (paired bars) ──
+// ── Email tab — full funnel single-series (paired Q1 vs Q4 split
+// returns once the brand- and quarter-split data lands tomorrow) ──
 export interface FunnelRow { metric: string; q1: number; q4: number; }
 export const emailFunnelQ1VsQ4: FunnelRow[] = [
-  { metric: "Sent",     q1: 1302, q4: 2699 },
-  { metric: "Opens",    q1:  280, q4:  652 },
-  { metric: "Clicks",   q1:   76, q4:   96 },
-  { metric: "Bounces",  q1:    8, q4:   11 },
-  { metric: "Opt-outs", q1:    2, q4:    5 },
+  { metric: "Sent",          q1: 18819, q4: 0 },
+  { metric: "Unique opens",  q1:  6666, q4: 0 },
+  { metric: "Unique clicks", q1:  1247, q4: 0 },
+  { metric: "Bounces",       q1:   209, q4: 0 },
+  { metric: "Opt-outs",      q1:   129, q4: 0 },
 ];
 
-// ── Companies tab — top 15 by Q1 engagement (opens + clicks + bounces + opt-outs).
-// Internal / test rows (First Sentier Investors entities, "test", "Test version",
-// "Inactive Internal Contacts") are filtered out.
+// ── Companies tab — top 15 firms by Q1 engagement.
+// FSI EMEA Pardot subset only (6 Q1 sends). Refresh pending.
 export interface CompanyRow {
   company: string;
   sent: number;
@@ -86,10 +94,8 @@ export const topCompaniesQ1: CompanyRow[] = [
   { company: "M & G Wealth Investments LLP — London",        sent: 2, opens: 2, clicks: 1, bounces: 0, optouts: 0 },
 ];
 
-// ── Strategies tab — Q1 inferred from filename.
-// Q1 sends were 100% GLIS (5 EMEA Q4 updates + 1 US income story).
-// We keep Q4 strategies in the table below for context (ANZ fixed-income
-// roundtable invites + UK insto networking ran in Q4 only).
+// ── Strategies tab — Q1 (FSI EMEA Pardot subset) + Q4 (FSI Pardot
+// subset incl. ANZ Fixed Income roundtables + UK Insto networking). ──
 export interface StrategyRow {
   strategy: string;
   sent: number;
@@ -104,13 +110,13 @@ export const topStrategiesQ1: StrategyRow[] = [
 ];
 
 export const topStrategiesQ4: StrategyRow[] = [
-  { strategy: "Global Listed Infrastructure",   sent: 2299, opens: 513, clicks: 85, bounces: 9, optouts: 3 },
-  { strategy: "Asian / Fixed Income (ANZ)",     sent:  204, opens: 111, clicks:  5, bounces: 1, optouts: 0 },
-  { strategy: "Institutional / UK Insto",       sent:   17, opens:  12, clicks:  7, bounces: 0, optouts: 0 },
-  { strategy: "Global Listed Infrastructure (US)", sent: 196, opens: 28, clicks: 6, bounces: 1, optouts: 2 },
+  { strategy: "Global Listed Infrastructure",      sent: 2299, opens: 513, clicks: 85, bounces: 9, optouts: 3 },
+  { strategy: "Asian / Fixed Income (ANZ)",        sent:  204, opens: 111, clicks:  5, bounces: 1, optouts: 0 },
+  { strategy: "Institutional / UK Insto",          sent:   17, opens:  12, clicks:  7, bounces: 0, optouts: 0 },
+  { strategy: "Global Listed Infrastructure (US)", sent:  196, opens:  28, clicks:  6, bounces: 1, optouts: 2 },
 ];
 
-// ── Campaigns tab — one row per Q1 send. Campaign name = filename. ──
+// ── Campaigns tab — one row per Q1 send (FSI EMEA Pardot subset). ──
 export interface CampaignRow {
   campaign: string;
   sent: number;
@@ -129,10 +135,25 @@ export const topCampaignsQ1: CampaignRow[] = [
   { campaign: "2026-01 EMEA FR — GLIS Q4 update",            sent:  41, opens:  11, clicks:  6, bounces: 0, optouts: 0 },
 ];
 
+// ── A few of the high-volume ANZ Q1 campaigns surfaced in the new
+// Salesforce export but not yet split out by recipient. Surfaced here
+// as a "what's coming" preview — opens / clicks columns will populate
+// with the next data refresh. ──
+export const anzPreviewCampaignsQ1: { campaign: string; sentDate: string; sent: number }[] = [
+  { campaign: "ANZ Reporting Season Podcast",             sentDate: "12 Mar 2026", sent: 1717 },
+  { campaign: "ANZ Reporting Season Podcast — source",    sentDate: "13 Mar 2026", sent: 1711 },
+  { campaign: "ANZ Reporting Season Podcast — NSW",       sentDate: "12 Mar 2026", sent:  817 },
+  { campaign: "ANZ Reporting Season Podcast — Insto",     sentDate: "13 Mar 2026", sent:  763 },
+  { campaign: "ANZ — GDP Anti-Inflation Whitepaper",      sentDate: "27 Feb 2026", sent:  458 },
+  { campaign: "ANZ WS Glades Gold Club breakfast",        sentDate: "16 Mar 2026", sent:  209 },
+  { campaign: "ANZ WS Reporting Season Update — Sun Cst", sentDate: "24 Jan 2026", sent:  138 },
+  { campaign: "ANZ FSI WS — Adelaide / Perth / QLD CPD",  sentDate: "27 Jan 2026", sent:  109 },
+  { campaign: "ANZ WS AEQ Roundtable — Adel/Perth/QLD",   sentDate: "25 Mar 2026", sent:   65 },
+  { campaign: "ANZ WS Reporting Season — Cairns",         sentDate: "24 Jan 2026", sent:   51 },
+  { campaign: "ANZ WS Reporting Season — Toowoomba",      sentDate: "24 Jan 2026", sent:   50 },
+];
+
 // ── Legacy + back-compat exports ──
-// The old SalesforceSection consumed `salesforceMarketingKpis`, `topCampaigns`,
-// `engagementByRegion`, `q1VsQ4`. Re-point the names to the new data so any
-// stale import (or AlwaysOnSection / hooks) doesn't break.
 export const salesforceMarketingKpis = clientEngagementHeadlineKpis;
 export const topCampaigns = topCampaignsQ1;
 export const q1VsQ4 = emailFunnelQ1VsQ4;
