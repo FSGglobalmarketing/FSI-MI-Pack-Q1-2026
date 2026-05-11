@@ -9,7 +9,6 @@ const slide3XcelEnergy = `${base}hero/hero-slider-3-CEO-xcel-energy.jpg`;
 
 export interface HeroSlide {
   image: string;
-  label: string;
   heading: string;
   description: string;
   sectionId: string;
@@ -18,23 +17,20 @@ export interface HeroSlide {
 const slides: HeroSlide[] = [
   {
     image: slide1BuyHoldSell,
-    label: "Hero slide 1",
     heading: "Livewire Markets — Buy Hold Sell",
     description:
       "Dushko joined a special reporting season episode of Livewire Markets' Buy Hold Sell, unpacking the big themes — from the winners to the losers, and everything in between.",
-    sectionId: "performance",
+    sectionId: "highlight-aeq-reporting",
   },
   {
     image: slide2ReportingPodcast,
-    label: "Hero slide 2",
     heading: "Reporting season",
     description:
       "David Wilson and Christian Guerra break down the sector-by-sector reactions and highlight where solid fundamentals and exaggerated price moves are creating opportunities for active investors.",
-    sectionId: "performance",
+    sectionId: "highlight-aeq-reporting",
   },
   {
     image: slide3XcelEnergy,
-    label: "Hero slide 3",
     heading: "Xcel Energy CFO on AI and data centres with Rebecca Sherlock",
     description:
       "AI and data centres are reshaping electricity demand — but how can utilities deliver growth alongside affordability and decarbonisation?",
@@ -100,9 +96,6 @@ export default function HeroSection() {
 
           {/* Card on bottom right */}
           <div className="relative max-w-sm rounded-xl border border-border bg-card/60 backdrop-blur-md p-5 sm:p-6 transition-all duration-500">
-            <span className="inline-block text-[10px] font-medium tracking-wide text-accent mb-1.5">
-              {slides[current].label}
-            </span>
             <h2 className="text-base font-medium text-foreground leading-snug mb-1.5" style={{ marginBottom: 6 }}>
               {slides[current].heading}
             </h2>

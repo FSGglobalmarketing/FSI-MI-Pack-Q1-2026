@@ -152,7 +152,7 @@ export default function SearchVisibility() {
             Global keyword coverage for <strong className="text-foreground font-medium">firstsentierinvestors.com</strong> grew from <strong className="text-foreground font-medium">190 to 216</strong> ranked keywords over the quarter (+14%). Page 1 coverage increased from 34 to <strong className="text-foreground font-medium">37 keywords</strong>, and estimated organic traffic from these terms rose <strong className="text-foreground font-medium">+43%</strong>.
           </p>
           <p>
-            Biggest gainers this quarter: <strong className="text-foreground font-medium">"mufg forms"</strong> (+59 positions), <strong className="text-foreground font-medium">"investment management firms"</strong> (+50), <strong className="text-foreground font-medium">"active security group"</strong> (+48) and <strong className="text-foreground font-medium">"investors"</strong> (+41 — now #13). The chart below tracks <strong className="text-foreground font-medium">firstsentierinvestors.com.au</strong> against AU peers; other markets are not yet tracked in this export.
+            Biggest gainers this quarter: <strong className="text-foreground font-medium">"investment management firms"</strong> (+50), <strong className="text-foreground font-medium">"active security group"</strong> (+48) and <strong className="text-foreground font-medium">"investors"</strong> (+41). The chart below tracks <strong className="text-foreground font-medium">firstsentierinvestors.com.au</strong> against AU peers.
           </p>
         </div>
 
