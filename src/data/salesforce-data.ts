@@ -67,42 +67,59 @@ export const engagementByCompany: CompanyChannelRow[] = [
   { account: "Wing Lung Bank",                              email:  15, link:  96, web: 0, form: 0, total: 111 },
 ];
 
-// Interactions by investment strategy — derived from Opportunities Report
-// (Investment Team field, 2,207 total opportunities)
+// Q1 2026 prospect engagement by strategy. Strategy is inferred from
+// campaign-name keywords in Salesforce Activity.xlsx, filtered to FSI-only
+// campaigns (Igneo / FSSA / Stewart / AlbaCore / SOSCOT excluded). The
+// channels reflect the four activity types Pardot logs: Open (email open),
+// Click (Email Click + Custom URL Click combined), Visit (tracked
+// website visit) and Form (Form Views + Form Submissions). Pardot doesn't
+// record Bounce or Unsubscribe rows in this export.
+export interface StrategyEngagementRow {
+  strategy: string;
+  opens: number;
+  clicks: number;
+  visits: number;
+  forms: number;
+}
+
+export const engagementByStrategy: StrategyEngagementRow[] = [
+  { strategy: "Brand / Outlook",                       opens: 3291, clicks: 1427, visits: 1023, forms:   4 },
+  { strategy: "Australian Equities (AEQ)",             opens: 2139, clicks:  444, visits:   21, forms: 106 },
+  { strategy: "Asian Fixed Income",                    opens:  788, clicks: 1064, visits:   29, forms:   0 },
+  { strategy: "Regional retail / wholesale",           opens:   33, clicks: 1193, visits:   88, forms:  60 },
+  { strategy: "Global Listed Infrastructure (GLIS)",   opens:  649, clicks:  298, visits:   20, forms:   2 },
+  { strategy: "Cash",                                  opens:   18, clicks:    1, visits:    3, forms:   0 },
+];
+
+// Legacy single-metric exports kept for back-compat with older imports.
 export interface StrategyRow { strategy: string; interactions: number; }
+export const interactionsByStrategy: StrategyRow[] = engagementByStrategy.map(
+  (r) => ({ strategy: r.strategy, interactions: r.opens + r.clicks + r.visits + r.forms })
+);
+export const interactionsByFssaStrategy: StrategyRow[] = interactionsByStrategy;
 
-export const interactionsByStrategy: StrategyRow[] = [
-  { strategy: "Listed Infrastructure",    interactions: 739 },
-  { strategy: "Fixed Income",             interactions: 681 },
-  { strategy: "AEQ Growth",               interactions: 507 },
-  { strategy: "Property Securities",      interactions: 139 },
-  { strategy: "AEQ Smalls / Mids",        interactions: 127 },
-  { strategy: "First Sentier (Brand)",    interactions:   9 },
-];
+// Top Q1 2026 campaigns by prospect activity — FSI-only. Same channel
+// split as `engagementByStrategy`. Igneo / FSSA / Stewart / AlbaCore /
+// SOSCOT campaigns are filtered out (separate brand decks).
+export interface CampaignEngagementRow {
+  campaign: string;
+  opens: number;
+  clicks: number;
+  visits: number;
+  forms: number;
+}
 
-// FSI-strategy-only breakdown (for the chart variant that hides house/brand rows)
-export const interactionsByFssaStrategy: StrategyRow[] = [
-  { strategy: "Listed Infrastructure",    interactions: 739 },
-  { strategy: "Fixed Income",             interactions: 681 },
-  { strategy: "AEQ Growth",               interactions: 507 },
-  { strategy: "Property Securities",      interactions: 139 },
-  { strategy: "AEQ Smalls / Mids",        interactions: 127 },
-];
-
-// Top Q1 2026 campaigns by prospect activity — FSI-only.
-// Igneo, FSSA, Stewart, AlbaCore and SOSCOT-only campaigns are filtered out
-// (they belong to FSI sub-brands and report separately).
-export const topCampaigns = [
-  { campaign: "Institutional (house-level)",                                interactions: 3532 },
-  { campaign: "2026-03 ANZ WS AEQ Growth Post-reporting Season podcast",    interactions: 2523 },
-  { campaign: "ANZ Campaigns (rollup)",                                     interactions: 2312 },
-  { campaign: "2024 APAC Tracker Domain Campaign for FSI",                  interactions:  961 },
-  { campaign: "Hong Kong (English) Retail",                                 interactions:  570 },
-  { campaign: "2026-01 Asia HK WS — Asian Fixed Income + GLIS",             interactions:  486 },
-  { campaign: "Asia (rollup)",                                              interactions:  425 },
-  { campaign: "2026-02 Asia HK WS — Asian Fixed Income + GLIS",             interactions:  418 },
-  { campaign: "Singapore (English) Retail",                                 interactions:  382 },
-  { campaign: "2026-01 Asia SG WS — FSG 2026 Outlook",                      interactions:  367 },
+export const topCampaigns: CampaignEngagementRow[] = [
+  { campaign: "Institutional (house-level)",                             opens: 2798, clicks:  713, visits:  19, forms:   2 },
+  { campaign: "2026-03 ANZ WS AEQ Growth Post-reporting Season podcast", opens: 2099, clicks:  424, visits:   0, forms:   0 },
+  { campaign: "ANZ Campaigns (rollup)",                                  opens: 1546, clicks:  598, visits:   3, forms: 165 },
+  { campaign: "2024 APAC Tracker Domain Campaign for FSI",               opens:    0, clicks:    0, visits: 961, forms:   0 },
+  { campaign: "Hong Kong (English) Retail",                              opens:   30, clicks:  539, visits:   1, forms:   0 },
+  { campaign: "2026-01 Asia HK WS — Asian Fixed Income + GLIS",          opens:  129, clicks:  356, visits:   1, forms:   0 },
+  { campaign: "Asia (rollup)",                                           opens:   96, clicks:  103, visits:  88, forms: 138 },
+  { campaign: "2026-02 Asia HK WS — Asian Fixed Income + GLIS",          opens:  116, clicks:  300, visits:   2, forms:   0 },
+  { campaign: "Singapore (English) Retail",                              opens:    0, clicks:  320, visits:   2, forms:  60 },
+  { campaign: "2026-01 Asia SG WS — FSG 2026 Outlook",                   opens:  198, clicks:  163, visits:   6, forms:   0 },
 ];
 
 // Targeting — job title breakdown (placeholder; Pardot job-title field not

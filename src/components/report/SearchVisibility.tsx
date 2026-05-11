@@ -31,14 +31,14 @@ function CustomTooltip({ active, payload, label }: any) {
 
   return (
     <div className="bg-background rounded-[10px] px-4 py-3 min-w-[320px] max-w-[420px] border border-foreground/12">
-      <p className="text-primary font-medium text-[13px] mb-2">{label}</p>
+      <p className="text-accent font-medium text-[13px] mb-2">{label}</p>
       <div className="grid grid-cols-2 gap-x-6 gap-y-1">
         {sorted.map((entry: any) => (
           <div key={entry.dataKey} className="flex justify-between gap-3">
-            <span className={`text-[11px] ${entry.dataKey === "FSI" ? "text-primary font-medium" : "text-foreground/60"}`}>
+            <span className={`text-[11px] ${entry.dataKey === "FSI" ? "text-accent font-medium" : "text-foreground/60"}`}>
               {entry.dataKey}
             </span>
-            <span className={`text-[11px] tabular-nums ${entry.dataKey === "FSI" ? "text-primary font-medium" : "text-foreground/85"}`}>
+            <span className={`text-[11px] tabular-nums ${entry.dataKey === "FSI" ? "text-accent font-medium" : "text-foreground/85"}`}>
               {entry.value}
             </span>
           </div>
@@ -159,8 +159,6 @@ export default function SearchVisibility() {
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left column */}
           <div className="space-y-6">
-            <p className="text-sm leading-relaxed text-foreground/70">{s.goal}</p>
-
             <div>
               <h4 className="text-sm font-medium mb-3 text-foreground">Marketing Activities</h4>
               <ul className="space-y-2">

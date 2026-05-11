@@ -29,17 +29,17 @@ export default function EventsFilterBar({ events, activeFilters, onToggleFilter,
       {/* Status pills */}
       <FilterGroup label="Status" values={statuses} active={activeFilters.status} onToggle={(v) => onToggleFilter("status", v)} />
 
-      <div className="w-px h-6 bg-secondary-foreground/10" />
+      <div className="w-px h-6 bg-foreground/15" />
 
       {/* Category pills */}
       <FilterGroup label="Type" values={categories} active={activeFilters.category} onToggle={(v) => onToggleFilter("category", v)} />
 
-      <div className="w-px h-6 bg-secondary-foreground/10" />
+      <div className="w-px h-6 bg-foreground/15" />
 
       {/* Region pills */}
       <FilterGroup label="Region" values={regions} active={activeFilters.region} onToggle={(v) => onToggleFilter("region", v)} />
 
-      <div className="w-px h-6 bg-secondary-foreground/10" />
+      <div className="w-px h-6 bg-foreground/15" />
 
       {/* Quarter pills */}
       <FilterGroup label="Quarter" values={quarters} active={activeFilters.quarter} onToggle={(v) => onToggleFilter("quarter", v)} />
@@ -69,7 +69,7 @@ function FilterGroup({
 }) {
   return (
     <div className="flex items-center gap-1.5">
-      <span className="text-[10px] tracking-wide font-medium text-secondary-foreground/40 mr-1">{label}</span>
+      <span className="text-[10px] tracking-wide font-medium text-foreground/50 mr-1">{label}</span>
       {values.map((v) => {
         const isActive = active.includes(v);
         return (
@@ -79,7 +79,7 @@ function FilterGroup({
             className={`text-xs px-3 py-1 rounded-full font-medium transition-all capitalize ${
               isActive
                 ? "bg-accent text-accent-foreground shadow-sm"
-                : "bg-secondary-foreground/5 text-secondary-foreground/60 hover:bg-secondary-foreground/10 hover:text-secondary-foreground"
+                : "bg-foreground/10 text-foreground/70 hover:bg-foreground/15 hover:text-foreground"
             }`}
           >
             {v}

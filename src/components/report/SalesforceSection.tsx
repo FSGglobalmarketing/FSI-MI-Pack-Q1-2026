@@ -6,7 +6,8 @@ import {
 import KpiRow from "./KpiRow";
 import {
   salesforceMarketingKpis,
-  engagementByCompany, interactionsByStrategy, interactionsByFssaStrategy,
+  engagementByCompany,
+  engagementByStrategy,
   topCampaigns,
 } from "@/data/salesforce-data";
 
@@ -54,19 +55,19 @@ export default function SalesforceSection() {
         {/* Two-column: narrative left, KPI 2×2 right */}
         <div className="grid lg:grid-cols-2 gap-8 mb-6 items-start">
           <p className="text-secondary-foreground/75 leading-relaxed">
-            Q1 email engagement was led by our Asia wholesale partners —{" "}
-            <span className="text-secondary-foreground font-medium">DBS Singapore</span>,{" "}
-            <span className="text-secondary-foreground font-medium">China Construction Bank (Asia)</span>,{" "}
+            Our Asia wholesale partners drove most of FSI's Q1 email engagement.{" "}
+            <span className="text-secondary-foreground font-medium">DBS Singapore</span> opened,
+            clicked and shared our content more than any other firm —{" "}
+            <span className="text-secondary-foreground font-medium">605 actions</span> in Q1 —
+            with{" "}
+            <span className="text-secondary-foreground font-medium">China Construction Bank Asia</span>,{" "}
+            <span className="text-secondary-foreground font-medium">Bank of China Hong Kong</span>,{" "}
             <span className="text-secondary-foreground font-medium">DBS Hong Kong</span> and{" "}
-            <span className="text-secondary-foreground font-medium">Bank of China (Hong Kong)</span> topped the
-            table, each logging between 550 and 855 opens + clicks across Q1. Email opens were{" "}
-            <span className="text-secondary-foreground font-medium">+5% on Q4</span> and March was the
-            peak month — the{" "}
-            <span className="text-secondary-foreground font-medium">ANZ AEQ Growth post-reporting podcast</span>,{" "}
-            <span className="text-secondary-foreground font-medium">EMEA Igneo AIM</span> and the{" "}
-            <span className="text-secondary-foreground font-medium">HK / SG wholesale FSSA China client
-            updates</span> drove the spike. The Marketing Team will keep refining how strategies and
-            campaigns are tagged so this view sharpens over the year.
+            <span className="text-secondary-foreground font-medium">Mercer Australia</span> all
+            crossing 370. Email opens were{" "}
+            <span className="text-secondary-foreground font-medium">+5% vs Q4 2025</span> and March
+            was the strongest month — driven by the ANZ AEQ Growth post-reporting podcast and our
+            Hong Kong / Singapore client updates.
           </p>
           <div className="grid grid-cols-2 gap-3">
             {salesforceMarketingKpis.map((kpi) => (
@@ -177,42 +178,36 @@ function CompaniesTab() {
   );
 }
 
+// Shared channel palette for Strategies + Campaigns stacked bars.
+// Pardot doesn't log Bounce or Unsubscribe rows in this export, so we
+// stack the four channel types we do have: Opens / Clicks / Visits / Forms.
+const BAR_OPENS  = "#61bdb1";  // FSI Green
+const BAR_CLICKS = "#EF785B";  // FSI Orange
+const BAR_VISITS = "#3FBAD5";  // FSI Light Blue
+const BAR_FORMS  = "#D5B700";  // FSI Mustard
+
 function StrategiesTab() {
   return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Opportunities by investment team</h3>
-        <p className="text-xs text-secondary-foreground/55 mb-4">
-          Live and historical opportunities in the FSI pipeline by investment team. Listed
-          Infrastructure and Fixed Income lead with ~700 each, followed by AEQ Growth at 507.
-        </p>
-        <ResponsiveContainer width="100%" height={340}>
-          <BarChart data={interactionsByStrategy} layout="vertical" margin={{ left: 20, right: 30, top: 5, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={CHART_GRID} />
-            <XAxis type="number" tick={{ fontSize: 11, fill: CHART_TICK_DIM }} />
-            <YAxis type="category" dataKey="strategy" width={200} tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }} />
-            <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
-            <Bar dataKey="interactions" name="Interactions" fill={BAR_Q1} radius={[0, 6, 6, 0]} barSize={18} />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
-
-      <div>
-        <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Investment teams (brand stripped)</h3>
-        <p className="text-xs text-secondary-foreground/55 mb-4">
-          The same pipeline with the cross-brand "First Sentier" catch-all removed — this is pure
-          investment-team attribution of opportunities.
-        </p>
-        <ResponsiveContainer width="100%" height={280}>
-          <BarChart data={interactionsByFssaStrategy} layout="vertical" margin={{ left: 20, right: 30, top: 5, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={CHART_GRID} />
-            <XAxis type="number" tick={{ fontSize: 11, fill: CHART_TICK_DIM }} />
-            <YAxis type="category" dataKey="strategy" width={200} tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }} />
-            <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
-            <Bar dataKey="interactions" name="Interactions" fill={BAR_CHANNEL_WEB} radius={[0, 6, 6, 0]} barSize={18} />
-          </BarChart>
-        </ResponsiveContainer>
-      </div>
+    <div>
+      <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Q1 engagement by strategy — opens / clicks / visits / forms</h3>
+      <p className="text-xs text-secondary-foreground/55 mb-4">
+        Q1 prospect activity bucketed by strategy, inferred from FSI campaign names. Each bar
+        stacks Opens + Clicks + Visits + Forms. Bounce and Unsubscribe rows aren't recorded in
+        the Pardot activity export, so they aren't shown.
+      </p>
+      <ResponsiveContainer width="100%" height={380}>
+        <BarChart data={engagementByStrategy} layout="vertical" margin={{ left: 20, right: 30, top: 5, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={CHART_GRID} />
+          <XAxis type="number" tick={{ fontSize: 11, fill: CHART_TICK_DIM }} />
+          <YAxis type="category" dataKey="strategy" width={240} tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }} />
+          <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
+          <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
+          <Bar dataKey="opens"  name="Opens"  stackId="a" fill={BAR_OPENS} />
+          <Bar dataKey="clicks" name="Clicks" stackId="a" fill={BAR_CLICKS} />
+          <Bar dataKey="visits" name="Visits" stackId="a" fill={BAR_VISITS} />
+          <Bar dataKey="forms"  name="Forms"  stackId="a" fill={BAR_FORMS} radius={[0, 6, 6, 0]} />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 }
@@ -220,13 +215,12 @@ function StrategiesTab() {
 function CampaignsTab() {
   return (
     <div>
-      <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Top campaigns driving activity</h3>
+      <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Top campaigns by Q1 engagement</h3>
       <p className="text-xs text-secondary-foreground/55 mb-4">
-        Ranked by total Q1 prospect activity across the FSI estate. The EMEA Igneo AIM campaign
-        (3.8k interactions) and the ANZ AEQ Growth post-reporting podcast (2.5k) led, followed by
-        US Igneo NADIF institutional and the FSSA China client-update eDMs in HK and SG.
+        Top 10 FSI campaigns by total Q1 prospect activity, stacked by channel. Igneo, FSSA,
+        Stewart, AlbaCore and SOSCOT campaigns belong to FSI sub-brands and report separately.
       </p>
-      <ResponsiveContainer width="100%" height={320}>
+      <ResponsiveContainer width="100%" height={420}>
         <BarChart data={topCampaigns} layout="vertical" margin={{ left: 10, right: 30, top: 5, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={CHART_GRID} />
           <XAxis type="number" tick={{ fontSize: 12, fill: CHART_TICK_DIM }} />
@@ -237,7 +231,11 @@ function CampaignsTab() {
             tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }}
           />
           <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
-          <Bar dataKey="interactions" name="Interactions" fill={BAR_Q1} radius={[0, 6, 6, 0]} barSize={18} />
+          <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
+          <Bar dataKey="opens"  name="Opens"  stackId="a" fill={BAR_OPENS} />
+          <Bar dataKey="clicks" name="Clicks" stackId="a" fill={BAR_CLICKS} />
+          <Bar dataKey="visits" name="Visits" stackId="a" fill={BAR_VISITS} />
+          <Bar dataKey="forms"  name="Forms"  stackId="a" fill={BAR_FORMS} radius={[0, 6, 6, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

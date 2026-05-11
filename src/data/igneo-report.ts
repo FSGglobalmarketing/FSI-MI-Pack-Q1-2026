@@ -98,8 +98,7 @@ export const reportData = {
   },
 
   searchVisibility: {
-    description: "firstsentierinvestors.com ranked for 216 keywords in Mar '26 (up from 190 in Dec '25, +14%). 37 terms now sit on page 1 (up from 34), and estimated organic traffic from these terms grew ~43% over the quarter. The biggest gainers were \"mufg forms\" (+59 positions), \"investment management firms\" (+50), \"active security group\" (+48) and \"investors\" (+41 — now ranking #13).",
-    goal: "Defend share of voice in Property and Real Estate Investing searches, grow share of voice in ETF searches, and gather user-behaviour data to spot changing trends.",
+    description: "FSI's online visibility kept building in Q1. We now rank for **216 keywords** globally — up **+14% vs Q4 2025** — and **37 of those now sit on page 1 of Google**, lifting estimated organic traffic by roughly **+43%** over the quarter. The biggest jumps came from broad category searches — \"investment management firms\" climbed 50 positions, \"investors\" 41 (now #13) and \"global investment services\" 28. In Australia, where we measure ourselves against peers, FSI leads the pack on ranked-keyword count: **49 keywords** vs Vanguard's **44**, Perpetual's **44** and Magellan's **21**.",
     marketingActivities: [
       "Always-on search (branded) plus always-on ETF terms",
       "Paid LinkedIn in support of the EX-20 launch and reporting-season push",
@@ -111,10 +110,10 @@ export const reportData = {
       "Resolution Capital", "Hyperion",
     ],
     kpis: [
-      { value: "216", label: "Ranking keywords (firstsentierinvestors.com)", comparison: "+14% vs Dec '25 (190)" },
-      { value: "37",  label: "Page-1 keywords", comparison: "+9% vs Dec '25 (34)" },
-      { value: "+43%", label: "Est. organic traffic", comparison: "vs Dec '25" },
-      { value: "49",  label: "AU ranking keywords", comparison: "firstsentierinvestors.com.au, Mar '26" },
+      { value: "216",  label: "Ranking keywords",          comparison: "+14% vs Q4 2025 (190)" },
+      { value: "37",   label: "Page-1 keywords",           comparison: "+9% vs Q4 2025 (34)" },
+      { value: "+43%", label: "Est. organic traffic",      comparison: "vs Q4 2025" },
+      { value: "19.4", label: "Avg rank (top-100)",        comparison: "−1.9 positions vs Q4 2025" },
     ],
     chartDataByCountry: {
       // Source: Raw Data/SEO/SEO_Rankings_over_time.xlsx — AU-only tracking of
@@ -137,9 +136,9 @@ export const reportData = {
       ],
     },
     focusAreas: [
-      "Push firstsentierinvestors.com.au page-1 presence vs Vanguard / Perpetual / Magellan",
-      "Track generic category terms — 'global listed infrastructure', 'quantitative equities', 'quality investing'",
-      "Expand keyword coverage across FSI boutiques (Igneo, Stewart Investors, AlbaCore)",
+      "Defend and maintain share of voice on property and real estate searches",
+      "Grow presence in ETF-related searches",
+      "Gather user-behaviour data",
     ],
     nextQuarter: [
       "Re-instrument UK / SG / DE / US tracking when rankings data becomes available",
@@ -259,7 +258,7 @@ export const reportData = {
     title: "Always on: Website",
     stage: "Consideration",
     subtitle: "Strong lift in Q1 driven by SG performance data and AEQ / EX-20 momentum.",
-    description: "Q1 2026 delivered 180.7k page views across firstsentierinvestors.com — a +47% lift vs Q4 2025 (123.2k). Engagement events reached 751k (+45%) and key-event conversions reached 20.3k (+43%). Numbers are FSI house pages only — RQI Investors, FSSA Investment Managers, Stewart Investors and Igneo fund pages are excluded so this view tracks the FSI parent property. Standout drivers were the new Singapore performance data landing page (new in Q1, 8.1k views), steady AEQ / EX-20 Share Fund traction in Australia, and the AU performance and literature hubs.",
+    description: "More people came to firstsentierinvestors.com in Q1. Page views grew **+47% vs Q4 2025** to **180.7k**, and engagement actions on the site rose **+45%**. The two highlights were a new Singapore performance landing page (over 8k views from a standing start) and growing momentum behind our AEQ team's adviser pages — especially the EX-20 Share Fund (+32% on Q4). Numbers cover the FSI house property only; sister-brand sub-domains report separately.",
     kpis: [
       { value: "180.7k", label: "Views (Q1, FSI house)", comparison: "+47% vs Q4 (123.2k)" },
       { value: "187.5k", label: "Active users (Q1)",    comparison: "+59% vs Q4 (118.0k)" },
@@ -311,8 +310,8 @@ export const reportData = {
   linkedin: {
     title: "Always on: LinkedIn",
     stage: "Consideration",
-    subtitle: "Heavy sponsored push (+107%) with selective organic content.",
-    description: "Q1 paid spend more than doubled (486.5k sponsored impressions vs 235.1k in Q4) while organic output stayed selective — 10 posts across AI thematic, FONDS Kongress (DE) and Institutional Money Kongress (DE). The top organic post was the Martin Lau client roundtable (26.5% CTR, 737 clicks).",
+    subtitle: "Heavy sponsored push (+107%) with strong organic momentum.",
+    description: "FSI was more present on LinkedIn in Q1. Paid reach more than doubled — sponsored impressions hit **486.5k**, up **+107% vs Q4 2025** — and we published **13 organic posts**. Strategy commentary, an Asian Fixed Income outlook video from Nigel Foo, and the Reporting season conversation between David Wilson and Christian Guerra all landed strongly. The 2026 outlook video published on 19 January took the top spot — **1,257 clicks at a 26% click-through rate**.",
     goals: ["Scale paid reach in priority markets while keeping organic quality high"],
     activities: ["Martin Lau luncheon content", "IMK + FONDS Kongress (DE)", "AI thematic strategy posts", "10 organic posts / quarter"],
     kpis: [
