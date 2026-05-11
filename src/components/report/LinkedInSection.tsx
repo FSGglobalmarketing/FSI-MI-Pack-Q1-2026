@@ -273,21 +273,11 @@ export default function LinkedInSection() {
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left — info */}
           <div className="space-y-6">
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              Q1 was a two-speed quarter on LinkedIn. Paid spend{" "}
-              <strong className="text-foreground font-medium">more than doubled</strong> —
-              sponsored impressions rose from <strong className="text-foreground font-medium">235.1k in Q4</strong> to{" "}
-              <strong className="text-foreground font-medium">486.5k in Q1</strong> (+107%) — while organic output stayed
-              deliberately selective at <strong className="text-foreground font-medium">10 posts</strong> across AI
-              thematic content, FONDS Professionell Kongress (DE) and Institutional Money Kongress (DE). Organic
-              impressions came in at <strong className="text-foreground font-medium">35.9k</strong> (
-              <strong className="text-foreground font-medium">-19% vs Q4's 44.6k</strong>). The top organic post was the{" "}
-              <strong className="text-foreground font-medium">Martin Lau client roundtable</strong> at a{" "}
-              <strong className="text-foreground font-medium">26.5% CTR</strong> (2,779 impressions, 737 clicks),
-              followed by the <strong className="text-foreground font-medium">Genium Recommended</strong> rating and the{" "}
-              <strong className="text-foreground font-medium">Chinese ingenuity</strong> strategy piece.
-              Event- and client-led posts outperformed product content, steering the Q2 calendar.
-            </p>
+            <div className="text-sm leading-relaxed space-y-3 text-muted-foreground">
+              {d.description.split(/\n\n+/).map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
 
             <div>
               <h4 className="text-sm font-medium mb-4 text-foreground">Key Results</h4>

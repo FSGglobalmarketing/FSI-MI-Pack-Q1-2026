@@ -166,7 +166,11 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
 
         <div className="grid lg:grid-cols-2 gap-10">
           <div className="space-y-6">
-            <p className={`text-sm leading-relaxed ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>{description}</p>
+            <div className={`text-sm leading-relaxed space-y-3 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>
+              {description.split(/\n\n+/).map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+            </div>
 
             <div>
               <h4 className={`text-sm font-medium mb-4 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Key Results</h4>

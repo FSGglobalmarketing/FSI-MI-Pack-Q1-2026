@@ -110,10 +110,8 @@ export const reportData = {
       "Resolution Capital", "Hyperion",
     ],
     kpis: [
-      { value: "216",  label: "Ranking keywords",          comparison: "+14% vs Q4 2025 (190)" },
-      { value: "37",   label: "Page-1 keywords",           comparison: "+9% vs Q4 2025 (34)" },
-      { value: "+43%", label: "Est. organic traffic",      comparison: "vs Q4 2025" },
-      { value: "19.4", label: "Avg rank (top-100)",        comparison: "−1.9 positions vs Q4 2025" },
+      { value: "216",  label: "Keywords ranked", comparison: "+14% keywords vs Dec '25" },
+      { value: "+43%", label: "Est. traffic",    comparison: "vs Q4 2025" },
     ],
     chartDataByCountry: {
       // Source: Raw Data/SEO/SEO_Rankings_over_time.xlsx — AU-only tracking of
@@ -257,13 +255,11 @@ export const reportData = {
   website: {
     title: "Always on: Website",
     stage: "Consideration",
-    subtitle: "Insights and strategy pages drove the lift, alongside strong AEQ adviser-hub momentum.",
-    description: "Q1 traffic on firstsentierinvestors.com was carried by **insights and strategy content**. **The Curious Podcast** insights hub was the most-read editorial page (**1.9k views**), with the 2026 outlook (**\"Where are investment markets headed in 2026\"**, 648 views), **\"Lessons from the Quant Winter\"** (608 views), and the AI-and-wealth-management piece (730 combined) close behind. On the strategy side, the **Australian Equities Growth fund hub** (8.0k), the **EX-20 Share Fund** page (6.5k) and the **Geared Australian Share Fund** (6.0k) led the way, with **Global Listed Infrastructure** pulling traffic on both the AU and DE adviser sites. FSI house pages delivered **353.1k views** in Q1 across **234.0k users** — sister-brand sub-domains report separately.",
+    subtitle: "Insights and strategy content carried the lift, alongside strong adviser-hub momentum.",
+    description: "Traffic on firstsentierinvestors.com lifted 47% over the quarter, reaching 199.9k page views and 187.5k active users. The strongest performers were our insights pages and the Australian Equities adviser hub.\n\nThe Curious Podcast page was our most-read editorial piece at 1.9k views, followed by the 2026 outlook (648 views) and Lessons from the Quant Winter (608 views). On the strategy side, the Australian Equities Growth fund hub topped 8k views, with the EX-20 Share Fund and Geared Australian Share Fund pages close behind at 6.5k and 6k. Global Listed Infrastructure pulled steady traffic across both the Australian and German adviser sites.",
     kpis: [
-      { value: "353.1k", label: "Views (Q1, FSI house)", comparison: "Latest GA4 export, Jan–Mar 2026" },
-      { value: "234.0k", label: "Total users (Q1)",     comparison: "+59% vs Q4 2025" },
-      { value: "1.47M",  label: "Engagement events",    comparison: "+45% vs Q4 2025" },
-      { value: "322.7k", label: "Sessions",             comparison: "Q1 2026" },
+      { value: "199.9k", label: "Views (ex-RQI)", comparison: "+47% vs Q4 (136.4k)" },
+      { value: "187.5k", label: "Active users",   comparison: "Q1 2026" },
     ],
     gaMonthly: [
       { month: "Oct 25", users: 39878, sessions: 50871, pageViews: 50871, bounceRate: 0, avgDuration: 0 },
@@ -314,14 +310,14 @@ export const reportData = {
   linkedin: {
     title: "Always on: LinkedIn",
     stage: "Consideration",
-    subtitle: "Heavy sponsored push (+107%) with strong organic momentum.",
-    description: "FSI was more present on LinkedIn in Q1. Paid reach more than doubled — sponsored impressions hit **486.5k**, up **+107% vs Q4 2025** — and we published **13 organic posts**. Strategy commentary, an Asian Fixed Income outlook video from Nigel Foo, and the Reporting season conversation between David Wilson and Christian Guerra all landed strongly. The 2026 outlook video published on 19 January took the top spot — **1,257 clicks at a 26% click-through rate**.",
+    subtitle: "Paid scaled hard; organic carried a steady cadence.",
+    description: "Sponsored reach on LinkedIn more than doubled in Q1. Sponsored impressions hit 486.5k, up 107% versus Q4 2025 (235.1k). Organic impressions softened to 35.9k across the quarter (down 19% vs Q4), with an average engagement rate of 1.2%.\n\nThe strongest organic moments were Alison Thai's International Women's Day reflection (4.7k impressions), Rebecca Sherlock's Xcel Energy CFO interview on AI and data centres (4.2k), and Ben Samuel's commentary on the RBA cash rate decision (2.7k). Edmund Leung's Global Listed Infrastructure shareholder-income piece reached 2.2k, and the Reporting Season podcast post with David Wilson and Christian Guerra carried 1.5k.",
     goals: ["Scale paid reach in priority markets while keeping organic quality high"],
     activities: ["Martin Lau luncheon content", "IMK + FONDS Kongress (DE)", "AI thematic strategy posts", "10 organic posts / quarter"],
     kpis: [
-      { value: "486.5k", label: "Sponsored impressions (Q1)", comparison: "+107% vs Q4 (235.1k)" },
-      { value: "35.9k", label: "Organic impressions (Q1)",   comparison: "-19% vs Q4 (44.6k)" },
-      { value: "10",    label: "Organic posts in Q1",        comparison: "Avg CTR 9.6%" },
+      { value: "486.5k", label: "Sponsored impressions", comparison: "+107% vs Q4 (235.1k)" },
+      { value: "35.9k",  label: "Impressions",            comparison: "-19% vs Q4 (44.6k)" },
+      { value: "1.2%",   label: "Avg engagement rate",    comparison: "Q1 2026" },
     ],
     focusQ4: [
       "Two sponsored campaigns driving Q4 impressions (~235k).",
