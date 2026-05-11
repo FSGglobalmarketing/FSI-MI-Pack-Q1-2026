@@ -259,12 +259,12 @@ export const reportData = {
     title: "Always on: Website",
     stage: "Consideration",
     subtitle: "Strong lift in Q1 driven by SG performance data and AEQ / EX-20 momentum.",
-    description: "Q1 2026 delivered 199.9k page views across firstsentierinvestors.com (excluding RQI Investors pages, which sit in a separate deck) — a +47% lift vs Q4 2025 (136.4k). Engagement events reached 947k (+50%) and key-event conversions reached 20.4k (+43%). Standout drivers were the new Singapore performance data landing page (new in Q1, 8.1k views), steady AEQ / EX-20 Share Fund traction in Australia, and the AU performance and literature hubs.",
+    description: "Q1 2026 delivered 180.7k page views across firstsentierinvestors.com — a +47% lift vs Q4 2025 (123.2k). Engagement events reached 751k (+45%) and key-event conversions reached 20.3k (+43%). Numbers are FSI house pages only — RQI Investors, FSSA Investment Managers, Stewart Investors and Igneo fund pages are excluded so this view tracks the FSI parent property. Standout drivers were the new Singapore performance data landing page (new in Q1, 8.1k views), steady AEQ / EX-20 Share Fund traction in Australia, and the AU performance and literature hubs.",
     kpis: [
-      { value: "199.9k", label: "Views (Q1, ex-RQI)",   comparison: "+47% vs Q4 (136.4k)" },
+      { value: "180.7k", label: "Views (Q1, FSI house)", comparison: "+47% vs Q4 (123.2k)" },
       { value: "187.5k", label: "Active users (Q1)",    comparison: "+59% vs Q4 (118.0k)" },
-      { value: "946.9k", label: "Engagement events",    comparison: "+50% vs Q4 (629.1k)" },
-      { value: "20.4k",  label: "Key events",           comparison: "+43% vs Q4 (14.3k)" },
+      { value: "751.4k", label: "Engagement events",    comparison: "+45% vs Q4 (516.1k)" },
+      { value: "20.3k",  label: "Key events",           comparison: "+43% vs Q4 (14.2k)" },
     ],
     gaMonthly: [
       { month: "Oct 25", users: 39878, sessions: 50871, pageViews: 50871, bounceRate: 0, avgDuration: 0 },
@@ -284,7 +284,7 @@ export const reportData = {
       { page: "/au/en/adviser/performance/literature.html", views: 2931, change: "+6% vs Q4" },
       { page: "/au/en/adviser/performance/price-and-performance.html", views: 2817, change: "+49% vs Q4" },
       { page: "/hk/en/retail/home.html", views: 2571, change: "-5% vs Q4" },
-      { page: "/de/de/professionelle-anleger/our-funds/stewart-investors.html", views: 1862, change: "-15% vs Q4" },
+      { page: "/sg/en/retail/home.html", views: 1884, change: "New in Q1" },
     ],
     trafficSources: [
       { source: "Direct / (none)",      percentage: 59 },

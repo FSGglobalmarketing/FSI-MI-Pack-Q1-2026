@@ -7,7 +7,7 @@ import KpiRow from "./KpiRow";
 
 /* FSI brand palette for chart lines (Australia competitor set) */
 const LINE_CONFIG: { key: string; color: string; width: number; opacity: number }[] = [
-  { key: "FSI",        color: "#022856", width: 3,   opacity: 1 },     // FSI Dark Blue — prominent
+  { key: "FSI",        color: "#61bdb1", width: 3,   opacity: 1 },     // FSI Green (accent) — prominent
   { key: "Vanguard",   color: "#EF785B", width: 1.2, opacity: 0.85 },  // Orange
   { key: "Perpetual",  color: "#00727D", width: 1.2, opacity: 0.8 },   // Teal
   { key: "Magellan",   color: "#CCB296", width: 1.2, opacity: 0.8 },   // Tan

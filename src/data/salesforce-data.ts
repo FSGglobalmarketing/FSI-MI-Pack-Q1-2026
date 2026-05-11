@@ -44,22 +44,27 @@ export interface CompanyChannelRow {
 // Account-level totals from Q1 activity export (aggregated without channel
 // breakdown — all activities roll into total; per-channel split not available
 // in this export).
+// Opens = "Open" activity rows in Pardot. Clicks = "Email Click" rows.
+// Re-aggregated from Raw Data/CRM/Salesforce Activity.xlsx for Q1 2026,
+// filtered to each target account. `total` = opens + clicks (the chart
+// stacks just these two; Sent is the universe size and excluded so the
+// bars reflect audience response only).
 export const engagementByCompany: CompanyChannelRow[] = [
-  { account: "DBS Bank Singapore",                          email: 0, web: 0, form: 0, link: 0, total: 855 },
-  { account: "China Construction Bank (Asia)",              email: 0, web: 0, form: 0, link: 0, total: 706 },
-  { account: "DBS Bank (Hong Kong)",                        email: 0, web: 0, form: 0, link: 0, total: 660 },
-  { account: "Bank of China (Hong Kong)",                   email: 0, web: 0, form: 0, link: 0, total: 556 },
-  { account: "Mercer Investments (Australia)",              email: 0, web: 0, form: 0, link: 0, total: 422 },
-  { account: "HSBC Private Bank (HK)",                      email: 0, web: 0, form: 0, link: 0, total: 402 },
-  { account: "Tokio Marine Asset Management",               email: 0, web: 0, form: 0, link: 0, total: 292 },
-  { account: "iFAST Financial (HK)",                        email: 0, web: 0, form: 0, link: 0, total: 274 },
-  { account: "Mercer (Singapore)",                          email: 0, web: 0, form: 0, link: 0, total: 262 },
-  { account: "Shanghai Commercial Bank",                    email: 0, web: 0, form: 0, link: 0, total: 262 },
-  { account: "Team Super (AU)",                             email: 0, web: 0, form: 0, link: 0, total: 257 },
-  { account: "Feri AG",                                     email: 0, web: 0, form: 0, link: 0, total: 214 },
-  { account: "Wing Lung Bank",                              email: 0, web: 0, form: 0, link: 0, total: 183 },
-  { account: "Construction & Building Unions Super (CBUS)", email: 0, web: 0, form: 0, link: 0, total: 178 },
-  { account: "Harrison Street",                             email: 0, web: 0, form: 0, link: 0, total: 164 },
+  { account: "DBS Bank Singapore",                          email: 183, link: 422, web: 0, form: 0, total: 605 },
+  { account: "China Construction Bank (Asia)",              email:  77, link: 364, web: 0, form: 0, total: 441 },
+  { account: "Bank of China (Hong Kong)",                   email: 115, link: 264, web: 0, form: 0, total: 379 },
+  { account: "DBS Bank (Hong Kong)",                        email:  73, link: 302, web: 0, form: 0, total: 375 },
+  { account: "Mercer Investments (Australia)",              email: 136, link: 239, web: 0, form: 0, total: 375 },
+  { account: "Tokio Marine Asset Management",               email: 265, link:   9, web: 0, form: 0, total: 274 },
+  { account: "HSBC Private Bank (HK)",                      email:  84, link: 176, web: 0, form: 0, total: 260 },
+  { account: "Team Super (AU)",                             email: 228, link:  15, web: 0, form: 0, total: 243 },
+  { account: "iFAST Financial (HK)",                        email: 217, link:  14, web: 0, form: 0, total: 231 },
+  { account: "Feri AG",                                     email: 209, link:   5, web: 0, form: 0, total: 214 },
+  { account: "Construction & Building Unions Super (CBUS)", email: 165, link:   8, web: 0, form: 0, total: 173 },
+  { account: "Harrison Street",                             email: 111, link:  53, web: 0, form: 0, total: 164 },
+  { account: "Shanghai Commercial Bank",                    email:  34, link: 130, web: 0, form: 0, total: 164 },
+  { account: "Mercer (Singapore)",                          email:  51, link: 111, web: 0, form: 0, total: 162 },
+  { account: "Wing Lung Bank",                              email:  15, link:  96, web: 0, form: 0, total: 111 },
 ];
 
 // Interactions by investment strategy — derived from Opportunities Report
@@ -84,18 +89,20 @@ export const interactionsByFssaStrategy: StrategyRow[] = [
   { strategy: "AEQ Smalls / Mids",        interactions: 127 },
 ];
 
-// Top Q1 2026 campaigns by prospect activity
+// Top Q1 2026 campaigns by prospect activity — FSI-only.
+// Igneo, FSSA, Stewart, AlbaCore and SOSCOT-only campaigns are filtered out
+// (they belong to FSI sub-brands and report separately).
 export const topCampaigns = [
-  { campaign: "EMEA 2025-11 Igneo AIM",                                      interactions: 3841 },
-  { campaign: "Institutional (house-level)",                                 interactions: 3532 },
-  { campaign: "2026-03 ANZ WS AEQ Growth Post-reporting Podcast",            interactions: 2523 },
-  { campaign: "ANZ Campaigns (rollup)",                                      interactions: 2312 },
-  { campaign: "US Igneo NADIF Institutional",                                interactions: 1130 },
-  { campaign: "2024 APAC Tracker Domain Campaign for FSI",                   interactions:  961 },
-  { campaign: "Master Subscription — SOSCOT",                                interactions:  901 },
-  { campaign: "2026-03 HK Wholesale FSSA China client update eDM",           interactions:  788 },
-  { campaign: "EMEA 2025-09 FSSA GEM Webinar",                               interactions:  721 },
-  { campaign: "Hong Kong (English) Retail",                                  interactions:  570 },
+  { campaign: "Institutional (house-level)",                                interactions: 3532 },
+  { campaign: "2026-03 ANZ WS AEQ Growth Post-reporting Season podcast",    interactions: 2523 },
+  { campaign: "ANZ Campaigns (rollup)",                                     interactions: 2312 },
+  { campaign: "2024 APAC Tracker Domain Campaign for FSI",                  interactions:  961 },
+  { campaign: "Hong Kong (English) Retail",                                 interactions:  570 },
+  { campaign: "2026-01 Asia HK WS — Asian Fixed Income + GLIS",             interactions:  486 },
+  { campaign: "Asia (rollup)",                                              interactions:  425 },
+  { campaign: "2026-02 Asia HK WS — Asian Fixed Income + GLIS",             interactions:  418 },
+  { campaign: "Singapore (English) Retail",                                 interactions:  382 },
+  { campaign: "2026-01 Asia SG WS — FSG 2026 Outlook",                      interactions:  367 },
 ];
 
 // Targeting — job title breakdown (placeholder; Pardot job-title field not

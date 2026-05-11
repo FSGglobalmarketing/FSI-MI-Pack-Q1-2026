@@ -36,7 +36,10 @@ export const linkedInQuarterlyData: LinkedInQuarterly[] = [
   { quarter: "Q1 '26", organic: 35923, sponsored: 486498 },
 ];
 
-// ── Content mix categories (Q1 2026 posts, 10 total) ──
+// ── Content mix categories (Q1 2026 posts, 13 total) ──
+// Re-categorised from the actual Q1 2026 post export (organic_linkedin_q4_vs_q1.xls
+// "All posts" sheet, rows 3-15). FSSA-era categories from earlier exports
+// removed; categories now reflect FSI Q1 content themes.
 export interface ContentCategory {
   category: string;
   posts: number;
@@ -46,10 +49,10 @@ export interface ContentCategory {
 }
 
 export const contentMixData: ContentCategory[] = [
-  { category: "Event",    posts: 5, avgCtr: 0.1113, avgEngagement: 0.1585, avgImpressions:  992 },
-  { category: "Strategy", posts: 3, avgCtr: 0.1743, avgEngagement: 0.2119, avgImpressions: 1089 },
-  { category: "Press",    posts: 1, avgCtr: 0.2524, avgEngagement: 0.2782, avgImpressions: 1046 },
-  { category: "Asset",    posts: 1, avgCtr: 0.0764, avgEngagement: 0.0996, avgImpressions: 1977 },
+  { category: "Strategy / Outlook", posts: 7, avgCtr: 0.0879, avgEngagement: 0.1095, avgImpressions: 2117 },
+  { category: "Asset / Insight",    posts: 3, avgCtr: 0.0479, avgEngagement: 0.0623, avgImpressions: 3091 },
+  { category: "Event / Roadshow",   posts: 2, avgCtr: 0.0290, avgEngagement: 0.0454, avgImpressions: 2347 },
+  { category: "Brand / Corporate",  posts: 1, avgCtr: 0.0359, avgEngagement: 0.0586, avgImpressions: 1979 },
 ];
 
 // ── Q1 2026 posts (ranked by CTR) ──
@@ -64,116 +67,118 @@ export interface TopPost {
   link: string;
 }
 
+// Q1 2026 posts sorted by CTR — sourced directly from rows 3-15 of the
+// LinkedIn "All posts" export. Post categories are inferred from copy.
 export const topPostsQ1: TopPost[] = [
   {
-    title: "Martin Lau client roundtable — capitalising on China & Asia",
-    category: "Event",
-    date: "10/03/2026",
-    impressions: 2779,
-    clicks: 737,
-    ctr: 0.2652,
-    engagementRate: 0.2864,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
-  },
-  {
-    title: "Genium Investment Partners initiates coverage of FSSA GEM Focus Fund — Recommended",
-    category: "Press",
-    date: "24/02/2026",
-    impressions: 1046,
-    clicks: 264,
-    ctr: 0.2524,
-    engagementRate: 0.2782,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
-  },
-  {
-    title: "Chinese ingenuity — AI and next-generation technology across sectors",
+    title: "2026: What's next for global markets? — FSG outlook (institutional)",
     category: "Strategy",
-    date: "09/03/2026",
-    impressions: 1062,
-    clicks: 250,
-    ctr: 0.2354,
-    engagementRate: 0.2759,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
+    date: "05/01/2026",
+    impressions: 1594,
+    clicks: 495,
+    ctr: 0.3105,
+    engagementRate: 0.3250,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7413798853897846785",
   },
   {
-    title: "FONDS Professionell Kongress Mannheim — meet Qimin Fei at Stand 85 (DE)",
-    category: "Event",
+    title: "Institutional / professional disclaimer post (Australia)",
+    category: "Strategy",
+    date: "19/01/2026",
+    impressions: 4789,
+    clicks: 1257,
+    ctr: 0.2625,
+    engagementRate: 0.2798,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7418876156008980480",
+  },
+  {
+    title: "Nigel Foo — Asian Fixed Income outlook video",
+    category: "Strategy",
     date: "28/01/2026",
-    impressions: 718,
-    clicks: 138,
-    ctr: 0.1922,
-    engagementRate: 0.2340,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
+    impressions: 3494,
+    clicks: 270,
+    ctr: 0.0773,
+    engagementRate: 0.0950,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7422129078335553536",
   },
   {
-    title: "FOMO beating fundamentals — high-quality companies overlooked amid the AI boom",
-    category: "Strategy",
-    date: "16/03/2026",
-    impressions: 998,
-    clicks: 167,
-    ctr: 0.1673,
-    engagementRate: 0.2024,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
-  },
-  {
-    title: "Post-Cold War order fading — quality, resilience, and our defence exclusions",
-    category: "Strategy",
-    date: "02/03/2026",
-    impressions: 1207,
-    clicks: 145,
-    ctr: 0.1201,
-    engagementRate: 0.1574,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
-  },
-  {
-    title: "China's economic growth — AI, semiconductors & medical equipment (video)",
+    title: "\"Trust that you deserve to be in the room\" — IWD / culture",
     category: "Asset",
-    date: "23/02/2026",
-    impressions: 1977,
-    clicks: 151,
-    ctr: 0.0764,
-    engagementRate: 0.0996,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
+    date: "09/03/2026",
+    impressions: 4731,
+    clicks: 291,
+    ctr: 0.0615,
+    engagementRate: 0.0723,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7436896868359536640",
   },
   {
-    title: "Institutional Money Kongress Frankfurt — meet Qimin Fei (DE)",
-    category: "Event",
-    date: "23/03/2026",
-    impressions: 120,
-    clicks: 5,
-    ctr: 0.0417,
-    engagementRate: 0.1417,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
+    title: "Xcel Energy CFO on AI and data centres — with Rebecca Sherlock",
+    category: "Asset",
+    date: "31/03/2026",
+    impressions: 4231,
+    clicks: 212,
+    ctr: 0.0501,
+    engagementRate: 0.0598,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7444584563739373569",
   },
   {
-    title: "Institutional Money Kongress — Asian equities outlook 2026 (DE)",
-    category: "Event",
-    date: "16/03/2026",
-    impressions: 196,
-    clicks: 6,
-    ctr: 0.0306,
-    engagementRate: 0.0867,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
+    title: "Global Listed Infrastructure — shareholder income theme",
+    category: "Strategy",
+    date: "10/03/2026",
+    impressions: 2219,
+    clicks: 84,
+    ctr: 0.0379,
+    engagementRate: 0.0527,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7437283368561483777",
   },
   {
-    title: "FONDS Kongress 2026 Mannheim — 'Emerging Markets: the quiet recovery'",
-    category: "Event",
-    date: "20/01/2026",
-    impressions: 1148,
-    clicks: 31,
-    ctr: 0.0270,
-    engagementRate: 0.0436,
-    link: "https://www.linkedin.com/company/first-sentier-investors/",
+    title: "First Sentier Group — inaugural Climate and Nature Report",
+    category: "Press",
+    date: "15/01/2026",
+    impressions: 1979,
+    clicks: 71,
+    ctr: 0.0359,
+    engagementRate: 0.0586,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7417374433788522496",
+  },
+  {
+    title: "Value-driven consumer + AI fears — sector opportunities",
+    category: "Strategy",
+    date: "27/02/2026",
+    impressions: 2143,
+    clicks: 71,
+    ctr: 0.0331,
+    engagementRate: 0.0443,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7433031547701669889",
+  },
+  {
+    title: "Reporting season — David Wilson + Christian Guerra (AEQ Growth)",
+    category: "Strategy",
+    date: "13/03/2026",
+    impressions: 1473,
+    clicks: 48,
+    ctr: 0.0326,
+    engagementRate: 0.0563,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7438016500038545408",
+  },
+  {
+    title: "Why Japan's volatility signals opportunity? (v2)",
+    category: "Strategy",
+    date: "26/02/2026",
+    impressions: 513,
+    clicks: 15,
+    ctr: 0.0292,
+    engagementRate: 0.0585,
+    link: "https://www.linkedin.com/feed/update/urn:li:activity:7432701887323385856",
   },
 ];
 
 // ── Quarter-over-quarter headline metrics ──
-// Q4 post count and engagement-derived metrics are unavailable in the current
-// export (only Q1 posts were exported); monthly totals above give the full
-// daily picture for both quarters.
+// Post-level aggregates (Q1: rows 3-15 in the export; Q4: rows 16-32).
+// linkedInMonthlyData above uses the daily Metrics sheet which is the
+// whole-page activity (slightly higher than post-level totals).
 export const linkedInHeadline = {
-  q1: { impressions: 35923, clicks: 3438, reactions: 419, posts: 10, avgCtr: 0.0957, avgEngagement: 0.0122 },
-  q4: { impressions: 44581, clicks: 6230, reactions: 648, posts:  0, avgCtr: 0.1397, avgEngagement: 0.0146 },
+  q1: { impressions: 30968, clicks: 2896, reactions: 398, posts: 13, avgCtr: 0.0935, avgEngagement: 0.0129 },
+  q4: { impressions: 40188, clicks: 6120, reactions: 610, posts: 17, avgCtr: 0.1523, avgEngagement: 0.0152 },
 };
 
 // ── Deprecated heatmap data retained for compatibility only ──
