@@ -38,6 +38,7 @@ const KEY_LABEL: Record<string, string> = {
   Russell: "Russell",
   AtlasInfra: "Atlas Infra",
   UBS: "UBS",
+  OCFunds: "OC Funds",
 };
 
 function CustomTooltip({ active, payload, label }: any) {
@@ -80,10 +81,11 @@ function ChartScrollContainer({ children, onWheelHandler }: { children: React.Re
 }
 
 const STRATEGY_LABELS: Record<string, string> = {
-  "AEQ Growth": "Australian Equities Growth",
-  "GLIS":       "Global Listed Infrastructure",
-  "GPS":        "Global Property Securities",
-  "STI":        "Short Term Investments",
+  "AEQ Growth":      "Australian Equities Growth",
+  "GLIS":            "Global Listed Infrastructure",
+  "GPS":             "Global Property Securities",
+  "STI":             "Short Term Investments",
+  "Small & Mid Caps":"Small & Mid Caps",
 };
 
 export default function SearchVisibility() {
@@ -97,23 +99,29 @@ export default function SearchVisibility() {
 
   const allData = chartData[strategy] ?? [];
 
-  // Derive line lineup from the first row of the active strategy.
+  // Derive line lineup from the first row of the active strategy. FSI is
+  // only included if it appears in the data (e.g. Small & Mid Caps has
+  // no FSI track in the rankings export).
   const lineConfig = useMemo(() => {
     if (!allData.length) return [] as { key: string; color: string; width: number; opacity: number }[];
     const keys = Object.keys(allData[0]).filter((k) => k !== "month");
-    // FSI first, others in order of appearance.
-    const ordered = ["FSI", ...keys.filter((k) => k !== "FSI")];
-    return ordered.map((key, idx) => {
+    const hasFSI = keys.includes("FSI");
+    const ordered = hasFSI
+      ? ["FSI", ...keys.filter((k) => k !== "FSI")]
+      : keys;
+    let peerIdx = 0;
+    return ordered.map((key) => {
       if (key === "FSI") {
         return { key, color: FSI_COLOR, width: 3, opacity: 1 };
       }
-      const peerIdx = idx - 1;
-      return {
+      const cfg = {
         key,
         color: PEER_PALETTE[peerIdx % PEER_PALETTE.length],
         width: 1.2,
         opacity: Math.max(0.45, 0.85 - peerIdx * 0.05),
       };
+      peerIdx++;
+      return cfg;
     });
   }, [allData]);
 

@@ -98,7 +98,7 @@ export const reportData = {
   },
 
   searchVisibility: {
-    description: "FSI's domain ranks for 162 keywords across our four core Australian strategies — Australian Equities Growth, Global Listed Infrastructure, Global Property Securities and Short Term Investments. Fifty-six of those sit on page 1 of Google, with ten in the top three and three at the #1 position.\n\nOur strongest positions are in infrastructure and property. We hold the top result for 'global listed infrastructure', 'global listed infrastructure fund' and 'global property securities fund', plus top-five places on 'listed infrastructure', 'infrastructure securities' and 'short term investments' (which alone has a monthly search volume of 304). Australian Equities Growth made the biggest move over Q1 — our ranked-keyword count rose from 11 in December to 20 by quarter-end, with new top-five positions on 'australian equities fund' and 'australian equity fund'.",
+    description: "FSI's domain ranks for 162 keywords across our four core Australian strategies — Australian Equities Growth, Global Listed Infrastructure, Global Property Securities and Short Term Investments. Fifty-six of those sit on page 1 of Google, with ten in the top three and three at the #1 position. We also track Small & Mid Caps as a competitor benchmark, where FSI is not yet ranked.\n\nOur strongest positions are in infrastructure and property. We hold the top result for 'global listed infrastructure', 'global listed infrastructure fund' and 'global property securities fund', plus top-five places on 'listed infrastructure', 'infrastructure securities' and 'short term investments' (which alone has a monthly search volume of 304). Australian Equities Growth made the biggest move over Q1 — our ranked-keyword count rose from 11 in December to 20 by quarter-end, with new top-five positions on 'australian equities fund' and 'australian equity fund'.",
     marketingActivities: [
       "Always-on search (branded) plus always-on ETF terms",
       "Paid LinkedIn in support of the EX-20 launch and reporting-season push",
@@ -178,6 +178,24 @@ export const reportData = {
         { month: "Feb 26", Vanguard: 161, BetaShares:  93, BlackRock: 70, FSI: 76, UBS: 4 },
         { month: "Mar 26", Vanguard: 163, BetaShares: 100, BlackRock: 72, FSI: 70, UBS: 6 },
         { month: "Apr 26", Vanguard: 162, BetaShares:  90, BlackRock: 67, FSI: 60, UBS: 5 },
+      ],
+      // FSI not yet tracked as a competitor in the Small & Mid Caps SERP set —
+      // chart shows the competitive landscape only. Adding the strategy keeps
+      // it on the radar for future product positioning.
+      "Small & Mid Caps": [
+        { month: "Apr 25", Vanguard: 33, BetaShares: 17, Perpetual: 18, Fidelity: 10, Schroders:  5, Pendal:  1, Ausbil:  2, OCFunds: 0 },
+        { month: "May 25", Vanguard: 36, BetaShares: 18, Perpetual: 17, Fidelity: 11, Schroders:  4, Pendal:  2, Ausbil:  2, OCFunds: 0 },
+        { month: "Jun 25", Vanguard: 38, BetaShares: 18, Perpetual: 19, Fidelity: 13, Schroders:  4, Pendal:  1, Ausbil:  0, OCFunds: 0 },
+        { month: "Jul 25", Vanguard: 44, BetaShares: 22, Perpetual: 19, Fidelity: 13, Schroders:  6, Pendal:  4, Ausbil:  3, OCFunds: 1 },
+        { month: "Aug 25", Vanguard: 48, BetaShares: 28, Perpetual: 24, Fidelity: 16, Schroders: 10, Pendal:  2, Ausbil:  8, OCFunds: 1 },
+        { month: "Sep 25", Vanguard: 51, BetaShares: 32, Perpetual: 28, Fidelity: 19, Schroders: 12, Pendal:  2, Ausbil: 11, OCFunds: 2 },
+        { month: "Oct 25", Vanguard: 51, BetaShares: 32, Perpetual: 28, Fidelity: 20, Schroders: 12, Pendal:  2, Ausbil:  9, OCFunds: 2 },
+        { month: "Nov 25", Vanguard: 51, BetaShares: 38, Perpetual: 28, Fidelity: 21, Schroders: 12, Pendal:  3, Ausbil: 11, OCFunds: 2 },
+        { month: "Dec 25", Vanguard: 49, BetaShares: 40, Perpetual: 26, Fidelity: 18, Schroders: 11, Pendal:  4, Ausbil: 12, OCFunds: 2 },
+        { month: "Jan 26", Vanguard: 51, BetaShares: 37, Perpetual: 27, Fidelity: 18, Schroders: 11, Pendal:  4, Ausbil: 11, OCFunds: 2 },
+        { month: "Feb 26", Vanguard: 52, BetaShares: 36, Perpetual: 28, Fidelity: 17, Schroders: 11, Pendal:  5, Ausbil: 12, OCFunds: 2 },
+        { month: "Mar 26", Vanguard: 55, BetaShares: 38, Perpetual: 27, Fidelity: 20, Schroders: 11, Pendal:  4, Ausbil: 14, OCFunds: 2 },
+        { month: "Apr 26", Vanguard: 51, BetaShares: 36, Perpetual: 28, Fidelity: 19, Schroders: 11, Pendal:  4, Ausbil: 13, OCFunds: 2 },
       ],
     },
     focusAreas: [
