@@ -1,25 +1,44 @@
 import { reportData } from "@/data/igneo-report";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, ReferenceArea } from "recharts";
-import { CheckCircle, ArrowRight } from "lucide-react";
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import { Switch } from "@/components/ui/switch";
 import KpiRow from "./KpiRow";
 
-/* FSI brand palette for chart lines (Australia competitor set) */
-const LINE_CONFIG: { key: string; color: string; width: number; opacity: number }[] = [
-  { key: "FSI",        color: "#61bdb1", width: 3,   opacity: 1 },     // FSI Green (accent) — prominent
-  { key: "Vanguard",   color: "#EF785B", width: 1.2, opacity: 0.85 },  // Orange
-  { key: "Perpetual",  color: "#00727D", width: 1.2, opacity: 0.8 },   // Teal
-  { key: "Magellan",   color: "#CCB296", width: 1.2, opacity: 0.8 },   // Tan
-  { key: "CFS",        color: "#D5B700", width: 1.2, opacity: 0.75 },  // Mustard
-  { key: "Pendal",     color: "#3FBAD5", width: 1.2, opacity: 0.7 },   // Light Blue
-  { key: "Ausbil",     color: "#888888", width: 1.2, opacity: 0.65 },  // Grey
-  { key: "BetaShares", color: "#999999", width: 1.2, opacity: 0.6 },   // Grey
-  { key: "Bennelong",  color: "#aaaaaa", width: 1.2, opacity: 0.55 },  // Grey
-  { key: "UBS",        color: "#bbbbbb", width: 1.2, opacity: 0.5 },   // Light grey
+// FSI palette pool used to colour each competitor line. FSI is always
+// pulled out first and rendered in accent green. Remaining competitors
+// cycle through the palette in the order they appear in the data.
+const FSI_COLOR = "#61bdb1";
+const PEER_PALETTE = [
+  "#EF785B",  // FSI Orange
+  "#00727D",  // FSI Teal
+  "#CCB296",  // FSI Tan
+  "#D5B700",  // FSI Mustard
+  "#3FBAD5",  // FSI Light Blue
+  "#888888",  // Grey
+  "#999999",  // Light grey
+  "#aaaaaa",
+  "#bbbbbb",
 ];
 
-const DATA_KEYS = LINE_CONFIG.map((l) => l.key);
+// Friendly display name for each competitor data-key.
+const KEY_LABEL: Record<string, string> = {
+  FSI: "FSI",
+  Vanguard: "Vanguard",
+  Perpetual: "Perpetual",
+  BetaShares: "BetaShares",
+  BlackRock: "BlackRock",
+  Schroders: "Schroders",
+  Fidelity: "Fidelity",
+  Pendal: "Pendal",
+  Ausbil: "Ausbil",
+  Yarra: "Yarra",
+  Bennelong: "Bennelong",
+  ClearBridge: "ClearBridge",
+  MapleBrown: "Maple-Brown Abbott",
+  Russell: "Russell",
+  AtlasInfra: "Atlas Infra",
+  UBS: "UBS",
+};
 
 function CustomTooltip({ active, payload, label }: any) {
   if (!active || !payload?.length) return null;
@@ -36,7 +55,7 @@ function CustomTooltip({ active, payload, label }: any) {
         {sorted.map((entry: any) => (
           <div key={entry.dataKey} className="flex justify-between gap-3">
             <span className={`text-[11px] ${entry.dataKey === "FSI" ? "text-accent font-medium" : "text-foreground/60"}`}>
-              {entry.dataKey}
+              {KEY_LABEL[entry.dataKey] ?? entry.dataKey}
             </span>
             <span className={`text-[11px] tabular-nums ${entry.dataKey === "FSI" ? "text-accent font-medium" : "text-foreground/85"}`}>
               {entry.value}
@@ -60,21 +79,59 @@ function ChartScrollContainer({ children, onWheelHandler }: { children: React.Re
   return <div ref={ref} onWheel={onWheelHandler} className="select-none">{children}</div>;
 }
 
-const COUNTRIES = ["AU"] as const;
-type Country = typeof COUNTRIES[number];
+const STRATEGY_LABELS: Record<string, string> = {
+  "AEQ Growth": "Australian Equities Growth",
+  "GLIS":       "Global Listed Infrastructure",
+  "GPS":        "Global Property Securities",
+  "STI":        "Short Term Investments",
+};
 
 export default function SearchVisibility() {
   const s = reportData.searchVisibility;
-  const [country, setCountry] = useState<Country>("AU");
-  const allData = (s.chartDataByCountry as Record<Country, any[]>)[country];
+  const chartData = (s as any).chartDataByStrategy as Record<string, any[]>;
+  const STRATEGIES = useMemo(() => Object.keys(chartData), [chartData]);
+
+  const [strategy, setStrategy] = useState<string>(STRATEGIES[0]);
   const [hiddenLines, setHiddenLines] = useState<Set<string>>(new Set());
   const [showPeers, setShowPeers] = useState(true);
+
+  const allData = chartData[strategy] ?? [];
+
+  // Derive line lineup from the first row of the active strategy.
+  const lineConfig = useMemo(() => {
+    if (!allData.length) return [] as { key: string; color: string; width: number; opacity: number }[];
+    const keys = Object.keys(allData[0]).filter((k) => k !== "month");
+    // FSI first, others in order of appearance.
+    const ordered = ["FSI", ...keys.filter((k) => k !== "FSI")];
+    return ordered.map((key, idx) => {
+      if (key === "FSI") {
+        return { key, color: FSI_COLOR, width: 3, opacity: 1 };
+      }
+      const peerIdx = idx - 1;
+      return {
+        key,
+        color: PEER_PALETTE[peerIdx % PEER_PALETTE.length],
+        width: 1.2,
+        opacity: Math.max(0.45, 0.85 - peerIdx * 0.05),
+      };
+    });
+  }, [allData]);
+
+  const DATA_KEYS = lineConfig.map((l) => l.key);
 
   const [left, setLeft] = useState(0);
   const [right, setRight] = useState(allData.length - 1);
   const [refAreaLeft, setRefAreaLeft] = useState<number | null>(null);
   const [refAreaRight, setRefAreaRight] = useState<number | null>(null);
   const dragging = useRef(false);
+
+  // When the strategy changes, reset zoom + hidden lines so the new
+  // competitor lineup is visible end-to-end.
+  useEffect(() => {
+    setLeft(0);
+    setRight(allData.length - 1);
+    setHiddenLines(new Set());
+  }, [strategy, allData.length]);
 
   const visibleData = allData.slice(left, right + 1);
   const visibleKeys = DATA_KEYS.filter((k) => !hiddenLines.has(k) && (k === "FSI" || showPeers));
@@ -148,12 +205,9 @@ export default function SearchVisibility() {
           Search engine visibility
         </h2>
         <div className="text-foreground/70 mb-8 max-w-3xl leading-relaxed space-y-3">
-          <p>
-            Global keyword coverage for <strong className="text-foreground font-medium">firstsentierinvestors.com</strong> grew from <strong className="text-foreground font-medium">190 to 216</strong> ranked keywords over the quarter (+14%). Page 1 coverage increased from 34 to <strong className="text-foreground font-medium">37 keywords</strong>, and estimated organic traffic from these terms rose <strong className="text-foreground font-medium">+43%</strong>.
-          </p>
-          <p>
-            Biggest gainers this quarter: <strong className="text-foreground font-medium">"investment management firms"</strong> (+50), <strong className="text-foreground font-medium">"active security group"</strong> (+48) and <strong className="text-foreground font-medium">"investors"</strong> (+41). The chart below tracks <strong className="text-foreground font-medium">firstsentierinvestors.com.au</strong> against AU peers.
-          </p>
+          {s.description.split(/\n\n+/).map((para, i) => (
+            <p key={i}>{para}</p>
+          ))}
         </div>
 
         <div className="grid lg:grid-cols-2 gap-10">
@@ -179,7 +233,7 @@ export default function SearchVisibility() {
               </div>
             </div>
 
-            {/* Key Results — KPI list style with pills */}
+            {/* Key Results */}
             <div>
               <h4 className="text-sm font-medium mb-4 text-foreground">Key Results</h4>
               <div className="space-y-3">
@@ -217,11 +271,15 @@ export default function SearchVisibility() {
           <div className="glass-card-dark flow-corner-br min-h-[540px] flex flex-col">
             <div className="flex items-start justify-between mb-1">
               <div>
-                <h4 className="text-sm font-medium text-foreground mb-1">Search engine visibility</h4>
-                <p className="text-xs text-foreground/60 mb-4">Total keywords ranked by firstsentierinvestors.com.au across pages 1-3, benchmarked against Australian peers.</p>
+                <h4 className="text-sm font-medium text-foreground mb-1">Keywords ranked — {STRATEGY_LABELS[strategy] ?? strategy}</h4>
+                <p className="text-xs text-foreground/60 mb-4">
+                  Ranked-keyword count for firstsentierinvestors.com.au and competitor domains tracked
+                  in this strategy. Switch the dropdown to view a different strategy and its
+                  competitor set.
+                </p>
               </div>
               {isZoomed && (
-                <button onClick={resetZoom} className="text-xs font-medium text-primary hover:underline shrink-0">Reset zoom</button>
+                <button onClick={resetZoom} className="text-xs font-medium text-accent hover:underline shrink-0">Reset zoom</button>
               )}
             </div>
             <div className="flex items-center justify-between flex-wrap gap-3 mb-4">
@@ -229,18 +287,18 @@ export default function SearchVisibility() {
                 <Switch checked={showPeers} onCheckedChange={setShowPeers} className="scale-75" />
                 <span className="text-xs text-foreground/60">Show peers</span>
               </div>
-              <div className="flex items-center gap-1 bg-foreground/5 rounded-full p-1">
-                {COUNTRIES.map((c) => (
+              <div className="flex items-center gap-1 bg-foreground/5 rounded-full p-1 flex-wrap">
+                {STRATEGIES.map((st) => (
                   <button
-                    key={c}
-                    onClick={() => { setCountry(c); setLeft(0); setRight(12); }}
+                    key={st}
+                    onClick={() => setStrategy(st)}
                     className={`px-3 py-1 rounded-full text-[11px] font-medium transition-colors ${
-                      country === c
+                      strategy === st
                         ? "bg-accent text-accent-foreground"
                         : "text-foreground/60 hover:text-foreground"
                     }`}
                   >
-                    {c}
+                    {st}
                   </button>
                 ))}
               </div>
@@ -277,7 +335,7 @@ export default function SearchVisibility() {
                                   textDecoration: isHidden ? "line-through" : undefined,
                                 }}
                               >
-                                ● {entry.dataKey}
+                                ● {KEY_LABEL[entry.dataKey] ?? entry.dataKey}
                               </span>
                             );
                           })}
@@ -285,7 +343,7 @@ export default function SearchVisibility() {
                       );
                     }}
                   />
-                  {LINE_CONFIG.map(({ key, color, width, opacity }) => {
+                  {lineConfig.map(({ key, color, width, opacity }) => {
                     const isHidden = hiddenLines.has(key) || (key !== "FSI" && !showPeers);
                     return (
                       <Line key={key} type="monotone" dataKey={key} stroke={color} strokeWidth={width} dot={false} strokeOpacity={isHidden ? 0 : opacity} animationDuration={800} hide={isHidden} />

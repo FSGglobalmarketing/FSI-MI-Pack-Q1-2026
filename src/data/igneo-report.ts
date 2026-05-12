@@ -98,39 +98,86 @@ export const reportData = {
   },
 
   searchVisibility: {
-    description: "FSI's online visibility kept building in Q1. We now rank for **216 keywords** globally — up **+14% vs Q4 2025** — and **37 of those now sit on page 1 of Google**, lifting estimated organic traffic by roughly **+43%** over the quarter. The biggest jumps came from broad category searches — \"investment management firms\" climbed 50 positions, \"investors\" 41 (now #13) and \"global investment services\" 28. In Australia, where we measure ourselves against peers, FSI leads the pack on ranked-keyword count: **49 keywords** vs Vanguard's **44**, Perpetual's **44** and Magellan's **21**.",
+    description: "FSI's domain ranks for 162 keywords across our four core Australian strategies — Australian Equities Growth, Global Listed Infrastructure, Global Property Securities and Short Term Investments. Fifty-six of those sit on page 1 of Google, with ten in the top three and three at the #1 position.\n\nOur strongest positions are in infrastructure and property. We hold the top result for 'global listed infrastructure', 'global listed infrastructure fund' and 'global property securities fund', plus top-five places on 'listed infrastructure', 'infrastructure securities' and 'short term investments' (which alone has a monthly search volume of 304). Australian Equities Growth made the biggest move over Q1 — our ranked-keyword count rose from 11 in December to 20 by quarter-end, with new top-five positions on 'australian equities fund' and 'australian equity fund'.",
     marketingActivities: [
       "Always-on search (branded) plus always-on ETF terms",
       "Paid LinkedIn in support of the EX-20 launch and reporting-season push",
       "Featured on Livewire Markets' Buy Hold Sell",
     ],
     competitors: [
-      "Fidelity", "Pendal", "Perpetual", "Vanguard", "UBS", "BetaShares", "iShares",
-      "Bennelong", "CFS Geared Share", "Ausbil", "Magellan", "ClearBridge",
-      "Resolution Capital", "Hyperion",
+      "Vanguard", "Perpetual", "BetaShares", "BlackRock", "Schroders", "Fidelity",
+      "Pendal", "Ausbil", "Yarra", "Bennelong", "ClearBridge", "Maple-Brown Abbott",
+      "Russell", "Atlas Infrastructure", "UBS",
     ],
     kpis: [
-      { value: "216",  label: "Keywords ranked", comparison: "+14% keywords vs Dec '25" },
-      { value: "+43%", label: "Est. traffic",    comparison: "vs Q4 2025" },
+      { value: "162", label: "Keywords ranked", comparison: "across 4 AU strategies" },
+      { value: "56",  label: "Page-1 keywords", comparison: "10 in top-3 · 3 at #1" },
     ],
-    chartDataByCountry: {
-      // Source: Raw Data/SEO/SEO_Rankings_over_time.xlsx — AU-only tracking of
-      // firstsentierinvestors.com.au vs AU competitor peers (Mar '25 – Mar '26).
-      // Other regions are not in the current rankings export.
-      AU: [
-        { month: "Mar 25", FSI: 38, Vanguard: 30, Perpetual: 22, Pendal: 4, CFS: 10, Bennelong: 4, BetaShares: 5, UBS: 3, Magellan: 35, Ausbil: 3 },
-        { month: "Apr 25", FSI: 39, Vanguard: 28, Perpetual: 27, Pendal: 4, CFS: 11, Bennelong: 3, BetaShares: 5, UBS: 4, Magellan: 37, Ausbil: 4 },
-        { month: "May 25", FSI: 37, Vanguard: 29, Perpetual: 26, Pendal: 4, CFS: 13, Bennelong: 3, BetaShares: 4, UBS: 3, Magellan: 38, Ausbil: 6 },
-        { month: "Jun 25", FSI: 39, Vanguard: 29, Perpetual: 29, Pendal: 4, CFS: 13, Bennelong: 2, BetaShares: 5, UBS: 2, Magellan: 39, Ausbil: 3 },
-        { month: "Jul 25", FSI: 40, Vanguard: 31, Perpetual: 32, Pendal: 3, CFS: 15, Bennelong: 3, BetaShares: 5, UBS: 3, Magellan: 39, Ausbil: 3 },
-        { month: "Aug 25", FSI: 49, Vanguard: 35, Perpetual: 36, Pendal: 3, CFS: 16, Bennelong: 4, BetaShares: 4, UBS: 2, Magellan: 39, Ausbil: 3 },
-        { month: "Sep 25", FSI: 52, Vanguard: 37, Perpetual: 38, Pendal: 3, CFS: 17, Bennelong: 3, BetaShares: 5, UBS: 2, Magellan: 38, Ausbil: 3 },
-        { month: "Oct 25", FSI: 54, Vanguard: 42, Perpetual: 41, Pendal: 3, CFS: 22, Bennelong: 3, BetaShares: 6, UBS: 2, Magellan: 32, Ausbil: 3 },
-        { month: "Nov 25", FSI: 51, Vanguard: 43, Perpetual: 43, Pendal: 3, CFS: 21, Bennelong: 4, BetaShares: 5, UBS: 2, Magellan: 30, Ausbil: 3 },
-        { month: "Dec 25", FSI: 51, Vanguard: 41, Perpetual: 43, Pendal: 3, CFS: 20, Bennelong: 4, BetaShares: 5, UBS: 2, Magellan: 24, Ausbil: 5 },
-        { month: "Jan 26", FSI: 52, Vanguard: 41, Perpetual: 43, Pendal: 3, CFS: 23, Bennelong: 4, BetaShares: 7, UBS: 2, Magellan: 24, Ausbil: 6 },
-        { month: "Feb 26", FSI: 49, Vanguard: 42, Perpetual: 44, Pendal: 2, CFS: 27, Bennelong: 4, BetaShares: 7, UBS: 2, Magellan: 23, Ausbil: 6 },
-        { month: "Mar 26", FSI: 49, Vanguard: 44, Perpetual: 44, Pendal: 2, CFS: 27, Bennelong: 4, BetaShares: 7, UBS: 2, Magellan: 21, Ausbil: 12 },
+    // Source: Raw Data/SEO/*.xlsx — per-strategy keyword-count tracking
+    // (Apr 2025 – Apr 2026) of firstsentierinvestors.com.au vs AU peer
+    // domains. Each strategy carries its own competitor lineup; the
+    // chart's strategy dropdown swaps both the data and the competitor
+    // set in view.
+    chartDataByStrategy: {
+      "AEQ Growth": [
+        { month: "Apr 25", BetaShares: 16, FSI: 10, Yarra: 3,  Bennelong: 1, Perpetual: 32, Schroders: 15, Fidelity: 11, Pendal:  9, Ausbil:  5 },
+        { month: "May 25", BetaShares: 17, FSI: 14, Yarra: 3,  Bennelong: 1, Perpetual: 29, Schroders: 14, Fidelity: 10, Pendal:  9, Ausbil:  7 },
+        { month: "Jun 25", BetaShares: 17, FSI: 15, Yarra: 3,  Bennelong: 1, Perpetual: 32, Schroders: 15, Fidelity:  8, Pendal:  8, Ausbil:  5 },
+        { month: "Jul 25", BetaShares: 20, FSI: 14, Yarra: 3,  Bennelong: 2, Perpetual: 35, Schroders: 15, Fidelity:  8, Pendal:  9, Ausbil:  5 },
+        { month: "Aug 25", BetaShares: 17, FSI: 15, Yarra: 2,  Bennelong: 2, Perpetual: 35, Schroders: 14, Fidelity:  8, Pendal:  8, Ausbil:  5 },
+        { month: "Sep 25", BetaShares: 19, FSI: 16, Yarra: 3,  Bennelong: 2, Perpetual: 37, Schroders: 15, Fidelity:  9, Pendal: 11, Ausbil:  7 },
+        { month: "Oct 25", BetaShares: 20, FSI: 15, Yarra: 3,  Bennelong: 2, Perpetual: 38, Schroders: 16, Fidelity:  9, Pendal: 12, Ausbil:  6 },
+        { month: "Nov 25", BetaShares: 22, FSI: 14, Yarra: 4,  Bennelong: 1, Perpetual: 38, Schroders: 15, Fidelity: 11, Pendal: 16, Ausbil:  8 },
+        { month: "Dec 25", BetaShares: 22, FSI: 11, Yarra: 4,  Bennelong: 1, Perpetual: 35, Schroders: 15, Fidelity: 11, Pendal: 17, Ausbil:  7 },
+        { month: "Jan 26", BetaShares: 22, FSI: 12, Yarra: 4,  Bennelong: 1, Perpetual: 35, Schroders: 15, Fidelity: 11, Pendal: 18, Ausbil:  6 },
+        { month: "Feb 26", BetaShares: 23, FSI: 11, Yarra: 4,  Bennelong: 2, Perpetual: 36, Schroders: 15, Fidelity: 10, Pendal: 17, Ausbil:  5 },
+        { month: "Mar 26", BetaShares: 21, FSI: 20, Yarra: 9,  Bennelong: 6, Perpetual: 44, Schroders: 24, Fidelity: 11, Pendal: 15, Ausbil: 10 },
+        { month: "Apr 26", BetaShares: 21, FSI: 20, Yarra: 10, Bennelong: 6, Perpetual: 46, Schroders: 25, Fidelity: 12, Pendal: 11, Ausbil: 11 },
+      ],
+      "GLIS": [
+        { month: "Apr 25", Vanguard: 12, FSI: 29, BlackRock:  8, UBS: 4, BetaShares: 1, MapleBrown: 17, ClearBridge: 18, Russell: 12, AtlasInfra:  6 },
+        { month: "May 25", Vanguard: 13, FSI: 27, BlackRock:  8, UBS: 5, BetaShares: 1, MapleBrown: 18, ClearBridge: 17, Russell: 11, AtlasInfra:  8 },
+        { month: "Jun 25", Vanguard: 11, FSI: 28, BlackRock:  9, UBS: 3, BetaShares: 2, MapleBrown: 14, ClearBridge: 19, Russell: 12, AtlasInfra:  7 },
+        { month: "Jul 25", Vanguard: 12, FSI: 26, BlackRock: 10, UBS: 4, BetaShares: 2, MapleBrown: 15, ClearBridge: 23, Russell: 11, AtlasInfra:  8 },
+        { month: "Aug 25", Vanguard: 13, FSI: 29, BlackRock: 11, UBS: 2, BetaShares: 2, MapleBrown: 13, ClearBridge: 28, Russell: 14, AtlasInfra:  6 },
+        { month: "Sep 25", Vanguard: 14, FSI: 30, BlackRock: 10, UBS: 2, BetaShares: 3, MapleBrown: 14, ClearBridge: 33, Russell: 14, AtlasInfra:  6 },
+        { month: "Oct 25", Vanguard: 17, FSI: 31, BlackRock: 10, UBS: 3, BetaShares: 4, MapleBrown: 16, ClearBridge: 35, Russell: 16, AtlasInfra:  8 },
+        { month: "Nov 25", Vanguard: 18, FSI: 30, BlackRock: 10, UBS: 4, BetaShares: 4, MapleBrown: 17, ClearBridge: 35, Russell: 18, AtlasInfra: 10 },
+        { month: "Dec 25", Vanguard: 18, FSI: 32, BlackRock: 11, UBS: 4, BetaShares: 4, MapleBrown: 18, ClearBridge: 36, Russell: 17, AtlasInfra:  9 },
+        { month: "Jan 26", Vanguard: 19, FSI: 34, BlackRock: 13, UBS: 4, BetaShares: 6, MapleBrown: 19, ClearBridge: 40, Russell: 17, AtlasInfra:  8 },
+        { month: "Feb 26", Vanguard: 17, FSI: 32, BlackRock: 13, UBS: 4, BetaShares: 6, MapleBrown: 19, ClearBridge: 42, Russell: 16, AtlasInfra:  8 },
+        { month: "Mar 26", Vanguard: 21, FSI: 32, BlackRock: 16, UBS: 4, BetaShares: 6, MapleBrown: 19, ClearBridge: 46, Russell: 17, AtlasInfra:  6 },
+        { month: "Apr 26", Vanguard: 21, FSI: 28, BlackRock: 15, UBS: 4, BetaShares: 8, MapleBrown: 16, ClearBridge: 43, Russell: 17, AtlasInfra:  7 },
+      ],
+      "GPS": [
+        { month: "Apr 25", Vanguard:  7, FSI:  6, BlackRock: 6 },
+        { month: "May 25", Vanguard:  7, FSI:  6, BlackRock: 6 },
+        { month: "Jun 25", Vanguard:  7, FSI:  6, BlackRock: 6 },
+        { month: "Jul 25", Vanguard:  7, FSI:  6, BlackRock: 6 },
+        { month: "Aug 25", Vanguard: 10, FSI:  8, BlackRock: 7 },
+        { month: "Sep 25", Vanguard: 11, FSI:  8, BlackRock: 7 },
+        { month: "Oct 25", Vanguard: 13, FSI: 10, BlackRock: 7 },
+        { month: "Nov 25", Vanguard: 12, FSI:  8, BlackRock: 6 },
+        { month: "Dec 25", Vanguard: 11, FSI:  7, BlackRock: 5 },
+        { month: "Jan 26", Vanguard: 12, FSI:  7, BlackRock: 5 },
+        { month: "Feb 26", Vanguard: 14, FSI:  7, BlackRock: 5 },
+        { month: "Mar 26", Vanguard: 16, FSI:  9, BlackRock: 5 },
+        { month: "Apr 26", Vanguard: 15, FSI:  9, BlackRock: 6 },
+      ],
+      "STI": [
+        { month: "Apr 25", Vanguard:  95, BetaShares:  46, BlackRock: 44, FSI: 49, UBS: 5 },
+        { month: "May 25", Vanguard:  94, BetaShares:  49, BlackRock: 44, FSI: 50, UBS: 3 },
+        { month: "Jun 25", Vanguard:  99, BetaShares:  49, BlackRock: 49, FSI: 48, UBS: 4 },
+        { month: "Jul 25", Vanguard: 118, BetaShares:  54, BlackRock: 51, FSI: 49, UBS: 4 },
+        { month: "Aug 25", Vanguard: 140, BetaShares:  69, BlackRock: 53, FSI: 69, UBS: 5 },
+        { month: "Sep 25", Vanguard: 143, BetaShares:  72, BlackRock: 56, FSI: 68, UBS: 5 },
+        { month: "Oct 25", Vanguard: 147, BetaShares:  73, BlackRock: 59, FSI: 69, UBS: 5 },
+        { month: "Nov 25", Vanguard: 152, BetaShares:  75, BlackRock: 60, FSI: 76, UBS: 5 },
+        { month: "Dec 25", Vanguard: 150, BetaShares:  89, BlackRock: 65, FSI: 79, UBS: 6 },
+        { month: "Jan 26", Vanguard: 154, BetaShares:  95, BlackRock: 69, FSI: 78, UBS: 5 },
+        { month: "Feb 26", Vanguard: 161, BetaShares:  93, BlackRock: 70, FSI: 76, UBS: 4 },
+        { month: "Mar 26", Vanguard: 163, BetaShares: 100, BlackRock: 72, FSI: 70, UBS: 6 },
+        { month: "Apr 26", Vanguard: 162, BetaShares:  90, BlackRock: 67, FSI: 60, UBS: 5 },
       ],
     },
     focusAreas: [
