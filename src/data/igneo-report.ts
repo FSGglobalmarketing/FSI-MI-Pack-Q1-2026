@@ -92,9 +92,7 @@ export const reportData = {
       { channel: "Email / Pardot", metrics: ["17.7k Opens", "6.0k Clicks"],     comparison: "+5% opens vs Q4",  status: "good" as const },
       { channel: "Webinars",   metrics: ["N/A"],                                 comparison: "No Q1 webinar in export", status: "inactive" as const },
     ],
-    serviceLoyalty: [
-      { channel: "Pipeline", metrics: ["584 Live opportunities", "74 advancing (DD)"], comparison: "From 2,207 total — Listed Infra leads", status: "good" as const },
-    ],
+    serviceLoyalty: [],
   },
 
   searchVisibility: {

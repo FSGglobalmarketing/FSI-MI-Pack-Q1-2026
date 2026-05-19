@@ -1,6 +1,6 @@
 import { useState, FormEvent, ReactNode } from "react";
 
-const HASH = "b257c34f18f3b61ce260bd09506d883dfd82005a41ad532f5204383643317bdb"; // Reporting2026!
+const HASH = "6b0c3c4487df44ba3e1a2f46aecd1269b85badf5d6f58b14f77871fdbadf9a2c"; // FSG2026!
 
 // FSI Brand Toolkit v4 (July 2020)
 const NAVY = "#022856";         // Primary Dark Blue

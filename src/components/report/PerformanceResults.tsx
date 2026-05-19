@@ -47,7 +47,7 @@ function buildRows(): { stages: string[]; rows: Row[] } {
     { label: "Consideration", data: p.consideration },
     { label: "Conversion", data: p.conversion },
     { label: "Service & Loyalty", data: p.serviceLoyalty },
-  ];
+  ].filter((s) => s.data.length > 0);
   const rows: Row[] = [];
   stages.forEach((s) =>
     s.data.forEach((item, i) =>
@@ -331,9 +331,11 @@ export default function PerformanceResults() {
 
         {/* Mobile fallback */}
         <div className="lg:hidden mt-8 space-y-4">
-          {["awareness", "consideration", "conversion", "serviceLoyalty"].map((key) => {
+          {(["awareness", "consideration", "conversion", "serviceLoyalty"] as const)
+            .filter((key) => reportData.performanceResults[key].length > 0)
+            .map((key) => {
             const stageLabel = key === "serviceLoyalty" ? "Service & Loyalty" : key.charAt(0).toUpperCase() + key.slice(1);
-            const items = reportData.performanceResults[key as keyof typeof reportData.performanceResults];
+            const items = reportData.performanceResults[key];
             return (
               <div key={key}>
                 <h3 className="text-sm font-medium text-accent mb-2">{stageLabel}</h3>
