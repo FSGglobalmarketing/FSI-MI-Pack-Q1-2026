@@ -7,6 +7,7 @@ export interface HighlightSectionData {
   description?: string;
   goals: string[];
   marketingActivities: string[];
+  keyResults?: string[];     // optional — e.g. "518,000 impressions"
   targetAudience: string[];
   dataSources?: string[];
   variant: "dark" | "cream";
@@ -70,8 +71,8 @@ export const reportData = {
     },
     {
       number: "03",
-      title: "Develop the GLIS ETF strategy",
-      description: "Starting to build awareness in Asia with client meetings in Hong Kong and a media roundtable in Taiwan.",
+      title: "Taiwan media roundtable",
+      description: "Participating in a media roundtable in Taipei, we continue to focus on strengthening GLIS awareness and visibility in the Taiwan market.",
     },
   ],
 
@@ -96,11 +97,17 @@ export const reportData = {
   },
 
   searchVisibility: {
-    description: "FSI's domain ranks for **187 keywords** across our five tracked Australian strategies — Australian Equities Growth, Global Listed Infrastructure, Global Property Securities, Short Term Investments and Small & Mid Caps. **Sixty-one** of those sit on page 1 of Google, with **eleven in the top three** and **three at the #1 position**.\n\nOur strongest positions are in infrastructure and property. We hold the top result for **'global listed infrastructure'**, **'global listed infrastructure fund'** and **'global property securities fund'**, plus top-five places on 'listed infrastructure', 'infrastructure securities' and **'short term investments'** (which alone has a monthly search volume of 304). **Australian Equities Growth** made the biggest move over Q1 — our ranked-keyword count rose from 11 in December to **20** by quarter-end, with new top-five positions on 'australian equities fund' and 'australian equity fund'. In the **Small & Mid Caps** segment we now rank **#2** for 'small company equity funds australia' and **#5** for 'best small cap funds australia'.",
+    description: "Global keyword coverage for firstsentierinvestors.com **grew from 190 to 216** ranked keywords over the quarter (+14%). Page 1 coverage increased from **34 to 37 keywords**, and estimated organic traffic from these terms **rose by 43%**.\n\nBiggest gainers this quarter: 'investment management firms' +50%, 'active security group' +48% and 'investors' +41%. This comes from our paid search campaigns and top-of-funnel activities in places like LinkedIn and Display ads.",
+    goals: [
+      "Analyse competitor activities and incorporate them into our website",
+      "Position our brand to be included in more AI search results as technology pivots",
+    ],
     marketingActivities: [
-      "Always-on search (branded) plus always-on ETF terms",
-      "Paid LinkedIn in support of the EX-20 launch and reporting-season push",
-      "Featured on Livewire Markets' Buy Hold Sell",
+      "Paid Search Ads focusing on branded and ETF-related terms",
+      "Cross-promotions on LinkedIn with Duke and Xcel",
+      "Paid LinkedIn campaign on ETFs",
+      "Featured on Livewire's Buy Hold Sell",
+      "Display advertising on XX20",
     ],
     competitors: [
       "Vanguard", "Perpetual", "BetaShares", "BlackRock", "Schroders", "Fidelity",
@@ -194,13 +201,13 @@ export const reportData = {
       ],
     },
     focusAreas: [
+      "Gather and structure search engine data across established strategies like GLIS and GPS",
       "Defend and maintain share of voice on property and real estate searches",
-      "Grow presence in ETF-related searches",
-      "Gather user-behaviour data",
     ],
     nextQuarter: [
-      "Re-instrument UK / SG / DE / US tracking when rankings data becomes available",
-      "Benchmark vs peer-group by region, not just Australian peers",
+      "Build data model on the ETF landscape with competitor positions",
+      "Analyse and find improvements we can learn from competitors",
+      "Understand how we rank for AI searches across all products",
     ],
   },
 
@@ -210,17 +217,17 @@ export const reportData = {
       navLabel: "Reporting season",
       stage: "Highlight 1",
       title: "Australian Equities Growth — reporting season",
-      subtitle: "Sector-by-sector reactions and where active investors found opportunity.",
-      description: "We kicked off the year with a dedicated campaign timed to ASX reporting season — bespoke events across five ANZ cities, broad media presence (Livewire Markets' Buy Hold Sell with Dushko; David Wilson and Christian Guerra on the Reporting Season podcast), and supporting digital activity across paid LinkedIn, search and the AEQ adviser hub.",
+      subtitle: "Activities at every stage of the marketing funnel.",
+      description: "We kicked off the year with bespoke events across five ANZ cities, broad media presence on Livewire Markets, LinkedIn and our Podcast. This was supported by paid LinkedIn and search engine campaigns and **74 investors** attending one of our **eight roundtable events** across Australia.",
       goals: [
-        "Defend share of voice across reporting-season commentary in AU media",
-        "Convert reporting-season attention into AEQ adviser-hub traffic",
-        "Position FSI's AEQ team as the active-investing voice on quality vs. price-action",
+        "Leverage reporting season to profile the investment team",
+        "Use content to promote the LEVR and XX20 strategies",
+        "Position the AEQ Growth team",
       ],
       marketingActivities: [
-        "AEQ Reporting season roundtables — Sydney, Melbourne, Perth, Adelaide, Brisbane",
-        "Livewire Markets' Buy Hold Sell — Dushko on the special reporting-season episode",
-        "Reporting Season podcast — David Wilson and Christian Guerra on sector-by-sector reactions",
+        "Reporting season roundtables in Sydney, Melbourne, Perth, Adelaide, Brisbane",
+        "Livewire Markets' Buy Hold Sell with Dushko on the special reporting-season episode",
+        "Reporting Season podcast featuring David Wilson and Christian Guerra on sector-by-sector reactions",
         "Always-on paid search and paid LinkedIn supporting AEQ adviser pages",
       ],
       targetAudience: ["Institutional", "Wholesale adviser", "Broker / LGT Wealth"],
@@ -229,20 +236,24 @@ export const reportData = {
     },
     {
       id: "highlight-ex20-phase-2",
-      navLabel: "EX-20 Phase II",
+      navLabel: "XX20 Phase II",
       stage: "Highlight 2",
-      title: "EX-20 campaign — Phase II",
-      subtitle: "Continuing the EX-20 Share Fund push with deeper market penetration.",
-      description: "Phase II builds on the Phase I launch with more ad placements, distribution-led roundtables across five ANZ cities, and an always-on search + social mix designed to drive advisers to the EX-20 fund page (which lifted +32% vs Q4 even before this Phase II push).",
+      title: "XX20 campaign — Phase II",
+      subtitle: "EX-20 continues to build momentum in the market.",
+      description: "Phase II builds on the Phase I launch with more ad placements, distribution-led roundtables across five ANZ cities, and an always-on search + social mix designed to drive advisers to the XX20 fund page.",
       goals: [
-        "More ad placements and a focused effort to drive market penetration",
-        "Distribution-led event across the five ANZ cities (LGT Crestone, post-reporting season)",
+        "More placement and focused effort to drive market penetration",
+        "Increase brand awareness of First Sentier as a leader in active ETFs",
       ],
       marketingActivities: [
-        "EX-20 launch roundtables — Sydney, Melbourne, Perth, Adelaide, Brisbane",
-        "Post-reporting season / EX-20 launch / LGT Crestone event in Melbourne (Mar 4-5)",
-        "Always-on search (branded + EX-20 terms)",
-        "Paid LinkedIn driving to /au/en/adviser/our-funds/.../ex-20-australian-share-fund.html",
+        "Roundtables in Sydney, Melbourne, Perth, Adelaide, Brisbane",
+        "Post-reporting season / EX-20 launch / LGT Crestone event in Melbourne",
+        "Always-on search campaigns with a mix of branded and non-branded search terms",
+        "Paid LinkedIn",
+      ],
+      keyResults: [
+        "**518,000 impressions** across outdoor and digital channels",
+        "**3,400 clicks** to the strategy page",
       ],
       targetAudience: ["Wholesale adviser (ANZ)", "Ptarmigan ad audiences"],
       dataSources: [
@@ -258,25 +269,19 @@ export const reportData = {
       id: "highlight-cash-etf",
       navLabel: "Cash ETF",
       stage: "Highlight 3",
-      title: "Cash ETF — launch planning",
-      subtitle: "Brand, positioning and creative ready for Q2 launch.",
-      description: "Q1 was the planning quarter for the Cash ETF. We completed the brand survey, signed off the client value proposition, filmed launch videos, finalised flyers and web copy, and locked in a full communications and advertising plan and schedule. The launch lands in Q2.",
+      title: "ASX Cash ETF Planning",
+      subtitle: "Establishing position in the market leveraging our size, rating and experience.",
+      description: "Planning and preparation for the Q2 launch of the ASX Cash ETF with a campaign designed to make our value proposition clear, on a platform of scale, experience, stability and liquidity.\n\nThe campaign is built using the BrandIntelligence report conducted by Agile Market Intelligence in December and focuses activity towards the top of the customer journey using our broadest channels.",
       goals: [
-        "Establish positioning in market — why cash in the portfolio?",
-        "Identify why clients would invest in this fund rather than peers (fear and greed)",
-        "Brand concepts (visual identity), advertising slogans, tone and straplines signed off",
+        "Establish positioning in the market answering the question: 'why cash in the portfolio?'",
+        "Use the data and findings in the BrandIntelligence report to inform our targeting and ad placement",
+        "Establish a visual identity and advertising slogans",
       ],
-      marketingActivities: [
-        "Brand survey complete",
-        "Client value proposition complete",
-        "Filmed launch videos in production",
-        "Bespoke flyers and web copy ready",
-        "Communications + advertising plan and schedule signed off",
-      ],
+      marketingActivities: [],
       targetAudience: ["Wholesale adviser (ANZ)", "Ptarmigan ad audiences"],
       dataSources: [
         "Ptarmigan (paid ads)",
-        "Livewire + Morningstar first-link tracking",
+        "BrandIntelligence (Agile Market Intelligence)",
         "Web (GA4 landing pages — Q2 onwards)",
         "Always-on search",
         "Paid + organic social",
@@ -284,42 +289,61 @@ export const reportData = {
       variant: "dark",
     },
     {
-      id: "highlight-glis",
-      navLabel: "GLIS update",
+      id: "highlight-taiwan-glis",
+      navLabel: "Taiwan roundtable",
       stage: "Highlight 4",
-      title: "GLIS ETF strategy — Asia awareness build",
-      subtitle: "Building GLIS awareness in Asia ahead of the ETF strategy roll-out.",
-      description: "Starting to build awareness in Asia for the GLIS ETF strategy — client meetings in Hong Kong, a media roundtable in Taipei (Cathay / GLIS, 31 Mar) and supporting always-on search / social across the region.",
+      title: "Taiwan media roundtable — building GLIS awareness in Taiwan",
+      subtitle: "Strengthening GLIS visibility in the Taiwan market.",
+      description: "Edmund Leung participated in a media roundtable in Taipei (Cathay / GLIS, 31 Mar), aiming to strengthen GLIS awareness and visibility in the Taiwan market.",
       goals: [
-        "Establish positioning in Asia — why global listed infrastructure now?",
-        "Identify why clients would invest in this fund rather than peers",
-        "Build brand concepts and visual identity for the Asia push",
+        "Building the case for global listed infrastructure — and why now?",
+        "Establish our positioning — highlighting our competitive edge and why FSI GLIS",
       ],
       marketingActivities: [
-        "Client meetings — Hong Kong",
         "Media roundtable — Cathay / GLIS, Taipei (31 Mar)",
-        "Always-on search and paid LinkedIn across Asia",
       ],
       targetAudience: ["Wholesale and institutional (Asia)", "Asian financial press"],
       dataSources: [
-        "Ptarmigan (paid ads)",
-        "Livewire + Morningstar first-link tracking",
+        "Cathay (event partner)",
         "Web (GA4 — GLIS pages)",
-        "Always-on search",
         "Paid + organic social",
       ],
       variant: "cream",
+    },
+    {
+      id: "always-on-glis",
+      navLabel: "GLIS update",
+      stage: "Always on",
+      title: "GLIS update",
+      subtitle: "Quarterly look at the marketing performance of GLIS content globally.",
+      description: "Content centred around Rebecca's interview with Brian Savoy, CFO at Duke Energy Corporation, and Brian Van Abel, CFO at Xcel Energy. Themes focused on delivering growth alongside affordability as data centres continue to reshape electricity demand.",
+      goals: [
+        "Recorded new content with Rebecca Sherlock — Xcel Energy and Duke Energy interviews",
+        "Rolled out globally across websites and social",
+      ],
+      marketingActivities: [
+        "2 x bespoke videos",
+        "LinkedIn posts",
+        "Insight articles",
+      ],
+      targetAudience: ["Wholesale and institutional (global)"],
+      dataSources: [
+        "Web (GA4 — GLIS pages)",
+        "Paid + organic social",
+        "Insight articles published on firstsentierinvestors.com",
+      ],
+      variant: "dark",
     },
   ] as HighlightSectionData[],
 
   website: {
     title: "Always on: Website",
     stage: "Consideration",
-    subtitle: "Insights and strategy content carried the lift, alongside strong adviser-hub momentum.",
-    description: "Traffic on firstsentierinvestors.com lifted **47%** over the quarter, reaching **199.9k page views** and **187.5k active users**. The strongest performers were our insights pages and the Australian Equities adviser hub.\n\nThe **Curious Podcast** page was our most-read editorial piece at **1.9k views**, followed by the 2026 outlook (648 views) and **Lessons from the Quant Winter** (608 views). On the strategy side, the **Australian Equities Growth** fund hub topped **8k views**, with the **EX-20 Share Fund** and **Geared Australian Share Fund** pages close behind at 6.5k and 6k. **Global Listed Infrastructure** pulled steady traffic across both the Australian and German adviser sites.",
+    subtitle: "More traffic, deeper engagement, with insights and strategy pages leading the way.",
+    description: "More people came to firstsentierinvestors.com in Q1. **Page views grew +47%** vs Q4 2025 to **180.7k**, and **engagement actions on the site rose +45%**.\n\nThe two highlights were a new **Singapore performance landing page** (over **8k views** from a standing start) and growing momentum behind our AEQ team's adviser pages, especially the **EX-20 Share Fund (+32% on Q4)**.",
     kpis: [
-      { value: "199.9k", label: "Views (ex-RQI)", comparison: "+47% vs Q4 (136.4k)" },
-      { value: "187.5k", label: "Active users",   comparison: "Q1 2026" },
+      { value: "180.7k", label: "Page views",         comparison: "+47% vs Q4 2025" },
+      { value: "+45%",   label: "Engagement actions", comparison: "vs Q4 2025" },
     ],
     gaMonthly: [
       { month: "Oct 25", users: 39878, sessions: 50871, pageViews: 50871, bounceRate: 0, avgDuration: 0 },
@@ -356,14 +380,11 @@ export const reportData = {
       { source: "Other",                percentage:  5 },
     ],
     focusQ4: [
-      "Curious Podcast hub launched as the AU insights anchor (1.9k Q1 views)",
-      "AEQ Growth, EX-20 and Geared AU Share Fund pages refreshed",
-      "2026 outlook and Quant Winter long-reads published into latest-insights",
+      "Prepare the ASX Cash page and optimise for search engines",
+      "Refresh the homepage to funnel traffic to campaign landing pages",
     ],
     focusQ1: [
-      "Surface GLIS and Asian Fixed Income insights more prominently from regional homes",
-      "Build a cross-strategy insights hub for HK and SG retail",
-      "Lift bounce on EX-20 and Geared Share Fund pages (currently 44–63%)",
+      "Continue optimising key campaign pages for better search engine rankings",
     ],
   },
 
@@ -371,7 +392,7 @@ export const reportData = {
     title: "Always on: LinkedIn",
     stage: "Consideration",
     subtitle: "Paid scaled hard; organic carried a steady cadence.",
-    description: "Sponsored reach on LinkedIn more than doubled in Q1. **Sponsored impressions hit 486.5k**, up **107%** versus Q4 2025 (235.1k). Organic impressions softened to **35.9k** across the quarter (down **19%** vs Q4), with an average engagement rate of **1.2%**.\n\nThe strongest organic moments were **Alison Thai's International Women's Day** reflection (**4.7k impressions**), **Rebecca Sherlock's Xcel Energy CFO interview** on AI and data centres (**4.2k**), and **Ben Samuel's** commentary on the RBA cash rate decision (**2.7k**). **Edmund Leung's** Global Listed Infrastructure shareholder-income piece reached **2.2k**, and the **Reporting Season** podcast post with David Wilson and Christian Guerra carried **1.5k**.",
+    description: "Sponsored reach on LinkedIn more than doubled in Q1. **Sponsored impressions hit 486.5k**, **up 107% versus Q4 2025**. Organic impressions softened to 35.9k across the quarter (down 19% vs Q4), with an average engagement rate of 1.2%.\n\nThe strongest organic moments were Alison Thai's International Women's Day reflection with **4.7k impressions**, as well as Rebecca Sherlock's Xcel Energy CFO interview on AI and data centres.\n\nEdmund Leung's Global Listed Infrastructure shareholder-income piece reached **2.2k views**, and the Reporting Season podcast post with David Wilson and Christian Guerra carried **1.5k views**.",
     goals: ["Scale paid reach in priority markets while keeping organic quality high"],
     activities: ["Martin Lau luncheon content", "IMK + FONDS Kongress (DE)", "AI thematic strategy posts", "10 organic posts / quarter"],
     kpis: [
@@ -380,14 +401,12 @@ export const reportData = {
       { value: "1.2%",   label: "Avg engagement rate",    comparison: "Q1 2026" },
     ],
     focusQ4: [
-      "Two sponsored campaigns driving Q4 impressions (~235k).",
-      "Selective organic cadence maintained across FSI boutiques (FSSA, Igneo, Stewart).",
-      "German-language posts for early 2026 events.",
+      "Execute the two sponsored campaigns and analyse the data",
+      "Grow the channel and leverage for campaign support",
     ],
     focusQ1: [
-      "Continue scaling sponsored reach while publishing 3-4 organic per month.",
-      "German-language coverage through IMK and FONDS Kongress.",
-      "Replicate Martin Lau-style client-led organic posts in Q2.",
+      "Continue scaling sponsored reach while publishing 3-4 organic posts per month",
+      "German-language coverage through IMK and FONDS Kongress",
     ],
   },
 

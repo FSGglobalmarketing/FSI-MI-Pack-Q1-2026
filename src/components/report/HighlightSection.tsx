@@ -1,4 +1,7 @@
 import type { HighlightSectionData } from "@/data/igneo-report";
+import { Megaphone, Check, Plus } from "lucide-react";
+import Summary from "./Summary";
+import { renderInline } from "./inlineMarkdown";
 
 interface Props {
   highlight: HighlightSectionData;
@@ -8,6 +11,8 @@ interface Props {
 
 export default function HighlightSection({ highlight: h, creative }: Props) {
   const dark = h.variant === "dark";
+  const strongClass = dark ? "text-foreground font-medium" : "text-secondary-foreground font-medium";
+
   return (
     <section
       id={h.id}
@@ -32,12 +37,10 @@ export default function HighlightSection({ highlight: h, creative }: Props) {
           {/* Left column — content */}
           <div className="space-y-6">
             {h.description && (
-              <p className={`text-sm leading-relaxed ${dark ? "text-foreground/75" : "text-secondary-foreground/75"}`}>
-                {h.description}
-              </p>
+              <Summary text={h.description} variant={dark ? "dark" : "cream"} />
             )}
 
-            {/* Goals */}
+            {/* Goals — numbered list */}
             <div>
               <h3 className={`text-sm font-medium mb-3 ${dark ? "text-foreground" : "text-secondary-foreground"}`}>
                 Goals
@@ -56,36 +59,52 @@ export default function HighlightSection({ highlight: h, creative }: Props) {
                       <span className={`shrink-0 ${dark ? "text-accent" : "text-secondary-foreground"} font-medium tabular-nums`}>
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span>{g}</span>
+                      <span>{renderInline(g, strongClass)}</span>
                     </li>
                   ))}
                 </ol>
               )}
             </div>
 
-            {/* Marketing activities */}
-            <div>
-              <h3 className={`text-sm font-medium mb-3 ${dark ? "text-foreground" : "text-secondary-foreground"}`}>
-                Marketing activities
-              </h3>
-              {h.marketingActivities.length === 0 ? (
-                <p className={`text-sm ${dark ? "text-foreground/55" : "text-secondary-foreground/55"} italic`}>
-                  Activities not yet captured.
-                </p>
-              ) : (
+            {/* Marketing activities — icon per item */}
+            {h.marketingActivities.length > 0 && (
+              <div>
+                <h3 className={`text-sm font-medium mb-3 ${dark ? "text-foreground" : "text-secondary-foreground"}`}>
+                  Marketing activities
+                </h3>
                 <ul className="space-y-2">
                   {h.marketingActivities.map((a) => (
                     <li
                       key={a}
-                      className={`text-sm flex items-start gap-2 ${dark ? "text-foreground/80" : "text-secondary-foreground/80"}`}
+                      className={`text-sm flex items-start gap-2.5 ${dark ? "text-foreground/80" : "text-secondary-foreground/80"}`}
                     >
-                      <span className={`shrink-0 ${dark ? "text-accent" : "text-secondary-foreground"} mt-0.5`}>+</span>
-                      <span>{a}</span>
+                      <Megaphone className={`w-4 h-4 shrink-0 mt-0.5 ${dark ? "text-accent" : "text-accent"}`} />
+                      <span>{renderInline(a, strongClass)}</span>
                     </li>
                   ))}
                 </ul>
-              )}
-            </div>
+              </div>
+            )}
+
+            {/* Key results (optional) */}
+            {h.keyResults && h.keyResults.length > 0 && (
+              <div>
+                <h3 className={`text-sm font-medium mb-3 ${dark ? "text-foreground" : "text-secondary-foreground"}`}>
+                  Key results
+                </h3>
+                <ul className="space-y-2">
+                  {h.keyResults.map((k) => (
+                    <li
+                      key={k}
+                      className={`text-sm flex items-start gap-2.5 ${dark ? "text-foreground/80" : "text-secondary-foreground/80"}`}
+                    >
+                      <Check className={`w-4 h-4 shrink-0 mt-0.5 ${dark ? "text-accent" : "text-accent"}`} />
+                      <span>{renderInline(k, strongClass)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {/* Audience + data sources side-by-side */}
             <div className="grid grid-cols-2 gap-6 pt-2">

@@ -12,6 +12,8 @@ import {
 import { ExternalLink } from "lucide-react";
 import KpiRow from "./KpiRow";
 import Summary from "./Summary";
+import { Plus } from "lucide-react";
+import { renderInline } from "./inlineMarkdown";
 
 const TABS = ["Timeline", "Content Mix", "Org vs Spn", "Top Posts"] as const;
 type Tab = typeof TABS[number];
@@ -301,11 +303,11 @@ export default function LinkedInSection() {
                 <h4 className="text-sm font-medium mb-3 text-foreground">Focus in Q1</h4>
                 <ul className="space-y-2">
                   {d.focusQ4.map((f) => (
-                    <li key={f} className="text-sm flex items-start gap-2 text-muted-foreground">
-                      <svg className="w-4 h-4 text-[hsl(142_60%_45%)] shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                    <li key={f} className="text-sm flex items-start gap-2.5 text-foreground/80">
+                      <svg className="w-4 h-4 text-accent shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                       </svg>
-                      {f}
+                      <span>{renderInline(f, "text-foreground font-medium")}</span>
                     </li>
                   ))}
                 </ul>
@@ -314,8 +316,9 @@ export default function LinkedInSection() {
                 <h4 className="text-sm font-medium mb-3 text-foreground">Focus in Q2</h4>
                 <ul className="space-y-2">
                   {d.focusQ1.map((f) => (
-                    <li key={f} className="text-sm flex items-start gap-2 text-muted-foreground">
-                      <span className="text-accent mt-0.5 shrink-0">+</span>{f}
+                    <li key={f} className="text-sm flex items-start gap-2.5 text-foreground/80">
+                      <Plus className="w-4 h-4 shrink-0 mt-0.5 text-accent" />
+                      <span>{renderInline(f, "text-foreground font-medium")}</span>
                     </li>
                   ))}
                 </ul>

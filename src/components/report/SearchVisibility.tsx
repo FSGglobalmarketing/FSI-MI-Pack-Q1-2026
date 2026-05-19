@@ -4,6 +4,8 @@ import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import { Switch } from "@/components/ui/switch";
 import KpiRow from "./KpiRow";
 import Summary from "./Summary";
+import { Megaphone, Plus } from "lucide-react";
+import { renderInline } from "./inlineMarkdown";
 import Summary from "./Summary";
 
 // FSI palette pool used to colour each competitor line. FSI is always
@@ -219,29 +221,37 @@ export default function SearchVisibility() {
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left column */}
           <div className="space-y-6">
+            {/* Goals — numbered list */}
+            {s.goals && s.goals.length > 0 && (
+              <div>
+                <h4 className="text-sm font-medium mb-3 text-foreground">Goals</h4>
+                <ol className="space-y-2">
+                  {s.goals.map((g, i) => (
+                    <li key={g} className="text-sm flex items-start gap-3 text-foreground/80">
+                      <span className="shrink-0 text-accent font-medium tabular-nums">{String(i + 1).padStart(2, "0")}</span>
+                      <span>{renderInline(g, "text-foreground font-medium")}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            )}
+
+            {/* Marketing Activities — icon per item */}
             <div>
-              <h4 className="text-sm font-medium mb-3 text-foreground">Marketing Activities</h4>
+              <h4 className="text-sm font-medium mb-3 text-foreground">Marketing activities</h4>
               <ul className="space-y-2">
                 {s.marketingActivities.map((a) => (
-                  <li key={a} className="text-sm flex items-start gap-2 text-foreground/70">
-                    <span className="text-accent mt-0.5 shrink-0">+</span>{a}
+                  <li key={a} className="text-sm flex items-start gap-2.5 text-foreground/80">
+                    <Megaphone className="w-4 h-4 shrink-0 mt-0.5 text-accent" />
+                    <span>{renderInline(a, "text-foreground font-medium")}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div>
-              <h4 className="text-sm font-medium mb-3 text-foreground">Focus Areas</h4>
-              <div className="flex flex-wrap gap-2">
-                {s.focusAreas.map((f) => (
-                  <span key={f} className="glass-pill-dark">{f}</span>
-                ))}
-              </div>
-            </div>
-
             {/* Key Results */}
             <div>
-              <h4 className="text-sm font-medium mb-4 text-foreground">Key Results</h4>
+              <h4 className="text-sm font-medium mb-4 text-foreground">Key results</h4>
               <div className="space-y-3">
                 {s.kpis.map((kpi) => (
                   <KpiRow key={kpi.label} value={kpi.value} label={kpi.label} comparison={kpi.comparison} variant="dark" />
@@ -253,9 +263,9 @@ export default function SearchVisibility() {
                 <h4 className="text-sm font-medium mb-3 text-foreground">Focus in Q1</h4>
                 <ul className="space-y-2">
                   {s.focusAreas.map((item) => (
-                    <li key={item} className="text-sm flex items-start gap-2 text-foreground/70">
-                      <svg className="w-4 h-4 text-success shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                      {item}
+                    <li key={item} className="text-sm flex items-start gap-2.5 text-foreground/80">
+                      <svg className="w-4 h-4 text-accent shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                      <span>{renderInline(item, "text-foreground font-medium")}</span>
                     </li>
                   ))}
                 </ul>
@@ -264,8 +274,9 @@ export default function SearchVisibility() {
                 <h4 className="text-sm font-medium mb-3 text-foreground">Focus in Q2</h4>
                 <ul className="space-y-2">
                   {s.nextQuarter.map((item) => (
-                    <li key={item} className="text-sm flex items-start gap-2 text-foreground/70">
-                      <span className="text-accent mt-0.5 shrink-0">+</span>{item}
+                    <li key={item} className="text-sm flex items-start gap-2.5 text-foreground/80">
+                      <Plus className="w-4 h-4 shrink-0 mt-0.5 text-accent" />
+                      <span>{renderInline(item, "text-foreground font-medium")}</span>
                     </li>
                   ))}
                 </ul>

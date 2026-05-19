@@ -2,6 +2,8 @@ import { useState } from "react";
 import { AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from "recharts";
 import KpiRow from "./KpiRow";
 import Summary from "./Summary";
+import { Plus } from "lucide-react";
+import { renderInline } from "./inlineMarkdown";
 
 interface KpiItem {
   value: string;
@@ -194,9 +196,9 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
                 <h4 className={`text-sm font-medium mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Focus in Q1</h4>
                 <ul className="space-y-2">
                   {focusQ4.map((f) => (
-                    <li key={f} className={`text-sm flex items-start gap-2 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>
-                      <svg className="w-4 h-4 text-success shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-                      {f}
+                    <li key={f} className={`text-sm flex items-start gap-2.5 ${isDark ? "text-foreground/80" : "text-secondary-foreground/80"}`}>
+                      <svg className="w-4 h-4 text-accent shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                      <span>{renderInline(f, isDark ? "text-foreground font-medium" : "text-secondary-foreground font-medium")}</span>
                     </li>
                   ))}
                 </ul>
@@ -206,8 +208,9 @@ export default function AlwaysOnSection({ id, title, stage, subtitle, descriptio
                 <h4 className={`text-sm font-medium mb-3 ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>Focus in Q2</h4>
                 <ul className="space-y-2">
                   {focusQ1.map((f) => (
-                    <li key={f} className={`text-sm flex items-start gap-2 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/70"}`}>
-                      <span className={`mt-0.5 shrink-0 ${isDark ? "text-accent" : "text-primary"}`}>+</span>{f}
+                    <li key={f} className={`text-sm flex items-start gap-2.5 ${isDark ? "text-foreground/80" : "text-secondary-foreground/80"}`}>
+                      <Plus className="w-4 h-4 shrink-0 mt-0.5 text-accent" />
+                      <span>{renderInline(f, isDark ? "text-foreground font-medium" : "text-secondary-foreground font-medium")}</span>
                     </li>
                   ))}
                 </ul>

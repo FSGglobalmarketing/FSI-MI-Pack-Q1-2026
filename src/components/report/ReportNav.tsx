@@ -5,9 +5,10 @@ const fsiLogo = import.meta.env.BASE_URL + "brand/fsi-logo-white-green.svg";
 const navItems = [
   { id: "goals",                   label: "Goals" },
   { id: "highlight-aeq-reporting", label: "Reporting season" },
-  { id: "highlight-ex20-phase-2",  label: "EX-20 Phase II" },
+  { id: "highlight-ex20-phase-2",  label: "XX20 Phase II" },
   { id: "highlight-cash-etf",      label: "Cash ETF" },
-  { id: "highlight-glis",          label: "GLIS update" },
+  { id: "highlight-taiwan-glis",   label: "Taiwan roundtable" },
+  { id: "always-on-glis",          label: "GLIS update" },
   { id: "search-visibility",       label: "Search visibility" },
   { id: "website",                 label: "Website" },
   { id: "linkedin",                label: "LinkedIn" },
@@ -19,10 +20,11 @@ const navItems = [
 const funnelStages = [
   { label: "Goals",         startIdx: 0,  endIdx: 0 },
   { label: "Highlights",    startIdx: 1,  endIdx: 4 },
-  { label: "Awareness",     startIdx: 5,  endIdx: 5 },
-  { label: "Consideration", startIdx: 6,  endIdx: 7 },
-  { label: "Conversion",    startIdx: 8,  endIdx: 9 },
-  { label: "Summary",       startIdx: 10, endIdx: 10 },
+  { label: "Always on",     startIdx: 5,  endIdx: 5 },
+  { label: "Awareness",     startIdx: 6,  endIdx: 6 },
+  { label: "Consideration", startIdx: 7,  endIdx: 8 },
+  { label: "Conversion",    startIdx: 9,  endIdx: 10 },
+  { label: "Summary",       startIdx: 11, endIdx: 11 },
 ];
 
 export default function ReportNav() {
