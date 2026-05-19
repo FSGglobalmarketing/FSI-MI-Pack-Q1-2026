@@ -12,6 +12,7 @@ import {
   topStrategiesQ1,
   topCampaignsQ1,
 } from "@/data/salesforce-data";
+import Summary from "./Summary";
 
 const TABS = ["Email", "Companies", "Strategies", "Campaigns"] as const;
 type Tab = (typeof TABS)[number];
@@ -64,19 +65,13 @@ export default function SalesforceSection() {
 
         {/* Narrative + headline KPI grid */}
         <div className="grid lg:grid-cols-2 gap-8 mb-6 items-start">
-          <div className="text-secondary-foreground/75 leading-relaxed space-y-3">
-            <p>
-              FSI's email marketing reached 17.7k opens in Q1, up 5% versus Q4 2025 (16.8k), with 6.0k clicks across the
-              quarter. March was the strongest month — the Australian Equities Reporting Season Podcast push drove the
-              bulk of activity, alongside Hong Kong and Singapore client-update sends.
-            </p>
-            <p>
-              Engagement was led by our Asia wholesale partners. DBS Singapore opened, clicked and shared our content
-              more than any other firm, with 605 actions in the quarter. China Construction Bank Asia, Bank of China
-              Hong Kong, DBS Hong Kong and Mercer Australia all crossed 370 interactions, putting five accounts above
-              the 100-interaction mark.
-            </p>
-          </div>
+          <Summary
+            variant="cream"
+            text={
+              "FSI's email marketing reached **17.7k opens** in Q1, up **5%** versus Q4 2025 (16.8k), with **6.0k clicks** across the quarter. March was the strongest month — the **Australian Equities Reporting Season Podcast** push drove the bulk of activity, alongside Hong Kong and Singapore client-update sends.\n\n" +
+              "Engagement was led by our Asia wholesale partners. **DBS Singapore** opened, clicked and shared our content more than any other firm, with **605 actions** in the quarter. **China Construction Bank Asia**, **Bank of China Hong Kong**, **DBS Hong Kong** and **Mercer Australia** all crossed **370 interactions**, putting **five accounts** above the 100-interaction mark."
+            }
+          />
 
           <div className="grid grid-cols-2 gap-3">
             {clientEngagementHeadlineKpis.map((kpi) => (

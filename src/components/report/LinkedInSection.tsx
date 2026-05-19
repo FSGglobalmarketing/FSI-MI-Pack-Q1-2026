@@ -11,6 +11,7 @@ import {
 } from "recharts";
 import { ExternalLink } from "lucide-react";
 import KpiRow from "./KpiRow";
+import Summary from "./Summary";
 
 const TABS = ["Timeline", "Content Mix", "Org vs Spn", "Top Posts"] as const;
 type Tab = typeof TABS[number];
@@ -273,11 +274,7 @@ export default function LinkedInSection() {
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left — info */}
           <div className="space-y-6">
-            <div className="text-sm leading-relaxed space-y-3 text-muted-foreground">
-              {d.description.split(/\n\n+/).map((para, i) => (
-                <p key={i}>{para}</p>
-              ))}
-            </div>
+            <Summary text={d.description} variant="dark" />
 
             <div>
               <h4 className="text-sm font-medium mb-4 text-foreground">Key Results</h4>

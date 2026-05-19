@@ -3,6 +3,8 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import { Switch } from "@/components/ui/switch";
 import KpiRow from "./KpiRow";
+import Summary from "./Summary";
+import Summary from "./Summary";
 
 // FSI palette pool used to colour each competitor line. FSI is always
 // pulled out first and rendered in accent green. Remaining competitors
@@ -212,11 +214,7 @@ export default function SearchVisibility() {
         <h2 className="text-3xl sm:text-4xl font-medium leading-tight mb-2 text-foreground">
           Search engine visibility
         </h2>
-        <div className="text-foreground/70 mb-8 max-w-3xl leading-relaxed space-y-3">
-          {s.description.split(/\n\n+/).map((para, i) => (
-            <p key={i}>{para}</p>
-          ))}
-        </div>
+        <Summary text={s.description} variant="dark" className="mb-8" />
 
         <div className="grid lg:grid-cols-2 gap-10">
           {/* Left column */}
