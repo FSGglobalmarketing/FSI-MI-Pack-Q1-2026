@@ -15,8 +15,16 @@ import Summary from "./Summary";
 import { Plus } from "lucide-react";
 import { renderInline } from "./inlineMarkdown";
 
-const TABS = ["Timeline", "Content Mix", "Org vs Spn", "Top Posts"] as const;
+const TABS = ["Timeline", "Content Mix", "Org vs Spn", "Top Posts", "Featured Post 1", "Featured Post 2"] as const;
 type Tab = typeof TABS[number];
+
+// LinkedIn post embeds — supplied by user. The width/height match the
+// values LinkedIn returns from the embed share dialog so the iframe
+// renders without internal scrollbars.
+const LI_EMBEDS: Record<"Featured Post 1" | "Featured Post 2", { src: string; height: number }> = {
+  "Featured Post 1": { src: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7444584008362909696", height: 917 },
+  "Featured Post 2": { src: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7452547973454016512?collapsed=1", height: 602 },
+};
 
 const CHART_GRID = "rgba(255,255,255,0.06)";
 const CHART_TICK = "hsl(0 0% 60%)";
@@ -368,6 +376,29 @@ export default function LinkedInSection() {
             )}
 
             {tab === "Top Posts" && <TopPostsTable />}
+
+            {(tab === "Featured Post 1" || tab === "Featured Post 2") && (
+              <div className="flex flex-col items-center">
+                <p className="text-xs text-muted-foreground mb-3 self-start">
+                  Embedded LinkedIn post — interactions happen on LinkedIn.
+                </p>
+                <div
+                  className="w-full max-w-[504px] mx-auto overflow-hidden rounded-md bg-white/5 border border-white/10"
+                  style={{ height: LI_EMBEDS[tab].height }}
+                >
+                  <iframe
+                    key={tab}
+                    src={LI_EMBEDS[tab].src}
+                    title={`LinkedIn ${tab}`}
+                    width="504"
+                    height={LI_EMBEDS[tab].height}
+                    frameBorder={0}
+                    allowFullScreen
+                    className="block w-full h-full"
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
