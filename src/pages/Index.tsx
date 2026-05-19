@@ -6,6 +6,25 @@ import SalesforceSection from "@/components/report/SalesforceSection";
 import SearchVisibility from "@/components/report/SearchVisibility";
 import HighlightSection from "@/components/report/HighlightSection";
 import Highlight1Creative from "@/components/report/Highlight1Creative";
+import HighlightCarousel from "@/components/report/HighlightCarousel";
+
+const XX20_CAROUSEL = [
+  "highlights/xx20/livewire-1.jpg",
+  "highlights/xx20/livewire-2.jpg",
+  "highlights/xx20/financial-review-1.jpg",
+  "highlights/xx20/financial-review-2.jpg",
+  "highlights/xx20/financial-review-3.jpg",
+  "highlights/xx20/financial-standard-1.jpg",
+  "highlights/xx20/financial-standard-2.jpg",
+  "highlights/xx20/banner-1.png",
+  "highlights/xx20/banner-2.png",
+  "highlights/xx20/banner-3.png",
+  "highlights/xx20/banner-4.png",
+];
+const TAIWAN_CAROUSEL = [
+  "highlights/taiwan/taiwan-1.jpg",
+  "highlights/taiwan/taiwan-2.jpg",
+];
 import AlwaysOnSection from "@/components/report/AlwaysOnSection";
 import LinkedInSection from "@/components/report/LinkedInSection";
 import EventsSection from "@/components/report/EventsSection";
@@ -20,13 +39,17 @@ const Index = () => {
       <HeroSection />
       <GlobalFocus />
 
-      {d.highlights.map((h) => (
-        <HighlightSection
-          key={h.id}
-          highlight={h}
-          creative={h.id === "highlight-aeq-reporting" ? <Highlight1Creative /> : undefined}
-        />
-      ))}
+      {d.highlights.map((h) => {
+        let creative: React.ReactNode = undefined;
+        if (h.id === "highlight-aeq-reporting") {
+          creative = <Highlight1Creative />;
+        } else if (h.id === "highlight-ex20-phase-2") {
+          creative = <HighlightCarousel images={XX20_CAROUSEL} alt="XX20 Phase II campaign creative" fit="contain" />;
+        } else if (h.id === "highlight-taiwan-glis") {
+          creative = <HighlightCarousel images={TAIWAN_CAROUSEL} alt="Taiwan GLIS media roundtable" />;
+        }
+        return <HighlightSection key={h.id} highlight={h} creative={creative} />;
+      })}
 
       <SearchVisibility />
 
