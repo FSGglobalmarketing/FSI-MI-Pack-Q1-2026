@@ -292,8 +292,8 @@ export const reportData = {
       id: "highlight-taiwan-glis",
       navLabel: "Taiwan roundtable",
       stage: "Highlight 4",
-      title: "Taiwan media roundtable — building GLIS awareness in Taiwan",
-      subtitle: "Strengthening GLIS visibility in the Taiwan market.",
+      title: "Taiwan media roundtable",
+      subtitle: "Building awareness of GLIS and strengthening visibility in the Taiwanese market.",
       description: "Edmund Leung participated in a media roundtable in Taipei (Cathay / GLIS, 31 Mar), aiming to strengthen GLIS awareness and visibility in the Taiwan market.",
       goals: [
         "Building the case for global listed infrastructure — and why now?",
