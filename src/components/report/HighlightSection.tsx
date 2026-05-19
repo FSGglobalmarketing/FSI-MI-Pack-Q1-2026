@@ -106,45 +106,6 @@ export default function HighlightSection({ highlight: h, creative }: Props) {
               </div>
             )}
 
-            {/* Audience + data sources side-by-side */}
-            <div className="grid grid-cols-2 gap-6 pt-2">
-              <div>
-                <h3 className={`text-xs font-medium mb-2 tracking-wide ${dark ? "text-foreground/60" : "text-secondary-foreground/60"}`}>
-                  Target audience
-                </h3>
-                <div className="flex flex-wrap gap-1.5">
-                  {h.targetAudience.map((t) => (
-                    <span
-                      key={t}
-                      className={`text-xs px-2.5 py-1 rounded ${
-                        dark
-                          ? "bg-white/8 text-foreground/85 border border-white/10"
-                          : "bg-secondary-foreground/8 text-secondary-foreground/80 border border-secondary-foreground/10"
-                      }`}
-                    >
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              {h.dataSources && h.dataSources.length > 0 && (
-                <div>
-                  <h3 className={`text-xs font-medium mb-2 tracking-wide ${dark ? "text-foreground/60" : "text-secondary-foreground/60"}`}>
-                    Data sources
-                  </h3>
-                  <ul className="space-y-1">
-                    {h.dataSources.map((d) => (
-                      <li
-                        key={d}
-                        className={`text-xs ${dark ? "text-foreground/70" : "text-secondary-foreground/70"}`}
-                      >
-                        {d}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
           </div>
 
           {/* Right column — reserved for creative (image / video / mockup) */}
