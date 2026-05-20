@@ -357,17 +357,20 @@ export const reportData = {
     // Performance / price-and-performance pages excluded so this view tracks
     // editorial and product-discovery traffic rather than self-service price
     // checks.
+    // `change` = friendly row label. `vsQ4` = page-level Q1 vs Q4 delta,
+    // computed from Raw Data/Website/Compare_date.csv (GA4 compare-date
+    // export). "—" = no Q4 baseline (page new in Q1).
     topPages: [
-      { page: "/ (home)", views: 38464, change: "Home (FSI.com)" },
-      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth.html", views: 8026, change: "AEQ Growth fund hub" },
-      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/ex-20-australian-share-fund.html", views: 6457, change: "EX-20 Share Fund" },
-      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/geared-australian-share-fund.html", views: 5993, change: "Geared AU Share Fund" },
-      { page: "/hk/en/retail/home.html", views: 5213, change: "HK retail home" },
-      { page: "/sg/en/retail/home.html", views: 3705, change: "SG retail home" },
-      { page: "/au/en/adviser/who-we-are.html", views: 3071, change: "Who we are (AU)" },
-      { page: "/au/en/individual/home.html", views: 2688, change: "AU individual home" },
-      { page: "/au/en/adviser/insights/the-curious-podcast.html", views: 1923, change: "Insights — Curious Podcast" },
-      { page: "/au/en/adviser/our-funds/infrastructure-real-estate/global-listed-infrastructure.html", views: 1265, change: "GLIS fund hub" },
+      { page: "/ (home)",                                                                                              views: 38464, change: "Home (FSI.com)",          vsQ4: "-10% vs Q4" },
+      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth.html",                          views:  8026, change: "AEQ Growth fund hub",     vsQ4: "-14% vs Q4" },
+      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/ex-20-australian-share-fund.html", views:  6457, change: "EX-20 Share Fund",     vsQ4: "+32% vs Q4" },
+      { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/geared-australian-share-fund.html", views: 5993, change: "Geared AU Share Fund", vsQ4: "-57% vs Q4" },
+      { page: "/hk/en/retail/home.html",                                                                               views:  5213, change: "HK retail home",         vsQ4: "-5% vs Q4"  },
+      { page: "/sg/en/retail/home.html",                                                                               views:  3705, change: "SG retail home",         vsQ4: "new in Q1"  },
+      { page: "/au/en/adviser/who-we-are.html",                                                                        views:  3071, change: "Who we are (AU)",        vsQ4: "+7% vs Q4"  },
+      { page: "/au/en/individual/home.html",                                                                           views:  2688, change: "AU individual home",     vsQ4: "-11% vs Q4" },
+      { page: "/au/en/adviser/insights/the-curious-podcast.html",                                                      views:  1923, change: "Insights — Curious Podcast", vsQ4: "-33% vs Q4" },
+      { page: "/au/en/adviser/our-funds/infrastructure-real-estate/global-listed-infrastructure.html",                 views:  1265, change: "GLIS fund hub",          vsQ4: "+15% vs Q4" },
     ],
     trafficSources: [
       { source: "Direct / (none)",      percentage: 59 },

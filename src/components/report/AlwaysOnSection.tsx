@@ -24,6 +24,7 @@ interface TopPageItem {
   page: string;
   views: number;
   change: string;
+  vsQ4?: string;
 }
 
 interface TrafficSourceItem {
@@ -120,6 +121,21 @@ function TopPagesChart({ data, variant }: { data: TopPageItem[]; variant: "dark"
             <span className={`text-xs font-medium tabular-nums w-12 text-right ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>
               {formatK(page.views)}
             </span>
+            {page.vsQ4 && (
+              <span
+                className={`text-[11px] font-medium tabular-nums w-24 text-right ${
+                  page.vsQ4.startsWith("+")
+                    ? "text-success"
+                    : page.vsQ4.startsWith("-")
+                    ? "text-destructive"
+                    : isDark
+                    ? "text-muted-foreground"
+                    : "text-secondary-foreground/55"
+                }`}
+              >
+                {page.vsQ4}
+              </span>
+            )}
           </div>
         );
       })}
