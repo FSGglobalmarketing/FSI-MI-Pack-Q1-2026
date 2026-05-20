@@ -77,21 +77,25 @@ export const reportData = {
   ],
 
   performanceResults: {
+    // ── KPI framework ─────────────────────────────────────────────
+    // Strict comparison format: "+X% vs industry" / "+X% vs peers" /
+    // "+X% vs Q4" only. Channels without a quantitative baseline carry
+    // an empty comparison string.
     awareness: [
-      { channel: "Search engine optimisation", metrics: ["216 Keywords ranked", "Avg rank 19.4"], comparison: "+14% keywords · −1.9 rank vs Dec '25", status: "good" as const },
-      { channel: "Display ads (Blis)", metrics: ["40.0k Display visits", "8.7% of Q1 traffic"], comparison: "Programmatic display live across HK / AU", status: "good" as const },
-      { channel: "LinkedIn Paid", metrics: ["486.5k Sponsored impressions"], comparison: "+107% vs Q4 (235.1k)", status: "good" as const },
-      { channel: "Search engine marketing", metrics: ["18.2k Paid views"], comparison: "4.1% of Q1 traffic", status: "good" as const },
-      { channel: "Podcast", metrics: ["N/A Streams"], comparison: "No Q1 episode data", status: "inactive" as const },
+      { channel: "Search engine optimisation", metrics: ["216 Keywords ranked", "37 Page-1 keywords"], comparison: "+14% vs Q4", status: "good" as const },
+      { channel: "Display ads (Blis)",         metrics: ["40.0k Display visits", "8.7% of Q1 traffic"], comparison: "",            status: "good" as const },
+      { channel: "LinkedIn Paid",              metrics: ["486.5k Sponsored impressions"],               comparison: "+107% vs Q4", status: "good" as const },
+      { channel: "Search engine marketing",    metrics: ["18.2k Paid views"],                           comparison: "",            status: "good" as const },
+      { channel: "Podcast",                    metrics: ["N/A Streams"],                                comparison: "",            status: "inactive" as const },
     ],
     consideration: [
-      { channel: "LinkedIn Organic", metrics: ["35.9k Impressions", "10 posts published"], comparison: "−19% impressions vs Q4 · 1.2% avg engagement", status: "good" as const },
-      { channel: "Website",          metrics: ["199.9k Views (ex-RQI)", "187.5k Active users"], comparison: "+47% views vs Q4 (136.4k)", status: "good" as const },
+      { channel: "LinkedIn Organic", metrics: ["35.9k Impressions", "1.2% Engagement rate"],     comparison: "-19% vs Q4", status: "good" as const },
+      { channel: "Website",          metrics: ["199.9k Views (ex-RQI)", "187.5k Active users"], comparison: "+47% vs Q4", status: "good" as const },
     ],
     conversion: [
-      { channel: "Events",     metrics: ["8 Q1 events", "15 Q1-Q2 roundtables"], comparison: "AEQ reporting · EX-20 launch · Civitas", status: "good" as const },
-      { channel: "Email / Pardot", metrics: ["17.7k Opens", "6.0k Clicks"],     comparison: "+5% opens vs Q4",  status: "good" as const },
-      { channel: "Webinars",   metrics: ["N/A"],                                 comparison: "No Q1 webinar in export", status: "inactive" as const },
+      { channel: "Events",         metrics: ["8 Q1 events", "15 Q1-Q2 roundtables"], comparison: "",          status: "good" as const },
+      { channel: "Email / Pardot", metrics: ["17.7k Opens", "6.0k Clicks"],          comparison: "+5% vs Q4", status: "good" as const },
+      { channel: "Webinars",       metrics: ["N/A"],                                  comparison: "",          status: "inactive" as const },
     ],
     serviceLoyalty: [],
   },
@@ -115,8 +119,8 @@ export const reportData = {
       "Russell", "Atlas Infrastructure", "UBS",
     ],
     kpis: [
-      { value: "187", label: "Keywords ranked", comparison: "across 5 AU strategies" },
-      { value: "61",  label: "Page-1 keywords", comparison: "11 in top-3 · 3 at #1" },
+      { value: "216", label: "Keywords ranked", comparison: "+14% vs Q4 (190)" },
+      { value: "37",  label: "Page-1 keywords", comparison: "+9% vs Q4 (34)" },
     ],
     // Source: Raw Data/SEO/*.xlsx — per-strategy keyword-count tracking
     // (Apr 2025 – Apr 2026) of firstsentierinvestors.com.au vs AU peer
