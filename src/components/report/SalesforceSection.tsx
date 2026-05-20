@@ -68,8 +68,8 @@ export default function SalesforceSection() {
           <Summary
             variant="cream"
             text={
-              "FSI's email marketing reached **17.7k opens** in Q1, up **5%** versus Q4 2025 (16.8k), with **6.0k clicks** across the quarter. March was the strongest month — the **Australian Equities Reporting Season Podcast** push drove the bulk of activity, alongside Hong Kong and Singapore client-update sends.\n\n" +
-              "Engagement was led by our Asia wholesale partners. **DBS Singapore** opened, clicked and shared our content more than any other firm, with **605 actions** in the quarter. **China Construction Bank Asia**, **Bank of China Hong Kong**, **DBS Hong Kong** and **Mercer Australia** all crossed **370 interactions**, putting **five accounts** above the 100-interaction mark."
+              "FSI ran **21 email campaigns** in Q1, reaching **7,817 recipients** with **2,985 opens** (38.2% open rate) and **385 clicks** at a **click-to-open rate of 12.9%**. Bounces stayed low at **67** (0.9% of sent) and **26 recipients** opted out across the quarter.\n\n" +
+              "Activity was led by the **Australian Equities Reporting Season Podcast** push, which drove roughly two-thirds of total response across four March sends. **GLIS** picked up the rest — five EMEA quarterly updates plus a US income-thesis send. Top responding firms were Australian wholesale brokers — **Bell Potter Securities (Melbourne)**, **Shaw and Partners (Perth, Melbourne, Sydney)** and **Ord Minnett (Melbourne)** led on opens, while **Alpha Portfolio Advisors** and **Amundi France** delivered the strongest click-through behaviour."
             }
           />
 
@@ -87,7 +87,7 @@ export default function SalesforceSection() {
                   </span>
                 </div>
                 <div className="text-[11px] font-medium text-secondary-foreground mt-1">{kpi.label}</div>
-                <div className="text-[10px] text-success">{kpi.comparison}</div>
+                <div className="text-[10px] text-secondary-foreground/55">{kpi.comparison}</div>
               </div>
             ))}
           </div>
@@ -164,9 +164,9 @@ function EmailTab() {
       </div>
 
       <div>
-        <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Q1 vs Q4 — email engagement</h3>
+        <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Q1 email funnel</h3>
         <p className="text-xs text-secondary-foreground/55 mb-4">
-          Opens, clicks, website visits and form submissions across Q1 2026 compared with Q4 2025.
+          Total recipients, opens, clicks, bounces and opt-outs across all 21 FSI Q1 sends.
         </p>
         <ResponsiveContainer width="100%" height={340}>
           <BarChart data={emailFunnelQ1VsQ4} margin={{ left: 10, right: 20, top: 10, bottom: 5 }}>
@@ -174,8 +174,6 @@ function EmailTab() {
             <XAxis dataKey="metric" tick={{ fontSize: 12, fill: CHART_TICK_LIGHT }} />
             <YAxis tick={{ fontSize: 11, fill: CHART_TICK_DIM }} />
             <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
-            <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
-            <Bar dataKey="q4" name="Q4 2025" fill={BAR_Q4} radius={[6, 6, 0, 0]} />
             <Bar dataKey="q1" name="Q1 2026" fill={BAR_Q1} radius={[6, 6, 0, 0]} />
           </BarChart>
         </ResponsiveContainer>

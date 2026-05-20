@@ -94,7 +94,7 @@ export const reportData = {
     ],
     conversion: [
       { channel: "Events",         metrics: ["8 Q1 events", "15 Q1-Q2 roundtables"], comparison: "",          status: "good" as const },
-      { channel: "Email / Pardot", metrics: ["17.7k Opens", "6.0k Clicks"],          comparison: "+5% vs Q4", status: "good" as const },
+      { channel: "Email / Pardot", metrics: ["3.0k Opens", "385 Clicks"],            comparison: "",          status: "good" as const },
       { channel: "Webinars",       metrics: ["N/A"],                                  comparison: "",          status: "inactive" as const },
     ],
     serviceLoyalty: [],

@@ -1,17 +1,25 @@
 // ═══════════════════════════════════════════════════════════════════════
-// SOURCE: Raw Data/CRM/Salesforce Activity.xlsx (Pardot prospect activity)
-//         Scope: Q1 2026 (Jan–Mar). FSI brand-wide.
+// SOURCE: Raw Data/Email/*.xlsx — per-campaign Pardot exports.
+//   Each xlsx = one email send; sheets sent / opens / clicks / bounces /
+//   optouts each list a recipient per row. Counts here are
+//   unique-recipient totals.
+//   Scope: Q1 2026 (Jan–Mar) only, FSI brand only — sub-brand sends
+//   (RQI, Igneo, FSSA, Stewart, AlbaCore) are excluded.
+//   21 campaigns aggregated; some Q1 sends lacked a "sent" sheet in
+//   the export so universe size = 0 for those rows (responses are
+//   still recorded).
+// Strategy = inferred from filename keywords.
 // ═══════════════════════════════════════════════════════════════════════
 
 // ── Headline KPI grid (top of section) ──
-// Spreadsheet KPI framework, Conversion / Email-Pardot row:
-//   17.7k Opens · 6.0k Clicks · +5% opens vs Q4
 export const clientEngagementHeadlineKpis = [
-  { value: "17.7k", label: "Opens",  comparison: "+5% opens vs Q4 (16.8k)" },
-  { value: "6.0k",  label: "Clicks", comparison: "+2% clicks vs Q4 (5.9k)" },
+  { value: "21",    label: "Campaigns",  comparison: "FSI Q1 sends" },
+  { value: "2,985", label: "Opens",      comparison: "Unique recipients" },
+  { value: "385",   label: "Clicks",     comparison: "12.9% CTOR" },
+  { value: "93",    label: "Bounces + opt-outs", comparison: "67 bounces · 26 opt-outs" },
 ];
 
-// ── 5-metric strip on a light background ──
+// ── 5-metric funnel strip (light band) ──
 export interface FunnelMetric {
   key: string;
   label: string;
@@ -21,97 +29,109 @@ export interface FunnelMetric {
 }
 
 export const emailFunnelStrip: FunnelMetric[] = [
-  { key: "engagements", label: "Total engagements", value: 29049, delta: "+4% vs Q4 (27,960)", deltaPositive: true  },
-  { key: "opens",       label: "Opens",             value: 17667, delta: "+5% vs Q4 (16,781)", deltaPositive: true  },
-  { key: "clicks",      label: "Clicks",            value:  6013, delta: "+2% vs Q4 (5,870)",  deltaPositive: true  },
-  { key: "visits",      label: "Website visits",    value:  2081, delta: "−6% vs Q4 (2,215)",  deltaPositive: false },
-  { key: "forms",       label: "Form submissions",  value:   363, delta: "−39% vs Q4 (596)",   deltaPositive: false },
+  { key: "sent",    label: "Sent",     value: 7817, delta: "21 FSI Q1 campaigns",  deltaPositive: true  },
+  { key: "opens",   label: "Opens",    value: 2985, delta: "38.2% open rate",       deltaPositive: true  },
+  { key: "clicks",  label: "Clicks",   value:  385, delta: "12.9% CTOR",            deltaPositive: true  },
+  { key: "bounces", label: "Bounces",  value:   67, delta: "0.9% of sent",          deltaPositive: false },
+  { key: "optouts", label: "Opt-outs", value:   26, delta: "0.3% of sent",          deltaPositive: false },
 ];
 
-// ── Email tab KPI cards ──
+// ── Email tab — 4 KPI cards ──
 export const emailTabKpis = [
-  { label: "Opens",   value: "17.7k", delta: "+5% vs Q4",       q4: "Q4: 16.8k",       deltaPositive: true },
-  { label: "Clicks",  value: "6.0k",  delta: "+2% vs Q4",       q4: "Q4: 5.9k",        deltaPositive: true },
-  { label: "Visits",  value: "2.1k",  delta: "−6% vs Q4",       q4: "Q4: 2.2k",        deltaPositive: false },
-  { label: "Forms",   value: "363",   delta: "−39% vs Q4",      q4: "Q4: 596",         deltaPositive: false },
+  { label: "Sent",       value: "7,817", delta: "21 Q1 campaigns",   q4: "FSI brand only",  deltaPositive: true  },
+  { label: "Opens",      value: "2,985", delta: "38.2% open rate",   q4: "Unique recipients", deltaPositive: true  },
+  { label: "Clicks",     value: "385",   delta: "12.9% CTOR",         q4: "Click-to-open ratio", deltaPositive: true },
+  { label: "Bounces",    value: "67",    delta: "0.9% of sent",       q4: "26 opt-outs",      deltaPositive: false },
 ];
 
-// ── Email tab — quarter-over-quarter funnel ──
+// ── Email tab — Q1 totals as a single-bar funnel ──
 export interface FunnelRow { metric: string; q1: number; q4: number; }
 export const emailFunnelQ1VsQ4: FunnelRow[] = [
-  { metric: "Opens",   q1: 17667, q4: 16781 },
-  { metric: "Clicks",  q1:  6013, q4:  5870 },
-  { metric: "Visits",  q1:  2081, q4:  2215 },
-  { metric: "Forms",   q1:   363, q4:   596 },
+  { metric: "Sent",     q1: 7817, q4: 0 },
+  { metric: "Opens",    q1: 2985, q4: 0 },
+  { metric: "Clicks",   q1:  385, q4: 0 },
+  { metric: "Bounces",  q1:   67, q4: 0 },
+  { metric: "Opt-outs", q1:   26, q4: 0 },
 ];
 
-// ── Companies tab — top 15 accounts by Q1 engagement ──
+// ── Companies tab — top 15 by Q1 response (opens + clicks + bounces + opt-outs).
+// Internal / test rows filtered out (First Sentier entities etc.).
 export interface CompanyRow {
   company: string;
-  sent: number;   // not directly available — used as universe placeholder
-  opens: number;  // email opens
-  clicks: number; // email clicks + tracked URL clicks
+  sent: number;
+  opens: number;
+  clicks: number;
   bounces: number;
   optouts: number;
 }
 
 export const topCompaniesQ1: CompanyRow[] = [
-  { company: "DBS Bank Singapore",                          sent: 0, opens: 183, clicks: 422, bounces: 0, optouts: 0 },
-  { company: "China Construction Bank (Asia)",              sent: 0, opens:  77, clicks: 364, bounces: 0, optouts: 0 },
-  { company: "Bank of China (Hong Kong)",                   sent: 0, opens: 115, clicks: 264, bounces: 0, optouts: 0 },
-  { company: "DBS Bank (Hong Kong)",                        sent: 0, opens:  73, clicks: 302, bounces: 0, optouts: 0 },
-  { company: "Mercer Investments (Australia)",              sent: 0, opens: 136, clicks: 239, bounces: 0, optouts: 0 },
-  { company: "Tokio Marine Asset Management",               sent: 0, opens: 265, clicks:   9, bounces: 0, optouts: 0 },
-  { company: "HSBC Private Bank (HK)",                      sent: 0, opens:  84, clicks: 176, bounces: 0, optouts: 0 },
-  { company: "Team Super (AU)",                             sent: 0, opens: 228, clicks:  15, bounces: 0, optouts: 0 },
-  { company: "iFAST Financial (HK)",                        sent: 0, opens: 217, clicks:  14, bounces: 0, optouts: 0 },
-  { company: "Feri AG",                                     sent: 0, opens: 209, clicks:   5, bounces: 0, optouts: 0 },
-  { company: "Construction & Building Unions Super (CBUS)", sent: 0, opens: 165, clicks:   8, bounces: 0, optouts: 0 },
-  { company: "Harrison Street",                             sent: 0, opens: 111, clicks:  53, bounces: 0, optouts: 0 },
-  { company: "Shanghai Commercial Bank",                    sent: 0, opens:  34, clicks: 130, bounces: 0, optouts: 0 },
-  { company: "Mercer (Singapore)",                          sent: 0, opens:  51, clicks: 111, bounces: 0, optouts: 0 },
-  { company: "Wing Lung Bank",                              sent: 0, opens:  15, clicks:  96, bounces: 0, optouts: 0 },
+  { company: "Bell Potter Securities — Melbourne",        sent: 0, opens: 68, clicks: 4, bounces: 0, optouts: 0 },
+  { company: "Shaw and Partners — Perth",                 sent: 0, opens: 34, clicks: 0, bounces: 1, optouts: 0 },
+  { company: "Ord Minnett — Melbourne",                   sent: 0, opens: 29, clicks: 1, bounces: 0, optouts: 0 },
+  { company: "Lonsec",                                    sent: 0, opens: 24, clicks: 0, bounces: 0, optouts: 0 },
+  { company: "Shaw and Partners — Melbourne",             sent: 0, opens: 23, clicks: 0, bounces: 0, optouts: 0 },
+  { company: "Shaw and Partners — Sydney",                sent: 0, opens: 18, clicks: 1, bounces: 2, optouts: 0 },
+  { company: "Accounting & You Financial Services",       sent: 0, opens: 11, clicks: 6, bounces: 0, optouts: 0 },
+  { company: "Alpha Portfolio Advisors GmbH",             sent: 0, opens:  8, clicks: 8, bounces: 0, optouts: 0 },
+  { company: "Bell Potter Securities — Perth",            sent: 0, opens: 15, clicks: 0, bounces: 0, optouts: 0 },
+  { company: "Zenith Investment Partners",                sent: 0, opens: 15, clicks: 0, bounces: 0, optouts: 0 },
+  { company: "Amundi Asset Management — France",          sent: 0, opens:  7, clicks: 7, bounces: 0, optouts: 0 },
+  { company: "RSM Financial Services Australia — Perth",  sent: 0, opens: 14, clicks: 0, bounces: 0, optouts: 0 },
+  { company: "Harrison Street",                           sent: 0, opens: 10, clicks: 3, bounces: 0, optouts: 0 },
+  { company: "Evans and Partners — Melbourne",            sent: 0, opens: 11, clicks: 1, bounces: 0, optouts: 0 },
+  { company: "Perron Investments",                        sent: 0, opens:  7, clicks: 3, bounces: 0, optouts: 0 },
 ];
 
-// ── Strategies tab — Q1 engagement by strategy ──
-// Channels: Opens / Clicks / Visits / Forms (Pardot activity types).
+// ── Strategies tab — Q1 totals by strategy. ──
 export interface StrategyRow {
   strategy: string;
+  sent: number;
   opens: number;
   clicks: number;
-  visits: number;
-  forms: number;
+  bounces: number;
+  optouts: number;
 }
 
 export const topStrategiesQ1: StrategyRow[] = [
-  { strategy: "Brand / Outlook",                     opens: 3291, clicks: 1427, visits: 1023, forms:   4 },
-  { strategy: "Australian Equities",                 opens: 2139, clicks:  444, visits:   21, forms: 106 },
-  { strategy: "Asian Fixed Income",                  opens:  788, clicks: 1064, visits:   29, forms:   0 },
-  { strategy: "Regional retail / wholesale",         opens:   33, clicks: 1193, visits:   88, forms:  60 },
-  { strategy: "Global Listed Infrastructure",        opens:  649, clicks:  298, visits:   20, forms:   2 },
-  { strategy: "Cash",                                opens:   18, clicks:    1, visits:    3, forms:   0 },
+  { strategy: "Australian Equities",          sent: 6209, opens: 2224, clicks: 174, bounces: 58, optouts: 19 },
+  { strategy: "Global Listed Infrastructure", sent: 1302, opens:  417, clicks:  96, bounces:  9, optouts:  7 },
+  { strategy: "Global Diversified Income",    sent:    0, opens:  274, clicks: 112, bounces:  0, optouts:  0 },
+  { strategy: "ANZ Wholesale events",         sent:  306, opens:   70, clicks:   3, bounces:  0, optouts:  0 },
 ];
 
-// ── Campaigns tab — top 10 Q1 campaigns ──
+// ── Campaigns tab — every Q1 send, ordered by total response ──
 export interface CampaignRow {
   campaign: string;
   opens: number;
   clicks: number;
-  visits: number;
-  forms: number;
+  bounces: number;
+  optouts: number;
+  sent?: number;
 }
 
 export const topCampaignsQ1: CampaignRow[] = [
-  { campaign: "Institutional (house-level)",                          opens: 2798, clicks:  713, visits:  19, forms:   2 },
-  { campaign: "AEQ Growth post-reporting season podcast",             opens: 2099, clicks:  424, visits:   0, forms:   0 },
-  { campaign: "ANZ Campaigns (rollup)",                               opens: 1546, clicks:  598, visits:   3, forms: 165 },
-  { campaign: "APAC Tracker domain campaign",                         opens:    0, clicks:    0, visits: 961, forms:   0 },
-  { campaign: "Hong Kong (English) retail",                           opens:   30, clicks:  539, visits:   1, forms:   0 },
-  { campaign: "Asia HK wholesale — Asian Fixed Income + GLIS (Jan)",  opens:  129, clicks:  356, visits:   1, forms:   0 },
-  { campaign: "Asia (rollup)",                                        opens:   96, clicks:  103, visits:  88, forms: 138 },
-  { campaign: "Asia HK wholesale — Asian Fixed Income + GLIS (Feb)",  opens:  116, clicks:  300, visits:   2, forms:   0 },
-  { campaign: "Singapore (English) retail",                           opens:    0, clicks:  320, visits:   2, forms:  60 },
-  { campaign: "Asia Singapore wholesale — FSG 2026 Outlook (Jan)",    opens:  198, clicks:  163, visits:   6, forms:   0 },
+  { campaign: "AEQ Reporting Season Podcast",                        sent: 1737, opens: 600, clicks: 47, bounces: 10, optouts:  0 },
+  { campaign: "AEQ Reporting Season Podcast — resend",               sent: 1711, opens: 600, clicks: 14, bounces:  0, optouts:  0 },
+  { campaign: "AEQ Reporting Season Podcast — NSW resend",           sent: 1711, opens: 600, clicks: 47, bounces:  0, optouts:  0 },
+  { campaign: "AEQ Reporting Season Podcast — NSW",                  sent:  812, opens: 214, clicks: 21, bounces:  9, optouts: 10 },
+  { campaign: "EX-20 launch (Count APL)",                            sent:    0, opens: 159, clicks: 34, bounces: 34, optouts:  8 },
+  { campaign: "GDIF Webcast — invitation",                           sent:    0, opens: 158, clicks: 82, bounces:  0, optouts:  0 },
+  { campaign: "GLIS Q4 update — AU Wholesale",                       sent:    0, opens: 137, clicks: 20, bounces:  1, optouts:  5 },
+  { campaign: "EMEA GLIS Q4 update — UK Wholesale",                  sent:  754, opens: 130, clicks: 22, bounces:  3, optouts:  1 },
+  { campaign: "GDIF Webcast — final reminder",                       sent:    0, opens: 116, clicks: 30, bounces:  0, optouts:  0 },
+  { campaign: "ANZ Wholesale — Glades Gold Club breakfast",          sent:  306, opens:  70, clicks:  3, bounces:  0, optouts:  0 },
+  { campaign: "EMEA GLIS Q4 update — Germany",                       sent:  205, opens:  64, clicks: 18, bounces:  2, optouts:  1 },
+  { campaign: "EMEA GLIS Q4 update — rest of Europe",                sent:  138, opens:  39, clicks: 23, bounces:  1, optouts:  0 },
+  { campaign: "AEQ Roundtable — Adelaide / Perth / QLD",             sent:   40, opens:  24, clicks:  0, bounces:  0, optouts:  0 },
+  { campaign: "US GLIS — Don't forget the yield",                    sent:  112, opens:  23, clicks:  1, bounces:  2, optouts:  0 },
+  { campaign: "AEQ Growth Reporting Season Roundtable — Townsville", sent:   63, opens:  21, clicks:  2, bounces:  2, optouts:  0 },
+  { campaign: "Reporting Season Update — Toowoomba reminder",       sent:   50, opens:  18, clicks:  4, bounces:  0, optouts:  1 },
+  { campaign: "Reporting Season Update — Cairns invitation",        sent:   51, opens:  16, clicks:  1, bounces:  2, optouts:  0 },
+  { campaign: "EMEA GLIS Q4 update — UK Insto & Consultant",         sent:   52, opens:  13, clicks:  6, bounces:  0, optouts:  0 },
+  { campaign: "EMEA GLIS Q4 update — France",                        sent:   41, opens:  11, clicks:  6, bounces:  0, optouts:  0 },
+  { campaign: "AEQ Roundtable — Growth Brokers (CPD)",               sent:   14, opens:   8, clicks:  0, bounces:  0, optouts:  0 },
+  { campaign: "AEQ Roundtable — LGT (CPD)",                          sent:   20, opens:   4, clicks:  0, bounces:  1, optouts:  0 },
 ];
 
 // ── Legacy / back-compat exports ──
