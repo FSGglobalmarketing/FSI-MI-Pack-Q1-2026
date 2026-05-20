@@ -16,7 +16,7 @@ export default function GLISLinkedInCreative({ variant = "dark" }: { variant?: "
   const isDark = variant === "dark";
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="w-full">
       <div className="flex gap-2 mb-4 flex-wrap">
         {EMBEDS.map((tab, idx) => (
           <button
@@ -35,12 +35,7 @@ export default function GLISLinkedInCreative({ variant = "dark" }: { variant?: "
         ))}
       </div>
 
-      <div
-        className={`flex-1 mx-auto rounded-md overflow-hidden border ${
-          isDark ? "bg-white/5 border-white/10" : "bg-secondary-foreground/5 border-secondary-foreground/10"
-        }`}
-        style={{ width: 504, maxWidth: "100%", height: active.height }}
-      >
+      <div className="mx-auto" style={{ width: 504, maxWidth: "100%" }}>
         <iframe
           key={active.src}
           src={active.src}
@@ -49,7 +44,10 @@ export default function GLISLinkedInCreative({ variant = "dark" }: { variant?: "
           height={active.height}
           frameBorder={0}
           allowFullScreen
-          className="block w-full h-full"
+          className={`block w-full rounded-md border ${
+            isDark ? "bg-white/5 border-white/10" : "bg-secondary-foreground/5 border-secondary-foreground/10"
+          }`}
+          style={{ height: active.height }}
         />
       </div>
     </div>
