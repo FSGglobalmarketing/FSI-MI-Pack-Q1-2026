@@ -10,11 +10,15 @@ import HighlightCarousel from "@/components/report/HighlightCarousel";
 import CashETFCreative from "@/components/report/CashETFCreative";
 import GLISLinkedInCreative from "@/components/report/GLISLinkedInCreative";
 
+// All press placements are 979 x 676 (ratio 979/676 ≈ 1.45).
 const XX20_CAROUSEL = [
-  "highlights/xx20/banner-1.png",
-  "highlights/xx20/banner-2.png",
-  "highlights/xx20/banner-3.png",
-  "highlights/xx20/banner-4.png",
+  "highlights/xx20/livewire-1.jpg",
+  "highlights/xx20/livewire-2.jpg",
+  "highlights/xx20/financial-review-1.jpg",
+  "highlights/xx20/financial-review-2.jpg",
+  "highlights/xx20/financial-review-3.jpg",
+  "highlights/xx20/financial-standard-1.jpg",
+  "highlights/xx20/financial-standard-2.jpg",
 ];
 const TAIWAN_CAROUSEL = [
   "highlights/taiwan/taiwan-1.jpg",
@@ -39,11 +43,11 @@ const Index = () => {
         if (h.id === "highlight-aeq-reporting") {
           creative = <Highlight1Creative />;
         } else if (h.id === "highlight-ex20-phase-2") {
-          creative = <HighlightCarousel images={XX20_CAROUSEL} alt="XX20 Phase II banner ads" fit="contain" />;
+          creative = <HighlightCarousel images={XX20_CAROUSEL} alt="XX20 Phase II press placements" aspectRatio="979/676" fit="cover" />;
         } else if (h.id === "highlight-cash-etf") {
           creative = <CashETFCreative variant={h.variant} />;
         } else if (h.id === "highlight-taiwan-glis") {
-          creative = <HighlightCarousel images={TAIWAN_CAROUSEL} alt="Taiwan GLIS media roundtable" />;
+          creative = <HighlightCarousel images={TAIWAN_CAROUSEL} alt="Taiwan GLIS media roundtable" aspectRatio="4/5" />;
         } else if (h.id === "always-on-glis") {
           creative = <GLISLinkedInCreative variant={h.variant} />;
         }

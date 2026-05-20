@@ -47,8 +47,9 @@ export default function CashETFCreative({ variant = "dark" }: { variant?: "dark"
         key={tab}
         images={images}
         alt={`Cash ETF ${tab}`}
-        aspect="aspect-[4/5]"
-        fit="contain"
+        /* Banners: 2204x586 (~3.76:1) · Display ads: 1088x586 (~1.86:1) */
+        aspectRatio={tab === "Banners" ? "2204/586" : "1088/586"}
+        fit="cover"
       />
     </div>
   );

@@ -10,12 +10,13 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 export default function HighlightCarousel({
   images,
   alt,
-  aspect = "aspect-[4/5]",
+  aspectRatio = "4/5",
   fit = "cover",
 }: {
   images: string[];
   alt: string;
-  aspect?: string;
+  /** CSS aspect-ratio value, e.g. "979/676" or "16/9". */
+  aspectRatio?: string;
   fit?: "cover" | "contain";
 }) {
   const [i, setI] = useState(0);
@@ -36,7 +37,8 @@ export default function HighlightCarousel({
 
   return (
     <div
-      className={`relative w-full ${aspect} rounded-md overflow-hidden bg-black/30 border border-white/10`}
+      className="relative w-full rounded-md overflow-hidden bg-black/30 border border-white/10"
+      style={{ aspectRatio }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
