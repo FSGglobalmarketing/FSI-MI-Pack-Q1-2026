@@ -358,7 +358,7 @@ export const reportData = {
     // editorial and product-discovery traffic rather than self-service price
     // checks.
     topPages: [
-      { page: "/ (home)", views: 38464, change: "Top entry — 23.4k users" },
+      { page: "/ (home)", views: 38464, change: "Home (FSI.com)" },
       { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth.html", views: 8026, change: "AEQ Growth fund hub" },
       { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/ex-20-australian-share-fund.html", views: 6457, change: "EX-20 Share Fund" },
       { page: "/au/en/adviser/our-funds/australian-equities/australian-equities-growth/geared-australian-share-fund.html", views: 5993, change: "Geared AU Share Fund" },

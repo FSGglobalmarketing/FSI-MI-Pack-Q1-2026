@@ -104,8 +104,8 @@ function TopPagesChart({ data, variant }: { data: TopPageItem[]; variant: "dark"
         const widthPct = (page.views / maxViews) * 100;
         return (
           <div key={page.page} className="flex items-center gap-3">
-            <span className={`text-xs font-mono w-36 truncate shrink-0 ${isDark ? "text-muted-foreground" : "text-secondary-foreground/60"}`}>
-              {page.page}
+            <span className={`text-xs w-40 truncate shrink-0 ${isDark ? "text-foreground/80" : "text-secondary-foreground/80"}`}>
+              {page.change}
             </span>
             <div className="flex-1 relative h-6 rounded-full overflow-hidden" style={{ backgroundColor: isDark ? "rgba(255,255,255,0.06)" : "rgba(0,0,0,0.06)" }}>
               <div
@@ -120,7 +120,6 @@ function TopPagesChart({ data, variant }: { data: TopPageItem[]; variant: "dark"
             <span className={`text-xs font-medium tabular-nums w-12 text-right ${isDark ? "text-foreground" : "text-secondary-foreground"}`}>
               {formatK(page.views)}
             </span>
-            <span className="text-xs font-medium text-[hsl(142_60%_45%)] w-10 text-right">{page.change}</span>
           </div>
         );
       })}
