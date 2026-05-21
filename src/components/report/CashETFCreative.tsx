@@ -1,26 +1,22 @@
 import { useState } from "react";
 import HighlightCarousel from "./HighlightCarousel";
 
-const BANNERS = [
-  "highlights/cash/banner-1.png",
-  "highlights/cash/banner-2.png",
-  "highlights/cash/banner-3.png",
-  "highlights/cash/banner-4.png",
-];
+// Gav's finalised creatives (2026-05-21). Three formats per concept:
+//   720x210 leaderboard banner (aspect 24/7)
+//   1200x1200 square display ad (aspect 1/1)
+//   300x600 skyscraper / half-page (aspect 1/2)
+const FORMATS: Record<string, { images: string[]; aspect: string }> = {
+  "Banners":     { images: ["highlights/cash/banner-cash-is-king.jpg",     "highlights/cash/banner-unlock.jpg"],     aspect: "720/210"  },
+  "Display Ads": { images: ["highlights/cash/display-cash-is-king.jpg",    "highlights/cash/display-unlock.jpg"],    aspect: "1/1"      },
+  "Skyscraper":  { images: ["highlights/cash/skyscraper-cash-is-king.jpg", "highlights/cash/skyscraper-unlock.jpg"], aspect: "1/2"      },
+};
 
-const DISPLAYS = [
-  "highlights/cash/display-1.png",
-  "highlights/cash/display-2.png",
-  "highlights/cash/display-3.png",
-  "highlights/cash/display-4.png",
-];
-
-const TABS = ["Banners", "Display Ads"] as const;
+const TABS = ["Banners", "Display Ads", "Skyscraper"] as const;
 type Tab = (typeof TABS)[number];
 
 export default function CashETFCreative({ variant = "dark" }: { variant?: "dark" | "cream" }) {
   const [tab, setTab] = useState<Tab>("Banners");
-  const images = tab === "Banners" ? BANNERS : DISPLAYS;
+  const { images, aspect } = FORMATS[tab];
   const isDark = variant === "dark";
 
   return (
@@ -46,9 +42,8 @@ export default function CashETFCreative({ variant = "dark" }: { variant?: "dark"
       <HighlightCarousel
         key={tab}
         images={images}
-        alt={`Cash ETF ${tab}`}
-        /* Banners: 2204x586 (~3.76:1) · Display ads: 1088x586 (~1.86:1) */
-        aspectRatio={tab === "Banners" ? "2204/586" : "1088/586"}
+        alt={`Cash ETF — ${tab}`}
+        aspectRatio={aspect}
         fit="cover"
       />
     </div>
