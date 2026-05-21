@@ -68,7 +68,7 @@ export default function SalesforceSection() {
           <Summary
             variant="cream"
             text={
-              "FSI ran **21 email campaigns** in Q1, reaching **7,817 recipients** with **2,985 opens** (38.2% open rate) and **385 clicks** at a **click-to-open rate of 12.9%**. Bounces stayed low at **67** (0.9% of sent) and **26 recipients** opted out across the quarter.\n\n" +
+              "FSI ran **19 email campaigns** in Q1, reaching **7,817 recipients** with **2,711 opens** (34.7% open rate) and **273 clicks** at a **click-to-open rate of 10.1%**. Bounces stayed low at **67** (0.9% of sent) and **26 recipients** opted out across the quarter.\n\n" +
               "Activity was led by the **Australian Equities Reporting Season Podcast** push, which drove roughly two-thirds of total response across four March sends. **GLIS** picked up the rest — five EMEA quarterly updates plus a US income-thesis send. Top responding firms were Australian wholesale brokers — **Bell Potter Securities (Melbourne)**, **Shaw and Partners (Perth, Melbourne, Sydney)** and **Ord Minnett (Melbourne)** led on opens, while **Alpha Portfolio Advisors** and **Amundi France** delivered the strongest click-through behaviour."
             }
           />
@@ -166,7 +166,7 @@ function EmailTab() {
       <div>
         <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Q1 email funnel</h3>
         <p className="text-xs text-secondary-foreground/55 mb-4">
-          Total recipients, opens, clicks, bounces and opt-outs across all 21 FSI Q1 sends.
+          Total recipients, opens, clicks, bounces and opt-outs across all 19 FSI Q1 sends.
         </p>
         <ResponsiveContainer width="100%" height={340}>
           <BarChart data={emailFunnelQ1VsQ4} margin={{ left: 10, right: 20, top: 10, bottom: 5 }}>

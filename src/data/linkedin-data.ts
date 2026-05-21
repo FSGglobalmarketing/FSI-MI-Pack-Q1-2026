@@ -81,8 +81,8 @@ export const topPostsQ1: TopPost[] = [
     link: "https://www.linkedin.com/feed/update/urn:li:activity:7413798853897846785",
   },
   {
-    title: "Institutional / professional disclaimer post (Australia)",
-    category: "Strategy",
+    title: "First Sentier Australian Small Companies Fund has retained its 'Gold' rating from Morningstar",
+    category: "Asset",
     date: "19/01/2026",
     impressions: 4789,
     clicks: 1257,

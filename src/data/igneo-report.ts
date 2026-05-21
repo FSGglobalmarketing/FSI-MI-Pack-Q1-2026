@@ -94,7 +94,7 @@ export const reportData = {
     ],
     conversion: [
       { channel: "Events",         metrics: ["8 Q1 events", "15 Q1-Q2 roundtables"], comparison: "",          status: "good" as const },
-      { channel: "Email / Pardot", metrics: ["3.0k Opens", "385 Clicks"],            comparison: "",          status: "good" as const },
+      { channel: "Email / Pardot", metrics: ["2.7k Opens", "273 Clicks"],            comparison: "",          status: "good" as const },
       { channel: "Webinars",       metrics: ["N/A"],                                  comparison: "",          status: "inactive" as const },
     ],
     serviceLoyalty: [],
@@ -271,11 +271,11 @@ export const reportData = {
     },
     {
       id: "highlight-cash-etf",
-      navLabel: "Cash ETF",
+      navLabel: "ASX: FSCF",
       stage: "Highlight 3",
-      title: "ASX Cash ETF Planning",
+      title: "ASX: FSCF — Cash ETF Planning",
       subtitle: "Establishing position in the market leveraging our size, rating and experience.",
-      description: "Planning and preparation for the Q2 launch of the ASX Cash ETF with a campaign designed to make our value proposition clear, on a platform of scale, experience, stability and liquidity.\n\nThe campaign is built using the BrandIntelligence report conducted by Agile Market Intelligence in December and focuses activity towards the top of the customer journey using our broadest channels.",
+      description: "Planning and preparation for the Q2 launch of the **ASX: FSCF — Cash ETF** with a campaign designed to make our value proposition clear, on a platform of scale, experience, stability and liquidity.\n\nThe campaign is built using the BrandIntelligence report conducted by Agile Market Intelligence in December and focuses activity towards the top of the customer journey using our broadest channels.",
       goals: [
         "Establish positioning in the market answering the question: 'why cash in the portfolio?'",
         "Use the data and findings in the BrandIntelligence report to inform our targeting and ad placement",

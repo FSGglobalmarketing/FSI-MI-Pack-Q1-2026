@@ -13,9 +13,9 @@
 
 // ── Headline KPI grid (top of section) ──
 export const clientEngagementHeadlineKpis = [
-  { value: "21",    label: "Campaigns",  comparison: "FSI Q1 sends" },
-  { value: "2,985", label: "Opens",      comparison: "Unique recipients" },
-  { value: "385",   label: "Clicks",     comparison: "12.9% CTOR" },
+  { value: "19",    label: "Campaigns",  comparison: "FSI Q1 sends" },
+  { value: "2,711", label: "Opens",      comparison: "Unique recipients" },
+  { value: "273",   label: "Clicks",     comparison: "10.1% CTOR" },
   { value: "93",    label: "Bounces + opt-outs", comparison: "67 bounces · 26 opt-outs" },
 ];
 
@@ -29,18 +29,18 @@ export interface FunnelMetric {
 }
 
 export const emailFunnelStrip: FunnelMetric[] = [
-  { key: "sent",    label: "Sent",     value: 7817, delta: "21 FSI Q1 campaigns",  deltaPositive: true  },
-  { key: "opens",   label: "Opens",    value: 2985, delta: "38.2% open rate",       deltaPositive: true  },
-  { key: "clicks",  label: "Clicks",   value:  385, delta: "12.9% CTOR",            deltaPositive: true  },
+  { key: "sent",    label: "Sent",     value: 7817, delta: "19 FSI Q1 campaigns",  deltaPositive: true  },
+  { key: "opens",   label: "Opens",    value: 2711, delta: "34.7% open rate",       deltaPositive: true  },
+  { key: "clicks",  label: "Clicks",   value:  273, delta: "10.1% CTOR",            deltaPositive: true  },
   { key: "bounces", label: "Bounces",  value:   67, delta: "0.9% of sent",          deltaPositive: false },
   { key: "optouts", label: "Opt-outs", value:   26, delta: "0.3% of sent",          deltaPositive: false },
 ];
 
 // ── Email tab — 4 KPI cards ──
 export const emailTabKpis = [
-  { label: "Sent",       value: "7,817", delta: "21 Q1 campaigns",   q4: "FSI brand only",  deltaPositive: true  },
-  { label: "Opens",      value: "2,985", delta: "38.2% open rate",   q4: "Unique recipients", deltaPositive: true  },
-  { label: "Clicks",     value: "385",   delta: "12.9% CTOR",         q4: "Click-to-open ratio", deltaPositive: true },
+  { label: "Sent",       value: "7,817", delta: "19 Q1 campaigns",   q4: "FSI brand only",  deltaPositive: true  },
+  { label: "Opens",      value: "2,711", delta: "34.7% open rate",   q4: "Unique recipients", deltaPositive: true  },
+  { label: "Clicks",     value: "273",   delta: "10.1% CTOR",         q4: "Click-to-open ratio", deltaPositive: true },
   { label: "Bounces",    value: "67",    delta: "0.9% of sent",       q4: "26 opt-outs",      deltaPositive: false },
 ];
 
@@ -48,8 +48,8 @@ export const emailTabKpis = [
 export interface FunnelRow { metric: string; q1: number; q4: number; }
 export const emailFunnelQ1VsQ4: FunnelRow[] = [
   { metric: "Sent",     q1: 7817, q4: 0 },
-  { metric: "Opens",    q1: 2985, q4: 0 },
-  { metric: "Clicks",   q1:  385, q4: 0 },
+  { metric: "Opens",    q1: 2711, q4: 0 },
+  { metric: "Clicks",   q1:  273, q4: 0 },
   { metric: "Bounces",  q1:   67, q4: 0 },
   { metric: "Opt-outs", q1:   26, q4: 0 },
 ];
@@ -93,10 +93,10 @@ export interface StrategyRow {
   optouts: number;
 }
 
+// GDIF excluded — that's an Igneo strategy, not FSI brand.
 export const topStrategiesQ1: StrategyRow[] = [
   { strategy: "Australian Equities",          sent: 6209, opens: 2224, clicks: 174, bounces: 58, optouts: 19 },
   { strategy: "Global Listed Infrastructure", sent: 1302, opens:  417, clicks:  96, bounces:  9, optouts:  7 },
-  { strategy: "Global Diversified Income",    sent:    0, opens:  274, clicks: 112, bounces:  0, optouts:  0 },
   { strategy: "ANZ Wholesale events",         sent:  306, opens:   70, clicks:   3, bounces:  0, optouts:  0 },
 ];
 
@@ -116,10 +116,8 @@ export const topCampaignsQ1: CampaignRow[] = [
   { campaign: "AEQ Reporting Season Podcast — NSW resend",           sent: 1711, opens: 600, clicks: 47, bounces:  0, optouts:  0 },
   { campaign: "AEQ Reporting Season Podcast — NSW",                  sent:  812, opens: 214, clicks: 21, bounces:  9, optouts: 10 },
   { campaign: "EX-20 launch (Count APL)",                            sent:    0, opens: 159, clicks: 34, bounces: 34, optouts:  8 },
-  { campaign: "GDIF Webcast — invitation",                           sent:    0, opens: 158, clicks: 82, bounces:  0, optouts:  0 },
   { campaign: "GLIS Q4 update — AU Wholesale",                       sent:    0, opens: 137, clicks: 20, bounces:  1, optouts:  5 },
   { campaign: "EMEA GLIS Q4 update — UK Wholesale",                  sent:  754, opens: 130, clicks: 22, bounces:  3, optouts:  1 },
-  { campaign: "GDIF Webcast — final reminder",                       sent:    0, opens: 116, clicks: 30, bounces:  0, optouts:  0 },
   { campaign: "ANZ Wholesale — Glades Gold Club breakfast",          sent:  306, opens:  70, clicks:  3, bounces:  0, optouts:  0 },
   { campaign: "EMEA GLIS Q4 update — Germany",                       sent:  205, opens:  64, clicks: 18, bounces:  2, optouts:  1 },
   { campaign: "EMEA GLIS Q4 update — rest of Europe",                sent:  138, opens:  39, clicks: 23, bounces:  1, optouts:  0 },
