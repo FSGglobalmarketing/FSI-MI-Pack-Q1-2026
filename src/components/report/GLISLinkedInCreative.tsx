@@ -17,7 +17,7 @@ export default function GLISLinkedInCreative({ variant = "dark" }: { variant?: "
 
   return (
     <div className="w-full">
-      <div className="flex gap-2 mb-4 flex-wrap">
+      <div className="flex gap-2 mb-4 flex-wrap justify-center">
         {EMBEDS.map((tab, idx) => (
           <button
             key={tab.label}

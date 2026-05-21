@@ -21,7 +21,7 @@ export default function CashETFCreative({ variant = "dark" }: { variant?: "dark"
 
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="flex gap-2 mb-4">
+      <div className="flex gap-2 mb-4 justify-center">
         {TABS.map((t) => (
           <button
             key={t}

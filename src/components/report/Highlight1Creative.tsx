@@ -131,7 +131,7 @@ export default function Highlight1Creative() {
   return (
     <div className="w-full">
       {/* Pill tabs — matching the rest of the report */}
-      <div className="flex gap-2 mb-4 overflow-x-auto">
+      <div className="flex gap-2 mb-4 overflow-x-auto justify-center">
         {TABS.map((t) => {
           const Icon = t === "YouTube" ? Youtube : t === "LinkedIn" ? Linkedin : Globe;
           const active = tab === t;

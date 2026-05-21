@@ -330,6 +330,13 @@ export const reportData = {
         "LinkedIn posts",
         "Insight articles",
       ],
+      // LinkedIn Q1 data sourced from organic_linkedin_q4_vs_q1.xls.
+      // Duke Energy CFO post went live after the Q1 export window — the
+      // Q2 LinkedIn pull will fill in its stats.
+      keyResults: [
+        "**Xcel Energy CFO video** (Rebecca Sherlock, 31 Mar) — **4,231 impressions** · **2,814 video views** · **212 clicks** · **5.01% CTR** · **5.98% engagement rate**",
+        "**Duke Energy CFO video** (Rebecca Sherlock, Brian Savoy) — published post-Q1; full stats land with the Q2 LinkedIn refresh",
+      ],
       targetAudience: ["Wholesale and institutional (global)"],
       dataSources: [
         "Web (GA4 — GLIS pages)",
