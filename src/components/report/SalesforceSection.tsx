@@ -36,8 +36,8 @@ const CHART_CURSOR = { fill: "rgba(0,0,0,0.04)" };
 // Bar stack palette (opens / clicks / visits / forms)
 const BAR_OPENS  = "#61bdb1";  // FSI Green
 const BAR_CLICKS = "#EF785B";  // FSI Orange
-const BAR_VISITS = "#3FBAD5";  // FSI Light Blue
-const BAR_FORMS  = "#D5B700";  // FSI Mustard
+const BAR_BOUNCES = "#3FBAD5";  // FSI Light Blue
+const BAR_OPTOUTS = "#D5B700";  // FSI Mustard
 
 // Q1 vs Q4 paired-bar palette
 const BAR_Q4 = "#CCB296";
@@ -244,21 +244,29 @@ function StrategiesTab() {
       <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Q1 engagement by strategy</h3>
       <p className="text-xs text-secondary-foreground/55 mb-4">
         Q1 client activity bucketed by strategy, inferred from FSI campaign names. Each bar stacks opens, clicks,
-        website visits and form submissions.
+        bounces and opt-outs.
       </p>
-      <ResponsiveContainer width="100%" height={380}>
+      <ResponsiveContainer width="100%" height={420}>
         <BarChart data={topStrategiesQ1} layout="vertical" margin={{ left: 20, right: 30, top: 5, bottom: 5 }}>
           <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke={CHART_GRID} />
           <XAxis type="number" tick={{ fontSize: 11, fill: CHART_TICK_DIM }} />
           <YAxis type="category" dataKey="strategy" width={240} tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }} />
           <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
           <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
-          <Bar dataKey="opens"  name="Opens"  stackId="a" fill={BAR_OPENS} />
-          <Bar dataKey="clicks" name="Clicks" stackId="a" fill={BAR_CLICKS} />
-          <Bar dataKey="visits" name="Visits" stackId="a" fill={BAR_VISITS} />
-          <Bar dataKey="forms"  name="Forms"  stackId="a" fill={BAR_FORMS} radius={[0, 6, 6, 0]} />
+          <Bar dataKey="opens"   name="Opens"    stackId="a" fill={BAR_OPENS} />
+          <Bar dataKey="clicks"  name="Clicks"   stackId="a" fill={BAR_CLICKS} />
+          <Bar dataKey="bounces" name="Bounces"  stackId="a" fill={BAR_BOUNCES} />
+          <Bar dataKey="optouts" name="Opt-outs" stackId="a" fill={BAR_OPTOUTS} radius={[0, 6, 6, 0]} />
         </BarChart>
       </ResponsiveContainer>
+      <p className="text-[11px] text-secondary-foreground/55 mt-3 leading-relaxed">
+        The chart shows FSI's full strategy lineup. <span className="text-secondary-foreground font-medium">Cash / ASX: FSCF</span>,
+        {" "}<span className="text-secondary-foreground font-medium">Global Property Securities</span>,
+        {" "}<span className="text-secondary-foreground font-medium">Short Term Investments</span>,
+        {" "}<span className="text-secondary-foreground font-medium">Asian Fixed Income</span> and
+        {" "}<span className="text-secondary-foreground font-medium">Australian Small &amp; Mid Caps</span> had no Q1 email campaigns
+        — Cash launches in Q2, AFI &amp; Small/Mid Caps ran on LinkedIn this quarter, and the others had no dedicated sends.
+      </p>
     </div>
   );
 }
@@ -271,8 +279,7 @@ function CampaignsTab() {
     <div>
       <h3 className="text-lg font-medium mb-1 text-secondary-foreground">Top campaigns by Q1 engagement</h3>
       <p className="text-xs text-secondary-foreground/55 mb-4">
-        Top 10 Q1 campaigns by total client activity, stacked by channel (opens, clicks, website visits and form
-        submissions).
+        Every FSI Q1 send, stacked by channel (opens, clicks, bounces and opt-outs).
       </p>
       <ResponsiveContainer width="100%" height={420}>
         <BarChart data={topCampaignsQ1} layout="vertical" margin={{ left: 10, right: 30, top: 5, bottom: 5 }}>
@@ -281,10 +288,10 @@ function CampaignsTab() {
           <YAxis type="category" dataKey="campaign" width={260} tick={{ fontSize: 11, fill: CHART_TICK_LIGHT }} />
           <Tooltip contentStyle={CHART_TOOLTIP} cursor={CHART_CURSOR} />
           <Legend wrapperStyle={{ color: "hsl(213 13% 43%)", paddingTop: 4 }} />
-          <Bar dataKey="opens"  name="Opens"  stackId="a" fill={BAR_OPENS} />
-          <Bar dataKey="clicks" name="Clicks" stackId="a" fill={BAR_CLICKS} />
-          <Bar dataKey="visits" name="Visits" stackId="a" fill={BAR_VISITS} />
-          <Bar dataKey="forms"  name="Forms"  stackId="a" fill={BAR_FORMS} radius={[0, 6, 6, 0]} />
+          <Bar dataKey="opens"   name="Opens"    stackId="a" fill={BAR_OPENS} />
+          <Bar dataKey="clicks"  name="Clicks"   stackId="a" fill={BAR_CLICKS} />
+          <Bar dataKey="bounces" name="Bounces"  stackId="a" fill={BAR_BOUNCES} />
+          <Bar dataKey="optouts" name="Opt-outs" stackId="a" fill={BAR_OPTOUTS} radius={[0, 6, 6, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </div>

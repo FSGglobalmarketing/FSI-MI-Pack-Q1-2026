@@ -94,10 +94,18 @@ export interface StrategyRow {
 }
 
 // GDIF excluded — that's an Igneo strategy, not FSI brand.
+// Zero rows are kept for FSI strategies that had no Q1 email sends so
+// the absence is visible in the chart (chart shows the full strategy
+// lineup, not just what we emailed).
 export const topStrategiesQ1: StrategyRow[] = [
   { strategy: "Australian Equities",          sent: 6209, opens: 2224, clicks: 174, bounces: 58, optouts: 19 },
   { strategy: "Global Listed Infrastructure", sent: 1302, opens:  417, clicks:  96, bounces:  9, optouts:  7 },
   { strategy: "ANZ Wholesale events",         sent:  306, opens:   70, clicks:   3, bounces:  0, optouts:  0 },
+  { strategy: "Cash / ASX: FSCF",             sent:    0, opens:    0, clicks:   0, bounces:  0, optouts:  0 },
+  { strategy: "Global Property Securities",   sent:    0, opens:    0, clicks:   0, bounces:  0, optouts:  0 },
+  { strategy: "Short Term Investments",       sent:    0, opens:    0, clicks:   0, bounces:  0, optouts:  0 },
+  { strategy: "Asian Fixed Income",           sent:    0, opens:    0, clicks:   0, bounces:  0, optouts:  0 },
+  { strategy: "Australian Small & Mid Caps",  sent:    0, opens:    0, clicks:   0, bounces:  0, optouts:  0 },
 ];
 
 // ── Campaigns tab — every Q1 send, ordered by total response ──
