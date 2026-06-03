@@ -2,7 +2,6 @@ import ReportNav from "@/components/report/ReportNav";
 import HeroSection from "@/components/report/HeroSection";
 import GlobalFocus from "@/components/report/GlobalFocus";
 import PerformanceResults from "@/components/report/PerformanceResults";
-import SalesforceSection from "@/components/report/SalesforceSection";
 import SearchVisibility from "@/components/report/SearchVisibility";
 import HighlightSection from "@/components/report/HighlightSection";
 import Highlight1Creative from "@/components/report/Highlight1Creative";
@@ -72,7 +71,6 @@ const Index = () => {
       />
 
       <LinkedInSection />
-      <SalesforceSection />
       <EventsSection />
       <PerformanceResults />
 

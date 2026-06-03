@@ -12,7 +12,6 @@ const navItems = [
   { id: "search-visibility",       label: "Search visibility" },
   { id: "website",                 label: "Website" },
   { id: "linkedin",                label: "LinkedIn" },
-  { id: "salesforce",              label: "Client engagement" },
   { id: "events",                  label: "Events" },
   { id: "performance",             label: "KPI Framework" },
 ];
@@ -23,8 +22,8 @@ const funnelStages = [
   { label: "Always on",     startIdx: 5,  endIdx: 5 },
   { label: "Awareness",     startIdx: 6,  endIdx: 6 },
   { label: "Consideration", startIdx: 7,  endIdx: 8 },
-  { label: "Conversion",    startIdx: 9,  endIdx: 10 },
-  { label: "Summary",       startIdx: 11, endIdx: 11 },
+  { label: "Conversion",    startIdx: 9,  endIdx: 9 },
+  { label: "Summary",       startIdx: 10, endIdx: 10 },
 ];
 
 export default function ReportNav() {
