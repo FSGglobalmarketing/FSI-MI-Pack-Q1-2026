@@ -173,12 +173,14 @@ export const topPostsQ1: TopPost[] = [
 ];
 
 // ── Quarter-over-quarter headline metrics ──
-// Post-level aggregates (Q1: rows 3-15 in the export; Q4: rows 16-32).
-// linkedInMonthlyData above uses the daily Metrics sheet which is the
-// whole-page activity (slightly higher than post-level totals).
+// Impressions use the daily Metrics sheet (page-level organic) so they
+// match the narrative + KPI framework figure of 35.9k Q1 / 44.6k Q4.
+// Clicks / reactions / avgCtr / posts remain post-level aggregates
+// (rows 3-15 in the export for Q1, 16-32 for Q4) — what each post
+// individually delivered.
 export const linkedInHeadline = {
-  q1: { impressions: 30968, clicks: 2896, reactions: 398, posts: 13, avgCtr: 0.0935, avgEngagement: 0.0129 },
-  q4: { impressions: 40188, clicks: 6120, reactions: 610, posts: 17, avgCtr: 0.1523, avgEngagement: 0.0152 },
+  q1: { impressions: 35900, clicks: 2896, reactions: 398, posts: 13, avgCtr: 0.0935, avgEngagement: 0.0129 },
+  q4: { impressions: 44600, clicks: 6120, reactions: 610, posts: 17, avgCtr: 0.1523, avgEngagement: 0.0152 },
 };
 
 // ── Deprecated heatmap data retained for compatibility only ──

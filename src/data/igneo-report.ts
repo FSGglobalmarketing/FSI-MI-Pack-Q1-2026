@@ -351,9 +351,9 @@ export const reportData = {
     title: "Always on: Website",
     stage: "Consideration",
     subtitle: "More traffic, deeper engagement, with insights and strategy pages leading the way.",
-    description: "More people came to firstsentierinvestors.com in Q1. **Page views grew +47%** vs Q4 2025 to **180.7k**, and **engagement actions on the site rose +45%**.\n\nThe two highlights were a new **Singapore performance landing page** (over **8k views** from a standing start) and growing momentum behind our AEQ team's adviser pages, especially the **EX-20 Share Fund (+32% on Q4)**.",
+    description: "More people came to firstsentierinvestors.com in Q1. **Page views grew +47%** vs Q4 2025 to **199.9k**, and **engagement actions on the site rose +45%**.\n\nThe two highlights were a new **Singapore performance landing page** (over **8k views** from a standing start) and growing momentum behind our AEQ team's adviser pages, especially the **EX-20 Share Fund (+32% on Q4)**.",
     kpis: [
-      { value: "180.7k", label: "Page views",         comparison: "+47% vs Q4 2025" },
+      { value: "199.9k", label: "Page views",         comparison: "+47% vs Q4 2025" },
       { value: "+45%",   label: "Engagement actions", comparison: "vs Q4 2025" },
     ],
     gaMonthly: [
