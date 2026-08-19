@@ -1,40 +1,592 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EFN0MLNMZL"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-EFN0MLNMZL');
-    </script>
-
-    <title>FSI Q1 2026</title>
-    <meta name="description" content="FSI Global Marketing Impact Report — Q1 2026">
-    <meta name="author" content="First Sentier Investors" />
-
-    <!-- TODO: Update og:title to match your application name -->
-    
-    
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e22048f7-e70c-47c8-b954-4d9595b999fa/id-preview-7016bf80--f8a7d481-cdf0-4bd4-b05b-7440325c2c6c.lovable.app-1773140199980.png">
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/e22048f7-e70c-47c8-b954-4d9595b999fa/id-preview-7016bf80--f8a7d481-cdf0-4bd4-b05b-7440325c2c6c.lovable.app-1773140199980.png">
-    <meta property="og:title" content="FSI Q1 2026">
-  <meta name="twitter:title" content="FSI Q1 2026">
-  <meta property="og:description" content="FSI Global Marketing Impact Report — Q1 2026">
-  <meta name="twitter:description" content="FSI Global Marketing Impact Report — Q1 2026">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EFN0MLNMZL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-EFN0MLNMZL');
+</script>
+<!-- Flat review mode: add ?flat (or ?review / ?markup) to the URL to turn the
+     slide deck into one long scrolling page for annotation tools (markup.io). -->
+<script>try{if(/(?:[?&]|#)(flat|review|markup)\b/i.test(location.search+location.hash))document.documentElement.classList.add('flat-review');}catch(e){}</script>
+<!-- ===== Password gate ===== -->
+<style>
+  html.pw-locked body > :not(#pw-gate){display:none!important;}
+  #pw-gate{position:fixed;inset:0;z-index:100000;display:none;align-items:center;justify-content:center;padding:24px;background:#0b0e12;color:#eceae4;font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;}
+  html.pw-locked #pw-gate{display:flex;}
+  #pw-gate .pw-card{width:min(380px,90vw);text-align:center;}
+  #pw-gate .pw-h{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#8b867d;margin-bottom:14px;}
+  #pw-gate h1{font-size:22px;font-weight:600;margin:0 0 8px;line-height:1.25;}
+  #pw-gate p{font-size:13.5px;color:#a29d94;margin:0 0 22px;}
+  #pw-gate form{display:flex;gap:8px;}
+  #pw-gate input{flex:1;padding:12px 14px;border-radius:9px;border:1px solid #2b323b;background:#141a20;color:#eceae4;font-size:14px;outline:none;-webkit-appearance:none;}
+  #pw-gate input:focus{border-color:#4a86c6;}
+  #pw-gate button{padding:12px 18px;border-radius:9px;border:0;background:#eceae4;color:#0b0e12;font-weight:600;font-size:14px;cursor:pointer;}
+  #pw-gate button:hover{background:#fff;}
+  #pw-gate .pw-err{color:#e07a6f;font-size:12.5px;margin-top:14px;min-height:15px;visibility:hidden;}
+  #pw-gate .pw-err.show{visibility:visible;}
+</style>
+<script>(function(){try{if(sessionStorage.getItem('mi-unlocked')!=='1')document.documentElement.classList.add('pw-locked');}catch(e){document.documentElement.classList.add('pw-locked');}})();</script>
+<title>FSI · Global Marketing Impact Report · Q2 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="mi.css" />
+<link rel="stylesheet" href="present.css" />
+<link rel="stylesheet" href="brand.css" />
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 </head>
+<body>
+<!-- ===== Password gate ===== -->
+<div id="pw-gate">
+  <div class="pw-card">
+    <div class="pw-h">Confidential</div>
+    <h1>Global Marketing Impact Report</h1>
+    <p>Please enter the password to view this report.</p>
+    <form id="pw-form" autocomplete="off">
+      <input id="pw-input" type="password" placeholder="Password" aria-label="Password" />
+      <button type="submit">Enter</button>
+    </form>
+    <div class="pw-err" id="pw-err">Incorrect password, please try again.</div>
+  </div>
+</div>
+<script>
+(function(){
+  if(!document.documentElement.classList.contains('pw-locked'))return;
+  var form=document.getElementById('pw-form'),input=document.getElementById('pw-input'),
+      gate=document.getElementById('pw-gate'),err=document.getElementById('pw-err'),
+      HASH='ab96776fe63720fab13d43a9987aeb76682d7d774a6e974bbce53724d8ef6281';
+  if(input)setTimeout(function(){input.focus();},60);
+  function unlock(){try{sessionStorage.setItem('mi-unlocked','1');}catch(e){}document.documentElement.classList.remove('pw-locked');if(gate&&gate.parentNode)gate.parentNode.removeChild(gate);}
+  function toHex(b){return Array.prototype.map.call(new Uint8Array(b),function(x){return('0'+x.toString(16)).slice(-2);}).join('');}
+  form&&form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(window.crypto&&crypto.subtle){
+      crypto.subtle.digest('SHA-256',new TextEncoder().encode(input.value||'')).then(function(buf){
+        if(toHex(buf)===HASH)unlock();else{err.classList.add('show');input.value='';input.focus();}
+      }).catch(function(){err.textContent='Unable to verify, please refresh and try again.';err.classList.add('show');});
+    }else{err.textContent='Unable to verify, please refresh and try again.';err.classList.add('show');}
+  });
+})();
+</script>
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!-- ================= TOP NAV ================= -->
+<div class="p-nav" id="p-nav">
+  <div class="brandmark"><img src="fsi-logo.svg" alt="FSI" class="logo-img" /></div>
+  <nav class="nav-links" id="nav-links">
+    <button data-goto="1" class="on">Overview</button>
+    <button data-goto="3">Highlights</button>
+    <button data-goto="6">Competitors</button>
+    <button data-goto="8">Awareness</button>
+    <button data-goto="10">Consideration</button>
+    <button data-goto="13">Conversion</button>
+    <button data-goto="15">KPI framework</button>
+    <button data-goto="16">Events &amp; sponsorship</button>
+  </nav>
+  <div class="p-period">Q2 2026</div>
+</div>
+
+<div class="p-progress" id="p-progress"></div>
+
+<div class="scroll-hint" id="scroll-hint">
+  <div class="wheel"></div>
+  <span>Scroll to advance</span>
+</div>
+
+<div class="deck" id="deck">
+  <section class="page dark cover-page" data-nav="dark" data-label="Cover">
+    <div class="page-bg"><image-slot id="hero-film" shape="rect" placeholder="Brand hero film or photo"></image-slot></div>
+    <div class="page-veil soft"></div>
+    <div class="cover-brand">
+      <div class="brandmark inv"><img src="fsi-logo.svg" alt="FSI" class="logo-img" /></div>
+    </div>
+    <div class="page-inner">
+      <div class="cover-card" data-anim>
+        <div class="kick">A quarterly review of global marketing activities and performance</div>
+        <h1 class="cover-title">Global marketing<br/>impact report</h1>
+        <p class="cover-lede">Key data points in each activity along the journey with First Sentier Investors: across awareness, consideration, conversion, service and loyalty, all measured against our goals and benchmarks.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXECUTIVE SUMMARY (for the board) ===== -->
+  <section class="page dark" data-nav="dark" data-label="Executive summary">
+    <div class="page-bg"><image-slot id="bg-exec" shape="rect" placeholder="Executive summary backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag">Overview</span>
+        <h2 class="p-title">Exec summary</h2>
+      </div>
+      <div class="exec-wrap" data-anim>
+        <div class="exec-lede">
+          <p>The quarter centred on three priorities: launching the <strong>Active Cash Fund ETF (FSCF)</strong> on the ASX, amplifying the Buy Hold Sell World Cup edition with Livewire, and rolling out refreshed <strong>ASX:LEVR</strong> messaging for the Geared Australian Share Fund.</p>
+          <p>The Cash ETF launch on 7 May, supported by a campaign across AFR, Investor Daily and Morningstar, lifted website visitors to <strong>around 50,000, up 25% on Q1</strong>. Eight launch emails reached <strong>740 organisations</strong>, the broadest single-campaign footprint of the quarter.</p>
+          <p>In search we now appear for <strong>145 Australian terms, up 40% year on year</strong>, though Vanguard still leads every category, so the priority for Q3 is embedding the brand into AI and LLM search results using the new website.</p>
+          <p>Global Listed Infrastructure content continued to resonate with Asian institutions, drawing <strong>more than 1,500 clicks from Asian banks</strong>, with <strong>DBS and HSBC</strong> among the firms reading our pages. Client engagement softened, with <strong>1,730 contacts across 1,095 organisations</strong>, down 10% on Q1 as paid acquisition wound down.</p>
+        </div>
+        <div class="exec-metrics">
+          <div class="exec-kpi"><div class="exec-v">~50,000</div><div class="exec-l">Website visitors</div><div class="exec-d">Up 25% on Q1</div></div>
+          <div class="exec-kpi"><div class="exec-v">6,000+</div><div class="exec-l">Buy Hold Sell post clicks</div><div class="exec-d">Best content of the quarter</div></div>
+          <div class="exec-kpi"><div class="exec-v">DBS &middot; HSBC</div><div class="exec-l">Among firms reading us</div><div class="exec-d">Asian banks, via Alphix</div></div>
+          <div class="exec-kpi"><div class="exec-v">-10%</div><div class="exec-l">Contacts vs Q1</div><div class="exec-d">1,730 across 1,095 orgs</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark" data-nav="dark" data-label="Our global focus">
+    <div class="page-bg"><image-slot id="bg-focus" shape="rect" placeholder="Backdrop: global / architectural"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag">Overview</span>
+        <h2 class="p-title">Our global focus</h2>
+      </div>
+      <div class="focus-wrap">
+        <div class="focus-slider" data-anim>
+          <button class="q-end" data-q="0">Q1 2026</button>
+          <div class="fs-track" id="fs-track">
+            <div class="fs-fill"></div>
+            <div class="fs-handle"></div>
+          </div>
+          <button class="q-end on" data-q="1">Q2 2026</button>
+        </div>
+        <div class="focus-row" id="focus-cards" data-anim></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 2 · Highlight 1 — Cash ETF launch ===== -->
+  <section class="page dark" data-nav="dark" data-label="Highlight: Cash ETF launch">
+    <div class="page-bg"><image-slot id="bg-hl1" shape="rect" placeholder="Highlight backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag inv">Highlight · Launch</span>
+        <h2 class="p-title">Cash ETF launch (ASX:FSCF)</h2>
+      </div>
+      <div class="cb-mount" data-cb="highlight1"></div>
+      <div class="asset-frame" data-anim style="min-height:0;aspect-ratio:16/7">
+        <image-slot id="hl1-asset" shape="rect" placeholder="ASX bell-ringing photo"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 3 · Highlight 2 — Buy Hold Sell World Cup ===== -->
+  <section class="page dark" data-nav="dark" data-label="Highlight: Buy Hold Sell">
+    <div class="page-bg"><image-slot id="bg-hl2" shape="rect" placeholder="Highlight backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag inv">Highlight · Content</span>
+        <h2 class="p-title">Livewire Buy Hold Sell: World Cup edition</h2>
+      </div>
+      <div class="cb-mount" data-cb="highlight2"></div>
+      <div class="asset-frame" data-anim style="min-height:0;aspect-ratio:16/7">
+        <image-slot id="hl2-asset" shape="rect" placeholder="Buy Hold Sell still"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4 · Highlight 3 — LEVR messaging ===== -->
+  <section class="page dark" data-nav="dark" data-label="Highlight: LEVR messaging">
+    <div class="page-bg"><image-slot id="bg-hl3" shape="rect" placeholder="Highlight backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag inv">Highlight · Campaign</span>
+        <h2 class="p-title">ASX:LEVR market messaging</h2>
+      </div>
+      <div class="cb-mount" data-cb="highlight3"></div>
+      <div class="asset-frame" data-anim style="min-height:0;aspect-ratio:16/7">
+        <image-slot id="hl3-asset" shape="rect" placeholder="LEVR creative"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark divider" data-nav="dark" data-label="Competitors">
+    <div class="page-bg"><image-slot id="bg-competitors" shape="rect" placeholder="Competitors backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner center">
+      <div class="d-name" data-anim>Competitors</div>
+      <div class="d-rule" data-anim style="background:var(--c-us)"></div>
+      <p class="p-sub" data-anim style="max-width:620px">What the rest of the field is doing: their paid search, their LinkedIn advertising and their share of the conversation.</p>
+      <div class="tax-pills" data-anim>
+        <span class="tax-pill">Google Ads</span>
+        <span class="tax-pill">LinkedIn</span>
+        <span class="tax-pill">Signal</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark" data-nav="dark" data-label="Competitor advertising">
+    <div class="page-bg"><image-slot id="bg-aw-comp" shape="rect" placeholder="Competitor backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag inv">Awareness · Competitors</span>
+        <h2 class="p-title">Competitor advertising</h2>
+      </div>
+      <div class="cb-mount" data-cb="competitors"></div>
+      <div class="carousel" data-anim>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="cslide" data-label="Share of voice">
+              <div class="chart-card">
+                <div class="card-head">
+                  <div class="card-title">Competitor share of voice</div>
+                </div>
+                <p class="muted-txt" style="font-size:13.5px;margin-bottom:14px">Each competitor's share of voice across the three channels we track (Google ads, LinkedIn ads and press mentions), with each channel weighted equally, so each bar is that competitor's share of the total peer group. Slide between Q1 and Q2.</p>
+                <div class="chart-wrap" id="sov-chart" data-chart="sov"></div>
+              </div>
+            </div>
+            <div class="cslide" data-label="Their live adverts">
+              <div class="chart-card" data-widget="creatives">
+                <div class="p-controls" style="margin-bottom:14px">
+                  <div>
+                    <div class="card-title" data-role="creatives-title">Their live adverts right now</div>
+                    <p class="muted-txt" style="font-size:13px;margin-top:4px" data-role="creatives-sub">Real ad examples pulled from public ad libraries.</p>
+                  </div>
+                  <div style="display:flex;gap:10px;flex-wrap:wrap">
+                    <div class="seg plat-toggle" id="plat-gal" role="group" aria-label="Ad platform">
+                      <button class="on" data-plat="google">Google</button>
+                      <button data-plat="linkedin">LinkedIn</button>
+                      <button data-plat="press">Press</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="stack-16" style="margin-bottom:16px">
+                  <div class="chips" id="comp-chips" data-role="comp-chips"></div>
+                  <div class="chips" id="fmt-chips" data-role="fmt-chips"></div>
+                </div>
+                <div class="slide-scroll" id="creatives" data-role="creatives"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-ui">
+          <button class="cbtn" data-cdir="-1" aria-label="Previous">‹</button>
+          <div class="cdots"></div>
+          <button class="cbtn" data-cdir="1" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark divider" data-nav="dark" data-label="Awareness">
+    <div class="page-bg"><image-slot id="bg-awareness" shape="rect" placeholder="Awareness backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner center">
+      <div class="d-name" data-anim>Awareness</div>
+      <div class="d-rule" data-anim style="background:var(--c-us)"></div>
+      <div class="tax-pills" data-anim>
+        <span class="tax-pill">SEM</span>
+        <span class="tax-pill">Advertorials</span>
+        <span class="tax-pill">Search (organic)</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark" data-nav="dark" data-label="Search visibility">
+    <div class="page-bg"><image-slot id="bg-aw-search" shape="rect" placeholder="Search backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag">Awareness</span>
+        <h2 class="p-title">Search engine visibility</h2>
+      </div>
+      <div class="cb-mount" data-cb="search"></div>
+      <div class="carousel" data-anim>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="cslide" data-label="Ranked keywords vs the field">
+              <div class="chart-card" data-widget="seo">
+                <div class="card-head">
+                  <div class="card-title">Ranked keywords: First Sentier Investors vs the field</div>
+                  <span class="source-note">Search rankings</span>
+                </div>
+                <p class="muted-txt" data-role="seo-note" style="font-size:13px;margin:2px 0 12px"></p>
+                <div class="seg tab-row" data-role="seo-scope" role="group" aria-label="Strategy"></div>
+                <div class="chart-wrap" data-role="seo-chart" style="margin-top:12px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-ui">
+          <button class="cbtn" data-cdir="-1" aria-label="Previous">‹</button>
+          <div class="cdots"></div>
+          <button class="cbtn" data-cdir="1" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark divider" data-nav="dark" data-label="Consideration">
+    <div class="page-bg"><image-slot id="bg-consideration" shape="rect" placeholder="Consideration backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner center">
+      <div class="d-name" data-anim>Consideration</div>
+      <div class="d-rule" data-anim style="background:var(--c-a)"></div>
+      <div class="tax-pills" data-anim>
+        <span class="tax-pill">LinkedIn (organic)</span>
+        <span class="tax-pill">Website</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark" data-nav="dark" data-label="Always on: website">
+    <div class="page-bg"><image-slot id="bg-con-web" shape="rect" placeholder="Website backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag">Consideration</span>
+        <h2 class="p-title">Always on: website</h2>
+      </div>
+      <div class="cb-mount" data-cb="website"></div>
+      <div class="carousel" data-anim>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="cslide" data-label="Website visits over time">
+              <div class="chart-card">
+                <div class="card-head"><div class="card-title">Website visits over time</div><span class="source-note">Website analytics</span></div>
+                <div class="legend" style="margin-bottom:12px"><span><i class="ln" style="background:var(--c-a)"></i>This quarter</span><span><i class="ln" style="background:var(--c-muted);opacity:.7"></i>Last quarter</span></div>
+                <div class="chart-wrap" id="chart-visits" data-chart="visits"></div>
+              </div>
+            </div>
+            <div class="cslide" data-label="Most-read pages">
+              <div class="chart-card" data-widget="top-pages">
+                <div class="card-head"><div class="card-title">Most-read pages</div><span class="source-note">Website analytics</span></div>
+                <div class="seg" id="pages-country" data-seg="pages-country" role="group" aria-label="Strategy" style="margin:8px 0 12px"></div>
+                <div class="slide-scroll" id="top-pages" data-body="top-pages"></div>
+              </div>
+            </div>
+            <div class="cslide" data-label="Company-level web insights">
+              <div class="chart-card alphix" id="alphix" data-widget="alphix">
+                <div class="card-head">
+                  <div class="card-title">Company-level web insights</div>
+                  <span class="source-note">Alphix</span>
+                </div>
+                <p class="muted-txt" style="font-size:13px;margin:2px 0 10px">We can now identify the organisations whose staff are reading each page, so sales know who is paying attention, not just how many.</p>
+                <div class="alphix-top">
+                  <div data-alphix-summary style="display:flex;gap:28px;flex-wrap:wrap"></div>
+                </div>
+                <div class="alphix-body">
+                  <div class="alphix-toolbar">
+                    <span class="alx-hint">Click a company to see the pages they read</span>
+                    <div class="seg" data-alphix-region role="group" aria-label="Region"></div>
+                  </div>
+                  <div class="slide-scroll" data-alphix-table></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-ui">
+          <button class="cbtn" data-cdir="-1" aria-label="Previous">‹</button>
+          <div class="cdots"></div>
+          <button class="cbtn" data-cdir="1" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark" data-nav="dark" data-label="Always on: LinkedIn">
+    <div class="page-bg"><image-slot id="bg-con-li" shape="rect" placeholder="LinkedIn backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag inv">Consideration</span>
+        <h2 class="p-title">Always on: LinkedIn</h2>
+        
+      </div>
+      <div class="cb-mount" data-cb="linkedin"></div>
+      <div class="carousel" data-anim>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="cslide" data-label="Organic vs paid">
+              <div class="chart-card" data-widget="lichannel">
+                <div class="card-head">
+                  <div class="card-title">Organic vs paid</div>
+                  <span class="source-note">LinkedIn API</span>
+                </div>
+                <p class="muted-txt" data-role="lich-note" style="font-size:13px;margin:2px 0 12px"></p>
+                <div class="legend" style="margin:12px 0"><span><i class="ln" style="background:var(--c-us)"></i>Clicks</span><span><i class="ln" style="background:#8fb4d6"></i>Impressions</span></div>
+                <div class="chart-wrap" data-role="lich-chart"></div>
+              </div>
+            </div>
+            <div class="cslide" data-label="Top posts">
+              <div class="chart-card" data-widget="liposts">
+                <div class="card-head">
+                  <div class="card-title">Top performing posts</div>
+                  <span class="source-note">LinkedIn · organic</span>
+                </div>
+                <p class="muted-txt" data-role="lipost-note" style="font-size:13px;margin:2px 0 12px"></p>
+                <div class="seg tab-row" data-role="lipost-tabs" role="group" aria-label="Category"></div>
+                <div data-role="lipost-legend" style="margin:8px 0 2px"></div>
+                <div class="creative-host" data-role="lipost-grid" style="margin-top:12px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-ui">
+          <button class="cbtn" data-cdir="-1" aria-label="Previous">‹</button>
+          <div class="cdots"></div>
+          <button class="cbtn" data-cdir="1" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark divider" data-nav="dark" data-label="Conversion">
+    <div class="page-bg"><image-slot id="bg-conversion" shape="rect" placeholder="Conversion backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner center">
+      <div class="d-name" data-anim>Conversion</div>
+      <div class="d-rule" data-anim style="background:var(--c-b)"></div>
+      <div class="tax-pills" data-anim>
+        <span class="tax-pill">Events</span>
+        <span class="tax-pill">Email</span>
+        <span class="tax-pill">Data capture</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark" data-nav="dark" data-label="Client engagement">
+    <div class="page-bg"><image-slot id="bg-conv-client" shape="rect" placeholder="Conversion backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag inv">Conversion</span>
+        <h2 class="p-title">Client engagement</h2>
+      </div>
+      <div data-cb-lead="engagement"></div>
+      <div class="kpi-row" id="email-summary" data-anim></div>
+      <div class="carousel" data-anim>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="cslide" data-label="Engagement leaders">
+              <div class="chart-card" data-widget="email">
+                <div class="card-head">
+                  <div class="card-title">Who's engaging with our emails</div>
+                  <span class="source-note">Pardot · Account Engagement</span>
+                </div>
+                <p class="muted-txt" data-role="email-note" style="font-size:13px;margin:2px 0 12px"></p>
+                <div class="seg tab-row" data-role="email-dim" role="group" aria-label="Group by"></div>
+                <div class="legend" style="margin:12px 0"><span><i class="ln" style="background:var(--c-us)"></i>Clicks</span><span><i class="ln" style="background:#8fb4d6"></i>Opens</span></div>
+                <div class="chart-wrap" data-role="email-chart"></div>
+              </div>
+            </div>
+            <div class="cslide" data-label="Form conversions">
+              <div class="chart-card" data-widget="forms">
+                <div class="card-head">
+                  <div class="card-title">New enquiries this quarter</div>
+                  <span class="source-note">Salesforce · form conversions</span>
+                </div>
+                <p class="muted-txt" data-role="form-note" style="font-size:13px;margin:2px 0 12px"></p>
+                <div class="seg tab-row" data-role="form-tabs" role="group" aria-label="Breakdown"></div>
+                <div class="chart-wrap" data-role="form-chart" style="margin-top:12px"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-ui">
+          <button class="cbtn" data-cdir="-1" aria-label="Previous">‹</button>
+          <div class="cdots"></div>
+          <button class="cbtn" data-cdir="1" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="page dark" data-nav="dark" data-label="Performance & results">
+    <div class="page-bg"><image-slot id="bg-results" shape="rect" placeholder="Results backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner kpi-spine">
+      <div class="fw-head" data-anim>
+        <div>
+          <span class="tag ghost">KPI framework &amp; results</span>
+          <h2 class="fw-title">What does good<br/>look like?</h2>
+        </div>
+        <div>
+          <div class="fw-stats" id="fw-stats"></div>
+        </div>
+      </div>
+      <div class="spine-scroll" data-anim>
+        <div class="spine" id="spine"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page dark divider" data-nav="dark" data-label="Events &amp; sponsorship">
+    <div class="page-bg"><image-slot id="bg-loyalty" shape="rect" placeholder="Loyalty backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner center">
+      <div class="d-name" data-anim>Events &amp; sponsorship</div>
+      <div class="d-rule" data-anim style="background:var(--c-c)"></div>
+    </div>
+  </section>
+
+  <section class="page dark" data-nav="dark" data-label="Events & sponsorships">
+    <div class="page-bg"><image-slot id="bg-loy-events" shape="rect" placeholder="Events backdrop"></image-slot></div>
+    <div class="page-veil"></div>
+    <div class="page-inner">
+      <div class="p-head" data-anim>
+        <span class="tag">Service &amp; loyalty</span>
+        <h2 class="p-title">Events &amp; sponsorships</h2>
+      </div>
+      <div class="carousel" data-anim>
+        <div class="carousel-viewport">
+          <div class="carousel-track">
+            <div class="cslide" data-label="Where we showed up">
+              <div class="card" style="padding:0;overflow:hidden">
+                <div class="card-head" style="padding:14px 16px 0;align-items:center">
+                  <div>
+                    <div class="card-title">Where we showed up</div>
+                    <p class="muted-txt" style="font-size:12.5px;margin:2px 0 0">Committed, proprietary and distribution-owned FSI events. Click a pin for the details.</p>
+                  </div>
+                  <div class="ev-slider-mount"></div>
+                </div>
+                <div class="events-map" id="ev-leaflet" style="height:56vh;min-height:380px;margin-top:12px"></div>
+              </div>
+            </div>
+            <div class="cslide" data-label="Event schedule">
+              <div class="card">
+                <div class="card-head"><div class="card-title">Event schedule</div><span class="source-note">2026 events &amp; sponsorship calendar</span></div>
+                <div class="slide-scroll events-table" id="events-table"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-ui">
+          <button class="cbtn" data-cdir="-1" aria-label="Previous">‹</button>
+          <div class="cdots"></div>
+          <button class="cbtn" data-cdir="1" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="image-slot.js"></script>
+<script src="data.js"></script>
+<script src="press-data.js"></script>
+<script>window.MI_BRAND='FSI';</script>
+<script src="pipeline-data.js"></script>
+<script src="mi-data.js"></script>
+<script src="mi-charts.js"></script>
+<script src="mi-app.js"></script>
+<script src="mi-present.js"></script>
+<script src="events-map.js"></script>
+<script src="exec-summary.js"></script>
+</body>
 </html>
