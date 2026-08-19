@@ -1,22 +1,17 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: './',
+// Static Q2 marketing performance report — no framework build step.
+// All site assets live in /public and are copied verbatim into dist.
+export default defineConfig({
+  base: "./",
   server: {
     host: "::",
     port: 8080,
-    hmr: {
-      overlay: false,
+  },
+  build: {
+    // Leave the hand-written script/link tags in index.html untouched.
+    rollupOptions: {
+      external: (id) => !id.includes("index.html"),
     },
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-}));
+});
