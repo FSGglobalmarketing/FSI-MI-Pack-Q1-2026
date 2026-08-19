@@ -1,22 +1,29 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { componentTagger } from "lovable-tagger";
+import { defineConfig, type Plugin } from "vite";
+import fs from "node:fs";
+import path from "node:path";
 
-// https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
-  base: './',
+// Static Q2 marketing performance report — plain HTML/CSS/JS, no framework.
+// All site assets live in /public and are copied verbatim into dist by Vite.
+// index.html is hand-written with classic (non-module) script tags, so we
+// write it through untouched instead of letting Rollup rewrite/bundle it.
+function copyIndexHtmlVerbatim(): Plugin {
+  return {
+    name: "copy-index-html-verbatim",
+    apply: "build",
+    closeBundle() {
+      const src = path.resolve(__dirname, "index.html");
+      const out = path.resolve(__dirname, "dist/index.html");
+      fs.mkdirSync(path.dirname(out), { recursive: true });
+      fs.copyFileSync(src, out);
+    },
+  };
+}
+
+export default defineConfig({
+  base: "./",
   server: {
     host: "::",
     port: 8080,
-    hmr: {
-      overlay: false,
-    },
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
-}));
+  plugins: [copyIndexHtmlVerbatim()],
+});

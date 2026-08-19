@@ -1,0 +1,52 @@
+/* pipeline-data.js - Global Service Request Pipeline (Salesforce), cut 2026-08-03.
+   OPEN service requests only: stages 1-Initiated Dialogue .. 4-Formalised DD-Short
+   List. Won (5/6/7), not-yet-contacted targets (0) and Lost are all excluded - a
+   pin means an opportunity that is still open. Scoped to this brand and to the
+   companies that appear in our Alphix data. window.MI_PIPELINE, before mi-data.js. */
+window.MI_PIPELINE = {
+  generatedAt: '2026-08-03',
+  source: 'Global Service Request Pipeline (Salesforce)',
+  opportunities: [
+    { name:"HSBC Private Wealth/Banking", brand:"FSI", capability:"ex20 - Australian Share", stage:"4-Formalised DD-Short List", status:"open", active:true },
+    { name:"Mitsui Sumitomo Primary LIfe Insurance", brand:"FSI", capability:"Cash and Short Term Investments", stage:"4-Formalised DD-Short List", status:"open", active:true },
+    { name:"Russell", brand:"FSI", capability:"Australian Share", stage:"4-Formalised DD-Short List", status:"open", active:true },
+    { name:"Allegra Wealth - First Sentier Cash Fund", brand:"FSI", capability:"Cash and Short Term Investments", stage:"3-Formalised DD-Long List", status:"open", active:true },
+    { name:"Financial Advisers Australia", brand:"FSI", capability:"Geared Australian Share", stage:"3-Formalised DD-Long List", status:"open", active:true },
+    { name:"Life Values", brand:"FSI", capability:"Small Cap - Long Short", stage:"3-Formalised DD-Long List", status:"open", active:true },
+    { name:"Mercer", brand:"FSI", capability:"Global Property Securities", stage:"3-Formalised DD-Long List", status:"open", active:true },
+    { name:"Mercer Investments (HK) Limited", brand:"FSI", capability:"Global Property Securities", stage:"3-Formalised DD-Long List", status:"open", active:true },
+    { name:"Mercer Investments Australia", brand:"FSI", capability:"Concentrated Australian Share", stage:"3-Formalised DD-Long List", status:"open", active:true },
+    { name:"Swiss Life Deutschland", brand:"FSI", capability:"Global Infrastructure", stage:"3-Formalised DD-Long List", status:"open", active:true },
+    { name:"Tokio Marine Holdings", brand:"FSI", capability:"Cash and Short Term Investments", stage:"3-Formalised DD-Long List", status:"open", active:true },
+    { name:"Berenberg GLIS", brand:"FSI", capability:"Global Infrastructure", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"CLP Hong Kong Ltd", brand:"FSI", capability:"Asia", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Coastal Capital Advice - East Corrimal", brand:"FSI", capability:"ex20 - Australian Share", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Crown Wealth Group Pty Ltd - Sydney - 338 Pitt Street", brand:"FSI", capability:"Small Cap - Long Short", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Generation Life", brand:"FSI", capability:"Geared Australian Share", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Lufthansa AG", brand:"FSI", capability:"Global Infrastructure", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Mitsubishi UFJ Asset Management Co.,.", brand:"FSI", capability:"Global Infrastructure", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Mitsubishi UFJ Morgan Stanley Securities", brand:"FSI", capability:"Cash and Short Term Investments", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Novia Financial plc", brand:"FSI", capability:"Global Infrastructure", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Prudential Holborn Life Ltd", brand:"FSI", capability:"Global Infrastructure", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Set 4 Life Financial Solutions-Wollongong", brand:"FSI", capability:"Geared Australian Share", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Thai Life", brand:"FSI", capability:"Global Infrastructure", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"The Tokio Marine and Fire Insurance Co. (HK) Ltd.", brand:"FSI", capability:"Asia", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"University of Adelaide", brand:"FSI", capability:"Cash and Short Term Investments", stage:"2-Active Engagement", status:"open", active:true },
+    { name:"Arthur J. Gallagher (Life Solutions) Limited - Brisbane", brand:"FSI", capability:"Geared Australian Share", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Australian Retirement Trust", brand:"FSI", capability:"Growth", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"BNY", brand:"FSI", capability:"American Infrastructure", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Capital Results", brand:"FSI", capability:"Global Property Securities", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Cork Asset Management Pty Ltd", brand:"FSI", capability:"Cash and Short Term Investments", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"DWS - GLIS", brand:"FSI", capability:"Global Infrastructure", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Funds SA", brand:"FSI", capability:"Cash and Short Term Investments", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Hmh Financial Services - Doncaster East", brand:"FSI", capability:"Geared Australian Share", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Macquarie Equities - Broadbeach - 19 Victoria Avenue, Broadbeach Mall", brand:"FSI", capability:"Geared Australian Share", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Macquarie PW", brand:"FSI", capability:"Geared Australian Share", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Mercer Investment Consulting (Dublin)", brand:"FSI", capability:"Global Infrastructure", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Morgan Stanley", brand:"FSI", capability:"American Infrastructure", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"NorthCorp Wealth Management - Port Macquarie", brand:"FSI", capability:"Small Cap - Long Short", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Panacea Wealth Management - Macquarie Park", brand:"FSI", capability:"ex20 - Australian Share", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"Partners Capital LLP", brand:"FSI", capability:"Implemented Solution", stage:"1-Initiated Dialogue", status:"open", active:true },
+    { name:"University of Guelph", brand:"FSI", capability:"Global Infrastructure", stage:"1-Initiated Dialogue", status:"open", active:true },
+  ]
+};
